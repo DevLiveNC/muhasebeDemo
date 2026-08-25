@@ -40,7 +40,7 @@ export default function ContactSection() {
           {/* Left: Info */}
           <div className="lg:col-span-5 space-y-8">
             <div>
-              <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-gold-300">
+              <p className="text-[11px] font-semibold text-gold-300">
                 Bir Sonraki Adım
               </p>
               <h2 className="font-serif text-white text-3xl sm:text-4xl md:text-5xl leading-[1.08] tracking-tight mt-4">
@@ -79,7 +79,7 @@ export default function ContactSection() {
             </div>
 
             <div className="p-5 rounded-xl bg-white/5 border border-white/10 space-y-1.5 text-xs">
-              <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-gold-300 block">
+              <span className="mlabel text-gold-300 block">
                 Teknopark İrtibat Ofisi
               </span>
               <h5 className="font-bold text-white text-sm">İTÜ ARI Teknokent 3</h5>

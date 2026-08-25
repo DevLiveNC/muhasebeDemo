@@ -202,11 +202,8 @@ export default function AdminDashboard() {
 
                 <div className="flex items-center gap-3 shrink-0">
                   <div className="text-right hidden sm:block">
-                    <span className={cn(
-                      'badge',
-                      cl.missingDocsCount > 0 ? 'badge-danger' : 'badge-success'
-                    )}>
-                      {cl.missingDocsCount > 0 ? `${cl.missingDocsCount} Eksik` : 'Eksiksiz'}
+                    <span className="status text-ink-700">
+                      <span className={cn('dot', cl.missingDocsCount > 0 ? 'dot-danger' : 'dot-success')}></span>{cl.missingDocsCount > 0 ? `${cl.missingDocsCount} Eksik` : 'Eksiksiz'}
                     </span>
                     <span className="text-[10px] text-ink-400 block mt-1">KDV: {cl.kdvStatus.split(' ')[0]}</span>
                   </div>
@@ -302,10 +299,10 @@ export default function AdminDashboard() {
                   </td>
                   <td className="td text-ink-500 whitespace-nowrap">{doc.category}</td>
                   <td className="td font-mono font-semibold text-ink-900 text-right whitespace-nowrap">{doc.amount}</td>
-                  <td className="td"><span className="badge badge-success">{doc.ocrConfidence}</span></td>
+                  <td className="td"><span className="status text-ink-700"><span className="dot dot-success"></span>{doc.ocrConfidence}</span></td>
                   <td className="td">
-                    <span className={cn('badge', doc.status === 'Onaylandı' ? 'badge-success' : 'badge-warning')}>
-                      {doc.status}
+                    <span className="status text-ink-700">
+                      <span className={cn('dot', doc.status === 'Onaylandı' ? 'dot-success' : 'dot-warning')}></span>{doc.status}
                     </span>
                   </td>
                   <td className="td text-right">

@@ -1,5 +1,8 @@
 # HALLMARK — VELOX Arayüz Tasarım Skill'i
 
+> **v1.2** — v1.1: palet ~%25 yumuşatıldı (soft token seti), gölgeler/radyüs/motion yumuşatıldı.
+> v1.2: profesyonelleşme kuralları eklendi (§5.12); hero, footer, AI orb ve tablo durumları güncellendi.
+
 > **Skill amacı:** VELOX platformunun (kurumsal tanıtım sitesi + müşteri konsolu + SMMM yönetim paneli) tüm arayüzlerini tek, tutarlı ve premium bir tasarım diliyle yeniden inşa etme kural seti.
 > **Kırmızı çizgi:** Veri katmanına ( `src/context/AppContext.jsx`, `src/data/mockData.js` ) ve bileşen sözleşmelerine (dosya adları, export'lar, tab kimlikleri, context aksiyonları) dokunulmaz. HALLMARK yalnızca **sunum katmanını** yönetir.
 
@@ -25,39 +28,41 @@ VELOX; TÜRMOB ruhsatlı SMMM/YMM ortaklığı, KGK bağımsız denetim kuruluş
 
 | Token | Değer | Kullanım |
 |---|---|---|
-| `paper-50` | `#FCFBF8` | Kart içi gövde, input zemini |
-| `paper-100` | `#F6F4EE` | Sayfa arka planı (portal/admin) |
-| `paper-200` | `#EFECE3` | Dolgulu bölme, segment kontrol zemini |
-| `paper-300` | `#E6E2D6` | Pasif ilerleme çubuğu zemini |
-| `pine-50` | `#EFF5F1` | Aktif nav zemini, soft vurgu alanları |
-| `pine-100` | `#DEEBE4` | Yumuşak border'lar |
-| `pine-600` | `#2E654C` | Hover/secondary yeşil |
-| `pine-700` | `#23523E` | **Birincil marka rengi** (buton, aktif durum) |
-| `pine-800` | `#1A4031` | Hover (dark) |
-| `pine-900` | `#123026` | Koyu bantlar (site CTA, footer, AI başlığı) |
-| `pine-950` | `#0A211A` | En koyu yüzey |
-| `gold-300` | `#DDBA6B` | Koyu zemin üzerinde vurgu (AI, yıldız) |
-| `gold-500` | `#B9882E` | Ana altın vurgu |
-| `ink-950` | `#121815` | Başlıklar, en koyu metin |
-| `ink-800` | `#253029` | Gövde metin (varsayılan) |
-| `ink-600` | `#4A584F` | İkincil metin |
-| `ink-400` | `#7E8A81` | Üçüncül metin, etiket |
-| `ink-300` | `#9DA89F` | Soluk mikro metin |
-| `line` | `#E2DFD4` | Varsayılan 1px sınır |
-| `line-strong` | `#D2CDBC` | Vurgulu sınır, input border |
+| `paper-50` | `#FCFBF9` | Kart içi gövde, input zemini |
+| `paper-100` | `#F7F5EF` | Sayfa arka planı (portal/admin) |
+| `paper-200` | `#F0EEE6` | Dolgulu bölme, segment kontrol zemini |
+| `paper-300` | `#E8E5DB` | Pasif ilerleme çubuğu zemini |
+| `pine-500` | `#558770` | Soft accent (dot, ince ikon) |
+| `pine-600` | `#3F6E57` | **Birincil buton** zemini, hover vurgu |
+| `pine-700` | `#33604C` | Koyu buton hover, marka kareleri, koyu bant üstü bileşen |
+| `pine-800` | `#275141` | Koyu bantlar (site şeritleri, rapor başlıkları) |
+| `pine-900` | `#1F4234` | Footer |
+| `pine-950` | `#143027` | Yalnızca çok özel en koyu yüzeyler |
+| `gold-300` | `#E0C27E` | Koyu zemin üzerinde vurgu (AI, yıldız) |
+| `gold-400` | `#D4AF5E` | Ana altın buton/zemin vurgusu |
+| `ink-900` | `#252D28` | Başlıklar (serif display dahil) |
+| `ink-700` | `#414E46` | Gövde metin (varsayılan) |
+| `ink-500` | `#6B786F` | İkincil metin |
+| `ink-400` | `#8A968C` | Üçüncül metin, `.mlabel` etiket |
+| `ink-300` | `#A6B0A7` | Soluk mikro metin, `.dot-neutral` |
+| `line` | `#E7E4DA` | Varsayılan 1px sınır |
+| `line-strong` | `#D9D4C7` | Vurgulu sınır, input border |
+
+> Soft kurallı: tüm renkler nütreye ~%25 kaydırılmıştır. Asla eski keskin hex'leri
+> (`#23523E`, `#121815`, `#B9882E` vb.) geri getirme; token'ı kullan.
 
 ### 2.2 Durum Renkleri (her yüzeyde aynı)
 
 | Durum | Metin | Zemin | Sınır |
 |---|---|---|---|
-| Başarılı (`success`) | `#175C3B` | `#E6F2EB` | `success/20` |
-| Uyarı (`warning`) | `#92400E` | `#FBF1DF` | `warning/20` |
-| Kritik (`danger`) | `#8E2A20` | `#FBECE8` | `danger/20` |
+| Başarılı (`success`) | `#276B4B` (deep) | `#EAF4EE` (soft) | `success/20` |
+| Uyarı (`warning`) | `#A25A26` (deep) | `#FBF4E6` (soft) | `warning/20` |
+| Kritik (`danger`) | `#A23F32` (deep) | `#FCEFEA` (soft) | `danger/20` |
 
 ### 2.3 Kontrast Kuralları
 - Gövde metni asgari `ink-600`; hiçbir metin `ink-300`'ün altına inemez (dekoratif mikro etiket hariç).
-- Koyu bantlarda (`pine-900`) metin `white` / `pine-100` / `gold-300` kullanılabilir.
-- Buton: `pine-700` zemin + beyaz metin (4.5:1+ kontrast).
+- Koyu bantlarda (`pine-800`) metin `white` / `pine-100/200` / `gold-300` kullanılabilir.
+- Buton: `pine-600` zemin + beyaz metin (4.5:1+ kontrast); hover `pine-700`.
 
 ---
 
@@ -102,7 +107,10 @@ Kural: Bir metin bloğunda en fazla 2 font ailesi; serif sadece başlık katman�
 
 Boyutlar: `btn-sm` (px-3 py-1.5, 12px) · `btn-md` (px-4 py-2.5, 13–14px). Köşe `8px`. Icon + metin arası 8px. UPPERCASE ve `letter-spacing` vurgusu **kullanılmaz**.
 
-### 5.3 Rozet (`.badge`)
+### 5.3 Rozet (`.badge`) & Durum Göstergesi (`.status` + `.dot`)
+**Kural:** Yoğun tablolarda (müşteri, evrak, tahsilat, iş emri) durum kolonu **piller değil,
+`<span className="status"><span className="dot dot-xxx"></span>Metin</span>`** kullanır.
+`.badge` yalnızca kategori/konteks rozetlerinde (başlık çipleri, blog kategorisi, "Yayında") kalır.
 `rounded-full`, padding 4px 10px, 11px/600. Dört durum: `badge-success` · `badge-warning` · `badge-danger` · `badge-neutral` (`paper-200` zemin, `ink-600` metin). Mono font sadece sayısal rozetlerde (örn. "48").
 
 ### 5.4 Tablo
@@ -134,15 +142,40 @@ Etiket (10px mono UPPERCASE `ink-400`) + icon (16px) → değer (24–30px mono 
 Zemin `paper-300`, dolgu `pine-600` (tamamlanmış: `success`), yükseklik 6px, radius full. Stepper adımı: `CheckCircle2` (yapıldı: `pine-700` / bekliyor: `ink-300`).
 
 ### 5.11 AI Asistan
-Başlık bandı `pine-800` (beyaz başlık, `gold-300` Sparkles). Mesaj balonu: AI = `bg-white` kart + `line` border; kullanıcı = `bg-pine-700` white. Yapılandırılmış cevaplar başlık + madde listesi + alt not kutusu (`gold-50` zemin, `gold-700` metin).
+Başlık bandı `pine-700` (beyaz başlık, `gold-300` vurgu). Mesaj balonu: AI = `bg-white` kart + `line` border; kullanıcı = `bg-pine-700` white. Yapılandırılmış cevaplar başlık + madde listesi + alt not kutusu (`gold-50` zemin, `gold-700` metin).
+Yüzen AI butonu: 48px dairesel `pine-700` buton + `gold-300` ikon + tek statik `gold-400` nokta. **`animate-ping`/`pulse` yok.**
+
+### 5.12 Profesyonelleşme Kuralları (anti-"hazır AI" tells)
+
+Aşağı kalıplar **yapay/zaman damgalı AI çıktısı** okunur; bu projede yasaktır:
+
+1. **Tekrarlayan uppercase mono eyebrow'lar.** Mikro etiketler `mlabel`
+   (11px, normal case, sans, `ink-400`) veya `kpi-label`'dir. Uppercase+tracking yalnızca
+   nav bölüm başlıkları (sidebar), komut paleti grupları ve **belge estetiği**
+   (e-SMM makbuzu, e-Arşiv önizleme) istisnasındadır. Mono yazı tipi **yalnızca
+   sayı/tutar/VKN/tarih** içindir.
+2. **Pill spam.** Durum bilgisi tablolarda `dot + metin`'dir (§5.3). Bir görünümde
+   en fazla 2-3 `.badge` bulunabilir.
+3. **İkon karoları.** 36-40px tinted kare içinde ikon yalnızca birincil
+   grid'lerde (hizmetler, KPI köşesi 14px düz ikon) kullanılır; sık listelerde
+   ikon karola alınmaz.
+4. **Süzülen/örtüşen dekoratif kartlar**, nokta dokusu, gradient, glassmorphism: YOK.
+5. **Sürekli hareket** (`animate-ping`, `animate-pulse`): YOK. Hareket yalnızca
+   kullanıcı olaylarına yanıt verir (§7).
+6. **B2B finansal üründe konfeti/emojisi**: YOK. Başarı = temiz onay ekranı.
+7. **Ortalanmış hero pill'i**: hero'da merkezi rozet/pill yok; akreditasyon
+   tek satır sakin eyebrow olarak H1 üstünde durur.
+8. **Gerçek veri.** Footer/iletişim `FIRM_INFO`'dan beslenir; uydurma adres/numara yazılmaz.
+9. **Tek birincil aksiyon.** Her görünümde tam `btn-primary` sayısı 1'dir;
+   geri kalanlar outline/ghost.
 
 ---
 
 ## 6. Yüzey Spesifikasyonları
 
 ### 6.1 Kurumsal Web Sitesi (public)
-Bölüm sırası: Navbar → Hero → Güven Şeridi (koyu bant, 4 metrik) → Hizmetler (numaralı satır listesi) → Neden Velox (karşılaştırma matrisi) → Dijital Konsol Vitrini (koyu bant + canlı mockup) → Vergi Simülatörü (etkileşimli) → Mevzuat & Blog → Müşteri Referansları → Kurumsal & Ekip → İletişim (koyu bant + form kartı) → Footer (`pine-950`).
-- Hero: sol metin (eyebrow rozeti + serif H1 + lead + 3 CTA + güven işaretleri), sağ "finansal rapor" görsel kartı + yüzen not kartı.
+Bölüm sırası: Navbar → Hero → Güven Şeridi (koyu bant, 4 metrik) → Hizmetler (numaralı satır listesi) → Neden Velox (karşılaştırma matrisi) → Dijital Konsol Vitrini (koyu bant + canlı mockup) → Vergi Simülatörü (etkileşimli) → Mevzuat & Blog → Müşteri Referansları → Kurumsal & Ekip → İletişim (koyu bant + form kartı) → Footer (`pine-900`, `FIRM_INFO` alanlarıyla gerçek adres/tel/e-posta, mono ruhsat numaraları).
+- Hero: sol metin (tek satır sakin eyebrow — HİÇBİR PİL/ROZET yok + serif H1 + lead + 3 CTA + güven işaretleri), sağ "finansal rapor" görsel kartı. Yüzen/örtüşen not kartı YOK; yaklaşıyor yükümlülük satırı rapor kartının içine alt satır olarak girer. Nokta dokusu (dot-grid) zemini YOK.
 - Hizmet satırları: 40px mono numara + icon + serif başlık + açıklama + ok; tıklanınca `ServiceDetailModal`.
 
 ### 6.2 Müşteri Konsolu (portal)
@@ -185,6 +218,8 @@ Portal ile aynı tasarım dili; veri yoğunluğu daha yüksek: 6 KPI satırı, k
 ## 10. Doğrulama Listesi
 
 - [ ] `npm run build` hatasız
+- [ ] §5.12 anti-tell taraması: `animate-ping|animate-pulse|bg-gradient` = 0 sonuç; tablo durumları `dot` kullanıyor
+- [ ] Footer/iletişim `FIRM_INFO` alanlarını kullanıyor; inline uydurma iletişim verisi yok
 - [ ] 3 mod (public/portal/admin) arasında geçişte hiçbir state kaybı yok
 - [ ] Tüm context aksiyonları (approve, updateTask, addDoc, addClient, toast) çalışıyor
 - [ ] Komut paleti (⌘K), AI asistanı ve tüm modallar her modda açılıyor

@@ -147,10 +147,38 @@
 
   /* ---- KPI ---- */
   .kpi-label {
-    @apply text-[10px] font-mono uppercase tracking-[0.14em] text-ink-400;
+    @apply text-[11px] font-medium tracking-normal text-ink-400;
   }
   .kpi-value {
     @apply font-mono font-semibold text-ink-900 tracking-tight;
+  }
+
+  /* ---- Micro label (card-internal, calm) ---- */
+  .mlabel {
+    @apply text-[11px] font-medium text-ink-400;
+  }
+
+  /* ---- Status (dot + text, for dense tables) ---- */
+  .status {
+    @apply inline-flex items-center gap-1.5 text-[12.5px] font-medium whitespace-nowrap;
+  }
+  .dot {
+    @apply inline-block w-1.5 h-1.5 rounded-full shrink-0;
+  }
+  .dot-success {
+    @apply bg-success;
+  }
+  .dot-warning {
+    @apply bg-warning;
+  }
+  .dot-danger {
+    @apply bg-danger;
+  }
+  .dot-neutral {
+    @apply bg-ink-300;
+  }
+  .dot-pine {
+    @apply bg-pine-500;
   }
 
   /* ---- Progress ---- */

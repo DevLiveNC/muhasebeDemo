@@ -96,11 +96,8 @@ export default function AdminPayments() {
                   <td className="td font-mono font-bold text-ink-900 text-right whitespace-nowrap">{p.totalAmount}</td>
                   <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{p.dueDate}</td>
                   <td className="td">
-                    <span className={cn(
-                      'badge',
-                      p.status === 'Ödendi' ? 'badge-success' : p.status === 'Gecikmede' ? 'badge-danger' : 'badge-warning'
-                    )}>
-                      {p.status}
+                    <span className="status text-ink-700">
+                      <span className={cn('dot', p.status === 'Ödendi' ? 'dot-success' : p.status === 'Gecikmede' ? 'dot-danger' : 'dot-warning')}></span>{p.status}
                     </span>
                   </td>
                   <td className="td text-right">

@@ -208,7 +208,7 @@ export default function AiAssistantModal() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
             {data.metrics.map((m, i) => (
               <div key={i} className="p-3 rounded-lg bg-pine-50/60 border border-pine-100">
-                <span className="text-[10px] font-mono uppercase tracking-[0.1em] text-ink-400 block">{m.label}</span>
+                <span className="kpi-label block">{m.label}</span>
                 <span className="text-xs font-bold text-pine-900 block mt-1">{m.value}</span>
               </div>
             ))}

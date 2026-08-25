@@ -99,7 +99,7 @@ export default function PortalDocuments() {
       >
         <div className="w-11 h-11 rounded-xl bg-pine-50 text-pine-700 flex items-center justify-center mx-auto">
           {isUploading ? (
-            <Sparkles className="w-5 h-5 animate-pulse" />
+            <Sparkles className="w-5 h-5" />
           ) : (
             <UploadCloud className="w-5 h-5" />
           )}
@@ -128,7 +128,7 @@ export default function PortalDocuments() {
 
         {/* Folders */}
         <div className="lg:col-span-4 card p-5 space-y-2 self-start">
-          <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-ink-400 block px-2 mb-2">
+          <span className="mlabel block px-2 mb-2">
             Arşiv Klasörleri
           </span>
           {folders.map((folder) => {
@@ -200,7 +200,7 @@ export default function PortalDocuments() {
                     <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{doc.uploadDate}</td>
                     <td className="td font-mono font-semibold text-ink-900 text-right whitespace-nowrap">{doc.amount}</td>
                     <td className="td">
-                      <span className="badge badge-success">{doc.ocrConfidence}</span>
+                      <span className="status text-ink-700"><span className="dot dot-success"></span>{doc.ocrConfidence}</span>
                     </td>
                     <td className="td text-right">
                       <button

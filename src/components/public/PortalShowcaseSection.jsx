@@ -183,21 +183,21 @@ export default function PortalShowcaseSection() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-3">
                     <div className="p-4 bg-white rounded-xl border border-line">
-                      <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block">Nakit Runway</span>
+                      <span className="mlabel block">Nakit Runway</span>
                       <span className="font-mono text-2xl font-semibold text-ink-900 block mt-1">18.4 Ay</span>
                       <p className="text-[11px] text-success-deep font-semibold mt-1 flex items-center gap-1">
                         <TrendingUp className="w-3 h-3" /> ₺845K Aylık Burn Rate
                       </p>
                     </div>
                     <div className="p-4 bg-white rounded-xl border border-line">
-                      <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block">4691 Teşvik Avantajı</span>
+                      <span className="mlabel block">4691 Teşvik Avantajı</span>
                       <span className="font-mono text-2xl font-semibold text-pine-700 block mt-1">₺38.400</span>
                       <p className="text-[11px] text-ink-400 mt-1">34 personel stopaj muafiyeti</p>
                     </div>
                   </div>
 
                   <div className="p-4 bg-white rounded-xl border border-line">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-3">
+                    <span className="mlabel block mb-3">
                       Aylık Nakit Akışı
                     </span>
                     <div className="flex items-end gap-1.5 h-20 border-b border-line">
@@ -236,7 +236,7 @@ export default function PortalShowcaseSection() {
                   </div>
 
                   <div className="p-4 bg-white rounded-xl border border-line text-[13px] text-ink-700 leading-relaxed max-w-md">
-                    <span className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 mb-1.5">
+                    <span className="flex items-center gap-1.5 mlabel mb-1.5">
                       <Sparkles className="w-3 h-3 text-gold-500" />
                       SMMM Notu
                     </span>

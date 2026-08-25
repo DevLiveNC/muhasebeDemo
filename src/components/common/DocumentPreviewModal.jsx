@@ -81,13 +81,13 @@ export default function DocumentPreviewModal() {
               </div>
               <div className="p-6 space-y-4 bg-paper-50">
                 <div>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.14em] text-ink-400">Tedarikçi</p>
+                  <p className="mlabel">Tedarikçi</p>
                   <p className="font-bold text-ink-900 text-sm mt-1">{doc.supplier || doc.client}</p>
                 </div>
 
                 <div className="flex items-end gap-6 pt-2 border-t border-line">
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.14em] text-ink-400">Fatura Tutarı</p>
+                    <p className="mlabel">Fatura Tutarı</p>
                     <p className="font-mono text-3xl font-semibold text-ink-900 tracking-tight mt-1">{doc.amount}</p>
                   </div>
                   <span className={cn('badge mb-1', isApproved ? 'badge-success' : 'badge-warning')}>
@@ -98,15 +98,15 @@ export default function DocumentPreviewModal() {
 
                 <div className="grid grid-cols-3 gap-3 pt-2 border-t border-line">
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400">KDV</p>
+                    <p className="mlabel">KDV</p>
                     <p className="font-mono font-semibold text-ink-900 text-sm mt-0.5">{doc.vatAmount || '-'}</p>
                   </div>
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400">Oran</p>
+                    <p className="mlabel">Oran</p>
                     <p className="font-mono font-semibold text-ink-900 text-sm mt-0.5">{doc.vatRate || '-'}</p>
                   </div>
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400">Dosya</p>
+                    <p className="mlabel">Dosya</p>
                     <p className="font-mono font-semibold text-ink-900 text-sm mt-0.5">{doc.fileSize || '-'}</p>
                   </div>
                 </div>
@@ -130,7 +130,7 @@ export default function DocumentPreviewModal() {
               <div className="flex items-start gap-2.5">
                 <Tag className="w-3.5 h-3.5 text-pine-700 shrink-0 mt-0.5" />
                 <div className="min-w-0">
-                  <p className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400">Atanan Hesap</p>
+                  <p className="mlabel">Atanan Hesap</p>
                   <p className="text-[13px] font-semibold text-ink-900 mt-0.5 leading-snug">{doc.assignedAccount || 'Tekdüzen eşlemesi bekleniyor'}</p>
                 </div>
               </div>

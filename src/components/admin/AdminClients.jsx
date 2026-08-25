@@ -155,11 +155,8 @@ export default function AdminClients() {
                   </td>
                   <td className="td text-ink-500 whitespace-nowrap">{cl.sector}</td>
                   <td className="td whitespace-nowrap">
-                    <span className={cn(
-                      'badge',
-                      cl.kdvStatus.includes('Onaylandı') ? 'badge-success' : 'badge-neutral'
-                    )}>
-                      {cl.kdvStatus.split(' ')[0]}
+                    <span className="status text-ink-700">
+                      <span className={cn('dot', cl.kdvStatus.includes('Onaylandı') ? 'dot-success' : 'dot-neutral')}></span>{cl.kdvStatus.split(' ')[0]}
                     </span>
                   </td>
                   <td className="td text-ink-500 whitespace-nowrap">{cl.assignedCPA.name}</td>
@@ -167,11 +164,8 @@ export default function AdminClients() {
                     {formatNumber(cl.monthlyFee)}
                   </td>
                   <td className="td">
-                    <span className={cn(
-                      'badge',
-                      cl.missingDocsCount > 0 ? 'badge-danger' : 'badge-success'
-                    )}>
-                      {cl.missingDocsCount > 0 ? `${cl.missingDocsCount} Eksik` : 'Eksiksiz'}
+                    <span className="status text-ink-700">
+                      <span className={cn('dot', cl.missingDocsCount > 0 ? 'dot-danger' : 'dot-success')}></span>{cl.missingDocsCount > 0 ? `${cl.missingDocsCount} Eksik` : 'Eksiksiz'}
                     </span>
                   </td>
                   <td className="td text-right">

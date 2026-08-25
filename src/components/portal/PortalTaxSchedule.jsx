@@ -70,11 +70,11 @@ export default function PortalTaxSchedule() {
 
               <div className="p-3.5 bg-paper-50 rounded-xl border border-line flex items-center justify-between text-xs">
                 <div>
-                  <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-0.5">Yasal Son Gün</span>
+                  <span className="mlabel block mb-0.5">Yasal Son Gün</span>
                   <span className="font-mono font-bold text-ink-900">{tax.deadline}</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-0.5">Durum</span>
+                  <span className="mlabel block mb-0.5">Durum</span>
                   <span className={cn(
                     'font-bold flex items-center gap-1 justify-end',
                     isFinished ? 'text-success-deep' : 'text-ink-700'

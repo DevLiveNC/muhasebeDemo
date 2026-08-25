@@ -198,11 +198,8 @@ export default function CommandPalette() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className={cn(
-                        'badge',
-                        client.missingDocsCount > 0 ? 'badge-danger' : 'badge-success'
-                      )}>
-                        {client.missingDocsCount > 0 ? `${client.missingDocsCount} Eksik Evrak` : 'Mizan Tam'}
+                      <span className="status text-ink-700">
+                        <span className={cn('dot', client.missingDocsCount > 0 ? 'dot-danger' : 'dot-success')}></span>{client.missingDocsCount > 0 ? `${client.missingDocsCount} Eksik Evrak` : 'Mizan Tam'}
                       </span>
                       <ArrowRight className="w-3.5 h-3.5 text-ink-300 group-hover:text-pine-700 group-hover:translate-x-0.5 transition-all" />
                     </div>

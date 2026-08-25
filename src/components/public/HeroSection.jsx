@@ -7,7 +7,6 @@ import {
   TrendingUp,
   Building2,
   CalendarDays,
-  Sparkles,
   FileCheck2
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
@@ -31,30 +30,15 @@ export default function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-paper-50 border-b border-line">
-      {/* Subtle background texture */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.5]"
-        style={{
-          backgroundImage: 'radial-gradient(#E6E2D6 1px, transparent 1px)',
-          backgroundSize: '28px 28px'
-        }}
-      />
-
       <div className="container-x relative pt-14 pb-20 md:pt-20 md:pb-24">
-
-        {/* Accreditation Badge */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-line shadow-card text-xs">
-            <span className="w-2 h-2 rounded-full bg-success animate-pulse"></span>
-            <span className="font-mono text-[11px] text-ink-400">TÜRMOB Ruhsat No: 349102 · KGK Bağımsız Denetim</span>
-            <span className="w-1 h-1 rounded-full bg-line-strong hidden sm:block"></span>
-            <span className="font-semibold text-ink-800 hidden sm:inline">Kurumsal Mali Müşavirlik</span>
-          </div>
-        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left: Copy */}
-          <div className="space-y-7">
+          <div className="space-y-6">
+            <p className="text-[11px] font-medium tracking-[0.08em] uppercase text-pine-700">
+              TÜRMOB 349102 · KGK Bağımsız Denetim · GİB Özel Entegratör
+            </p>
             <h1 className="font-serif text-ink-900 text-[44px] sm:text-6xl md:text-[68px] leading-[1.04] tracking-tight">
               Muhasebenizi değil,
               <br />
@@ -202,9 +186,7 @@ export default function HeroSection() {
                         </div>
                         <div className="text-right shrink-0">
                           <p className="font-mono font-semibold text-ink-900">{row.amt}</p>
-                          <span className="text-[9px] font-mono text-success flex items-center gap-1 justify-end">
-                            <Sparkles className="w-2.5 h-2.5" /> %99.9 OCR
-                          </span>
+                          <span className="text-[9px] font-mono text-success">OCR %99.9</span>
                         </div>
                       </div>
                     ))}

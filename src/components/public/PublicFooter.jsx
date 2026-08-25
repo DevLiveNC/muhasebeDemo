@@ -1,9 +1,8 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { ShieldCheck } from 'lucide-react';
 
 export default function PublicFooter() {
-  const { navigateToMode, setIsConsultationOpen } = useApp();
+  const { navigateToMode, setIsConsultationOpen, firmInfo } = useApp();
 
   return (
     <footer className="bg-pine-900 text-pine-200 text-xs">
@@ -11,7 +10,7 @@ export default function PublicFooter() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
-          {/* Brand */}
+          {/* Brand + contact */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-white text-pine-900 font-serif font-bold flex items-center justify-center text-sm">
@@ -23,19 +22,30 @@ export default function PublicFooter() {
             </div>
 
             <p className="text-xs text-pine-300 leading-relaxed max-w-sm">
-              TÜRMOB ve KGK yetkili Serbest Muhasebeci Mali Müşavirlik & Bağımsız Denetim A.Ş.
-              Yeni nesil finansal modelleme ve vergi optimizasyonu.
+              {firmInfo.legalName}
+              <br />
+              {firmInfo.tagline}.
             </p>
 
-            <div className="text-[11px] font-mono text-pine-300 space-y-1.5 pt-2">
-              <p>Büyükdere Cad. No: 195 Kanyon Ofis K:12, Levent / İstanbul</p>
-              <p>+90 (212) 809 45 00 · partner@veloxfinans.com</p>
-            </div>
+            <address className="not-italic space-y-1.5 text-[11px] text-pine-300 pt-1">
+              <p>{firmInfo.hq}</p>
+              <p>{firmInfo.technoparkOffice}</p>
+              <p className="pt-1">
+                <a href={`tel:${firmInfo.phone.replace(/[^+\d]/g, '')}`} className="text-pine-100 hover:text-white transition-colors">
+                  {firmInfo.phone}
+                </a>
+                {' · '}
+                <a href={`mailto:${firmInfo.email}`} className="text-pine-100 hover:text-white transition-colors">
+                  {firmInfo.email}
+                </a>
+              </p>
+              <p>Pazartesi – Cuma · 09:00 – 18:30</p>
+            </address>
           </div>
 
           {/* Services */}
           <div className="space-y-3">
-            <h4 className="font-bold text-white uppercase tracking-[0.16em] text-[10px] font-mono">Hizmet Kapsamı</h4>
+            <h4 className="text-[11px] font-semibold text-white/80">Hizmet Kapsamı</h4>
             <ul className="space-y-2 text-pine-300">
               <li><a href="#services" className="hover:text-white transition-colors">E-Fatura & E-Defter</a></li>
               <li><a href="#services" className="hover:text-white transition-colors">Kurumlar Vergisi Denetimi</a></li>
@@ -47,7 +57,7 @@ export default function PublicFooter() {
 
           {/* Consoles */}
           <div className="space-y-3">
-            <h4 className="font-bold text-white uppercase tracking-[0.16em] text-[10px] font-mono">Konsol & Paneller</h4>
+            <h4 className="text-[11px] font-semibold text-white/80">Konsol & Paneller</h4>
             <ul className="space-y-2 text-pine-300">
               <li>
                 <button onClick={() => navigateToMode('portal')} className="hover:text-white transition-colors">
@@ -67,22 +77,16 @@ export default function PublicFooter() {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Accreditation */}
           <div className="space-y-3">
-            <h4 className="font-bold text-white uppercase tracking-[0.16em] text-[10px] font-mono">Yasal & Akreditasyon</h4>
-            <ul className="space-y-2 text-pine-300">
-              <li className="flex items-start gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-gold-300 shrink-0 mt-0.5" />
-                TÜRMOB Ruhsat No: 349102
-              </li>
-              <li className="flex items-start gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-gold-300 shrink-0 mt-0.5" />
-                KGK BDK/2018-41
-              </li>
-              <li className="flex items-start gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-gold-300 shrink-0 mt-0.5" />
-                GİB Özel Entegratör
-              </li>
+            <h4 className="text-[11px] font-semibold text-white/80">Akreditasyon & Ruhsat</h4>
+            <ul className="space-y-2.5 text-pine-300">
+              {firmInfo.licenses.map((lic) => (
+                <li key={lic.no} className="leading-relaxed">
+                  <span className="block text-pine-100">{lic.title}</span>
+                  <span className="font-mono text-[10px] text-pine-400">No: {lic.no}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -90,11 +94,11 @@ export default function PublicFooter() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[11px] text-pine-400">
-            © 2026 Velox Bağımsız Denetim ve Yeminli Mali Müşavirlik A.Ş. Tüm hakları saklıdır.
+            © 2026 {firmInfo.legalName} Tüm hakları saklıdır.
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-[11px] font-mono text-pine-300 hover:text-white transition-colors"
+            className="text-[11px] text-pine-300 hover:text-white transition-colors"
           >
             Başa dön ↑
           </button>

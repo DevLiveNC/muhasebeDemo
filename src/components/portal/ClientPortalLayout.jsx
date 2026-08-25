@@ -77,7 +77,7 @@ export default function ClientPortalLayout() {
 
       {/* Navigation */}
       <div className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
-        <div className="px-3 pb-2 text-[10px] font-mono uppercase tracking-[0.16em] text-ink-400">
+        <div className="px-3 pb-2 mlabel">
           Müşteri Konsolu
         </div>
         {menuItems.map((item) => {
@@ -111,7 +111,7 @@ export default function ClientPortalLayout() {
 
       {/* Assigned SMMM Card */}
       <div className="p-3 m-3 rounded-xl bg-paper-50 border border-line space-y-2.5">
-        <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.14em] text-ink-400">
+        <div className="flex items-center gap-1.5 mlabel">
           <ShieldCheck className="w-3 h-3 text-pine-700" />
           <span>Sorumlu Mali Müşavir</span>
         </div>

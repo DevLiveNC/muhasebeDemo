@@ -41,7 +41,7 @@ export default function TaxCalculatorSection() {
           <div className="md:col-span-7 space-y-6">
 
             <div>
-              <label className="label font-mono uppercase tracking-[0.14em] text-ink-400">1. Şirket Statüsü</label>
+              <label className="label">1. Şirket Statüsü</label>
               <div className="grid grid-cols-3 gap-2">
                 {[
                   { id: 'as', label: 'Anonim (A.Ş.)' },
@@ -66,7 +66,7 @@ export default function TaxCalculatorSection() {
 
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <span className="label mb-0 font-mono uppercase tracking-[0.14em] text-ink-400">2. Çalışan / Bordro Sayısı</span>
+                <span className="label mb-0">2. Çalışan / Bordro Sayısı</span>
                 <span className="font-bold text-ink-900 font-mono text-xs bg-paper-100 px-2 py-0.5 rounded border border-line">
                   {employees} Personel
                 </span>
@@ -83,7 +83,7 @@ export default function TaxCalculatorSection() {
 
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <span className="label mb-0 font-mono uppercase tracking-[0.14em] text-ink-400">3. Aylık Fatura & Belge Hacmi</span>
+                <span className="label mb-0">3. Aylık Fatura & Belge Hacmi</span>
                 <span className="font-bold text-ink-900 font-mono text-xs bg-paper-100 px-2 py-0.5 rounded border border-line">
                   ~{monthlyInvoices} Adet / Ay
                 </span>

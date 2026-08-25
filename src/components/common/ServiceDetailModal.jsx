@@ -66,7 +66,7 @@ export default function ServiceDetailModal() {
         {/* Content */}
         <div className="p-6 sm:p-8 space-y-6 overflow-y-auto">
           <div>
-            <h4 className="text-[10px] font-mono uppercase tracking-[0.16em] text-ink-400">
+            <h4 className="mlabel">
               Mevzuat & Hizmet Kapsamı
             </h4>
             <p className="text-sm text-ink-600 mt-2.5 leading-relaxed">
@@ -75,7 +75,7 @@ export default function ServiceDetailModal() {
           </div>
 
           <div className="p-5 rounded-xl bg-paper-50 border border-line space-y-3">
-            <h4 className="text-[10px] font-mono uppercase tracking-[0.16em] text-ink-400">
+            <h4 className="mlabel">
               Paket Detayları & Standartlar
             </h4>
             <div className="grid grid-cols-1 gap-2.5">

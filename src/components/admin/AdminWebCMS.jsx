@@ -66,11 +66,8 @@ export default function AdminWebCMS() {
                   <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{req.phone}</td>
                   <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{req.date}</td>
                   <td className="td">
-                    <span className={cn(
-                      'badge',
-                      req.status === 'Onaylandı' ? 'badge-success' : 'badge-warning'
-                    )}>
-                      {req.status}
+                    <span className="status text-ink-700">
+                      <span className={cn('dot', req.status === 'Onaylandı' ? 'dot-success' : 'dot-warning')}></span>{req.status}
                     </span>
                   </td>
                   <td className="td text-right">

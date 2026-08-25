@@ -7,7 +7,6 @@ import {
   ArrowRight,
   ChevronLeft
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import { cn } from '../../utils/cn';
 
 export default function ConsultationModal() {
@@ -52,11 +51,6 @@ export default function ConsultationModal() {
     setIsSubmitted(true);
 
     try {
-      confetti({
-        particleCount: 70,
-        spread: 60,
-        origin: { y: 0.6 }
-      });
     } catch (err) {
       // fallback
     }
@@ -315,7 +309,7 @@ export default function ConsultationModal() {
                 <strong className="text-ink-900">{formData.email || 'e-posta adresinize'}</strong> gönderildi.
               </p>
               <div className="p-4 rounded-xl bg-paper-50 border border-line text-left max-w-sm mx-auto">
-                <p className="text-[10px] font-mono uppercase tracking-[0.14em] text-ink-400 mb-2">Seçilen Hizmetler</p>
+                <p className="mlabel mb-2">Seçilen Hizmetler</p>
                 <div className="flex flex-wrap gap-1.5">
                   {formData.services.map((srv) => (
                     <span key={srv} className="badge badge-pine">{srv}</span>

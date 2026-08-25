@@ -42,7 +42,7 @@ export default function PortalCompanyProfile() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {registryFields.map((f, i) => (
               <div key={i} className="p-3.5 bg-paper-50 rounded-xl border border-line">
-                <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-1">
+                <span className="mlabel block mb-1">
                   {f.label}
                 </span>
                 <span className="font-mono font-semibold text-ink-900 text-sm break-all">{f.value}</span>
@@ -51,7 +51,7 @@ export default function PortalCompanyProfile() {
           </div>
 
           <div className="p-4 bg-paper-50 rounded-xl border border-line">
-            <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 flex items-center gap-1.5 block mb-1.5">
+            <span className="mlabel flex items-center gap-1.5 block mb-1.5">
               <MapPin className="w-3 h-3 text-pine-700" />
               Kayıtlı Tebligat & Faaliyet Adresi
             </span>
@@ -79,7 +79,7 @@ export default function PortalCompanyProfile() {
 
           {/* CPA Card */}
           <div className="card p-6 space-y-5">
-            <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.16em] text-pine-700">
+            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-pine-700">
               <ShieldCheck className="w-4 h-4" />
               <span>Sorumlu Mali Müşavir</span>
             </div>
@@ -121,7 +121,7 @@ export default function PortalCompanyProfile() {
 
           {/* Authorized Rep */}
           <div className="card p-5 space-y-3">
-            <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-ink-400 block">
+            <span className="mlabel block">
               Şirket Yetkili Temsilcisi
             </span>
             <div className="flex items-center gap-3">

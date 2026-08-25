@@ -112,11 +112,8 @@ export default function AdminTasks() {
                     </span>
                   </td>
                   <td className="td">
-                    <span className={cn(
-                      'badge',
-                      t.priority === 'Acil' ? 'badge-danger' : t.priority === 'Yüksek' ? 'badge-warning' : 'badge-neutral'
-                    )}>
-                      {t.priority}
+                    <span className="status text-ink-700">
+                      <span className={cn('dot', t.priority === 'Acil' ? 'dot-danger' : t.priority === 'Yüksek' ? 'dot-warning' : 'dot-neutral')}></span>{t.priority}
                     </span>
                   </td>
                   <td className="td text-ink-500 whitespace-nowrap">{t.category}</td>

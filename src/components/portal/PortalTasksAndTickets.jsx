@@ -94,8 +94,8 @@ export default function PortalTasksAndTickets() {
               </div>
 
               <div className="flex items-center gap-2">
-                <span className={cn('badge', tck.status === 'Tamamlandı' ? 'badge-success' : 'badge-pine')}>
-                  {tck.status}
+                <span className="status text-ink-700">
+                  <span className={cn('dot', tck.status === 'Tamamlandı' ? 'dot-success' : 'dot-pine')}></span>{tck.status}
                 </span>
                 <span className="text-[11px] font-mono text-ink-400">{tck.createdDate}</span>
               </div>

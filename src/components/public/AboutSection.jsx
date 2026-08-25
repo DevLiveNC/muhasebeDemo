@@ -69,13 +69,13 @@ export default function AboutSection() {
             {/* Offices */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div className="p-4 rounded-xl border border-line">
-                <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-ink-400 flex items-center gap-1.5">
+                <span className="mlabel flex items-center gap-1.5">
                   <MapPin className="w-3 h-3 text-pine-700" /> Ana Ofis
                 </span>
                 <p className="text-xs text-ink-700 mt-1.5 leading-relaxed">{firmInfo.hq}</p>
               </div>
               <div className="p-4 rounded-xl border border-line">
-                <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-ink-400 flex items-center gap-1.5">
+                <span className="mlabel flex items-center gap-1.5">
                   <MapPin className="w-3 h-3 text-pine-700" /> Teknopark Ofisi
                 </span>
                 <p className="text-xs text-ink-700 mt-1.5 leading-relaxed">{firmInfo.technoparkOffice}</p>

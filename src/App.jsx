@@ -42,16 +42,12 @@ export default function App() {
         <div className="fixed bottom-6 right-6 z-40 animate-fade-in">
           <button
             onClick={() => setIsAiAssistantOpen(true)}
-            className="group flex items-center gap-3 pl-3.5 pr-4 py-3 bg-pine-700 hover:bg-pine-800 text-white rounded-full shadow-pop transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+            aria-label="VELOX AI Asistanını aç"
+            title="VELOX AI Asistanı"
+            className="w-12 h-12 rounded-full bg-pine-700 hover:bg-pine-800 text-white shadow-pop transition-all duration-200 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center relative"
           >
-            <span className="flex items-center gap-2 text-xs font-bold tracking-wide">
-              <Zap className="w-4 h-4 text-gold-300" />
-              VELOX AI
-            </span>
-            <span className="relative flex w-2 h-2">
-              <span className="absolute inline-flex w-full h-full rounded-full bg-gold-300 opacity-60 animate-ping"></span>
-              <span className="relative inline-flex w-2 h-2 rounded-full bg-gold-300"></span>
-            </span>
+            <Zap className="w-5 h-5 text-gold-300" />
+            <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-gold-400 border-2 border-paper-50"></span>
           </button>
         </div>
       )}

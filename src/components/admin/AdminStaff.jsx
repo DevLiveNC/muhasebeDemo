@@ -85,11 +85,11 @@ export default function AdminStaff() {
             {/* Quick Metrics */}
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3 bg-paper-50 rounded-xl border border-line text-center">
-                <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block">Sorumlu Portföy</span>
+                <span className="mlabel block">Sorumlu Portföy</span>
                 <span className="font-mono font-bold text-ink-900 text-sm block mt-1">{st.clientsCount} Mükellef</span>
               </div>
               <div className="p-3 bg-paper-50 rounded-xl border border-line text-center">
-                <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block">Açık İş Emirleri</span>
+                <span className="mlabel block">Açık İş Emirleri</span>
                 <span className="font-mono font-bold text-ink-900 text-sm block mt-1">{st.activeTasks} Görev</span>
               </div>
             </div>

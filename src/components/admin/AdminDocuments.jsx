@@ -146,13 +146,10 @@ export default function AdminDocuments() {
                   </td>
                   <td className="td text-ink-500 whitespace-nowrap">{doc.category}</td>
                   <td className="td font-mono font-semibold text-ink-900 text-right whitespace-nowrap">{doc.amount}</td>
-                  <td className="td"><span className="badge badge-success">{doc.ocrConfidence}</span></td>
+                  <td className="td"><span className="status text-ink-700"><span className="dot dot-success"></span>{doc.ocrConfidence}</span></td>
                   <td className="td">
-                    <span className={cn(
-                      'badge',
-                      doc.status === 'Onaylandı' ? 'badge-success' : doc.status.includes('Eksik') ? 'badge-danger' : 'badge-warning'
-                    )}>
-                      {doc.status}
+                    <span className="status text-ink-700">
+                      <span className={cn('dot', doc.status === 'Onaylandı' ? 'dot-success' : doc.status.includes('Eksik') ? 'dot-danger' : 'dot-warning')}></span>{doc.status}
                     </span>
                   </td>
                   <td className="td text-right whitespace-nowrap">

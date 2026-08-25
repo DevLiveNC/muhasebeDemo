@@ -51,7 +51,7 @@ export default function PublicNavbar() {
                   Denetim
                 </span>
               </div>
-              <p className="text-[9px] text-ink-400 font-mono uppercase tracking-[0.14em] -mt-0.5">YMM & Mali Müşavirlik</p>
+              <p className="text-[10px] text-ink-400 -mt-0.5">YMM & Mali Müşavirlik</p>
             </div>
           </a>
 

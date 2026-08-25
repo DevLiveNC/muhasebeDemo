@@ -98,7 +98,7 @@ export default function AdminClientDetail() {
                 {selectedClient.type} · {selectedClient.sector} · {selectedClient.taxOffice}
               </p>
               <div className="flex flex-wrap gap-2 mt-2">
-                <span className="badge badge-success">{selectedClient.status}</span>
+                <span className="status text-success-deep"><span className="dot dot-success"></span>{selectedClient.status}</span>
                 {selectedClient.eInvoice && <span className="badge badge-pine">E-Fatura</span>}
                 {selectedClient.eLedger && <span className="badge badge-pine">E-Defter</span>}
                 {selectedClient.missingDocsCount > 0 && (
@@ -172,14 +172,14 @@ export default function AdminClientDetail() {
                 ['Personel Sayısı', `${selectedClient.employeeCount} Çalışan`]
               ].map(([label, value], i) => (
                 <div key={i} className="p-3.5 bg-paper-50 rounded-xl border border-line">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-1">{label}</span>
+                  <span className="mlabel block mb-1">{label}</span>
                   <span className="font-mono font-semibold text-ink-900 text-[13px] break-all">{value}</span>
                 </div>
               ))}
             </div>
 
             <div className="p-4 bg-paper-50 rounded-xl border border-line">
-              <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-1">Adres</span>
+              <span className="mlabel block mb-1">Adres</span>
               <p className="text-[13px] text-ink-700 leading-relaxed">{selectedClient.address}</p>
             </div>
 
@@ -216,7 +216,7 @@ export default function AdminClientDetail() {
                   <span className="badge badge-success">{selectedClient.sgkStatus.split(' (')[0]}</span>
                 </div>
                 <div className="p-3.5 rounded-lg bg-paper-50 border border-line">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-2">
+                  <span className="mlabel block mb-2">
                     Uygulanan Teşvikler
                   </span>
                   <ul className="space-y-2">
@@ -274,13 +274,10 @@ export default function AdminClientDetail() {
                     </td>
                     <td className="td text-ink-500 whitespace-nowrap">{doc.category}</td>
                     <td className="td font-mono font-semibold text-ink-900 text-right">{doc.amount}</td>
-                    <td className="td"><span className="badge badge-success">{doc.ocrConfidence}</span></td>
+                    <td className="td"><span className="status text-ink-700"><span className="dot dot-success"></span>{doc.ocrConfidence}</span></td>
                     <td className="td">
-                      <span className={cn(
-                        'badge',
-                        doc.status === 'Onaylandı' ? 'badge-success' : doc.status.includes('Eksik') ? 'badge-danger' : 'badge-warning'
-                      )}>
-                        {doc.status}
+                      <span className="status text-ink-700">
+                        <span className={cn('dot', doc.status === 'Onaylandı' ? 'dot-success' : doc.status.includes('Eksik') ? 'dot-danger' : 'dot-warning')}></span>{doc.status}
                       </span>
                     </td>
                     <td className="td text-right">
@@ -354,11 +351,8 @@ export default function AdminClientDetail() {
                         {p.dueDate}{p.paidDate ? ` · ${p.paidDate}` : ''}
                       </td>
                       <td className="td">
-                        <span className={cn(
-                          'badge',
-                          p.status === 'Ödendi' ? 'badge-success' : p.status === 'Gecikmede' ? 'badge-danger' : 'badge-warning'
-                        )}>
-                          {p.status}
+                        <span className="status text-ink-700">
+                          <span className={cn('dot', p.status === 'Ödendi' ? 'dot-success' : p.status === 'Gecikmede' ? 'dot-danger' : 'dot-warning')}></span>{p.status}
                         </span>
                       </td>
                       <td className="td text-right">
