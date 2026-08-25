@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
-import { formatCurrency } from '../../utils/cn';
+import { cn, formatCurrency } from '../../utils/cn';
 
 export default function TaxCalculatorSection() {
   const { setIsConsultationOpen } = useApp();
