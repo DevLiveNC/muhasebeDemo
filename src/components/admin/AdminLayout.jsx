@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   Users,
   Briefcase,
+  Building2,
   FileText,
   CheckSquare,
   Calendar,
@@ -17,8 +18,7 @@ import {
   Bell,
   ShieldCheck,
   Menu,
-  X,
-  Building2
+  X
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
@@ -60,7 +60,7 @@ export default function AdminLayout() {
     { id: 'reports', label: 'Firma Analitiği', icon: BarChart3 },
     { id: 'staff', label: 'SMMM Ekip & Kapasite', icon: UserCheck },
     { id: 'cms', label: 'Web Sitesi CMS', icon: Globe },
-    { id: 'settings', label: 'GİB / SGK Ayarları', icon: Settings },
+    { id: 'settings', label: 'GİB / SGK Ayarları', icon: Settings }
   ];
 
   const adminNotifications = [
@@ -69,201 +69,227 @@ export default function AdminLayout() {
     { id: 3, title: 'E-Defter Şematron Tamam', text: '32 şirketin Mayıs berat dosyaları hatasız doğrulandı.', time: '3 saat önce', unread: false }
   ];
 
+  const badgeStyle = (badge) => {
+    if (badge.includes('Kritik')) return 'bg-danger-soft text-danger-deep border border-danger/20';
+    if (badge.includes('Gün')) return 'bg-warning-soft text-warning-deep border border-warning/20';
+    if (badge.includes('Yeni')) return 'bg-success-soft text-success-deep border border-success/20';
+    return 'bg-paper-200 text-ink-500';
+  };
+
+  const Sidebar = (
+    <div className="flex flex-col h-full">
+      {/* SMMM Header */}
+      <div className="p-4 border-b border-line">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-pine-800 text-white flex items-center justify-center shrink-0">
+            <ShieldCheck className="w-5 h-5" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <h3 className="font-bold text-[13px] text-ink-950 truncate">VELOX DENETİM</h3>
+            <p className="text-[10px] text-ink-400 font-mono mt-0.5">SMMM Yönetici Kokpiti</p>
+            <span className="inline-flex items-center gap-1 text-[10px] font-mono text-success-deep">
+              <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
+              GİB & SGK API Aktif
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+        <div className="px-3 pb-2 text-[10px] font-mono uppercase tracking-[0.16em] text-ink-400">
+          Yönetim Masası
+        </div>
+        {menuItems.map((item) => {
+          const Icon = item.icon;
+          const isActive = adminTab === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => {
+                setAdminTab(item.id);
+                setMobileSidebarOpen(false);
+              }}
+              className={cn(
+                'nav-item',
+                item.sub && 'pl-6',
+                isActive && 'nav-item-active'
+              )}
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <Icon className="w-3.5 h-3.5 shrink-0" />
+                <span className="truncate">{item.label}</span>
+              </div>
+              {item.badge && (
+                <span className={cn(
+                  'text-[10px] px-1.5 py-0.5 rounded font-mono font-semibold shrink-0',
+                  isActive ? 'bg-white/20 text-white' : badgeStyle(item.badge)
+                )}>
+                  {item.badge}
+                </span>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* SMMM Profile Card */}
+      <div className="p-3 m-3 rounded-xl bg-paper-50 border border-line flex items-center gap-3">
+        <img
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+          alt="SMMM Kemal Yıldız"
+          className="w-9 h-9 rounded-lg object-cover border border-line"
+        />
+        <div className="min-w-0 flex-1 text-xs">
+          <p className="font-bold text-ink-950 truncate">SMMM Kemal Yıldız</p>
+          <p className="text-[10px] text-ink-400 font-mono truncate">Yönetici Ortak · 349102</p>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="min-h-[calc(100vh-2.75rem)] bg-[#08090d] flex flex-col lg:flex-row text-slate-100 font-sans">
-      
-      {/* Admin Sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-[#0a0c12] border-r border-white/[0.08] shrink-0">
-        
-        {/* SMMM Header */}
-        <div className="p-4 border-b border-white/[0.08]">
-          <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 rounded-lg bg-white text-black flex items-center justify-center font-black text-sm shadow-luxury">
-              <ShieldCheck className="w-5 h-5 text-black" />
-            </div>
-            <div className="min-w-0 flex-1">
-              <h3 className="font-bold text-xs text-white truncate">VELOX DENETİM</h3>
-              <p className="text-[10px] text-slate-400 font-mono">SMMM Yönetici Kokpiti</p>
-              <span className="inline-flex items-center space-x-1 text-[9px] font-mono text-emerald-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                <span>GİB & SGK API Aktif</span>
-              </span>
-            </div>
-          </div>
-        </div>
+    <div className="min-h-[calc(100vh-2.75rem)] bg-paper-100 flex flex-col lg:flex-row">
 
-        {/* Navigation Items */}
-        <div className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
-          <div className="px-3 pb-2 text-[10px] font-mono uppercase tracking-widest text-slate-400">
-            Yönetim Masası
-          </div>
-          {menuItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = adminTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => setAdminTab(item.id)}
-                className={cn(
-                  "w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all",
-                  isActive
-                    ? "bg-white text-black font-bold shadow-luxury"
-                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]",
-                  item.sub && "pl-6 border-l-2 border-white/10 ml-2 w-[calc(100%-0.5rem)]"
-                )}
-              >
-                <div className="flex items-center space-x-2.5">
-                  <Icon className="w-3.5 h-3.5" />
-                  <span>{item.label}</span>
-                </div>
-                {item.badge && (
-                  <span className={cn(
-                    "text-[10px] px-1.5 py-0.2 rounded font-mono font-bold",
-                    item.badge.includes('Kritik') || item.badge.includes('Gün') 
-                      ? "bg-rose-500/20 text-rose-300 border border-rose-500/30" 
-                      : item.badge.includes('Yeni')
-                      ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
-                      : isActive
-                      ? "bg-black text-white"
-                      : "bg-white/10 text-slate-300"
-                  )}>
-                    {item.badge}
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* SMMM Profile Card */}
-        <div className="p-3 m-3 rounded-xl bg-white/[0.02] border border-white/[0.08] flex items-center space-x-3">
-          <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
-            alt=""
-            className="w-8 h-8 rounded-lg object-cover border border-white/10"
-          />
-          <div className="min-w-0 flex-1 text-xs">
-            <p className="font-bold text-white truncate">SMMM Kemal Yıldız</p>
-            <p className="text-[10px] text-slate-400 font-mono truncate">Yönetici Ortak · 349102</p>
-          </div>
-        </div>
-
+      {/* Sidebar Desktop */}
+      <aside className="hidden lg:block w-64 bg-white border-r border-line shrink-0 sticky top-11 h-[calc(100vh-2.75rem)]">
+        {Sidebar}
       </aside>
+
+      {/* Sidebar Mobile */}
+      {mobileSidebarOpen && (
+        <div className="lg:hidden fixed inset-0 z-50">
+          <div
+            className="absolute inset-0 bg-ink-950/50 backdrop-blur-sm animate-fade-in"
+            onClick={() => setMobileSidebarOpen(false)}
+          />
+          <aside className="absolute left-0 top-0 bottom-0 w-72 bg-white shadow-pop">
+            <div className="flex justify-end p-2">
+              <button
+                onClick={() => setMobileSidebarOpen(false)}
+                className="p-2 rounded-lg text-ink-500 hover:bg-paper-100"
+                title="Kapat"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            {Sidebar}
+          </aside>
+        </div>
+      )}
 
       {/* Main Admin Area */}
       <div className="flex-1 flex flex-col min-w-0">
-        
+
         {/* Top Navbar */}
-        <header className="h-14 bg-[#0a0c12] border-b border-white/[0.08] px-4 sm:px-6 flex items-center justify-between sticky top-11 z-30">
-          <div className="flex items-center space-x-3">
+        <header className="h-14 bg-white/95 backdrop-blur border-b border-line px-4 sm:px-6 flex items-center justify-between sticky top-11 z-30">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
-              className="p-1.5 rounded-lg text-slate-400 lg:hidden hover:bg-white/10"
+              className="p-1.5 rounded-lg text-ink-500 lg:hidden hover:bg-paper-100"
+              title="Menü"
             >
-              {mobileSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <Menu className="w-5 h-5" />
             </button>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="font-bold text-white text-sm">
-                  {menuItems.find((m) => m.id === adminTab)?.label}
-                </h2>
-                {adminTab === 'client-detail' && (
-                  <span className="px-2 py-0.5 bg-white/10 text-slate-200 font-mono text-[11px] rounded border border-white/10">
-                    {selectedClient.shortName}
-                  </span>
-                )}
-              </div>
+            <div className="flex items-center gap-2">
+              <h2 className="font-bold text-ink-950 text-sm">
+                {menuItems.find((m) => m.id === adminTab)?.label}
+              </h2>
+              {adminTab === 'client-detail' && (
+                <span className="badge badge-neutral font-mono">{selectedClient.shortName}</span>
+              )}
             </div>
           </div>
 
-          <div className="flex items-center space-x-2 sm:space-x-3 text-xs">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => setIsCommandPaletteOpen(true)}
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 border border-white/[0.08] transition-colors"
+              className="btn btn-outline btn-sm"
             >
-              <Search className="w-3.5 h-3.5 text-slate-400" />
+              <Search className="w-3.5 h-3.5 text-ink-400" />
               <span className="hidden md:inline">Müşteri / Evrak Ara...</span>
-              <kbd className="hidden lg:inline px-1 bg-black/60 rounded border border-white/10 text-[10px] font-mono">⌘K</kbd>
+              <kbd className="hidden lg:inline px-1.5 py-0.5 bg-paper-100 rounded border border-line text-[10px] font-mono text-ink-500">
+                ⌘K
+              </kbd>
             </button>
 
             <button
               onClick={() => setIsAiAssistantOpen(true)}
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white text-black hover:bg-slate-200 font-bold uppercase tracking-wider text-[11px] shadow-luxury transition-all"
+              className="btn btn-primary btn-sm"
             >
-              <Sparkles className="w-3.5 h-3.5 text-black" />
-              <span className="hidden sm:inline">Aura AI Asistan</span>
+              <Sparkles className="w-3.5 h-3.5 text-gold-300" />
+              <span className="hidden sm:inline">VELOX AI</span>
             </button>
 
             {/* Notifications */}
             <div className="relative">
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.06] relative"
+                className="p-2 rounded-lg text-ink-500 hover:text-ink-950 hover:bg-paper-100 relative transition-colors"
+                title="Bildirimler"
               >
                 <Bell className="w-4 h-4" />
-                <span className="w-2 h-2 bg-rose-500 rounded-full absolute top-1 right-1"></span>
+                <span className="w-2 h-2 bg-danger rounded-full absolute top-1.5 right-1.5"></span>
               </button>
 
               {showNotifications && (
-                <div className="absolute right-0 mt-2 w-80 bg-[#0f121a] rounded-xl shadow-2xl border border-white/10 p-3 space-y-2 text-xs z-50 animate-slide-down">
-                  <div className="flex items-center justify-between pb-2 border-b border-white/[0.08]">
-                    <span className="font-bold text-white">SMMM Bildirimleri</span>
-                    <button onClick={() => setShowNotifications(false)} className="text-[10px] font-mono text-slate-400">Kapat</button>
+                <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-pop border border-line p-3 space-y-2 animate-slide-down z-50">
+                  <div className="flex items-center justify-between pb-2 border-b border-line">
+                    <span className="font-bold text-[13px] text-ink-950">SMMM Bildirimleri</span>
+                    <button
+                      onClick={() => setShowNotifications(false)}
+                      className="text-[11px] font-mono text-ink-400 hover:text-ink-950"
+                    >
+                      Kapat
+                    </button>
                   </div>
                   <div className="space-y-1.5">
                     {adminNotifications.map((n) => (
-                      <div key={n.id} className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.04]">
-                        <p className="font-bold text-white">{n.title}</p>
-                        <p className="text-slate-400 text-[11px] mt-0.5">{n.text}</p>
-                        <span className="text-[9px] font-mono text-slate-500 mt-1 block">{n.time}</span>
+                      <div key={n.id} className={cn(
+                        'p-3 rounded-lg border',
+                        n.unread ? 'bg-warning-soft/50 border-warning/20' : 'bg-paper-50 border-line'
+                      )}>
+                        <p className="font-bold text-[13px] text-ink-950">{n.title}</p>
+                        <p className="text-ink-500 text-[11px] mt-1 leading-relaxed">{n.text}</p>
+                        <span className="text-[10px] font-mono text-ink-300 mt-1.5 block">{n.time}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               )}
             </div>
+
+            {/* Profile */}
+            <div className="flex items-center gap-2 pl-3 border-l border-line">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+                alt="SMMM Kemal Yıldız"
+                className="w-8 h-8 rounded-lg object-cover border border-line"
+              />
+              <span className="hidden md:inline font-medium text-ink-700 text-xs">SMMM Kemal Yıldız</span>
+            </div>
           </div>
         </header>
 
-        {/* Mobile menu dropdown */}
-        {mobileSidebarOpen && (
-          <div className="lg:hidden bg-[#0c0e16] p-4 space-y-1 border-b border-white/10 text-xs">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => {
-                  setAdminTab(item.id);
-                  setMobileSidebarOpen(false);
-                }}
-                className={cn(
-                  "w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium",
-                  adminTab === item.id ? "bg-white text-black font-bold" : "text-slate-300 hover:bg-white/[0.04]"
-                )}
-              >
-                <span>{item.label}</span>
-              </button>
-            ))}
+        {/* Active View */}
+        <main className="flex-1 p-4 sm:p-6 lg:p-8">
+          <div className="max-w-[1400px] mx-auto">
+            {adminTab === 'dashboard' && <AdminDashboard />}
+            {adminTab === 'clients' && <AdminClients />}
+            {adminTab === 'client-detail' && <AdminClientDetail />}
+            {adminTab === 'crm' && <AdminCRMLeads />}
+            {adminTab === 'documents' && <AdminDocuments />}
+            {adminTab === 'tasks' && <AdminTasks />}
+            {adminTab === 'calendar' && <AdminTaxCalendar />}
+            {adminTab === 'payments' && <AdminPayments />}
+            {adminTab === 'reports' && <AdminReports />}
+            {adminTab === 'staff' && <AdminStaff />}
+            {adminTab === 'cms' && <AdminWebCMS />}
+            {adminTab === 'settings' && <AdminSettings />}
           </div>
-        )}
-
-        {/* Admin Tab View */}
-        <main className="p-4 sm:p-6 lg:p-8 flex-1 max-w-7xl">
-          {adminTab === 'dashboard' && <AdminDashboard />}
-          {adminTab === 'clients' && <AdminClients />}
-          {adminTab === 'client-detail' && <AdminClientDetail />}
-          {adminTab === 'crm' && <AdminCRMLeads />}
-          {adminTab === 'documents' && <AdminDocuments />}
-          {adminTab === 'tasks' && <AdminTasks />}
-          {adminTab === 'calendar' && <AdminTaxCalendar />}
-          {adminTab === 'payments' && <AdminPayments />}
-          {adminTab === 'reports' && <AdminReports />}
-          {adminTab === 'staff' && <AdminStaff />}
-          {adminTab === 'cms' && <AdminWebCMS />}
-          {adminTab === 'settings' && <AdminSettings />}
         </main>
 
       </div>
-
     </div>
   );
 }

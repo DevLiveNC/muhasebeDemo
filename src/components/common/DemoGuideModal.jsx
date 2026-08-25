@@ -1,161 +1,136 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import {
-  X,
-  Sparkles,
-  Globe,
-  Building2,
-  ShieldCheck,
-  CheckCircle2,
-  ArrowRight,
-  HelpCircle,
-  Zap,
-  LayoutDashboard
-} from 'lucide-react';
+import { X, Info, Globe, Building2, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react';
+
+const GUIDE = [
+  {
+    icon: Globe,
+    title: '1 · Kurumsal Web Sitesi',
+    lines: [
+      'Ziyaretçi, hizmet kapsamını, kurumsal akreditasyonları ve referansları tek sayfada görür.',
+      'Vergi Simülatörü ile şirket büyüklüğüne göre tasarruf projeksiyonu anında hesaplanır.',
+      '"Ön Görüşme Al" butonu SMMM masasına doğrudan randevu talebi düşer.',
+      'Müşteri Girişi ile canlı portal demosuna, SMMM Masası ile yönetim kokpitine geçilir.'
+    ]
+  },
+  {
+    icon: Building2,
+    title: '2 · Müşteri Konsolu',
+    lines: [
+      'Kokpitte nakit runway, 4691 teşviki, KDV durumu ve çeyrek hasılat 4 KPI ile özetlenir.',
+      'Belgeler sekmesinden fatura sürüklenebilir; OCR 2.1 sn içinde tekdüzen kodlar.',
+      'Vergi takviminde acil terminler amber renkle uyarı verir; tahakkuk ve banka talimatı tek tıkla inir.',
+      'Canlı süreçler, SMMM adımlarını müşteriye şeffaf biçimde görüntüler.'
+    ]
+  },
+  {
+    icon: ShieldCheck,
+    title: '3 · SMMM Yönetim Paneli',
+    lines: [
+      'Genel kokpit 6 KPI, kritik evrak uyarısı, portföy durumu ve ekip iş yükünü birleştirir.',
+      'Evrak & OCR Masası\'nda tekil ve toplu yevmiye onayı yapılır.',
+      'CRM kanbanında leadler aşama aşama taşınır; 360° müşteri kartı altı sekmede derinlemesine incelenebilir.',
+      'Tahsilat ekranında e-SMM makbuzları GİB formatında görüntülenir ve indirilir.'
+    ]
+  },
+  {
+    icon: Sparkles,
+    title: '4 · VELOX AI Asistanı',
+    lines: [
+      'Portföy geneli evrak eksiği, gecikme risk matrisi ve günün iş planı saniyeler içinde özetlenir.',
+      'Yapılandırılmış cevaplar aksiyon butonlarıyla birleşir (örn: SMS hatırlatma gönder).',
+      'TechVision 360° sorusu, müşteri kartını doğrudan açan kısayol sunar.',
+      '⌘K komut paleti ile herhangi bir modda mükellef, evrak veya menüye anında sıçranır.'
+    ]
+  }
+];
 
 export default function DemoGuideModal() {
   const { isDemoGuideOpen, setIsDemoGuideOpen, navigateToMode } = useApp();
 
   if (!isDemoGuideOpen) return null;
 
+  const modes = [
+    { id: 'public', label: 'Web Sitesi' },
+    { id: 'portal', label: 'Müşteri Konsolu' },
+    { id: 'admin', label: 'SMMM Paneli' }
+  ];
+
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in font-sans">
-      <div 
-        className="w-full max-w-3xl bg-[#0b0d13] rounded-2xl shadow-2xl border border-white/10 overflow-hidden flex flex-col max-h-[92vh] transition-all transform animate-slide-down"
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/60 backdrop-blur-sm animate-fade-in">
+      <div
+        className="w-full max-w-2xl bg-white rounded-2xl shadow-pop border border-line overflow-hidden flex flex-col max-h-[90vh] animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-5 bg-black/60 text-white flex items-center justify-between border-b border-white/[0.08]">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 bg-white/10 text-white rounded-lg border border-white/20">
-              <Sparkles className="w-4 h-4 text-emerald-400" />
+        <div className="px-6 py-4 bg-pine-800 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-white/10 text-gold-300 flex items-center justify-center border border-white/10">
+              <Info className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-base text-white">Mükellef Sunumu & Platform Mimarisi</h3>
-              <p className="text-xs text-slate-400 font-mono">Yüksek etkili kurumsal sunum için 3 modüllü akış</p>
+              <h3 className="font-bold text-sm text-white">Sunum Rehberi & Demo Notları</h3>
+              <p className="text-[11px] text-pine-200 font-mono">VELOX platformunun 4 katmanı, 90 saniyede</p>
             </div>
           </div>
-
           <button
             onClick={() => setIsDemoGuideOpen(false)}
-            className="p-1 rounded text-slate-400 hover:text-white hover:bg-white/[0.06] transition-colors"
+            className="p-1 rounded text-pine-200 hover:text-white hover:bg-white/10 transition-colors"
+            title="Kapat"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Content Body */}
-        <div className="p-6 sm:p-8 space-y-6 overflow-y-auto bg-[#0e1119]">
-          <div className="p-4 bg-black/40 rounded-xl border border-white/[0.08] text-xs text-slate-300 font-mono leading-relaxed">
-            <strong className="text-white">Sunum Konsepti:</strong> Bu platform, geleneksel mali müşavirlik ofisini Linear/Stripe kalitesinde <strong>"Yeni Nesil Dijital Kurumsal Finans & Mali Yönetim Merkezi"</strong> seviyesine taşır. Tüm modüller, gerçekçi Türk vergi mevzuatı (Tekdüzen, GİB, 5746 Ar-Ge) verileriyle canlı çalışır.
-          </div>
-
-          {/* 3 Pillar Showcase */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono">
-            {/* Step 1 */}
-            <div className="p-4 rounded-xl border border-white/[0.08] bg-black/40 flex flex-col justify-between space-y-3">
-              <div>
-                <div className="flex items-center space-x-1.5 text-slate-400 text-xs mb-1">
-                  <Globe className="w-3.5 h-3.5 text-white" />
-                  <span className="text-white font-bold">1. Kurumsal Vitrin</span>
+        {/* Body */}
+        <div className="p-6 overflow-y-auto space-y-5">
+          {GUIDE.map((section) => {
+            const Icon = section.icon;
+            return (
+              <div key={section.title} className="card p-5 space-y-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-pine-50 border border-pine-100 text-pine-700 flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <h4 className="font-bold text-[14px] text-ink-950">{section.title}</h4>
                 </div>
-                <h4 className="font-bold text-white text-xs font-sans">Public Web Sitesi</h4>
-                <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                  "Finansal mimari & denetim" mesajı, hizmetler, interaktif vergi hesaplayıcı ve ön görüşme randevu akışı.
-                </p>
+                <ul className="space-y-2">
+                  {section.lines.map((line, i) => (
+                    <li key={i} className="text-[13px] text-ink-600 leading-relaxed flex items-start gap-2">
+                      <span className="w-1 h-1 rounded-full bg-pine-600 mt-2 shrink-0"></span>
+                      {line}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <button
-                onClick={() => {
-                  setIsDemoGuideOpen(false);
-                  navigateToMode('public');
-                }}
-                className="w-full py-2 bg-white/[0.06] hover:bg-white/10 text-white rounded text-xs border border-white/10 flex items-center justify-center space-x-1.5 transition-colors"
-              >
-                <span>Web Sitesini İncele</span>
-                <ArrowRight className="w-3 h-3" />
-              </button>
-            </div>
+            );
+          })}
+        </div>
 
-            {/* Step 2 */}
-            <div className="p-4 rounded-xl border border-white/[0.08] bg-black/40 flex flex-col justify-between space-y-3">
-              <div>
-                <div className="flex items-center space-x-1.5 text-slate-400 text-xs mb-1">
-                  <Building2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-400 font-bold">2. Mükellef Portalı</span>
-                </div>
-                <h4 className="font-bold text-white text-xs font-sans">TechVision A.Ş. Portalı</h4>
-                <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                  Şirket yöneticisinin gördüğü ekran: Bekleyen evrak OCR dropzone, canlı KDV/SGK sayacı, nakit pisti ve SMMM destek hattı.
-                </p>
-              </div>
-              <button
-                onClick={() => {
-                  setIsDemoGuideOpen(false);
-                  navigateToMode('portal');
-                }}
-                className="w-full py-2 bg-white text-black font-bold uppercase tracking-wider rounded text-xs flex items-center justify-center space-x-1.5 shadow-luxury transition-colors"
-              >
-                <span>Mükellef Portalına Git</span>
-                <ArrowRight className="w-3 h-3 text-black" />
-              </button>
-            </div>
-
-            {/* Step 3 */}
-            <div className="p-4 rounded-xl border border-white/[0.08] bg-black/40 flex flex-col justify-between space-y-3">
-              <div>
-                <div className="flex items-center space-x-1.5 text-slate-400 text-xs mb-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-white" />
-                  <span className="text-white font-bold">3. SMMM Kokpiti</span>
-                </div>
-                <h4 className="font-bold text-white text-xs font-sans">Yönetici Paneli</h4>
-                <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                  SMMM ve ekibinin çalışma kokpiti: 360° Mükellef Kartı, OCR Onay Masası, CRM Hattı, Vergi Takvimi ve e-SMM.
-                </p>
-              </div>
-              <button
-                onClick={() => {
-                  setIsDemoGuideOpen(false);
-                  navigateToMode('admin');
-                }}
-                className="w-full py-2 bg-white/[0.06] hover:bg-white/10 text-white rounded text-xs border border-white/10 flex items-center justify-center space-x-1.5 transition-colors"
-              >
-                <span>SMMM Paneline Git</span>
-                <ArrowRight className="w-3 h-3" />
-              </button>
-            </div>
+        {/* Footer */}
+        <div className="px-6 py-4 bg-paper-50 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-1.5">
+            {modes.map((m, i) => (
+              <React.Fragment key={m.id}>
+                <button
+                  onClick={() => {
+                    navigateToMode(m.id);
+                    setIsDemoGuideOpen(false);
+                  }}
+                  className="btn btn-outline btn-sm"
+                >
+                  {m.label}
+                </button>
+                {i < modes.length - 1 && <ArrowRight className="w-3 h-3 text-ink-300" />}
+              </React.Fragment>
+            ))}
           </div>
-
-          {/* Interactive Highlights Tips */}
-          <div className="space-y-2.5 font-mono">
-            <h4 className="font-bold text-white text-xs uppercase tracking-wider">Sunumda Öne Çıkarabileceğiniz Özellikler:</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
-              <div className="flex items-start space-x-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                <span><strong className="text-white">Aura AI Asistan:</strong> Sağ üstten veya '⌘K' ile AI asistanını açıp geciken işlemleri listeyin.</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                <span><strong className="text-white">OCR Doğrulama:</strong> Evrak yönetiminde herhangi bir faturaya tıklayıp %99.2 OCR okumasını ve tek tıkla yevmiyeye almayı gösterin.</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                <span><strong className="text-white">360° Mükellef Kartı:</strong> TechVision A.Ş.'ye tıklayarak Tekdüzen yevmiye kayıtları, SGK bordroları ve denetçi notlarını sergileyin.</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                <span><strong className="text-white">GİB Vergi Takvimi:</strong> Tüm beyanname son günlerini ve kalan gün sayaçlarını canlı gösterin.</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-2 flex justify-end">
-            <button
-              onClick={() => setIsDemoGuideOpen(false)}
-              className="px-6 py-2.5 bg-white hover:bg-slate-200 text-black rounded-lg text-xs font-bold uppercase tracking-wider shadow-luxury"
-            >
-              Anladım, Sunuma Başla
-            </button>
-          </div>
+          <button
+            onClick={() => setIsDemoGuideOpen(false)}
+            className="btn btn-primary btn-sm"
+          >
+            Sunumu Başlat
+          </button>
         </div>
       </div>
     </div>

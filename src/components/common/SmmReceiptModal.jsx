@@ -1,6 +1,14 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { X, Download, Printer, ShieldCheck, QrCode, CheckCircle2 } from 'lucide-react';
+import {
+  X,
+  Download,
+  Printer,
+  QrCode,
+  CheckCircle2,
+  ShieldCheck
+} from 'lucide-react';
+import { cn } from '../../utils/cn';
 
 export default function SmmReceiptModal() {
   const { isSmmModalOpen, setIsSmmModalOpen, addToast } = useApp();
@@ -9,117 +17,122 @@ export default function SmmReceiptModal() {
 
   const payment = isSmmModalOpen;
 
-  const handlePrint = () => {
-    addToast('Yazdırılıyor', `${payment.smmNo} numaralı e-SMM makbuzu yazıcıya gönderildi.`, 'info');
-  };
-
   const handleDownload = () => {
     addToast('GİB e-SMM İndirildi', `${payment.smmNo}.pdf olarak indirildi.`, 'success');
   };
 
+  const handlePrint = () => {
+    addToast('Yazdırma Kuyruğuna Alındı', `${payment.smmNo} e-Arşiv formatında yazdırılıyor.`, 'info');
+  };
+
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in font-sans">
-      <div 
-        className="w-full max-w-2xl bg-[#0b0d13] rounded-2xl shadow-2xl border border-white/10 overflow-hidden flex flex-col max-h-[90vh] transition-all transform animate-slide-down"
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/60 backdrop-blur-sm animate-fade-in">
+      <div
+        className="w-full max-w-2xl bg-white rounded-2xl shadow-pop border border-line overflow-hidden flex flex-col max-h-[90vh] animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-4 bg-black/60 text-white flex items-center justify-between border-b border-white/[0.08]">
-          <div className="flex items-center space-x-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <h3 className="font-bold text-sm text-white font-mono">GİB e-SMM Makbuzu ({payment.smmNo})</h3>
+        <div className="px-6 py-4 bg-white flex items-center justify-between border-b border-line">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <ShieldCheck className="w-4 h-4 text-pine-700 shrink-0" />
+            <h3 className="font-bold text-sm text-ink-950 font-mono truncate">
+              GİB e-SMM Makbuzu ({payment.smmNo})
+            </h3>
           </div>
-          <div className="flex items-center space-x-1.5">
-            <button onClick={handleDownload} className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-white/[0.06]">
+          <div className="flex items-center gap-1.5 shrink-0">
+            <button onClick={handleDownload} className="p-1.5 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors" title="İndir">
               <Download className="w-4 h-4" />
             </button>
-            <button onClick={handlePrint} className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-white/[0.06]">
+            <button onClick={handlePrint} className="p-1.5 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors" title="Yazdır">
               <Printer className="w-4 h-4" />
             </button>
-            <button onClick={() => setIsSmmModalOpen(null)} className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-white/[0.06]">
+            <button onClick={() => setIsSmmModalOpen(null)} className="p-1.5 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors" title="Kapat">
               <X className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        {/* Makbuz İçeriği */}
-        <div className="p-6 overflow-y-auto bg-[#0e1119] space-y-4 text-xs font-mono">
-          <div className="bg-[#11141d] p-6 rounded-xl border border-white/[0.08] shadow-cinema space-y-4">
-            
+        {/* Receipt */}
+        <div className="p-6 overflow-y-auto space-y-4">
+          <div className="bg-paper-50 p-6 rounded-xl border border-line space-y-4">
+
             {/* Top Bar */}
-            <div className="flex justify-between items-start border-b border-white/[0.06] pb-4">
-              <div>
-                <span className="font-bold text-sm text-white tracking-wider font-sans">GİB E-SERBEST MESLEK MAKBUZU</span>
-                <p className="text-[10px] text-slate-500 mt-1">GİB İmzalı ETTN: 2026-SMM-{payment.id}</p>
-                <p className="text-[10px] text-slate-500">Düzenleme Tarihi: {payment.issueDate}</p>
+            <div className="flex justify-between items-start border-b border-line pb-4 gap-4">
+              <div className="min-w-0">
+                <span className="font-bold text-sm text-ink-950 tracking-wide">GİB E-SERBEST MESLEK MAKBUZU</span>
+                <p className="text-[10px] text-ink-400 font-mono mt-1.5">GİB İmzalı ETTN: 2026-SMM-{payment.id}</p>
+                <p className="text-[10px] text-ink-400 font-mono">Düzenleme Tarihi: {payment.issueDate}</p>
               </div>
-              <div className="text-right">
-                <QrCode className="w-10 h-10 text-slate-400 inline-block" />
-                <span className="block text-[9px] text-emerald-400 font-mono">GİB Dijital İmzalı</span>
+              <div className="text-right shrink-0">
+                <QrCode className="w-10 h-10 text-ink-400 inline-block" />
+                <span className="block text-[9px] font-mono text-success-deep mt-1">GİB Dijital İmzalı</span>
               </div>
             </div>
 
             {/* Parties */}
-            <div className="grid grid-cols-2 gap-4 bg-black/40 p-4 rounded-lg border border-white/[0.06] text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white p-4 rounded-lg border border-line">
               <div>
-                <span className="font-bold text-slate-500 uppercase text-[9px] block">Düzenleyen (SMMM)</span>
-                <p className="font-bold text-white mt-0.5 font-sans">VELOX MALİ MÜŞAVİRLİK A.Ş.</p>
-                <p className="text-slate-400">SMMM Kemal Yıldız (Ruhsat: 349102)</p>
-                <p className="text-slate-500">Maslak V.D. - 8290192831</p>
+                <span className="font-bold text-ink-400 uppercase text-[9px] font-mono tracking-[0.12em] block">Düzenleyen (SMMM)</span>
+                <p className="font-bold text-ink-950 mt-1 text-[13px]">VELOX MALİ MÜŞAVİRLİK A.Ş.</p>
+                <p className="text-ink-500 text-xs">SMMM Kemal Yıldız (Ruhsat: 349102)</p>
+                <p className="text-ink-400 text-xs font-mono">Maslak V.D. - 8290192831</p>
               </div>
               <div>
-                <span className="font-bold text-slate-500 uppercase text-[9px] block">Hizmeti Alan (Mükellef)</span>
-                <p className="font-bold text-white mt-0.5 font-sans">{payment.client}</p>
-                <p className="text-slate-400">Dönem: {payment.period}</p>
-                <p className="text-slate-500">Durum: <span className="text-emerald-400 font-bold">{payment.status}</span></p>
+                <span className="font-bold text-ink-400 uppercase text-[9px] font-mono tracking-[0.12em] block">Hizmeti Alan (Mükellef)</span>
+                <p className="font-bold text-ink-950 mt-1 text-[13px]">{payment.client}</p>
+                <p className="text-ink-500 text-xs">Dönem: {payment.period}</p>
+                <p className="text-ink-400 text-xs">
+                  Durum:{' '}
+                  <span className={cn(
+                    'font-bold',
+                    payment.status === 'Ödendi' ? 'text-success-deep' : payment.status === 'Gecikmede' ? 'text-danger' : 'text-warning-deep'
+                  )}>
+                    {payment.status}
+                  </span>
+                </p>
               </div>
             </div>
 
-            {/* Calculations Table */}
-            <table className="w-full text-left border border-white/[0.06] rounded-lg overflow-hidden">
-              <thead className="bg-white/[0.03] text-slate-400 text-[9px] uppercase">
-                <tr>
-                  <th className="p-2.5">Açıklama</th>
-                  <th className="p-2.5 text-right">Brüt Ücret</th>
-                  <th className="p-2.5 text-right">KDV (%20)</th>
-                  <th className="p-2.5 text-right">Stopaj Tevkifatı</th>
-                  <th className="p-2.5 text-right">Net Tahsil Edilen</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/[0.04] text-[11px]">
-                <tr>
-                  <td className="p-2.5 text-slate-300 font-sans">{payment.period} SMMM Mali Müşavirlik & Vergi Denetim</td>
-                  <td className="p-2.5 text-right text-slate-300">{payment.amount}</td>
-                  <td className="p-2.5 text-right text-emerald-400">{payment.vatAmount}</td>
-                  <td className="p-2.5 text-right text-rose-400">-{payment.vatAmount}</td>
-                  <td className="p-2.5 text-right font-bold text-white">{payment.amount}</td>
-                </tr>
-              </tbody>
-            </table>
+            {/* Calculations */}
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border border-line rounded-lg overflow-hidden min-w-[480px] bg-white">
+                <thead className="bg-paper-100 text-ink-400 text-[9px] font-mono uppercase tracking-[0.1em]">
+                  <tr>
+                    <th className="p-2.5">Açıklama</th>
+                    <th className="p-2.5 text-right">Brüt Ücret</th>
+                    <th className="p-2.5 text-right">KDV (%20)</th>
+                    <th className="p-2.5 text-right">Toplam</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-line text-[11px]">
+                  <tr>
+                    <td className="p-2.5 text-ink-600">{payment.period} SMMM Mali Müşavirlik & Vergi Denetim</td>
+                    <td className="p-2.5 text-right font-mono text-ink-700">{payment.amount}</td>
+                    <td className="p-2.5 text-right font-mono text-success-deep">{payment.vatAmount}</td>
+                    <td className="p-2.5 text-right font-mono font-bold text-ink-950">{payment.totalAmount}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
             {/* Summary */}
-            <div className="flex justify-between items-center pt-2 border-t border-white/[0.06]">
-              <div className="flex items-center space-x-1 text-emerald-400 text-[11px]">
+            <div className="flex justify-between items-center pt-2 border-t border-line">
+              <div className="flex items-center gap-1.5 text-success-deep text-[11px]">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>GİB Portalı ve e-Defter sistemine işlenmiştir.</span>
               </div>
               <div className="text-right">
-                <span className="text-slate-400 text-xs mr-2">Net Tutar:</span>
-                <span className="text-sm font-bold text-white">{payment.totalAmount}</span>
+                <span className="text-ink-400 text-xs mr-2">Net Tutar:</span>
+                <span className="font-mono font-bold text-ink-950">{payment.totalAmount}</span>
               </div>
             </div>
 
+            {/* Method */}
+            <div className="flex items-center justify-between text-[11px] font-mono text-ink-500 bg-white p-3 rounded-lg border border-line">
+              <span>Ödeme Yöntemi:</span>
+              <span className="font-bold text-ink-950">{payment.method}</span>
+            </div>
           </div>
-        </div>
-
-        {/* Footer */}
-        <div className="p-4 bg-black/60 border-t border-white/[0.08] flex justify-end">
-          <button
-            onClick={() => setIsSmmModalOpen(null)}
-            className="px-5 py-2 rounded-lg bg-white hover:bg-slate-200 text-black text-xs font-bold uppercase tracking-wider transition-colors"
-          >
-            Kapat
-          </button>
         </div>
       </div>
     </div>

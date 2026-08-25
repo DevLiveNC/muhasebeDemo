@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { ShieldCheck, Award, Clock, Users, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Award, Clock, Users } from 'lucide-react';
 
 export default function TrustStatsBar() {
   const { firmInfo } = useApp();
@@ -9,25 +9,25 @@ export default function TrustStatsBar() {
     {
       label: 'Yıllık Yönetilen Finansal Hacim',
       value: firmInfo.stats.managedCapital,
-      sub: 'GİB ve Banka Mutabakatlı Portföy',
+      sub: 'GİB ve banka mutabakatlı portföy',
       icon: Award
     },
     {
       label: 'Vergi Denetim & Beyan Doğruluğu',
       value: firmInfo.stats.taxAuditAccuracy,
-      sub: 'Sıfır İnceleme Cezası Güvencesi',
+      sub: 'Sıfır inceleme cezası güvencesi',
       icon: ShieldCheck
     },
     {
       label: 'Ortalama Danışman Yanıt Süresi',
       value: firmInfo.stats.avgSlaMinutes,
-      sub: 'Atanmış Kıdemli SMMM Masası',
+      sub: 'Atanmış kıdemli SMMM masası',
       icon: Clock
     },
     {
       label: 'Sağlanan Yıllık Vergi Teşviki',
       value: firmInfo.stats.totalTaxSavings,
-      sub: '4691, 5746 ve İhracat KDV İadesi',
+      sub: '4691, 5746 ve ihracat KDV iadesi',
       icon: Users
     }
   ];
@@ -44,36 +44,45 @@ export default function TrustStatsBar() {
   ];
 
   return (
-    <section className="py-14 bg-[#090b10] border-b border-white/[0.08] text-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Metric Cards Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {metrics.map((item, idx) => (
-            <div
-              key={idx}
-              className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 transition-all space-y-1.5"
-            >
-              <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">
-                {item.label}
-              </span>
-              <div className="text-2xl sm:text-3xl font-extrabold text-white ledger-mono tracking-tight">
-                {item.value}
+    <section className="py-14 bg-pine-900">
+      <div className="container-x">
+
+        {/* Metric Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-xl overflow-hidden border border-white/10">
+          {metrics.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-pine-900 p-5 sm:p-6 space-y-2 hover:bg-pine-800 transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-pine-200">
+                    {item.label}
+                  </span>
+                  <Icon className="w-4 h-4 text-gold-300" />
+                </div>
+                <div className="font-mono text-2xl sm:text-3xl font-semibold text-white tracking-tight">
+                  {item.value}
+                </div>
+                <p className="text-xs text-pine-300">{item.sub}</p>
               </div>
-              <p className="text-xs text-slate-400 font-normal">{item.sub}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Regulatory & Institutional Accreditation */}
-        <div className="mt-10 pt-8 border-t border-white/[0.06] text-center">
-          <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-5">
+        {/* Accreditation Row */}
+        <div className="mt-10 pt-8 border-t border-white/10 text-center">
+          <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-pine-300 mb-5">
             Resmi Mali Standartlar ve Bankacılık Altyapılarıyla %100 Uyumlu
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-xs text-slate-400 font-mono">
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
             {partners.map((partner, i) => (
-              <div key={i} className="flex items-center space-x-1.5 px-3 py-1 rounded-md bg-white/[0.02] border border-white/[0.06]">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <div
+                key={i}
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-pine-100"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-gold-300"></span>
                 <span>{partner}</span>
               </div>
             ))}

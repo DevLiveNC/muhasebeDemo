@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import {
-  CheckSquare,
-  Plus,
-  Clock,
-  User,
-  Calendar,
-  AlertTriangle,
-  CheckCircle2,
-  Filter,
-  Layers,
-  Sparkles
-} from 'lucide-react';
+import { Plus, X, Calendar } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export default function AdminTasks() {
-  const { tasks, updateTaskStatus, addToast } = useApp();
+  const { tasks, staff, updateTaskStatus, addToast } = useApp();
   const [filterStaff, setFilterStaff] = useState('all');
   const [filterPriority, setFilterPriority] = useState('all');
   const [isNewModalOpen, setIsNewModalOpen] = useState(false);
@@ -44,219 +33,220 @@ export default function AdminTasks() {
 
     addToast('İş Emri Atandı', `"${newTask.title}" görevi ${newTask.assignedTo} sorumluluğuna verildi.`, 'success');
     setIsNewModalOpen(false);
+    setNewTask((prev) => ({ ...prev, title: '', description: '' }));
   };
 
   return (
-    <div className="space-y-6 animate-fade-in text-xs sm:text-sm">
-      
-      {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/[0.06]">
+    <div className="space-y-6 animate-fade-in">
+
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center space-x-2">
-            <span className="px-2 py-0.5 rounded bg-white/10 text-slate-300 font-mono text-[10px] uppercase tracking-wider border border-white/10">
-              Operasyonel İş Emirleri
-            </span>
-            <span className="text-slate-500 font-mono text-xs">4 Denetçi / 48 Aktif İşlem</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="badge badge-neutral">Operasyonel İş Emirleri</span>
+            <span className="text-ink-400 font-mono text-xs">{staff.length} Denetçi / {tasks.length} Aktif İşlem</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">Görevler & SMMM İş Takip Masası</h1>
-          <p className="text-xs text-slate-400 font-mono">Personele atanan beyanname, YMM tasdik, e-Defter berat ve mizan kontrolleri</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight mt-1.5">İş Takip Panosu</h1>
         </div>
 
         <button
           onClick={() => setIsNewModalOpen(true)}
-          className="px-4 py-2 bg-white hover:bg-slate-200 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-luxury transition-all"
+          className="btn btn-primary btn-sm shrink-0"
         >
-          <Plus className="w-3.5 h-3.5 text-black" />
-          <span>Yeni Görev Ata</span>
+          <Plus className="w-3.5 h-3.5" />
+          <span>Yeni İş Emri</span>
         </button>
       </div>
 
-      {/* Filter Bar */}
-      <div className="flex flex-wrap gap-2">
+      {/* Filters */}
+      <div className="card p-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
         <select
           value={filterStaff}
           onChange={(e) => setFilterStaff(e.target.value)}
-          className="px-3 py-2 bg-black/60 border border-white/10 rounded-xl text-xs font-mono text-slate-300 focus:outline-none"
+          className="select py-2 text-[13px]"
         >
-          <option value="all">Tüm Denetçiler (Hepsi)</option>
-          <option value="Kemal">SMMM Kemal Yıldız (Ortak)</option>
-          <option value="Elif">SMMM Elif Kaya (Kıdemli)</option>
-          <option value="Burak">SMMM Burak Demir (Kıdemli)</option>
-          <option value="Zeynep">SMMM Zeynep Aydın (Bordro Uzmanı)</option>
+          <option value="all">Tüm Denetçiler</option>
+          {staff.map((s) => (
+            <option key={s.id} value={s.name}>{s.name}</option>
+          ))}
         </select>
-
         <select
           value={filterPriority}
           onChange={(e) => setFilterPriority(e.target.value)}
-          className="px-3 py-2 bg-black/60 border border-white/10 rounded-xl text-xs font-mono text-slate-300 focus:outline-none"
+          className="select py-2 text-[13px]"
         >
           <option value="all">Tüm Öncelikler</option>
-          <option value="Acil">Acil (Yasal Süreli)</option>
-          <option value="Normal">Normal Öncelik</option>
+          <option value="Acil">Acil</option>
+          <option value="Yüksek">Yüksek</option>
+          <option value="Normal">Normal</option>
         </select>
       </div>
 
-      {/* Kanban Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 overflow-x-auto pb-4">
-        {statuses.map((status) => {
-          const columnTasks = filteredTasks.filter((t) => t.status === status);
-          return (
-            <div key={status} className="p-3 rounded-2xl obsidian-card border border-white/[0.08] flex flex-col space-y-3 min-w-[240px]">
-              
-              {/* Status Header */}
-              <div className="flex items-center justify-between pb-2 border-b border-white/[0.06] text-xs font-mono">
-                <span className="font-bold text-white text-[11px]">{status}</span>
-                <span className="px-2 py-0.5 rounded bg-white/10 text-slate-300 font-bold text-[10px]">
-                  {columnTasks.length}
-                </span>
-              </div>
-
-              {/* Task Cards */}
-              <div className="space-y-3 flex-1">
-                {columnTasks.map((task) => (
-                  <div
-                    key={task.id}
-                    className="p-3.5 rounded-xl bg-black/40 border border-white/[0.06] space-y-2.5 hover:border-white/20 transition-all group"
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono text-slate-400 bg-white/[0.04] px-1.5 py-0.5 rounded border border-white/[0.06]">
-                        {task.category}
-                      </span>
-                      <span className={cn(
-                        "text-[10px] font-mono font-bold px-1.5 py-0.5 rounded",
-                        task.priority === 'Acil' ? "bg-rose-500/10 text-rose-400 border border-rose-500/20" : "bg-white/10 text-slate-400"
-                      )}>
-                        {task.priority}
-                      </span>
-                    </div>
-
-                    <h4 className="font-bold text-white text-xs leading-snug group-hover:text-slate-100">{task.title}</h4>
-                    <p className="text-[11px] text-slate-400 truncate">{task.client}</p>
-
-                    <div className="space-y-1">
-                      <div className="flex justify-between text-[10px] font-mono text-slate-400">
-                        <span>Tamamlanma:</span>
-                        <span className="font-bold text-white">%{task.progress}</span>
-                      </div>
-                      <div className="w-full h-1 bg-white/[0.06] rounded-full overflow-hidden">
-                        <div 
-                          style={{ width: `${task.progress}%` }} 
-                          className={cn("h-full rounded-full transition-all duration-500", task.progress === 100 ? "bg-emerald-400" : "bg-white")}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between text-[10px] font-mono">
-                      <span className="text-slate-500">Termin: {task.dueDate}</span>
-                      
-                      <select
-                        value={task.status}
-                        onChange={(e) => updateTaskStatus(task.id, e.target.value)}
-                        className="bg-black/60 border border-white/10 rounded px-1.5 py-0.5 text-[10px] text-slate-300 font-medium"
-                      >
-                        {statuses.map((s) => (
-                          <option key={s} value={s}>{s}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                ))}
-
-                {columnTasks.length === 0 && (
-                  <div className="py-8 text-center text-slate-600 text-xs font-mono">
-                    Görev bulunmuyor
-                  </div>
-                )}
-              </div>
-
-            </div>
-          );
-        })}
+      {/* Tasks Table */}
+      <div className="card overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left min-w-[860px]">
+            <thead>
+              <tr className="border-b border-line bg-paper-50">
+                <th className="th">Görev</th>
+                <th className="th">Mükellef</th>
+                <th className="th">Sorumlu</th>
+                <th className="th">Son Tarih</th>
+                <th className="th">Öncelik</th>
+                <th className="th">Kategori</th>
+                <th className="th text-right">Durum</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-line">
+              {filteredTasks.map((t) => (
+                <tr key={t.id} className="hover:bg-paper-50 transition-colors">
+                  <td className="td">
+                    <span className="font-semibold text-ink-950 block max-w-[240px] truncate">{t.title}</span>
+                  </td>
+                  <td className="td text-ink-500 whitespace-nowrap">{t.client.split(' ').slice(0, 2).join(' ')}</td>
+                  <td className="td text-ink-500 whitespace-nowrap">{t.assignedTo}</td>
+                  <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar className="w-3 h-3 text-ink-300" />
+                      {t.dueDate}
+                    </span>
+                  </td>
+                  <td className="td">
+                    <span className={cn(
+                      'badge',
+                      t.priority === 'Acil' ? 'badge-danger' : t.priority === 'Yüksek' ? 'badge-warning' : 'badge-neutral'
+                    )}>
+                      {t.priority}
+                    </span>
+                  </td>
+                  <td className="td text-ink-500 whitespace-nowrap">{t.category}</td>
+                  <td className="td text-right">
+                    <select
+                      value={t.status}
+                      onChange={(e) => updateTaskStatus(t.id, e.target.value)}
+                      className={cn(
+                        'select w-auto py-1.5 text-xs',
+                        t.status === 'Tamamlandı' && 'text-success-deep font-bold'
+                      )}
+                    >
+                      {statuses.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </td>
+                </tr>
+              ))}
+              {filteredTasks.length === 0 && (
+                <tr>
+                  <td colSpan={7} className="td text-center text-ink-400 py-10">
+                    Seçili filtrede görev bulunamadı.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* New Task Modal */}
       {isNewModalOpen && (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className="w-full max-w-md bg-[#0e1119] rounded-2xl p-6 space-y-4 shadow-2xl border border-white/10 animate-slide-down">
-            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-              <h3 className="font-bold text-base text-white">Personele Yeni Görev Ata</h3>
-              <button onClick={() => setIsNewModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-ink-950/50 backdrop-blur-sm animate-fade-in">
+          <div
+            className="w-full max-w-md bg-white rounded-2xl shadow-pop border border-line overflow-hidden animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-6 py-4 border-b border-line flex items-center justify-between">
+              <h3 className="font-bold text-ink-950 text-[15px]">Yeni İş Emri Oluştur</h3>
+              <button
+                onClick={() => setIsNewModalOpen(false)}
+                className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+                title="Kapat"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
 
-            <form onSubmit={handleCreateTask} className="space-y-3 text-xs">
+            <form onSubmit={handleCreateTask} className="p-6 space-y-4">
               <div>
-                <label className="block font-medium text-slate-300 mb-1">Görev Başlığı *</label>
+                <label className="label">Görev Başlığı *</label>
                 <input
                   type="text"
                   required
-                  placeholder="Örn: Temmuz 2026 KDV-1 mutabakatı ve GİB onayı"
+                  placeholder="Örn: Ağustos KDV-1 taslak mizan kontrolü"
                   value={newTask.title}
                   onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-sans"
+                  className="input"
+                  autoFocus
                 />
               </div>
 
-              <div>
-                <label className="block font-medium text-slate-300 mb-1">İlgili Mükellef</label>
-                <input
-                  type="text"
-                  value={newTask.client}
-                  onChange={(e) => setNewTask({ ...newTask, client: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-sans"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-medium text-slate-300 mb-1">Sorumlu SMMM</label>
+                  <label className="label">Sorumlu Denetçi</label>
                   <select
                     value={newTask.assignedTo}
                     onChange={(e) => setNewTask({ ...newTask, assignedTo: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-sans"
+                    className="select"
                   >
-                    <option>SMMM Kemal Yıldız</option>
-                    <option>SMMM Elif Kaya</option>
-                    <option>SMMM Burak Demir</option>
-                    <option>SMMM Zeynep Aydın</option>
+                    {staff.map((s) => (
+                      <option key={s.id} value={s.name}>{s.name}</option>
+                    ))}
                   </select>
                 </div>
                 <div>
-                  <label className="block font-medium text-slate-300 mb-1">Öncelik Seviyesi</label>
+                  <label className="label">Son Tarih</label>
+                  <input
+                    type="date"
+                    value={newTask.dueDate}
+                    onChange={(e) => setNewTask({ ...newTask, dueDate: e.target.value })}
+                    className="input font-mono"
+                  />
+                </div>
+                <div>
+                  <label className="label">Öncelik</label>
                   <select
                     value={newTask.priority}
                     onChange={(e) => setNewTask({ ...newTask, priority: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-sans"
+                    className="select"
                   >
                     <option>Acil</option>
+                    <option>Yüksek</option>
                     <option>Normal</option>
-                    <option>Düşük</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="label">Kategori</label>
+                  <select
+                    value={newTask.category}
+                    onChange={(e) => setNewTask({ ...newTask, category: e.target.value })}
+                    className="select"
+                  >
+                    <option>Vergi Beyannamesi</option>
+                    <option>Evrak İşleme</option>
+                    <option>Denetim & Tasdik</option>
+                    <option>Müşteri İlişkisi</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="block font-medium text-slate-300 mb-1">Yasal Son Teslim Tarihi (Termin)</label>
-                <input
-                  type="date"
-                  value={newTask.dueDate}
-                  onChange={(e) => setNewTask({ ...newTask, dueDate: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-mono"
+                <label className="label">Açıklama</label>
+                <textarea
+                  rows={2}
+                  value={newTask.description}
+                  onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
+                  className="input resize-none"
+                  placeholder="İş emri detayları..."
                 />
               </div>
 
-              <div className="pt-2 flex justify-end space-x-2">
-                <button
-                  type="button"
-                  onClick={() => setIsNewModalOpen(false)}
-                  className="px-4 py-2 bg-white/[0.04] text-slate-300 rounded-lg"
-                >
-                  İptal
+              <div className="flex items-center justify-end gap-2 pt-1">
+                <button type="button" onClick={() => setIsNewModalOpen(false)} className="btn btn-ghost btn-sm">
+                  Vazgeç
                 </button>
-                <button
-                  type="submit"
-                  className="px-5 py-2 bg-white text-black font-bold uppercase tracking-wider rounded-lg shadow-sm"
-                >
-                  İş Emrini Kaydet
+                <button type="submit" className="btn btn-primary btn-sm">
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>İş Emrini Ata</span>
                 </button>
               </div>
             </form>

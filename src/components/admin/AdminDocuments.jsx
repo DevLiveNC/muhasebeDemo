@@ -1,20 +1,10 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
-  FileText,
   Search,
-  Filter,
-  CheckCircle2,
-  AlertTriangle,
-  Send,
-  Eye,
-  Sparkles,
-  Download,
   CheckCheck,
-  Zap,
-  Layers,
-  ArrowUpRight,
-  ShieldCheck
+  Eye,
+  Send
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
@@ -54,178 +44,145 @@ export default function AdminDocuments() {
     addToast('Toplu Yevmiye Onayı', 'Filtrelenen tüm belgeler resmi Tekdüzen yevmiye defterine işlendi.', 'success');
   };
 
+  const tabs = [
+    { id: 'all', label: 'Tümü', count: documents.length },
+    { id: 'pending', label: 'İncelemede', count: documents.filter((d) => d.status === 'İncelemede').length },
+    { id: 'missing', label: 'Eksik', count: documents.filter((d) => d.status.includes('Eksik')).length },
+    { id: 'approved', label: 'Onaylandı', count: documents.filter((d) => d.status === 'Onaylandı').length }
+  ];
+
   return (
-    <div className="space-y-6 animate-fade-in text-xs sm:text-sm">
-      
-      {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/[0.06]">
+    <div className="space-y-6 animate-fade-in">
+
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center space-x-2">
-            <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px] uppercase tracking-wider border border-emerald-500/20">
-              GİB e-Defter & OCR Entegrasyonu
-            </span>
-            <span className="text-slate-500 font-mono text-xs">v4.2 Neural OCR</span>
-          </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">Merkezi Evrak & Akıllı OCR Havuzu</h1>
-          <p className="text-xs text-slate-400 font-mono">Tüm portföyden gelen e-Arşiv, e-Fatura, banka MT940 ve bordro kayıtları</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">Evrak & OCR Onay Masası</h1>
+          <p className="text-xs text-ink-400 mt-1">Tüm mükelleflerden gelen fatura ve ekstrelerin merkezi işleme havuzu</p>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <button
-            onClick={() => sendMissingDocAlert('Tüm Eksik Evraklı Mükellefler', 'Temmuz 2026 KDV & Stopaj Beyannamesi Evrakları')}
-            className="px-3.5 py-2 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 rounded-lg text-xs font-mono uppercase tracking-wider flex items-center space-x-1.5 transition-all"
+            onClick={() => sendMissingDocAlert('Eksik Evraklı Mükellefler', 'Bekleyen Evrak Kapsamı')}
+            className="btn btn-outline btn-sm"
           >
-            <Send className="w-3.5 h-3.5" />
-            <span>Toplu SMS / Mail İhtar</span>
+            <Send className="w-3.5 h-3.5 text-pine-700" />
+            <span>Eksik Evrak Bildir</span>
           </button>
-
           <button
             onClick={handleBatchApprove}
-            className="px-3.5 py-2 bg-white hover:bg-slate-200 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-luxury transition-all"
+            className="btn btn-primary btn-sm"
           >
             <CheckCheck className="w-3.5 h-3.5" />
-            <span>Toplu Yevmiyeye İşle</span>
+            <span>Toplu Yevmiye Onayı</span>
           </button>
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="flex flex-wrap gap-2">
-        {[
-          { id: 'all', label: 'Tüm Belgeler', count: documents.length },
-          { id: 'missing', label: 'Eksik / Kritik Evraklar', count: documents.filter(d => d.status.includes('Eksik')).length, alert: true },
-          { id: 'pending', label: 'OCR & İnceleme Bekleyenler', count: documents.filter(d => d.status === 'İncelemede').length },
-          { id: 'approved', label: 'Yevmiyeye İşlenenler', count: documents.filter(d => d.status === 'Onaylandı').length },
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={cn(
-              "flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-mono transition-all border",
-              activeTab === tab.id
-                ? "bg-white text-black border-white font-bold shadow-luxury"
-                : "bg-white/[0.02] text-slate-400 hover:text-white border-white/[0.08]"
-            )}
-          >
-            <span>{tab.label}</span>
-            <span className={cn(
-              "px-1.5 py-0.2 rounded text-[10px] font-bold",
-              tab.alert 
-                ? "bg-rose-500/20 text-rose-400 border border-rose-500/30" 
-                : activeTab === tab.id 
-                ? "bg-black/20 text-black font-bold" 
-                : "bg-white/10 text-slate-300"
-            )}>
-              {tab.count}
-            </span>
-          </button>
-        ))}
-      </div>
-
-      {/* Filters Bar */}
-      <div className="p-3 rounded-2xl obsidian-card border border-white/[0.08] flex flex-col md:flex-row items-center justify-between gap-3">
-        <div className="relative flex-1 w-full">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            placeholder="Belge adı, mükellef unvanı veya tutar ara..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-black/40 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-white font-mono"
-          />
+      {/* Tabs + Filters */}
+      <div className="card p-4 space-y-3">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={cn('chip shrink-0', activeTab === tab.id ? 'chip-active' : 'chip-idle')}
+            >
+              <span>{tab.label}</span>
+              <span className={cn('font-mono text-[10px] font-bold px-1.5 py-0.5 rounded', activeTab === tab.id ? 'bg-white/20' : 'bg-paper-200')}>
+                {tab.count}
+              </span>
+            </button>
+          ))}
         </div>
 
-        <div className="flex items-center space-x-2 w-full md:w-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="relative">
+            <Search className="w-3.5 h-3.5 text-ink-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Belge, mükellef veya tutar ara..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="input pl-9 py-2 text-[13px]"
+            />
+          </div>
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-3 py-2 bg-black/60 border border-white/10 rounded-xl text-xs font-mono text-slate-300 focus:outline-none"
+            className="select py-2 text-[13px]"
           >
-            {categories.map((cat) => (
-              <option key={cat} value={cat}>{cat === 'all' ? 'Tüm Kategoriler' : cat}</option>
+            {categories.map((c) => (
+              <option key={c} value={c}>
+                {c === 'all' ? 'Tüm Kategoriler' : c}
+              </option>
             ))}
           </select>
         </div>
       </div>
 
-      {/* Documents Table */}
-      <div className="rounded-2xl obsidian-card border border-white/[0.08] overflow-hidden shadow-cinema">
+      {/* Table */}
+      <div className="card overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs font-mono">
-            <thead className="bg-white/[0.03] text-slate-400 uppercase text-[10px] border-b border-white/[0.06]">
-              <tr>
-                <th className="p-3.5">Mükellef Unvanı</th>
-                <th className="p-3.5">Evrak & Seri No</th>
-                <th className="p-3.5">Kategori</th>
-                <th className="p-3.5">Tutar (Matrah & KDV)</th>
-                <th className="p-3.5">Önerilen Tekdüzen Kodu</th>
-                <th className="p-3.5">Neural OCR Güven</th>
-                <th className="p-3.5">Durum</th>
-                <th className="p-3.5 text-right">Mizan / Aksiyon</th>
+          <table className="w-full text-left min-w-[820px]">
+            <thead>
+              <tr className="border-b border-line bg-paper-50">
+                <th className="th">Mükellef</th>
+                <th className="th">Belge</th>
+                <th className="th">Kategori</th>
+                <th className="th text-right">Tutar</th>
+                <th className="th">OCR</th>
+                <th className="th">Durum</th>
+                <th className="th text-right">İşlemler</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/[0.04]">
+            <tbody className="divide-y divide-line">
               {filteredDocs.map((doc) => (
-                <tr key={doc.id} className="hover:bg-white/[0.02] transition-colors group">
-                  <td className="p-3.5 font-bold text-white font-sans">{doc.client}</td>
-                  
-                  <td className="p-3.5 text-slate-300">
-                    <div className="flex items-center space-x-2">
-                      <FileText className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors" />
-                      <span className="truncate max-w-[180px] text-white font-medium">{doc.name}</span>
-                    </div>
+                <tr key={doc.id} className="hover:bg-paper-50 transition-colors">
+                  <td className="td font-semibold text-ink-950 whitespace-nowrap">{doc.client.split(' ').slice(0, 2).join(' ')}</td>
+                  <td className="td">
+                    <span className="block truncate max-w-[200px]">{doc.name}</span>
+                    <span className="text-[10px] font-mono text-ink-400">{doc.uploadDate}</span>
                   </td>
-
-                  <td className="p-3.5 text-slate-400">{doc.category}</td>
-
-                  <td className="p-3.5">
-                    <span className="font-bold text-white block">{doc.amount}</span>
-                    <span className="text-[10px] text-slate-500">{doc.vatAmount} ({doc.vatRate})</span>
-                  </td>
-
-                  <td className="p-3.5 text-slate-300 text-[11px] truncate max-w-[150px]">
-                    <span className="px-1.5 py-0.5 bg-white/[0.04] border border-white/[0.08] rounded text-slate-300">
-                      {doc.assignedAccount}
-                    </span>
-                  </td>
-
-                  <td className="p-3.5">
-                    <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px] font-bold border border-emerald-500/20">
-                      ✓ {doc.ocrConfidence}
-                    </span>
-                  </td>
-
-                  <td className="p-3.5">
+                  <td className="td text-ink-500 whitespace-nowrap">{doc.category}</td>
+                  <td className="td font-mono font-semibold text-ink-950 text-right whitespace-nowrap">{doc.amount}</td>
+                  <td className="td"><span className="badge badge-success">{doc.ocrConfidence}</span></td>
+                  <td className="td">
                     <span className={cn(
-                      "px-2 py-0.5 rounded text-[10px] font-bold",
-                      doc.status === 'Onaylandı' 
-                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
-                        : doc.status.includes('Eksik')
-                        ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
-                        : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                      'badge',
+                      doc.status === 'Onaylandı' ? 'badge-success' : doc.status.includes('Eksik') ? 'badge-danger' : 'badge-warning'
                     )}>
                       {doc.status}
                     </span>
                   </td>
-
-                  <td className="p-3.5 text-right space-x-1.5">
-                    <button
-                      onClick={() => setSelectedDocForPreview(doc)}
-                      className="px-2.5 py-1 bg-white/[0.06] hover:bg-white/10 text-slate-200 rounded text-xs transition-colors"
-                    >
-                      OCR İncele
-                    </button>
-                    {doc.status !== 'Onaylandı' && (
+                  <td className="td text-right whitespace-nowrap">
+                    <div className="flex items-center justify-end gap-1.5">
                       <button
-                        onClick={() => approveDocument(doc.id)}
-                        className="px-2.5 py-1 bg-white text-black font-bold uppercase tracking-wider rounded text-[11px] hover:bg-slate-200 transition-colors"
+                        onClick={() => setSelectedDocForPreview(doc)}
+                        className="btn btn-ghost btn-sm"
+                        title="Önizle"
                       >
-                        Yevmiyeye Al
+                        <Eye className="w-3.5 h-3.5" />
                       </button>
-                    )}
+                      {doc.status !== 'Onaylandı' && (
+                        <button
+                          onClick={() => approveDocument(doc.id)}
+                          className="btn btn-primary btn-sm"
+                        >
+                          Onayla
+                        </button>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}
+              {filteredDocs.length === 0 && (
+                <tr>
+                  <td colSpan={7} className="td text-center text-ink-400 py-10">
+                    Seçili filtrede evrak bulunamadı.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

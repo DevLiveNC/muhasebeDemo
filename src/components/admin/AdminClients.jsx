@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
-  Users,
   Search,
   Plus,
   ArrowRight,
   Download,
-  Building2
+  X
 } from 'lucide-react';
-import { cn, formatCurrency } from '../../utils/cn';
+import { cn } from '../../utils/cn';
 
 export default function AdminClients() {
   const { clients, openClientDetail, addNewClient, addToast } = useApp();
@@ -45,7 +44,7 @@ export default function AdminClients() {
     notes: 'Yeni eklenen müşteri.',
     kdvStatus: 'Hazırlanıyor',
     sgkStatus: 'Hazırlanıyor',
-    quarterlyRevenue: '₺2,500,000'
+    quarterlyRevenue: '₺2.500.000'
   });
 
   const filteredClients = clients.filter((c) => {
@@ -60,139 +59,123 @@ export default function AdminClients() {
     e.preventDefault();
     if (!newCompany.name.trim()) return;
 
-    addNewClient(newCompany);
+    addNewClient({
+      ...newCompany,
+      shortName: newCompany.shortName || newCompany.name.split(' ')[0] + ' ' + (newCompany.name.split(' ').slice(-1)[0] || 'A.Ş.')
+    });
     setIsAddModalOpen(false);
+    setNewCompany((prev) => ({ ...prev, name: '', shortName: '' }));
   };
 
   return (
-    <div className="space-y-6 animate-fade-in text-xs sm:text-sm">
-      
+    <div className="space-y-6 animate-fade-in">
+
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Müşteri Portföy Masası</h1>
-          <p className="text-xs text-slate-400 font-mono">Kayıtlı 48 şirket, vergi dairesi durumları ve SMMM atamaları</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">Müşteri Portföy Masası</h1>
+          <p className="text-xs text-ink-400 mt-1">Kayıtlı 48 şirket, vergi dairesi durumları ve SMMM atamaları</p>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <button
             onClick={() => addToast('Excel Aktarımı', 'Tüm portföy Excel formatında indirildi.', 'success')}
-            className="px-3.5 py-2 bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 rounded-lg text-xs font-semibold border border-white/10 flex items-center space-x-1.5 transition-colors"
+            className="btn btn-outline btn-sm"
           >
-            <Download className="w-3.5 h-3.5" />
-            <span>Excel Dışa Aktar</span>
+            <Download className="w-3.5 h-3.5 text-pine-700" />
+            <span>Excel İndir</span>
           </button>
-
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="px-4 py-2 bg-white hover:bg-slate-200 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-luxury transition-all"
+            className="btn btn-primary btn-sm"
           >
-            <Plus className="w-3.5 h-3.5 text-black" />
-            <span>Yeni Şirket Ekle</span>
+            <Plus className="w-3.5 h-3.5" />
+            <span>Yeni Müşteri Ekle</span>
           </button>
         </div>
       </div>
 
-      {/* Filter Bar */}
-      <div className="p-4 rounded-2xl obsidian-card border border-white/[0.08] flex flex-col md:flex-row items-center justify-between gap-3">
-        <div className="relative flex-1 w-full">
-          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+      {/* Filters */}
+      <div className="card p-4 flex flex-col sm:flex-row gap-3">
+        <div className="relative flex-1">
+          <Search className="w-3.5 h-3.5 text-ink-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Şirket adı, Vergi No, Sektör veya Vergi Dairesi ara..."
+            placeholder="Unvan, VKN veya sektör ile ara..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-black/40 border border-white/[0.08] rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-white/30 font-sans"
+            className="input pl-9 py-2 text-[13px]"
           />
         </div>
-
         <select
           value={filterType}
           onChange={(e) => setFilterType(e.target.value)}
-          className="px-3 py-2 bg-black/40 border border-white/[0.08] rounded-xl text-xs font-mono text-white focus:outline-none"
+          className="select sm:w-56 py-2 text-[13px]"
         >
           <option value="all">Tüm Şirket Türleri</option>
           <option value="Anonim">Anonim Şirket (A.Ş.)</option>
-          <option value="Limited">Limited Şirket (Ltd.)</option>
+          <option value="Limited">Limited Şirket (Ltd. Şti.)</option>
         </select>
       </div>
 
-      {/* Data Table */}
-      <div className="p-1 rounded-2xl obsidian-card border border-white/[0.08] overflow-hidden shadow-cinema">
+      {/* Clients Table */}
+      <div className="card overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs font-mono">
-            <thead className="bg-white/[0.03] text-slate-400 uppercase text-[10px] border-b border-white/[0.06]">
-              <tr>
-                <th className="p-3.5">Firma / Ünvan</th>
-                <th className="p-3.5">Vergi Dairesi & No</th>
-                <th className="p-3.5">Personel</th>
-                <th className="p-3.5">Aylık Ücret</th>
-                <th className="p-3.5">Sorumlu SMMM</th>
-                <th className="p-3.5">Evrak Durumu</th>
-                <th className="p-3.5">KDV-1 Durumu</th>
-                <th className="p-3.5 text-right">360° İncele</th>
+          <table className="w-full text-left min-w-[760px]">
+            <thead>
+              <tr className="border-b border-line bg-paper-50">
+                <th className="th">Mükellef</th>
+                <th className="th">Sektör</th>
+                <th className="th">KDV-1 Durumu</th>
+                <th className="th">Sorumlu SMMM</th>
+                <th className="th text-right">Aylık Ücret</th>
+                <th className="th">Evrak</th>
+                <th className="th text-right"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/[0.04]">
-              {filteredClients.map((client) => (
-                <tr 
-                  key={client.id}
-                  onClick={() => openClientDetail(client.id)}
-                  className="hover:bg-white/[0.02] transition-colors cursor-pointer group"
+            <tbody className="divide-y divide-line">
+              {filteredClients.map((cl) => (
+                <tr
+                  key={cl.id}
+                  onClick={() => openClientDetail(cl.id)}
+                  className="hover:bg-paper-50 transition-colors cursor-pointer group"
                 >
-                  <td className="p-3.5 font-bold text-white flex items-center space-x-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-white text-black font-black text-xs flex items-center justify-center shrink-0">
-                      {client.name.substring(0, 2).toUpperCase()}
+                  <td className="td">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-pine-50 border border-pine-100 text-pine-800 font-bold text-xs flex items-center justify-center shrink-0">
+                        {cl.name.substring(0, 2).toUpperCase()}
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-bold text-[13px] text-ink-950 truncate max-w-[220px]">{cl.shortName}</h4>
+                        <p className="text-[11px] font-mono text-ink-400 truncate">
+                          VN: {cl.taxNumber} · {cl.taxOffice}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-sans text-xs group-hover:text-slate-200 transition-colors">{client.name}</p>
-                      <span className="text-[10px] text-slate-500 font-normal font-sans">{client.sector}</span>
-                    </div>
                   </td>
-
-                  <td className="p-3.5 text-slate-300">
-                    <p className="font-bold text-white">{client.taxNumber}</p>
-                    <span className="text-[10px] text-slate-500 font-sans">{client.taxOffice}</span>
-                  </td>
-
-                  <td className="p-3.5 text-slate-300">
-                    {client.employeeCount} Personel
-                  </td>
-
-                  <td className="p-3.5 font-bold text-white">
-                    {formatCurrency(client.monthlyFee)}
-                  </td>
-
-                  <td className="p-3.5 text-slate-300 font-sans">
-                    {client.assignedCPA.name.split(' ')[1]} {client.assignedCPA.name.split(' ')[2]}
-                  </td>
-
-                  <td className="p-3.5">
+                  <td className="td text-ink-500 whitespace-nowrap">{cl.sector}</td>
+                  <td className="td whitespace-nowrap">
                     <span className={cn(
-                      "px-2 py-0.5 rounded text-[10px] font-bold font-sans",
-                      client.missingDocsCount > 0 
-                        ? "bg-rose-500/20 text-rose-300 border border-rose-500/30" 
-                        : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                      'badge',
+                      cl.kdvStatus.includes('Onaylandı') ? 'badge-success' : 'badge-neutral'
                     )}>
-                      {client.missingDocsCount > 0 ? `${client.missingDocsCount} Eksik` : 'Tam'}
+                      {cl.kdvStatus.split(' ')[0]}
                     </span>
                   </td>
-
-                  <td className="p-3.5 text-slate-300 font-sans text-[11px]">
-                    {client.kdvStatus}
+                  <td className="td text-ink-500 whitespace-nowrap">{cl.assignedCPA.name}</td>
+                  <td className="td font-mono font-semibold text-ink-950 text-right whitespace-nowrap">
+                    {formatNumber(cl.monthlyFee)}
                   </td>
-
-                  <td className="p-3.5 text-right">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openClientDetail(client.id);
-                      }}
-                      className="px-2.5 py-1 bg-white/[0.06] hover:bg-white/[0.15] text-slate-200 rounded text-xs font-sans font-semibold inline-flex items-center space-x-1"
-                    >
-                      <span>Masayı Aç</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </button>
+                  <td className="td">
+                    <span className={cn(
+                      'badge',
+                      cl.missingDocsCount > 0 ? 'badge-danger' : 'badge-success'
+                    )}>
+                      {cl.missingDocsCount > 0 ? `${cl.missingDocsCount} Eksik` : 'Eksiksiz'}
+                    </span>
+                  </td>
+                  <td className="td text-right">
+                    <ArrowRight className="w-4 h-4 text-ink-300 group-hover:text-pine-700 group-hover:translate-x-0.5 transition-all inline" />
                   </td>
                 </tr>
               ))}
@@ -203,84 +186,111 @@ export default function AdminClients() {
 
       {/* Add Client Modal */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className="w-full max-w-xl bg-[#0e1119] rounded-2xl p-6 space-y-4 shadow-2xl border border-white/10 animate-slide-down">
-            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-              <h3 className="font-bold text-base text-white">Portföye Yeni Mükellef Ekle</h3>
-              <button onClick={() => setIsAddModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-ink-950/50 backdrop-blur-sm animate-fade-in">
+          <div
+            className="w-full max-w-xl bg-white rounded-2xl shadow-pop border border-line overflow-hidden animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-6 py-4 border-b border-line flex items-center justify-between">
+              <div>
+                <h3 className="font-bold text-ink-950 text-[15px]">Yeni Mükellef Kaydı</h3>
+                <p className="text-[11px] text-ink-400 mt-0.5">Portföye eklenen müşteriye ilk açılış bildirimleri otomatik gider.</p>
+              </div>
+              <button
+                onClick={() => setIsAddModalOpen(false)}
+                className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+                title="Kapat"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
 
-            <form onSubmit={handleCreateClient} className="space-y-3 text-xs">
+            <form onSubmit={handleCreateClient} className="p-6 space-y-4 max-h-[65vh] overflow-y-auto">
               <div>
-                <label className="block font-medium text-slate-300 mb-1">Şirket Resmi Ünvanı *</label>
+                <label className="label">Şirket Ünvanı *</label>
                 <input
                   type="text"
-                  placeholder="Örn: Solvy Enerji Teknolojileri A.Ş."
                   required
+                  placeholder="Örn: Solvy Enerji Teknolojileri A.Ş."
                   value={newCompany.name}
-                  onChange={(e) => setNewCompany({ ...newCompany, name: e.target.value, shortName: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white"
+                  onChange={(e) => setNewCompany({ ...newCompany, name: e.target.value })}
+                  className="input"
+                  autoFocus
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-medium text-slate-300 mb-1">Şirket Türü</label>
+                  <label className="label">Kısa Ad</label>
+                  <input
+                    type="text"
+                    placeholder="Örn: Solvy A.Ş."
+                    value={newCompany.shortName}
+                    onChange={(e) => setNewCompany({ ...newCompany, shortName: e.target.value })}
+                    className="input"
+                  />
+                </div>
+                <div>
+                  <label className="label">Şirket Türü</label>
                   <select
                     value={newCompany.type}
                     onChange={(e) => setNewCompany({ ...newCompany, type: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white"
+                    className="select"
                   >
                     <option>Anonim Şirket (A.Ş.)</option>
                     <option>Limited Şirket (Ltd. Şti.)</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block font-medium text-slate-300 mb-1">Vergi Kimlik No *</label>
+                  <label className="label">Sektör</label>
                   <input
                     type="text"
-                    required
+                    value={newCompany.sector}
+                    onChange={(e) => setNewCompany({ ...newCompany, sector: e.target.value })}
+                    className="input"
+                  />
+                </div>
+                <div>
+                  <label className="label">Vergi Dairesi</label>
+                  <input
+                    type="text"
+                    value={newCompany.taxOffice}
+                    onChange={(e) => setNewCompany({ ...newCompany, taxOffice: e.target.value })}
+                    className="input"
+                  />
+                </div>
+                <div>
+                  <label className="label">Vergi No (VKN)</label>
+                  <input
+                    type="text"
                     value={newCompany.taxNumber}
                     onChange={(e) => setNewCompany({ ...newCompany, taxNumber: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-mono"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-medium text-slate-300 mb-1">Aylık Ücret (₺)</label>
-                  <input
-                    type="number"
-                    value={newCompany.monthlyFee}
-                    onChange={(e) => setNewCompany({ ...newCompany, monthlyFee: parseInt(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-mono"
+                    className="input font-mono"
                   />
                 </div>
                 <div>
-                  <label className="block font-medium text-slate-300 mb-1">Personel Sayısı</label>
+                  <label className="label">Personel Sayısı</label>
                   <input
                     type="number"
+                    min="1"
                     value={newCompany.employeeCount}
-                    onChange={(e) => setNewCompany({ ...newCompany, employeeCount: parseInt(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white"
+                    onChange={(e) => setNewCompany({ ...newCompany, employeeCount: parseInt(e.target.value) || 1 })}
+                    className="input font-mono"
                   />
                 </div>
               </div>
 
-              <div className="pt-3 flex justify-end space-x-2">
+              <div className="flex items-center justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={() => setIsAddModalOpen(false)}
-                  className="px-4 py-2 bg-white/[0.04] text-slate-300 rounded-lg"
+                  className="btn btn-ghost btn-sm"
                 >
-                  İptal
+                  Vazgeç
                 </button>
-                <button
-                  type="submit"
-                  className="px-5 py-2 bg-white text-black font-bold uppercase tracking-wider rounded-lg shadow-sm"
-                >
-                  Mükellefi Kaydet
+                <button type="submit" className="btn btn-primary btn-sm">
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Müşteriyi Portföye Ekle</span>
                 </button>
               </div>
             </form>
@@ -290,4 +300,8 @@ export default function AdminClients() {
 
     </div>
   );
+}
+
+function formatNumber(n) {
+  return '₺' + new Intl.NumberFormat('tr-TR').format(n);
 }

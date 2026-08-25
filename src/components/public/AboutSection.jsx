@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { ShieldCheck, Award, Lock, FileCheck2 } from 'lucide-react';
+import { ShieldCheck, Award, Lock, FileCheck2, MapPin } from 'lucide-react';
 
 export default function AboutSection() {
   const { staff, firmInfo } = useApp();
@@ -29,81 +29,102 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-[#090b10] border-b border-white/[0.08] scroll-mt-16 text-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Top Corporate Narrative */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
-          <div className="lg:col-span-6 space-y-6">
-            <span className="text-[11px] font-mono text-emerald-400 uppercase tracking-widest block">
-              Kurumsal Kimlik & Akreditasyon
-            </span>
+    <section id="about" className="py-20 md:py-28 bg-white border-y border-line scroll-mt-24">
+      <div className="container-x">
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              Mali müşavirliği bir yük olmaktan çıkarıp <br />
-              <span className="font-editorial italic font-normal text-slate-200">büyüme kaldıracına</span> dönüştürüyoruz.
+        {/* Corporate Narrative */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+          <div className="lg:col-span-6 space-y-6">
+            <p className="eyebrow">06 / Kurumsal Kimlik & Akreditasyon</p>
+
+            <h2 className="font-serif text-ink-950 text-3xl sm:text-4xl md:text-[44px] leading-[1.08] tracking-tight">
+              Mali müşavirliği bir yük olmaktan çıkarıp <em className="text-pine-700">büyüme kaldıracına</em> dönüştürüyoruz.
             </h2>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              2016 yılında kurulan <strong>VELOX Mali Müşavirlik & Bağımsız Denetim A.Ş.</strong>, köklü vergi hukuku tecrübesini yeni nesil bulut teknolojileri ve analitik raporlama araçlarıyla harmanlayan öncü bir kurumdur.
+            <p className="text-sm text-ink-600 leading-relaxed">
+              2016 yılında kurulan <strong className="text-ink-950">{firmInfo.legalName}</strong>,
+              köklü vergi hukuku tecrübesini yeni nesil bulut teknolojileri ve analitik raporlama
+              araçlarıyla harmanlayan öncü bir kurumdur.
+            </p>
+            <p className="text-sm text-ink-500 leading-relaxed">
+              TÜRMOB ve KGK Bağımsız Denetim yetkilerine sahip 28 kişilik uzman kadromuzla;
+              teknoloji girişimlerinden e-ihracatçılara, KOBİ'lerden holding iştiraklerine kadar
+              geniş bir portföye stratejik danışmanlık sağlıyoruz.
             </p>
 
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              TÜRMOB ve KGK Bağımsız Denetim yetkilerine sahip 28 kişilik uzman kadromuzla; teknoloji girişimlerinden e-ihracatçılara, KOBİ'lerden holding iştiraklerine kadar geniş bir portföye stratejik danışmanlık sağlıyoruz.
-            </p>
+            {/* Licenses */}
+            <div className="space-y-2.5 pt-2">
+              {firmInfo.licenses.map((lic) => (
+                <div key={lic.no} className="flex items-center gap-3 p-3.5 rounded-xl bg-paper-50 border border-line">
+                  <ShieldCheck className="w-4 h-4 text-pine-700 shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[13px] font-semibold text-ink-950 truncate">{lic.title}</p>
+                    <p className="text-[10px] font-mono text-ink-400 mt-0.5">Ruhsat / Yetki No: {lic.no}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
 
-            <div className="grid grid-cols-2 gap-4 pt-2 font-mono">
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                <span className="text-2xl font-black text-white block">48+</span>
-                <span className="text-[11px] text-slate-400">Kurumsal Mükellef</span>
+            {/* Offices */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="p-4 rounded-xl border border-line">
+                <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-ink-400 flex items-center gap-1.5">
+                  <MapPin className="w-3 h-3 text-pine-700" /> Ana Ofis
+                </span>
+                <p className="text-xs text-ink-700 mt-1.5 leading-relaxed">{firmInfo.hq}</p>
               </div>
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                <span className="text-2xl font-black text-emerald-400 block">₺1.84 Mr+</span>
-                <span className="text-[11px] text-slate-400">Yönetilen Hacim</span>
+              <div className="p-4 rounded-xl border border-line">
+                <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-ink-400 flex items-center gap-1.5">
+                  <MapPin className="w-3 h-3 text-pine-700" /> Teknopark Ofisi
+                </span>
+                <p className="text-xs text-ink-700 mt-1.5 leading-relaxed">{firmInfo.technoparkOffice}</p>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Standards Grid */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Standards Grid */}
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 self-start">
             {standards.map((st, i) => {
               const Icon = st.icon;
               return (
-                <div key={i} className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2 hover:bg-white/[0.04] transition-all">
-                  <div className="w-8 h-8 rounded-lg bg-white/[0.06] text-white flex items-center justify-center">
+                <div key={i} className="card card-hover p-5 space-y-3">
+                  <div className="w-9 h-9 rounded-lg bg-pine-50 border border-pine-100 text-pine-700 flex items-center justify-center">
                     <Icon className="w-4 h-4" />
                   </div>
-                  <h4 className="font-bold text-sm text-white">{st.title}</h4>
-                  <p className="text-xs text-slate-400 leading-relaxed">{st.desc}</p>
+                  <h4 className="font-bold text-sm text-ink-950">{st.title}</h4>
+                  <p className="text-xs text-ink-500 leading-relaxed">{st.desc}</p>
                 </div>
               );
             })}
           </div>
-
         </div>
 
-        {/* Leadership & Expert CPA Team */}
-        <div className="mt-20 pt-12 border-t border-white/[0.08]">
+        {/* Team */}
+        <div className="mt-20 pt-12 border-t border-line">
           <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">Sorumlu Ortaklar</span>
-            <h3 className="text-2xl font-extrabold text-white">Kıdemli Danışman Kadromuz</h3>
-            <p className="text-xs text-slate-400">Her mükellefimize özel atanan lisanslı SMMM ve YMM uzmanlarımız.</p>
+            <p className="eyebrow">Sorumlu Ortaklar</p>
+            <h3 className="font-serif text-3xl text-ink-950">Kıdemli Danışman Kadromuz</h3>
+            <p className="text-sm text-ink-500">
+              Her mükellefimize özel atanan lisanslı SMMM ve YMM uzmanlarımız.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {staff.map((st) => (
-              <div key={st.id} className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] text-center space-y-3 hover:bg-white/[0.04] transition-all">
+              <div key={st.id} className="card card-hover p-5 text-center space-y-3">
                 <img
                   src={st.avatar}
                   alt={st.name}
-                  className="w-16 h-16 rounded-xl object-cover mx-auto border border-white/10 shadow-sm"
+                  className="w-16 h-16 rounded-xl object-cover mx-auto border border-line"
                 />
                 <div>
-                  <h4 className="font-bold text-sm text-white">{st.name}</h4>
-                  <p className="text-[11px] text-slate-300 font-mono mt-0.5">{st.role}</p>
-                  <p className="text-[10px] text-slate-400 mt-1 font-sans">{st.specialty}</p>
-                  <span className="text-[9px] text-slate-500 font-mono block mt-2">{st.license}</span>
+                  <h4 className="font-bold text-sm text-ink-950">{st.name}</h4>
+                  <p className="text-[11px] font-mono text-pine-700 mt-0.5">{st.role}</p>
+                  <p className="text-[11px] text-ink-400 mt-1 leading-relaxed">{st.specialty}</p>
+                  {st.license && (
+                    <span className="text-[9px] text-ink-400 font-mono block mt-2">{st.license}</span>
+                  )}
                 </div>
               </div>
             ))}

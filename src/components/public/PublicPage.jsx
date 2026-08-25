@@ -1,22 +1,34 @@
 import React from 'react';
-import { ArrowUpRight, Check, ChevronRight, FileText, BarChart3, CalendarDays, ShieldCheck, Menu } from 'lucide-react';
-import { useApp } from '../../context/AppContext';
+import PublicNavbar from './PublicNavbar';
+import HeroSection from './HeroSection';
+import TrustStatsBar from './TrustStatsBar';
+import ServicesSection from './ServicesSection';
+import WhyUsSection from './WhyUsSection';
+import PortalShowcaseSection from './PortalShowcaseSection';
+import TaxCalculatorSection from './TaxCalculatorSection';
+import BlogSection from './BlogSection';
+import TestimonialsSection from './TestimonialsSection';
+import AboutSection from './AboutSection';
+import ContactSection from './ContactSection';
+import PublicFooter from './PublicFooter';
 
-const services = [
-  { n:'01', title:'Vergi & Mali Müşavirlik', text:'Beyanname, KDV ve mevzuat süreçlerini yalnızca takip etmiyor; şirketinizin kararlarına ışık tutacak şekilde yönetiyoruz.', tag:'Süreklilik / Kontrol', icon:FileText },
-  { n:'02', title:'Teşvik & Vergi Avantajları', text:'Hak ettiğiniz teşvikleri görünür kılıyor, fırsatları güvenli ve ölçülebilir bir planla hayata geçiriyoruz.', tag:'Fırsat / Planlama', icon:ShieldCheck },
-  { n:'03', title:'Finansal Yönetim', text:'Nakit akışınız, kârlılığınız ve gelecek planınız için anlaşılır, zamanında ve eyleme dönük raporlar.', tag:'Görünürlük / Büyüme', icon:BarChart3 },
-];
-
-function ReportVisual(){ return <div className="report-scene"><div className="report-sheet"><div className="sheet-top"><span>VELOX / FİNANSAL RAPOR</span><span>30.06.2024</span></div><h3>İşletme performansı</h3><div className="big-number">₺ 842.600 <small>+18,4%</small></div><div className="bars">{[35,48,43,67,59,82,72,94,78,100].map((h,i)=><i key={i} style={{height:`${h}%`}} />)}</div><div className="sheet-foot"><span>Net nakit pozisyonu</span><b>₺ 216.480</b></div></div><div className="note-card"><CalendarDays size={16}/><span>Yaklaşan yükümlülük<br/><b>Muhtasar · 26 gün</b></span></div></div> }
-
-export default function PublicPage(){ const {setIsConsultationOpen} = useApp(); return <div className="velox-site">
-  <header className="site-nav"><a className="brand" href="#top">VELOX <em>Mali Müşavirlik</em></a><nav>{['Hizmetler','Çözümler','Velox Dijital','Mevzuat','Hakkımızda'].map(x=><a href={'#'+x.toLowerCase().replaceAll(' ','-')} key={x}>{x}</a>)}</nav><div className="nav-actions"><button className="login">Müşteri Girişi <ArrowUpRight size={14}/></button><button className="nav-cta" onClick={()=>setIsConsultationOpen(true)}>Ön Görüşme</button></div><Menu className="mobile-menu"/></header>
-  <main id="top"><section className="hero wrap"><div className="hero-copy"><p className="eyebrow">KURUMSAL MALİ MÜŞAVİRLİK <span>—</span> 2009'DAN BERİ</p><h1>Finansal tarafınızı<br/><i>güvenle</i> yönetin.</h1><p className="lead">Mali tabloları raporlamaktan fazlasını yapıyoruz. Şirketinizin finansal kararlarını daha net, daha hızlı ve daha kontrollü hale getiriyoruz.</p><div className="hero-actions"><button className="primary" onClick={()=>setIsConsultationOpen(true)}>Ücretsiz Ön Görüşme <ArrowUpRight size={17}/></button><a className="text-link" href="#hizmetler">Hizmetlerimizi Keşfet <ChevronRight size={16}/></a></div><p className="fine">İlk görüşme ücretsizdir · Verileriniz gizlilikle korunur</p></div><ReportVisual/></section>
-  <section className="trust"><div className="wrap trust-inner"><div><p className="eyebrow">BİRLİKTE DAHA NET</p><h2>Finansal tarafınızı<br/><i>bize bırakın.</i></h2></div><div className="stats">{[['15+','Yıllık deneyim'],['120+','Aktif işletme'],['%100','Dijital süreç'],['24/7','Finansal görünürlük']].map(([n,l])=><div className="stat" key={l}><strong>{n}</strong><span>{l}</span></div>)}</div></div></section>
-  <section className="services wrap" id="hizmetler"><div className="section-intro"><p className="eyebrow">02 / UZMANLIK ALANLARIMIZ</p><h2>Rakamların ötesinde,<br/><i>sağlam bir yön.</i></h2><p>İşletmenizin bugünkü ihtiyaçlarıyla yarının hedeflerini aynı masada buluşturuyoruz.</p></div><div className="service-list">{services.map(({n,title,text,tag,icon:Icon})=><article className="service-row" key={n}><div className="service-n">{n}</div><Icon className="service-icon" size={26}/><div className="service-main"><h3>{title}</h3><p>{text}</p></div><span className="service-tag">{tag}</span><ArrowUpRight className="row-arrow" size={20}/></article>)}</div></section>
-  <section className="console-section" id="velox-dijital"><div className="wrap console-grid"><div><p className="eyebrow light">03 / VELOX DİJİTAL</p><h2>Şirketinizin finansı,<br/><i>tek bir bakışta.</i></h2><p className="light-copy">Belge aramakla, tablo birleştirmekle geçen zamanı geride bırakın. Velox Konsol, önemli olanı doğru zamanda önünüze getirir.</p><a className="console-link" href="#iletisim">Konsolu keşfedin <ArrowUpRight size={16}/></a></div><div className="dashboard"><div className="dash-side"><b>VELOX</b><span className="active">Genel Bakış</span><span>Finans</span><span>Vergiler</span><span>Belgeler</span><span>Raporlar</span></div><div className="dash-main"><div className="dash-head"><span>Genel Bakış</span><small>Haziran 2024 · Güncel</small></div><div className="dash-metrics"><div><small>Toplam gelir</small><b>₺ 842.600</b><em>↑ 18,4%</em></div><div><small>Nakit dengesi</small><b>₺ 216.480</b><em>↑ 6,2%</em></div></div><div className="chart"><small>NAKİT AKIŞI <span>Son 6 ay</span></small><div className="chart-line"><svg viewBox="0 0 420 100" preserveAspectRatio="none"><path d="M0 78 C40 70 48 84 88 58 S150 72 188 40 S250 54 280 35 S340 46 420 10"/></svg></div></div><div className="upcoming"><span>Yaklaşan yükümlülükler</span><b>3</b><small>İncele →</small></div></div></div></div></section>
-  <section className="insight wrap"><div className="insight-label"><span>04</span><p>VELOX AI / FİNANSAL ZEKA</p></div><div><h2>Veriniz artık sadece kayıt altında değil.<br/><i>Anlamlandırılıyor.</i></h2><div className="insight-card"><span className="green-dot"/><div><small>Finansal içgörü · 08:42</small><p>Bu ay işletme giderleriniz geçen aya göre <b>%12 arttı.</b> Artışın ana nedeni operasyonel giderlerdeki yükseliş.</p></div><Check size={20}/></div></div></section>
-  <section className="transform wrap"><div className="transform-head"><p className="eyebrow">05 / DÖNÜŞÜM</p><h2>Dağınık süreçlerden<br/><i>tek merkezli yönetime.</i></h2></div><div className="before-after"><div><small>ÖNCE</small>{['Excel dosyaları','WhatsApp trafiği','E-posta zincirleri','Kağıt belgeler'].map(x=><p key={x}>× <span>{x}</span></p>)}</div><div className="after"><small>SONRA / VELOX</small>{['Tek panel','Dijital belge akışı','Zamanında raporlama','Finansal görünürlük'].map(x=><p key={x}>✓ <span>{x}</span></p>)}</div></div></section>
-  <section className="contact" id="iletisim"><div className="wrap contact-inner"><p className="eyebrow light">BİR SONRAKİ ADIM</p><h2>İşinizi büyütürken,<br/><i>finansınızı bize bırakın.</i></h2><button className="primary" onClick={()=>setIsConsultationOpen(true)}>Ücretsiz Ön Görüşme <ArrowUpRight size={17}/></button><p className="fine light-copy">hello@veloxmali.com · İstanbul / Türkiye</p></div></section></main><footer className="footer wrap"><b>VELOX <span>Mali Müşavirlik</span></b><small>© 2024 Velox Mali. Tüm hakları saklıdır.</small><a href="#top">Başa dön ↑</a></footer>
-</div>}
+export default function PublicPage() {
+  return (
+    <div className="bg-paper-100">
+      <PublicNavbar />
+      <main id="top">
+        <HeroSection />
+        <TrustStatsBar />
+        <ServicesSection />
+        <WhyUsSection />
+        <PortalShowcaseSection />
+        <TaxCalculatorSection />
+        <BlogSection />
+        <TestimonialsSection />
+        <AboutSection />
+        <ContactSection />
+      </main>
+      <PublicFooter />
+    </div>
+  );
+}

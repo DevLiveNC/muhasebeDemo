@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Plus } from 'lucide-react';
+import { Plus, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export default function AdminCRMLeads() {
@@ -17,7 +17,7 @@ export default function AdminCRMLeads() {
     phone: '',
     companyType: 'Anonim Şirket (A.Ş.)',
     sector: 'Yazılım',
-    estimatedMonthly: '₺28,000',
+    estimatedMonthly: '₺28.000',
     employeeCount: '15 Personel',
     stage: 'Yeni Başvuru',
     appliedDate: 'Bugün',
@@ -29,7 +29,7 @@ export default function AdminCRMLeads() {
     { id: 'Ön Görüşme Yapıldı' },
     { id: 'Teklif Gönderildi' },
     { id: 'Sözleşme Aşaması' },
-    { id: 'Kazanıldı' },
+    { id: 'Kazanıldı' }
   ];
 
   const handleMoveStage = (leadId, nextStage) => {
@@ -51,215 +51,252 @@ export default function AdminCRMLeads() {
     addToast('Yeni Müşteri Adayı Eklendi', `${newLead.companyName} CRM hattına işlendi.`, 'success');
   };
 
+  const stageIndex = (stageName) => stages.findIndex((s) => s.id === stageName);
+
   return (
-    <div className="space-y-6 animate-fade-in text-xs sm:text-sm">
-      
+    <div className="space-y-6 animate-fade-in">
+
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">CRM & Satış Hattı</h1>
-          <p className="text-xs text-slate-400 font-mono">Yeni potansiyel mükellefler, teklif ve sözleşme aşamaları</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">CRM & Satış Hattı</h1>
+          <p className="text-xs text-ink-400 mt-1">Yeni mükellef adayları, teklif aşamaları ve potansiyel gelir hattı</p>
         </div>
 
-        <div className="flex items-center space-x-2">
-          <div className="flex bg-black/40 p-1 rounded-lg border border-white/10 font-mono text-[11px]">
-            <button
-              onClick={() => setViewMode('kanban')}
-              className={cn("px-3 py-1 rounded transition-colors", viewMode === 'kanban' ? "bg-white text-black font-bold" : "text-slate-400")}
-            >
-              Kanban Pano
-            </button>
-            <button
-              onClick={() => setViewMode('list')}
-              className={cn("px-3 py-1 rounded transition-colors", viewMode === 'list' ? "bg-white text-black font-bold" : "text-slate-400")}
-            >
-              Liste
-            </button>
+        <div className="flex items-center gap-2">
+          <div className="flex items-center bg-paper-200 p-0.5 rounded-lg border border-line">
+            {['kanban', 'list'].map((mode) => (
+              <button
+                key={mode}
+                onClick={() => setViewMode(mode)}
+                className={cn(
+                  'px-3 py-1 rounded-md text-xs font-medium transition-colors',
+                  viewMode === mode ? 'bg-white text-ink-950 shadow-sm font-semibold' : 'text-ink-400 hover:text-ink-800'
+                )}
+              >
+                {mode === 'kanban' ? 'Kanban' : 'Liste'}
+              </button>
+            ))}
           </div>
-
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="px-4 py-2 bg-white hover:bg-slate-200 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-luxury transition-all"
+            className="btn btn-primary btn-sm"
           >
-            <Plus className="w-3.5 h-3.5 text-black" />
-            <span>Yeni Lead Ekle</span>
+            <Plus className="w-3.5 h-3.5" />
+            <span>Yeni Lead</span>
           </button>
         </div>
       </div>
 
-      {/* Kanban View */}
-      {viewMode === 'kanban' && (
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 overflow-x-auto pb-4">
-          {stages.map((stage) => {
-            const stageLeads = leadList.filter((l) => l.stage === stage.id);
-            return (
-              <div key={stage.id} className="p-3 rounded-2xl obsidian-card border border-white/[0.08] flex flex-col space-y-3 min-w-[240px]">
-                
-                <div className="flex items-center justify-between pb-2 border-b border-white/[0.06] text-xs font-mono">
-                  <span className="font-bold text-white text-[11px]">{stage.id}</span>
-                  <span className="px-2 py-0.5 rounded bg-white/10 text-slate-300 font-bold text-[10px]">
-                    {stageLeads.length}
-                  </span>
-                </div>
+      {viewMode === 'kanban' ? (
+        <div className="overflow-x-auto -mx-4 px-4 pb-2">
+          <div className="flex gap-4 min-w-[900px]">
+            {stages.map((stage) => {
+              const stageLeads = leadList.filter((l) => l.stage === stage.id);
+              return (
+                <div key={stage.id} className="w-[240px] shrink-0 bg-paper-200/60 rounded-xl p-3 space-y-3">
+                  <div className="flex items-center justify-between px-1.5 pt-1">
+                    <span className="text-xs font-bold text-ink-800">{stage.id}</span>
+                    <span className="text-[10px] font-mono font-bold bg-white border border-line text-ink-500 px-1.5 py-0.5 rounded-full">
+                      {stageLeads.length}
+                    </span>
+                  </div>
 
-                <div className="space-y-3 flex-1">
-                  {stageLeads.map((lead) => (
-                    <div
-                      key={lead.id}
-                      className="p-3.5 rounded-xl bg-black/40 border border-white/[0.06] space-y-2 hover:border-white/20 transition-all"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono text-slate-400 bg-white/[0.04] px-1.5 py-0.5 rounded border border-white/[0.06]">
-                          {lead.sector}
-                        </span>
-                        <span className="font-bold text-emerald-400 font-mono text-xs">{lead.estimatedMonthly}</span>
+                  {stageLeads.map((lead) => {
+                    const idx = stageIndex(lead.stage);
+                    return (
+                      <div key={lead.id} className="card p-3.5 space-y-2.5">
+                        <div>
+                          <h4 className="font-bold text-[13px] text-ink-950 leading-snug">{lead.companyName}</h4>
+                          <p className="text-[11px] text-ink-400 mt-0.5">
+                            {lead.contactPerson} · {lead.sector}
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between text-[11px]">
+                          <span className="font-mono font-bold text-pine-700">{lead.estimatedMonthly} / ay</span>
+                          <span className="font-mono text-ink-400">{lead.appliedDate}</span>
+                        </div>
+                        <div className="flex items-center gap-1 pt-1 border-t border-line">
+                          <button
+                            disabled={idx === 0}
+                            onClick={() => handleMoveStage(lead.id, stages[idx - 1].id)}
+                            className="p-1.5 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                            title="Önceki aşama"
+                          >
+                            <ChevronLeft className="w-3.5 h-3.5" />
+                          </button>
+                          <button
+                            disabled={idx === stages.length - 1}
+                            onClick={() => handleMoveStage(lead.id, stages[idx + 1].id)}
+                            className="p-1.5 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                            title="Sonraki aşama"
+                          >
+                            <ChevronRight className="w-3.5 h-3.5" />
+                          </button>
+                          <span className="text-[10px] text-ink-300 ml-auto">{lead.employeeCount}</span>
+                        </div>
                       </div>
-
-                      <h4 className="font-bold text-white text-xs leading-snug">{lead.companyName}</h4>
-                      <p className="text-[11px] text-slate-400">Yetkili: {lead.contactPerson}</p>
-
-                      <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between text-[10px] font-mono">
-                        <span className="text-slate-500">{lead.appliedDate}</span>
-
-                        <select
-                          value={lead.stage}
-                          onChange={(e) => handleMoveStage(lead.id, e.target.value)}
-                          className="bg-black/60 border border-white/10 rounded px-1.5 py-0.5 text-[10px] text-slate-300 font-medium"
-                        >
-                          {stages.map((s) => (
-                            <option key={s.id} value={s.id}>{s.id}</option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
 
                   {stageLeads.length === 0 && (
-                    <div className="py-8 text-center text-slate-600 text-xs font-mono">
-                      Bu aşamada lead yok
+                    <div className="p-4 rounded-lg border border-dashed border-line-strong text-center text-[11px] text-ink-400">
+                      Lead yok
                     </div>
                   )}
                 </div>
-
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      )}
-
-      {/* List View */}
-      {viewMode === 'list' && (
-        <div className="p-1 rounded-2xl obsidian-card border border-white/[0.08] overflow-hidden shadow-cinema">
-          <table className="w-full text-left text-xs font-mono">
-            <thead className="bg-white/[0.03] text-slate-400 uppercase text-[10px] border-b border-white/[0.06]">
-              <tr>
-                <th className="p-3.5">Şirket Adı</th>
-                <th className="p-3.5">Yetkili</th>
-                <th className="p-3.5">Sektör & Personel</th>
-                <th className="p-3.5">Tahmini Ücret</th>
-                <th className="p-3.5">Aşama</th>
-                <th className="p-3.5">Tarih</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/[0.04]">
-              {leadList.map((lead) => (
-                <tr key={lead.id} className="hover:bg-white/[0.02] transition-colors">
-                  <td className="p-3.5 font-bold text-white font-sans">{lead.companyName}</td>
-                  <td className="p-3.5 text-slate-300">{lead.contactPerson} ({lead.phone})</td>
-                  <td className="p-3.5 text-slate-400">{lead.sector} · {lead.employeeCount}</td>
-                  <td className="p-3.5 font-bold text-emerald-400">{lead.estimatedMonthly} / ay</td>
-                  <td className="p-3.5">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-white/10 text-slate-200">
-                      {lead.stage}
-                    </span>
-                  </td>
-                  <td className="p-3.5 text-slate-500">{lead.appliedDate}</td>
+      ) : (
+        <div className="card overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left min-w-[720px]">
+              <thead>
+                <tr className="border-b border-line bg-paper-50">
+                  <th className="th">Şirket</th>
+                  <th className="th">Yetkili</th>
+                  <th className="th">Aşama</th>
+                  <th className="th text-right">Tahmini Aylık</th>
+                  <th className="th">Başvuru</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-line">
+                {leadList.map((lead) => (
+                  <tr key={lead.id} className="hover:bg-paper-50 transition-colors">
+                    <td className="td font-semibold text-ink-950">{lead.companyName}</td>
+                    <td className="td text-ink-500">{lead.contactPerson}</td>
+                    <td className="td">
+                      <select
+                        value={lead.stage}
+                        onChange={(e) => handleMoveStage(lead.id, e.target.value)}
+                        className="select w-auto py-1.5 text-xs"
+                      >
+                        {stages.map((s) => (
+                          <option key={s.id} value={s.id}>{s.id}</option>
+                        ))}
+                      </select>
+                    </td>
+                    <td className="td font-mono font-semibold text-pine-700 text-right">{lead.estimatedMonthly}</td>
+                    <td className="td font-mono text-xs text-ink-400">{lead.appliedDate}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
       {/* Add Lead Modal */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className="w-full max-w-md bg-[#0e1119] rounded-2xl p-6 space-y-4 shadow-2xl border border-white/10 animate-slide-down">
-            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-              <h3 className="font-bold text-base text-white">Yeni Müşteri Adayı Ekle</h3>
-              <button onClick={() => setIsAddModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-ink-950/50 backdrop-blur-sm animate-fade-in">
+          <div
+            className="w-full max-w-md bg-white rounded-2xl shadow-pop border border-line overflow-hidden animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-6 py-4 border-b border-line flex items-center justify-between">
+              <h3 className="font-bold text-ink-950 text-[15px]">Yeni Müşteri Adayı</h3>
+              <button
+                onClick={() => setIsAddModalOpen(false)}
+                className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+                title="Kapat"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
 
-            <form onSubmit={handleAddLead} className="space-y-3 text-xs">
+            <form onSubmit={handleAddLead} className="p-6 space-y-4 max-h-[65vh] overflow-y-auto">
               <div>
-                <label className="block font-medium text-slate-300 mb-1">Şirket Adı *</label>
+                <label className="label">Şirket Ünvanı *</label>
                 <input
                   type="text"
                   required
-                  placeholder="Örn: Quantum Finans Ltd."
+                  placeholder="Örn: Solvy Enerji Teknolojileri A.Ş."
                   value={newLead.companyName}
                   onChange={(e) => setNewLead({ ...newLead, companyName: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-sans"
+                  className="input"
+                  autoFocus
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-medium text-slate-300 mb-1">Yetkili Kişi</label>
+                  <label className="label">İletişim Kişisi</label>
                   <input
                     type="text"
-                    placeholder="Ad Soyad"
                     value={newLead.contactPerson}
                     onChange={(e) => setNewLead({ ...newLead, contactPerson: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-sans"
+                    className="input"
                   />
                 </div>
                 <div>
-                  <label className="block font-medium text-slate-300 mb-1">Telefon</label>
+                  <label className="label">Unvanı</label>
                   <input
                     type="text"
-                    placeholder="0532..."
-                    value={newLead.phone}
-                    onChange={(e) => setNewLead({ ...newLead, phone: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-mono"
+                    value={newLead.title}
+                    onChange={(e) => setNewLead({ ...newLead, title: e.target.value })}
+                    className="input"
                   />
                 </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block font-medium text-slate-300 mb-1">Sektör</label>
+                  <label className="label">E-Posta</label>
+                  <input
+                    type="email"
+                    value={newLead.email}
+                    onChange={(e) => setNewLead({ ...newLead, email: e.target.value })}
+                    className="input"
+                  />
+                </div>
+                <div>
+                  <label className="label">Telefon</label>
+                  <input
+                    type="tel"
+                    value={newLead.phone}
+                    onChange={(e) => setNewLead({ ...newLead, phone: e.target.value })}
+                    className="input"
+                  />
+                </div>
+                <div>
+                  <label className="label">Sektör</label>
                   <input
                     type="text"
                     value={newLead.sector}
                     onChange={(e) => setNewLead({ ...newLead, sector: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white"
+                    className="input"
                   />
                 </div>
                 <div>
-                  <label className="block font-medium text-slate-300 mb-1">Tahmini Ücret</label>
+                  <label className="label">Tahmini Aylık Gelir</label>
                   <input
                     type="text"
                     value={newLead.estimatedMonthly}
                     onChange={(e) => setNewLead({ ...newLead, estimatedMonthly: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white font-mono"
+                    className="input font-mono"
                   />
                 </div>
               </div>
 
-              <div className="pt-2 flex justify-end space-x-2">
-                <button
-                  type="button"
-                  onClick={() => setIsAddModalOpen(false)}
-                  className="px-4 py-2 bg-white/[0.04] text-slate-300 rounded-lg"
+              <div>
+                <label className="label">Başlangıç Aşaması</label>
+                <select
+                  value={newLead.stage}
+                  onChange={(e) => setNewLead({ ...newLead, stage: e.target.value })}
+                  className="select"
                 >
-                  İptal
+                  {stages.map((s) => (
+                    <option key={s.id} value={s.id}>{s.id}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="flex items-center justify-end gap-2 pt-1">
+                <button type="button" onClick={() => setIsAddModalOpen(false)} className="btn btn-ghost btn-sm">
+                  Vazgeç
                 </button>
-                <button
-                  type="submit"
-                  className="px-5 py-2 bg-white text-black font-bold uppercase tracking-wider rounded-lg shadow-sm"
-                >
-                  Leadi Kaydet
+                <button type="submit" className="btn btn-primary btn-sm">
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Lead'i Kaydet</span>
                 </button>
               </div>
             </form>

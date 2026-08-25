@@ -6,65 +6,64 @@ export default function BlogSection() {
   const { blogPosts, setSelectedBlogForReader } = useApp();
 
   return (
-    <section id="blog" className="py-20 md:py-28 bg-[#08090d] border-b border-white/[0.08] scroll-mt-16 text-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section id="blog" className="py-20 md:py-28 bg-white border-y border-line scroll-mt-24">
+      <div className="container-x">
+
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/[0.08]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-line">
           <div className="max-w-2xl space-y-3">
-            <span className="text-[11px] font-mono text-emerald-400 uppercase tracking-widest block">
-              Mevzuat & Vergi Analizleri
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              Şirketinizi geleceğe taşıyacak <br />
-              <span className="font-editorial italic font-normal text-slate-200">mali ve vergisel kılavuzlar.</span>
+            <p className="eyebrow">04 / Mevzuat & Vergi Analizleri</p>
+            <h2 className="font-serif text-ink-950 text-3xl sm:text-4xl md:text-[44px] leading-[1.08] tracking-tight">
+              Şirketinizi geleceğe taşıyacak <em className="text-pine-700">mali ve vergisel kılavuzlar.</em>
             </h2>
           </div>
 
-          <p className="text-xs sm:text-sm text-slate-400 max-w-sm">
-            Kıdemli SMMM ve YMM danışmanlarımız tarafından hazırlanan vergi teşvikleri ve e-dönüşüm rehberleri.
+          <p className="text-sm text-ink-500 max-w-sm leading-relaxed">
+            Kıdemli SMMM ve YMM danışmanlarımız tarafından hazırlanan güncel mevzuat analizleri,
+            teşvik kılavuzları ve uygulama notları.
           </p>
         </div>
 
-        {/* Blog Grid */}
+        {/* Posts Grid */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
           {blogPosts.map((post) => (
             <article
               key={post.id}
               onClick={() => setSelectedBlogForReader(post)}
-              className="p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.04] transition-all flex flex-col justify-between group cursor-pointer space-y-6"
+              className="card card-hover p-6 flex flex-col justify-between cursor-pointer group space-y-5"
             >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="px-2 py-0.5 rounded bg-white/[0.05] text-slate-300 border border-white/[0.08]">
-                    {post.category}
-                  </span>
-                  <span className="text-slate-400 flex items-center space-x-1">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="badge badge-pine">{post.category}</span>
+                  <span className="flex items-center gap-1 text-[11px] font-mono text-ink-400">
                     <Clock className="w-3 h-3" />
-                    <span>{post.readTime}</span>
+                    {post.readTime}
                   </span>
                 </div>
 
-                <h3 className="text-base font-bold text-white group-hover:text-slate-200 transition-colors leading-snug">
+                <h3 className="font-serif text-[20px] leading-snug text-ink-950 group-hover:text-pine-800 transition-colors">
                   {post.title}
                 </h3>
 
-                <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed">
+                <p className="text-xs text-ink-500 leading-relaxed line-clamp-3">
                   {post.summary}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                <div className="flex items-center space-x-2">
+              <div className="pt-4 border-t border-line flex items-center justify-between">
+                <div className="flex items-center gap-2 min-w-0">
                   <img
                     src={post.authorAvatar}
                     alt={post.author}
-                    className="w-6 h-6 rounded-full object-cover border border-white/10"
+                    className="w-7 h-7 rounded-full object-cover border border-line shrink-0"
                   />
-                  <span className="text-xs text-slate-300 font-medium">{post.author}</span>
+                  <div className="min-w-0">
+                    <span className="text-xs font-semibold text-ink-800 block truncate">{post.author}</span>
+                    <span className="text-[10px] font-mono text-ink-400">{post.date}</span>
+                  </div>
                 </div>
 
-                <span className="text-xs font-mono text-white flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
+                <span className="flex items-center gap-1 text-xs font-semibold text-pine-700 group-hover:gap-2 transition-all shrink-0">
                   <span>İncele</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>

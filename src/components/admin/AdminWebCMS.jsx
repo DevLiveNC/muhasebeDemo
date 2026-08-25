@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { Globe, Plus, BookOpen, MessageSquare, CheckCircle2, Star, ArrowRight, Video } from 'lucide-react';
+import { CheckCircle2, Clock, BookOpen, Star, Pencil } from 'lucide-react';
+import { cn } from '../../utils/cn';
 
 export default function AdminWebCMS() {
   const { blogPosts, testimonials, addToast } = useApp();
@@ -25,57 +26,73 @@ export default function AdminWebCMS() {
   ];
 
   return (
-    <div className="space-y-6 animate-fade-in text-xs sm:text-sm">
-      
+    <div className="space-y-6 animate-fade-in">
+
       {/* Header */}
-      <div className="pb-4 border-b border-white/[0.06]">
-        <div className="flex items-center space-x-2">
-          <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px] uppercase tracking-wider border border-emerald-500/20">
-            Web & CMS Yönetimi
-          </span>
-        </div>
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">Web Sitesi & Gelen Talep Masası</h1>
-        <p className="text-xs text-slate-400 font-mono">Gelen ön görüşme randevuları, mevzuat blog makaleleri ve mükellef referansları</p>
+      <div>
+        <span className="badge badge-neutral">Web & CMS Yönetimi</span>
+        <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight mt-2">
+          Web Sitesi & Gelen Talep Masası
+        </h1>
+        <p className="text-xs text-ink-400 mt-1">
+          Gelen ön görüşme randevuları, mevzuat blog makaleleri ve mükellef referansları
+        </p>
       </div>
 
-      {/* Incoming Consultation Requests */}
-      <div className="p-6 rounded-2xl obsidian-card border border-white/[0.08] space-y-4 shadow-cinema">
-        <div className="flex items-center justify-between">
-          <h3 className="font-bold text-white text-sm sm:text-base">Gelen Ön Görüşme Randevu Talepleri</h3>
-          <span className="text-xs font-mono text-emerald-400">2 Yeni Talep</span>
+      {/* Consultation Requests */}
+      <div className="card overflow-hidden">
+        <div className="p-5 border-b border-line flex items-center justify-between">
+          <h3 className="font-bold text-ink-950 text-sm">Gelen Ön Görüşme Randevu Talepleri</h3>
+          <span className="badge badge-success">2 Yeni Talep</span>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs font-mono">
-            <thead className="bg-white/[0.03] text-slate-400 uppercase text-[10px] border-b border-white/[0.06]">
-              <tr>
-                <th className="p-3">Şirket</th>
-                <th className="p-3">Yetkili</th>
-                <th className="p-3">Telefon</th>
-                <th className="p-3">Randevu Zamanı</th>
-                <th className="p-3">Durum</th>
-                <th className="p-3 text-right">Aksiyon</th>
+          <table className="w-full text-left min-w-[640px]">
+            <thead>
+              <tr className="border-b border-line bg-paper-50">
+                <th className="th">Şirket</th>
+                <th className="th">Yetkili</th>
+                <th className="th">Telefon</th>
+                <th className="th">Randevu Zamanı</th>
+                <th className="th">Durum</th>
+                <th className="th text-right">Aksiyon</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/[0.04]">
+            <tbody className="divide-y divide-line">
               {consultationRequests.map((req) => (
-                <tr key={req.id} className="hover:bg-white/[0.02]">
-                  <td className="p-3 font-bold text-white font-sans">{req.company}</td>
-                  <td className="p-3 text-slate-300 font-sans">{req.contact}</td>
-                  <td className="p-3 text-slate-400">{req.phone}</td>
-                  <td className="p-3 text-white font-bold">{req.date}</td>
-                  <td className="p-3">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <tr key={req.id} className="hover:bg-paper-50 transition-colors">
+                  <td className="td font-semibold text-ink-950 whitespace-nowrap">{req.company}</td>
+                  <td className="td text-ink-500 whitespace-nowrap">{req.contact}</td>
+                  <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{req.phone}</td>
+                  <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{req.date}</td>
+                  <td className="td">
+                    <span className={cn(
+                      'badge',
+                      req.status === 'Onaylandı' ? 'badge-success' : 'badge-warning'
+                    )}>
                       {req.status}
                     </span>
                   </td>
-                  <td className="p-3 text-right">
+                  <td className="td text-right">
                     <button
-                      onClick={() => addToast('Google Meet Bağlantısı İletildi', `${req.contact} yetkilisine takvim daveti yollandı.`, 'success')}
-                      className="px-3 py-1 bg-white hover:bg-slate-200 text-black font-bold uppercase tracking-wider rounded text-[11px] inline-flex items-center space-x-1"
+                      onClick={() => addToast(
+                        req.status === 'Onaylandı' ? 'Randevu Onaylandı' : 'Randevu Beklemeye Alındı',
+                        `${req.company} için randevu durumu güncellendi.`,
+                        'info'
+                      )}
+                      className="btn btn-outline btn-sm"
                     >
-                      <Video className="w-3 h-3 text-black" />
-                      <span>Meet Başlat</span>
+                      {req.status === 'Onaylandı' ? (
+                        <>
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span>Onaylı</span>
+                        </>
+                      ) : (
+                        <>
+                          <Clock className="w-3.5 h-3.5" />
+                          <span>Onayla</span>
+                        </>
+                      )}
                     </button>
                   </td>
                 </tr>
@@ -85,32 +102,74 @@ export default function AdminWebCMS() {
         </div>
       </div>
 
-      {/* Blog & Content Manager */}
-      <div className="p-6 rounded-2xl obsidian-card border border-white/[0.08] space-y-4 shadow-cinema">
-        <div className="flex items-center justify-between">
-          <h3 className="font-bold text-white text-sm sm:text-base">Yayındaki Mevzuat ve Blog Makaleleri ({blogPosts.length})</h3>
-          <button
-            onClick={() => addToast('Mevzuat Editörü Açıldı', 'Markdown ve SEO editörü hazır.', 'info')}
-            className="px-3.5 py-1.5 bg-white hover:bg-slate-200 text-black font-bold uppercase tracking-wider rounded-lg text-xs flex items-center space-x-1 shadow-luxury"
-          >
-            <Plus className="w-3.5 h-3.5 text-black" />
-            <span>Yeni Makale Yayınla</span>
-          </button>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        {/* Blog Management */}
+        <div className="card p-6 space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="font-bold text-ink-950 text-sm flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-pine-700" />
+              Mevzuat Blog Yönetimi
+            </h3>
+            <button
+              onClick={() => addToast('Yeni Makale Taslağı', 'Editörde yeni mevzuat makalesi taslağı oluşturuldu.', 'info')}
+              className="btn btn-outline btn-sm"
+            >
+              Yeni Makale
+            </button>
+          </div>
+
+          <div className="space-y-2.5">
+            {blogPosts.map((post) => (
+              <div key={post.id} className="p-4 rounded-xl border border-line bg-paper-50 space-y-1.5">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="badge badge-pine">{post.category}</span>
+                  <span className="text-[10px] font-mono text-ink-400">{post.date}</span>
+                </div>
+                <p className="font-semibold text-[13px] text-ink-950 leading-snug line-clamp-2">{post.title}</p>
+                <div className="flex items-center justify-between pt-1">
+                  <span className="text-[11px] text-ink-400">{post.author}</span>
+                  <button
+                    onClick={() => addToast('Makale Editörü', `"${post.title}" makalesi editörde açıldı.`, 'info')}
+                    className="btn btn-ghost btn-sm"
+                  >
+                    <Pencil className="w-3 h-3" />
+                    <span>Düzenle</span>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="divide-y divide-white/[0.04]">
-          {blogPosts.map((post) => (
-            <div key={post.id} className="py-3 flex items-center justify-between">
-              <div>
-                <h4 className="font-bold text-white text-xs sm:text-sm">{post.title}</h4>
-                <p className="text-xs font-mono text-slate-400">{post.category} · {post.date} · Yazar: {post.author}</p>
+        {/* Testimonials */}
+        <div className="card p-6 space-y-4 self-start">
+          <h3 className="font-bold text-ink-950 text-sm flex items-center gap-2">
+            <Star className="w-4 h-4 text-gold-500" />
+            Referans & Tanıklık Yönetimi
+          </h3>
+
+          <div className="space-y-2.5">
+            {testimonials.map((test) => (
+              <div key={test.id} className="p-4 rounded-xl border border-line bg-paper-50 space-y-2">
+                <div className="flex items-center gap-2.5">
+                  <img
+                    src={test.image}
+                    alt={test.name}
+                    className="w-8 h-8 rounded-full object-cover border border-line"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-[13px] text-ink-950 truncate">{test.name}</p>
+                    <p className="text-[11px] text-ink-400 truncate">{test.role} · {test.company}</p>
+                  </div>
+                  <span className="badge badge-success shrink-0">Yayında</span>
+                </div>
+                <p className="text-xs text-ink-500 leading-relaxed line-clamp-2">"{test.quote}"</p>
               </div>
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                Yayında
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
       </div>
 
     </div>
