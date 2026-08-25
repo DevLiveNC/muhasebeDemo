@@ -15,6 +15,8 @@ import {
 
 const AppContext = createContext(null);
 
+export { AppContext };
+
 export function AppProvider({ children }) {
   // Navigation Modes: 'public' | 'portal' | 'admin'
   const [currentMode, setCurrentMode] = useState('public');

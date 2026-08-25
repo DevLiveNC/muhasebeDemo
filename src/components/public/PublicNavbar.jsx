@@ -6,15 +6,13 @@ import {
   Building2,
   ShieldCheck,
   Calendar,
-  Sparkles
+  ArrowUpRight
 } from 'lucide-react';
-import { cn } from '../../utils/cn';
 
 export default function PublicNavbar() {
   const {
     navigateToMode,
-    setIsConsultationOpen,
-    setIsAiAssistantOpen
+    setIsConsultationOpen
   } = useApp();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,87 +31,73 @@ export default function PublicNavbar() {
     e.preventDefault();
     setMobileMenuOpen(false);
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <nav className="sticky top-11 z-40 bg-[#08090d]/90 backdrop-blur-xl border-b border-white/[0.08] transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="sticky top-11 z-40 bg-paper-50/90 backdrop-blur-md border-b border-line">
+      <div className="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          
-          {/* Brand Logo */}
-          <div className="flex items-center space-x-3">
-            <a href="#" className="flex items-center space-x-2.5 group">
-              <div className="w-8 h-8 rounded-lg bg-white text-black flex items-center justify-center font-black text-sm shadow-luxury group-hover:bg-slate-200 transition-all">
-                V
-              </div>
-              <div>
-                <div className="flex items-center space-x-1.5">
-                  <span className="font-extrabold text-base tracking-wider text-white">VELOX</span>
-                  <span className="text-[9px] px-1.5 py-0.2 bg-white/10 text-slate-300 font-mono rounded tracking-widest uppercase">
-                    DENETİM
-                  </span>
-                </div>
-                <p className="text-[9px] text-slate-400 font-mono uppercase tracking-wider -mt-0.5">YMM & Mali Müşavirlik</p>
-              </div>
-            </a>
-          </div>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-6 text-xs font-medium text-slate-300">
+          {/* Brand */}
+          <a href="#top" onClick={(e) => handleScrollTo(e, '#top')} className="flex items-center gap-3 group">
+            <div className="w-9 h-9 rounded-lg bg-pine-700 text-white font-serif font-bold flex items-center justify-center text-lg shadow-sm group-hover:bg-pine-900 transition-colors">
+              V
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-base tracking-[0.14em] text-ink-900">VELOX</span>
+                <span className="text-[9px] px-1.5 py-0.5 bg-pine-50 text-pine-700 font-mono rounded border border-pine-100 tracking-[0.18em] uppercase">
+                  Denetim
+                </span>
+              </div>
+              <p className="text-[10px] text-ink-400 -mt-0.5">YMM & Mali Müşavirlik</p>
+            </div>
+          </a>
+
+          {/* Desktop Links */}
+          <div className="hidden lg:flex items-center gap-6 text-[13px] font-medium text-ink-500">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleScrollTo(e, link.href)}
-                className="hover:text-white transition-colors py-1 relative group"
+                className="hover:text-pine-800 transition-colors py-1 relative group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-200 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pine-600 transition-all duration-200 group-hover:w-full"></span>
               </a>
             ))}
           </div>
 
           {/* Right Actions */}
-          <div className="hidden md:flex items-center space-x-3 text-xs">
+          <div className="hidden md:flex items-center gap-2">
             <button
               onClick={() => navigateToMode('portal')}
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/[0.06] font-medium transition-colors border border-white/[0.08]"
+              className="btn btn-ghost btn-sm"
             >
-              <Building2 className="w-3.5 h-3.5 text-slate-400" />
-              <span>Müşteri Konsolu</span>
+              <Building2 className="w-3.5 h-3.5 text-pine-700" />
+              <span>Müşteri Girişi</span>
+              <ArrowUpRight className="w-3 h-3" />
             </button>
-
-            <button
-              onClick={() => navigateToMode('admin')}
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/[0.06] font-medium transition-colors border border-white/[0.08]"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>SMMM Masası</span>
-            </button>
-
             <button
               onClick={() => setIsConsultationOpen(true)}
-              className="flex items-center space-x-1.5 px-4 py-1.5 rounded-lg bg-white hover:bg-slate-200 text-black font-bold text-xs uppercase tracking-wider shadow-luxury transition-all active:scale-95"
+              className="btn btn-primary btn-sm"
             >
-              <Calendar className="w-3.5 h-3.5 text-black" />
+              <Calendar className="w-3.5 h-3.5" />
               <span>Ön Görüşme Al</span>
             </button>
           </div>
 
-          {/* Mobile Menu Trigger */}
-          <div className="flex lg:hidden items-center space-x-2">
-            <button
-              onClick={() => setIsConsultationOpen(true)}
-              className="px-3 py-1.5 bg-white text-black rounded-lg text-xs font-bold"
-            >
+          {/* Mobile Trigger */}
+          <div className="flex lg:hidden items-center gap-2">
+            <button onClick={() => setIsConsultationOpen(true)} className="btn btn-primary btn-sm">
               Ön Görüşme
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10"
+              className="p-2 rounded-lg text-ink-600 hover:bg-paper-200 transition-colors"
+              title="Menü"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -122,29 +106,29 @@ export default function PublicNavbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-white/10 bg-[#0c0e14] px-4 py-4 space-y-3 animate-slide-down text-xs">
+        <div className="lg:hidden border-t border-line bg-white px-4 py-4 space-y-3 animate-slide-down">
           <div className="space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleScrollTo(e, link.href)}
-                className="block px-3 py-2 rounded-lg text-slate-200 hover:bg-white/[0.06]"
+                className="block px-3 py-2 rounded-lg text-sm text-ink-700 hover:bg-paper-100 hover:text-pine-800 transition-colors"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          <div className="pt-3 border-t border-white/10 grid grid-cols-2 gap-2">
+          <div className="pt-3 border-t border-line grid grid-cols-2 gap-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 navigateToMode('portal');
               }}
-              className="w-full py-2 rounded-lg border border-white/10 text-slate-200 font-medium flex items-center justify-center space-x-1"
+              className="btn btn-outline btn-sm w-full"
             >
               <Building2 className="w-3.5 h-3.5" />
               <span>Müşteri Konsolu</span>
@@ -154,9 +138,9 @@ export default function PublicNavbar() {
                 setMobileMenuOpen(false);
                 navigateToMode('admin');
               }}
-              className="w-full py-2 rounded-lg border border-white/10 text-slate-200 font-medium flex items-center justify-center space-x-1"
+              className="btn btn-outline btn-sm w-full"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <ShieldCheck className="w-3.5 h-3.5 text-pine-700" />
               <span>SMMM Masası</span>
             </button>
           </div>

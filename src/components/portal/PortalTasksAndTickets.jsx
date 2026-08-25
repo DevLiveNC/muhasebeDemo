@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { MessageSquare, Plus, CheckCircle2, Clock } from 'lucide-react';
+import { MessageSquare, Plus, X } from 'lucide-react';
 import { cn } from '../../utils/cn';
+
+const CATEGORIES = [
+  'Vergi & Beyanname',
+  'Bordro & Teşvik',
+  'Resmi Yazışma & Denetim',
+  'E-Dönüşüm & Belgeler',
+  'Diğer'
+];
 
 export default function PortalTasksAndTickets() {
   const { addToast } = useApp();
@@ -50,24 +58,24 @@ export default function PortalTasksAndTickets() {
     setIsModalOpen(false);
     setNewSubject('');
     setNewDetails('');
-    addToast('Talebiniz İletildi', 'Mali müşaviriniz en kısa sürede dönüş sağlayacaktır.', 'success');
+    addToast('Talebiniz İletildi', 'Mali müşaviriniz en kısa sürede dönüş yapacaktır.', 'success');
   };
 
   return (
-    <div className="space-y-6 animate-fade-in text-xs sm:text-sm">
-      
+    <div className="space-y-6 animate-fade-in">
+
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">SMMM Danışman Masası & Talepler</h1>
-          <p className="text-xs text-slate-400 font-mono">Bordro, faaliyet belgesi, mizan ve özel vergi denetim talepleriniz</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">SMMM Danışman Masası & Talepler</h1>
+          <p className="text-xs text-ink-400 mt-1">Bordro, faaliyet belgesi, mizan ve özel vergi denetim talepleriniz</p>
         </div>
 
         <button
           onClick={() => setIsModalOpen(true)}
-          className="px-4 py-2 bg-white hover:bg-slate-200 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-luxury transition-all"
+          className="btn btn-primary btn-sm shrink-0"
         >
-          <Plus className="w-3.5 h-3.5 text-black" />
+          <Plus className="w-3.5 h-3.5" />
           <span>Yeni Talep Oluştur</span>
         </button>
       </div>
@@ -75,31 +83,29 @@ export default function PortalTasksAndTickets() {
       {/* Ticket List */}
       <div className="space-y-4">
         {tickets.map((tck) => (
-          <div key={tck.id} className="p-6 rounded-2xl obsidian-card border border-white/[0.08] shadow-cinema space-y-3">
+          <div key={tck.id} className="card p-6 space-y-3.5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <div className="flex items-center space-x-2">
-                <span className="font-mono text-[10px] font-bold bg-white/[0.06] text-white px-2 py-0.5 rounded border border-white/10">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-mono text-[11px] font-semibold text-ink-500 bg-paper-100 border border-line px-2 py-0.5 rounded">
                   {tck.id}
                 </span>
-                <span className="text-xs text-slate-400 font-mono">{tck.category}</span>
+                <span className="badge badge-neutral">{tck.category}</span>
+                {tck.priority === 'Yüksek' && <span className="badge badge-warning">Yüksek Öncelik</span>}
               </div>
 
-              <div className="flex items-center space-x-2 font-mono text-[11px]">
-                <span className={cn(
-                  "px-2.5 py-0.5 rounded-full font-semibold",
-                  tck.status === 'Tamamlandı' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-white/10 text-slate-200'
-                )}>
-                  {tck.status}
+              <div className="flex items-center gap-2">
+                <span className="status text-ink-700">
+                  <span className={cn('dot', tck.status === 'Tamamlandı' ? 'dot-success' : 'dot-pine')}></span>{tck.status}
                 </span>
-                <span className="text-slate-500">{tck.createdDate}</span>
+                <span className="text-[11px] font-mono text-ink-400">{tck.createdDate}</span>
               </div>
             </div>
 
-            <h3 className="font-bold text-white text-sm sm:text-base">{tck.subject}</h3>
+            <h3 className="font-bold text-ink-900 text-[15px] leading-snug">{tck.subject}</h3>
 
-            <div className="p-3.5 bg-black/40 rounded-xl border border-white/[0.06] text-xs text-slate-300 flex items-start space-x-2.5">
-              <MessageSquare className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
-              <span><strong>Son Yanıt:</strong> {tck.lastReply}</span>
+            <div className="p-4 bg-paper-50 rounded-xl border border-line text-[13px] text-ink-600 flex items-start gap-2.5">
+              <MessageSquare className="w-4 h-4 text-pine-700 shrink-0 mt-0.5" />
+              <span><strong className="text-ink-900">Son Yanıt:</strong> {tck.lastReply}</span>
             </div>
           </div>
         ))}
@@ -107,65 +113,71 @@ export default function PortalTasksAndTickets() {
 
       {/* New Ticket Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className="w-full max-w-lg bg-[#0e1119] rounded-2xl p-6 space-y-4 shadow-2xl border border-white/10 animate-slide-down">
-            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-              <h3 className="font-bold text-base text-white">SMMM Danışmanına Talep Aç</h3>
-              <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-white">✕</button>
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-ink-950/50 backdrop-blur-sm animate-fade-in">
+          <div
+            className="w-full max-w-lg bg-white rounded-2xl shadow-pop border border-line p-6 space-y-4 animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-line pb-3.5">
+              <h3 className="font-bold text-base text-ink-900">SMMM Danışmanına Talep Aç</h3>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="p-1 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
+                title="Kapat"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
 
-            <form onSubmit={handleCreateTicket} className="space-y-3 text-xs">
+            <form onSubmit={handleCreateTicket} className="space-y-4">
               <div>
-                <label className="block font-medium text-slate-300 mb-1">Talep Başlığı *</label>
+                <label className="label">Talep Başlığı *</label>
                 <input
                   type="text"
-                  placeholder="Örn: 2026 Q2 Mizan ve Bilanço Özeti İstemi"
                   required
+                  placeholder="Örn: Faaliyet belgesi tescil onayı"
                   value={newSubject}
                   onChange={(e) => setNewSubject(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white"
+                  className="input"
+                  autoFocus
                 />
               </div>
 
               <div>
-                <label className="block font-medium text-slate-300 mb-1">Kategori</label>
+                <label className="label">Talep Kategorisi</label>
                 <select
                   value={newCategory}
                   onChange={(e) => setNewCategory(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white"
+                  className="select"
                 >
-                  <option>Bordro / SGK</option>
-                  <option>Vergi & Beyanname</option>
-                  <option>Resmi Evrak & Faaliyet Belgesi</option>
-                  <option>KDV İade Süreci</option>
-                  <option>Genel Danışmanlık</option>
+                  {CATEGORIES.map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
                 </select>
               </div>
 
               <div>
-                <label className="block font-medium text-slate-300 mb-1">Detaylı Açıklama</label>
+                <label className="label">Detay / Açıklama</label>
                 <textarea
                   rows={3}
-                  placeholder="İhtiyacınız olan resmi evrak veya analizi yazabilirsiniz..."
+                  placeholder="Talebinize ilişkin detayları yazın..."
                   value={newDetails}
                   onChange={(e) => setNewDetails(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:border-white text-white"
+                  className="input resize-none"
                 />
               </div>
 
-              <div className="pt-2 flex justify-end space-x-2">
+              <div className="flex items-center justify-end gap-2 pt-1">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 bg-white/[0.04] text-slate-300 hover:bg-white/[0.08] rounded-lg"
+                  className="btn btn-ghost btn-sm"
                 >
                   Vazgeç
                 </button>
-                <button
-                  type="submit"
-                  className="px-5 py-2 bg-white text-black font-bold uppercase tracking-wider rounded-lg shadow-sm"
-                >
-                  Talebi İlet
+                <button type="submit" className="btn btn-primary btn-sm">
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Talebi Gönder</span>
                 </button>
               </div>
             </form>

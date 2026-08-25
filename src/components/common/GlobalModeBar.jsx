@@ -1,65 +1,48 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { 
-  Globe, 
-  Building2, 
-  ShieldCheck, 
-  Sparkles, 
-  Search, 
-  Info, 
-  ArrowRight,
-  Terminal
+import {
+  Globe,
+  Building2,
+  ShieldCheck,
+  Sparkles,
+  Search,
+  Info
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export default function GlobalModeBar() {
-  const { 
-    currentMode, 
-    setCurrentMode, 
-    setIsCommandPaletteOpen, 
+  const {
+    currentMode,
+    setCurrentMode,
+    setIsCommandPaletteOpen,
     setIsAiAssistantOpen,
     setIsDemoGuideOpen
   } = useApp();
 
   const modes = [
-    {
-      id: 'public',
-      label: 'Kurumsal Web Sitesi',
-      badge: 'Vitrini & Danışmanlık',
-      icon: Globe,
-    },
-    {
-      id: 'portal',
-      label: 'Müşteri Konsolu',
-      badge: 'TechVision A.Ş.',
-      icon: Building2,
-    },
-    {
-      id: 'admin',
-      label: 'SMMM Yönetim Paneli',
-      badge: 'Yönetici Masası',
-      icon: ShieldCheck,
-    }
+    { id: 'public', label: 'Kurumsal Web Sitesi', short: 'Web', icon: Globe },
+    { id: 'portal', label: 'Müşteri Konsolu', short: 'Müşteri', icon: Building2 },
+    { id: 'admin', label: 'SMMM Yönetim Paneli', short: 'SMMM', icon: ShieldCheck }
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#f7f5ef] text-[#20352c] border-b border-[#d9d5cc] shadow-sm">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-11 text-xs">
-          
-          {/* Brand mark */}
-          <div className="flex items-center space-x-3">
-            <div className="flex items-center space-x-2 pr-3 border-r border-white/10">
-              <div className="w-5 h-5 rounded-md bg-[#173f32] text-white font-black flex items-center justify-center text-[11px] tracking-tighter">
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-line">
+      <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-11">
+
+          {/* Brand */}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 pr-3 border-r border-line">
+              <div className="w-6 h-6 rounded-md bg-pine-700 text-white font-serif font-bold flex items-center justify-center text-[13px]">
                 V
               </div>
-              <span className="font-bold tracking-widest text-[#20352c] text-[11px] uppercase font-mono hidden sm:inline">
-                VELOX <span className="text-[#7b867e] font-normal">MALİ KONSOL</span>
+              <span className="hidden sm:inline font-mono text-[10px] font-semibold tracking-[0.2em] text-ink-900 uppercase">
+                VELOX <span className="text-ink-400 font-medium">MALİ KONSOL</span>
               </span>
             </div>
 
-            {/* Mode Switcher Buttons */}
-            <div className="flex items-center bg-[#e7e5de] p-0.5 rounded-lg border border-[#d4d2ca]">
+            {/* Mode Switcher */}
+            <div className="flex items-center bg-paper-200 p-0.5 rounded-lg border border-line">
               {modes.map((mode) => {
                 const Icon = mode.icon;
                 const isActive = currentMode === mode.id;
@@ -71,22 +54,15 @@ export default function GlobalModeBar() {
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     className={cn(
-                      "flex items-center space-x-1.5 px-2.5 sm:px-3 py-1 rounded-md transition-all text-xs font-medium",
-                      isActive 
-                        ? "bg-[#173f32] text-white shadow-sm font-semibold" 
-                        : "text-[#6d786f] hover:text-[#20352c] hover:bg-white/60"
+                      'flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-md transition-all text-xs font-medium',
+                      isActive
+                        ? 'bg-pine-700 text-white shadow-sm font-semibold'
+                        : 'text-ink-500 hover:text-ink-900 hover:bg-white'
                     )}
                   >
                     <Icon className="w-3.5 h-3.5" />
                     <span className="hidden md:inline">{mode.label}</span>
-                    <span className="md:hidden">
-                      {mode.id === 'public' ? 'Web' : mode.id === 'portal' ? 'Müşteri' : 'SMMM'}
-                    </span>
-                    {isActive && (
-                      <span className="hidden xl:inline-block px-1.5 py-0.2 bg-white/10 text-[9px] rounded font-mono text-slate-300">
-                        {mode.badge}
-                      </span>
-                    )}
+                    <span className="md:hidden">{mode.short}</span>
                   </button>
                 );
               })}
@@ -94,43 +70,35 @@ export default function GlobalModeBar() {
           </div>
 
           {/* Right Tools */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
-            
-            {/* Quick Command Palette Button */}
+          <div className="flex items-center gap-2">
             <button
               onClick={() => setIsCommandPaletteOpen(true)}
-              className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 border border-white/[0.08] transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white hover:bg-paper-100 text-ink-500 border border-line-strong transition-colors"
               title="Komut Paleti (Ctrl + K)"
             >
-              <Search className="w-3.5 h-3.5 text-slate-400" />
-              <span className="hidden lg:inline text-slate-300">Arama...</span>
-              <kbd className="hidden sm:inline px-1 py-0.2 text-[9px] bg-black/60 text-slate-400 rounded border border-white/10 font-mono">
+              <Search className="w-3.5 h-3.5 text-ink-400" />
+              <span className="hidden lg:inline text-xs">Ara...</span>
+              <kbd className="hidden sm:inline px-1.5 py-0.5 text-[9px] bg-paper-200 text-ink-500 rounded border border-line font-mono">
                 ⌘K
               </kbd>
             </button>
 
-            {/* AI Assistant */}
             <button
               onClick={() => setIsAiAssistantOpen(true)}
-              className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-white text-black hover:bg-slate-200 font-semibold text-xs transition-all shadow-sm group"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-pine-700 hover:bg-pine-700 text-white font-semibold text-xs transition-all shadow-sm"
             >
-              <Sparkles className="w-3.5 h-3.5 text-slate-900" />
-              <span className="hidden sm:inline">Aura AI</span>
-              <span className="text-[9px] bg-black text-white px-1 py-0.2 rounded font-mono">
-                Zeka
-              </span>
+              <Sparkles className="w-3.5 h-3.5 text-gold-300" />
+              <span className="hidden sm:inline">VELOX AI</span>
             </button>
 
-            {/* Demo Presentation Guide */}
             <button
               onClick={() => setIsDemoGuideOpen(true)}
-              className="flex items-center space-x-1 px-2 py-1 rounded-md text-amber-400 hover:text-amber-300 hover:bg-amber-400/10 transition-colors"
+              className="hidden xl:flex items-center gap-1 px-2 py-1 rounded-md text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
               title="Sunum Rehberi"
             >
               <Info className="w-3.5 h-3.5" />
-              <span className="hidden xl:inline font-medium text-[11px]">Sunum Notları</span>
+              <span className="text-[11px] font-medium">Sunum Notları</span>
             </button>
-
           </div>
 
         </div>

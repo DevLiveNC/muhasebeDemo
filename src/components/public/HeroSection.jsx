@@ -5,293 +5,213 @@ import {
   ShieldCheck,
   CheckCircle2,
   TrendingUp,
-  FileCheck2,
-  Clock,
   Building2,
-  Zap,
-  Terminal,
-  Layers,
-  Sparkles,
-  Lock,
-  FileSpreadsheet
+  CalendarDays,
+  FileCheck2
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
+
+const BARS = [35, 48, 43, 67, 59, 82, 72, 94, 78, 100];
 
 export default function HeroSection() {
   const {
     navigateToMode,
     setIsConsultationOpen,
-    setIsAiAssistantOpen,
     firmInfo
   } = useApp();
 
-  const [activeLedgerTab, setActiveLedgerTab] = useState('journal'); // 'journal' | 'tax' | 'ocr'
+  const [activeTab, setActiveTab] = useState('performance');
 
-  const liveTransactions = [
-    {
-      code: "770.01.002",
-      account: "Bulut Sunucu ve Altyapı",
-      party: "AWS EMEA SARL (Lüksemburg)",
-      debit: "₺142,850.00",
-      credit: "-",
-      taxNote: "2 No KDV Tevkifatı (%20) İşlendi",
-      status: "GİB Doğrulandı"
-    },
-    {
-      code: "102.01.001",
-      account: "Garanti BBVA Ticari Mevduat",
-      party: "Enterprise SaaS Sözleşmesi",
-      debit: "₺650,000.00",
-      credit: "-",
-      taxNote: "Geçici 20/1 Yazılım İstisnası (%0 KDV)",
-      status: "Tahsil Edildi"
-    },
-    {
-      code: "770.02.001",
-      account: "Ar-Ge Personel Bordro İcmali",
-      party: "34 Yazılım Mühendisi",
-      debit: "₺645,000.00",
-      credit: "-",
-      taxNote: "4691 Sayılı Kanun ₺38,400 Terkin",
-      status: "SGK Onaylı"
-    }
+  const tabs = [
+    { id: 'performance', label: 'Performans' },
+    { id: 'tax', label: 'Vergi & Teşvik' },
+    { id: 'ocr', label: 'OCR Kayıtları' }
   ];
 
   return (
-    <section className="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32 bg-[#08090d] text-slate-100 border-b border-white/[0.08]">
-      
-      {/* Background Architectural Glows & Grid */}
-      <div className="absolute inset-0 bg-cinematic-grid opacity-60 pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-radial-luxury pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-[500px] h-[350px] bg-radial-emerald pointer-events-none opacity-40" />
+    <section className="relative overflow-hidden bg-paper-50 border-b border-line">
+      <div className="container-x relative pt-14 pb-20 md:pt-20 md:pb-24">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Top Regulatory Accreditation Badge */}
-        <div className="flex justify-center">
-          <div className="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs text-slate-300 backdrop-blur-md hover:border-white/20 transition-all">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="text-slate-400 font-mono text-[11px]">TÜRMOB Ruhsat No: 349102 · KGK Bağımsız Denetim</span>
-            <span className="text-white font-semibold hidden sm:inline">Kurumsal Mali Müşavirlik</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          {/* Left: Copy */}
+          <div className="space-y-6">
+            <p className="text-[11px] font-medium tracking-[0.08em] uppercase text-pine-700">
+              TÜRMOB 349102 · KGK Bağımsız Denetim · GİB Özel Entegratör
+            </p>
+            <h1 className="font-serif text-ink-900 text-[44px] sm:text-6xl md:text-[68px] leading-[1.04] tracking-tight">
+              Muhasebenizi değil,
+              <br />
+              <em className="text-pine-600">işinizi büyütmeye</em>
+              <br />
+              odaklanın.
+            </h1>
+
+            <p className="text-base sm:text-lg text-ink-500 max-w-xl leading-relaxed">
+              {firmInfo.subSlogan}
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-2">
+              <button
+                onClick={() => setIsConsultationOpen(true)}
+                className="btn btn-primary btn-md w-full sm:w-auto text-[13px]"
+              >
+                <span>Ücretsiz Mali Ön Görüşme Al</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => navigateToMode('portal')}
+                className="btn btn-outline btn-md w-full sm:w-auto text-[13px]"
+              >
+                <Building2 className="w-4 h-4 text-pine-700" />
+                <span>Müşteri Konsolunu İncele</span>
+              </button>
+              <button
+                onClick={() => navigateToMode('admin')}
+                className="btn btn-ghost btn-md w-full sm:w-auto text-[13px]"
+              >
+                <ShieldCheck className="w-4 h-4 text-pine-700" />
+                <span>SMMM Yönetim Masası</span>
+              </button>
+            </div>
+
+            {/* Trust Guarantees */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-1 text-xs font-medium text-ink-600">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-pine-600" />
+                GİB & E-Defter %100 Entegre
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-pine-600" />
+                Sıfır Ceza & Hata Güvencesi
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-pine-600" />
+                Atanmış Kıdemli SMMM Masası
+              </span>
+            </div>
           </div>
-        </div>
 
-        {/* Hero Headline & Subhead */}
-        <div className="text-center max-w-4xl mx-auto mt-8 space-y-6">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
-            Muhasebenizi değil, <br />
-            <span className="font-editorial italic font-normal text-slate-200">işinizi büyütmeye</span> odaklanın.
-          </h1>
-
-          <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-normal leading-relaxed">
-            Teknopark muafiyetleri, Ar-Ge teşvikleri, ihracat KDV iadesi ve 90 günlük nakit akışını tek bir rafine dijital konsolda yöneten yeni nesil mali müşavirlik.
-          </p>
-
-          {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-4">
-            <button
-              onClick={() => setIsConsultationOpen(true)}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white hover:bg-slate-200 text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-luxury transition-all active:scale-95"
-            >
-              <span>Ücretsiz Mali Ön Görüşme Al</span>
-              <ArrowRight className="w-4 h-4 text-black" />
-            </button>
-
-            <button
-              onClick={() => navigateToMode('portal')}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-200 font-semibold text-xs border border-white/10 flex items-center justify-center space-x-2 transition-all"
-            >
-              <Building2 className="w-4 h-4 text-slate-400" />
-              <span>Müşteri Konsolunu İncele</span>
-            </button>
-
-            <button
-              onClick={() => navigateToMode('admin')}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold text-xs border border-white/10 flex items-center justify-center space-x-2 transition-all"
-            >
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>SMMM Yönetim Masası</span>
-            </button>
-          </div>
-
-          {/* Trust Guarantees */}
-          <div className="flex flex-wrap items-center justify-center gap-y-2 gap-x-6 pt-3 text-xs text-slate-400 font-medium">
-            <span className="flex items-center space-x-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              <span>GİB & E-Defter %100 Entegre</span>
-            </span>
-            <span className="flex items-center space-x-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Sıfır Ceza & Hata Güvencesi</span>
-            </span>
-            <span className="flex items-center space-x-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Atanmış Kıdemli SMMM Masası</span>
-            </span>
-          </div>
-        </div>
-
-        {/* Cinematic Live Financial Terminal Mockup */}
-        <div className="mt-14 max-w-5xl mx-auto">
-          <div className="obsidian-card rounded-2xl p-1 shadow-cinema overflow-hidden">
-            
-            {/* Top Terminal Bar */}
-            <div className="px-4 py-3 bg-[#0d1017] rounded-t-xl flex items-center justify-between border-b border-white/[0.08] text-xs">
-              <div className="flex items-center space-x-3">
-                <div className="flex space-x-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
-                </div>
-                <div className="h-4 w-[1px] bg-white/10"></div>
-                <span className="text-slate-300 font-mono text-[11px] flex items-center space-x-1.5">
-                  <Terminal className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>velox.financial / terminal — TechVision Bilişim A.Ş.</span>
+          {/* Right: Report Visual */}
+          <div className="relative">
+            <div className="card overflow-hidden p-0 rotate-0">
+              {/* Report top bar */}
+              <div className="bg-pine-700 px-5 py-3 flex items-center justify-between">
+                <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-white/90">
+                  VELOX / Finansal Rapor
                 </span>
+                <span className="font-mono text-[10px] text-pine-200">AĞUSTOS 2026</span>
               </div>
 
-              {/* Sub Mode Switches in Terminal */}
-              <div className="flex items-center space-x-1 bg-black/50 p-1 rounded-lg border border-white/[0.06] text-[11px]">
-                <button
-                  onClick={() => setActiveLedgerTab('journal')}
-                  className={cn(
-                    "px-2.5 py-0.5 rounded font-medium transition-colors",
-                    activeLedgerTab === 'journal' ? "bg-white/15 text-white" : "text-slate-400 hover:text-white"
-                  )}
-                >
-                  Yevmiye Kayıtları
-                </button>
-                <button
-                  onClick={() => setActiveLedgerTab('tax')}
-                  className={cn(
-                    "px-2.5 py-0.5 rounded font-medium transition-colors",
-                    activeLedgerTab === 'tax' ? "bg-white/15 text-white" : "text-slate-400 hover:text-white"
-                  )}
-                >
-                  Vergi & Teşvik
-                </button>
-                <button
-                  onClick={() => setActiveLedgerTab('ocr')}
-                  className={cn(
-                    "px-2.5 py-0.5 rounded font-medium transition-colors",
-                    activeLedgerTab === 'ocr' ? "bg-white/15 text-white" : "text-slate-400 hover:text-white"
-                  )}
-                >
-                  OCR Tarayıcı
-                </button>
+              {/* Report body */}
+              <div className="p-6 sm:p-7 space-y-5">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-serif text-[22px] text-ink-900">İşletme performansı</h3>
+                  <div className="flex items-center gap-1 bg-paper-200 p-0.5 rounded-lg border border-line text-[11px]">
+                    {tabs.map((t) => (
+                      <button
+                        key={t.id}
+                        onClick={() => setActiveTab(t.id)}
+                        className={cn(
+                          'px-2.5 py-1 rounded-md font-medium transition-colors',
+                          activeTab === t.id ? 'bg-white text-pine-800 shadow-sm font-semibold' : 'text-ink-400 hover:text-ink-800'
+                        )}
+                      >
+                        {t.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="kpi-label mb-1">Net Dönem Hasılatı</p>
+                  <div className="flex items-end gap-3">
+                    <span className="font-mono text-[32px] font-semibold text-ink-900 tracking-tight leading-none">₺842.600</span>
+                    <span className="badge badge-success mb-1">
+                      <TrendingUp className="w-3 h-3" />
+                      +18,4%
+                    </span>
+                  </div>
+                </div>
+
+                {activeTab === 'performance' && (
+                  <div className="space-y-2">
+                    <div className="flex items-end gap-1.5 h-24 border-b border-line pb-0">
+                      {BARS.map((h, i) => (
+                        <div
+                          key={i}
+                          style={{ height: `${h}%` }}
+                          className={cn(
+                            'flex-1 rounded-t-sm transition-colors',
+                            i % 3 === 1 ? 'bg-pine-600' : 'bg-pine-200'
+                          )}
+                        />
+                      ))}
+                    </div>
+                    <div className="flex justify-between font-mono text-[9px] text-ink-300">
+                      <span>OCA</span><span>ŞUB</span><span>MAR</span><span>NİS</span><span>MAY</span>
+                      <span>HZA</span><span>TEM</span><span>AGU</span><span>EYL</span><span>EKI</span>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === 'tax' && (
+                  <div className="space-y-2">
+                    {[
+                      { label: '4691 Teknopark Kurumlar İstisnası', value: '₺38.400 / ay', ok: true },
+                      { label: 'KDV Geçici 20/1 Yazılım İstisnası', value: '%0 KDV', ok: true },
+                      { label: 'Ar-Ge Bordro Stopaj Terkini', value: '34 personel', ok: true }
+                    ].map((row, i) => (
+                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-paper-50 border border-line text-xs">
+                        <span className="text-ink-600 font-medium">{row.label}</span>
+                        <span className="font-mono font-semibold text-pine-800 flex items-center gap-1.5">
+                          <FileCheck2 className="w-3.5 h-3.5 text-success" />
+                          {row.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {activeTab === 'ocr' && (
+                  <div className="space-y-2">
+                    {[
+                      { file: 'AWS_EMEA_SARL_Temmuz.pdf', code: '770.01 Bulut Sunucu', amt: '₺142.850' },
+                      { file: 'Garanti_Ekstre_20.08.pdf', code: '102.01 Ticari Mevduat', amt: '₺650.000' }
+                    ].map((row, i) => (
+                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-paper-50 border border-line text-xs">
+                        <div className="min-w-0">
+                          <p className="font-mono text-[11px] text-ink-900 truncate">{row.file}</p>
+                          <p className="text-[10px] text-ink-400 mt-0.5">{row.code}</p>
+                        </div>
+                        <div className="text-right shrink-0">
+                          <p className="font-mono font-semibold text-ink-900">{row.amt}</p>
+                          <span className="text-[9px] font-mono text-success">OCR %99.9</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Report footer */}
+                <div className="flex items-center justify-between pt-3 border-t border-line">
+                  <span className="text-[10px] font-mono tracking-[0.12em] uppercase text-ink-400">Net Nakit Pozisyonu</span>
+                  <span className="font-mono text-sm font-bold text-pine-800">₺216.480</span>
+                </div>
               </div>
             </div>
 
-            {/* Terminal Body */}
-            <div className="p-4 sm:p-6 bg-[#090b10] space-y-4">
-              
-              {/* 3 Executive Financial Metric Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
-                  <div className="flex items-center justify-between text-[11px] text-slate-400 uppercase tracking-wider font-mono">
-                    <span>Nakit Runway & Likidite</span>
-                    <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
-                  </div>
-                  <p className="text-xl font-bold text-white ledger-mono">18.4 Ay</p>
-                  <p className="text-[10px] text-emerald-400 font-medium">₺5,420,000 Q3 Hasılatı</p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
-                  <div className="flex items-center justify-between text-[11px] text-slate-400 uppercase tracking-wider font-mono">
-                    <span>4691 Teşvik Kazancı</span>
-                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                  </div>
-                  <p className="text-xl font-bold text-white ledger-mono">₺38,400 / Ay</p>
-                  <p className="text-[10px] text-slate-400">34 Yazılım Personeli</p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
-                  <div className="flex items-center justify-between text-[11px] text-slate-400 uppercase tracking-wider font-mono">
-                    <span>KDV-1 Beyanname Durumu</span>
-                    <FileCheck2 className="w-3.5 h-3.5 text-indigo-400" />
-                  </div>
-                  <p className="text-xl font-bold text-white">Taslak Onaylandı</p>
-                  <p className="text-[10px] text-emerald-400">GİB Onayına 4 Gün Kaldı</p>
-                </div>
+            {/* Floating note card */}
+            <div className="absolute -bottom-6 -left-3 sm:-left-6 bg-pine-700 text-white rounded-xl p-4 shadow-pop flex items-start gap-3 max-w-[240px]">
+              <CalendarDays className="w-4 h-4 text-gold-300 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-[9px] font-mono tracking-[0.14em] uppercase text-pine-200">Yaklaşan Yükümlülük</p>
+                <p className="text-[13px] font-semibold mt-1">Muhtasar & SGK · 26 gün</p>
               </div>
-
-              {/* Dynamic Tab Content Inside Hero Terminal */}
-              {activeLedgerTab === 'journal' && (
-                <div className="space-y-3 pt-2 animate-fade-in">
-                  <div className="flex items-center justify-between text-xs text-slate-400 px-2 font-mono">
-                    <span>Canlı Çift Taraflı Yevmiye Akışı (Tekdüzen Hesap Planı)</span>
-                    <span className="text-emerald-400">● 2.1 Sn Otomatik Eşleşme</span>
-                  </div>
-
-                  <div className="overflow-x-auto rounded-xl border border-white/[0.06] bg-black/40">
-                    <table className="w-full text-left text-xs ledger-mono">
-                      <thead className="bg-white/[0.03] text-slate-400 uppercase text-[10px] font-semibold border-b border-white/[0.06]">
-                        <tr>
-                          <th className="p-2.5">Hesap Kodu</th>
-                          <th className="p-2.5">Hesap Açıklaması & Karşı Taraf</th>
-                          <th className="p-2.5">Tutar</th>
-                          <th className="p-2.5">Mevzuat Notu</th>
-                          <th className="p-2.5 text-right">Durum</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-white/[0.04]">
-                        {liveTransactions.map((tx, idx) => (
-                          <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
-                            <td className="p-2.5 font-bold text-indigo-400">{tx.code}</td>
-                            <td className="p-2.5 text-slate-200">
-                              <span className="font-semibold block">{tx.account}</span>
-                              <span className="text-[10px] text-slate-500 font-sans">{tx.party}</span>
-                            </td>
-                            <td className="p-2.5 font-bold text-white">{tx.debit}</td>
-                            <td className="p-2.5 text-[11px] text-slate-400 font-sans">{tx.taxNote}</td>
-                            <td className="p-2.5 text-right">
-                              <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                                {tx.status}
-                              </span>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              )}
-
-              {activeLedgerTab === 'tax' && (
-                <div className="p-4 rounded-xl bg-black/40 border border-white/[0.06] space-y-3 animate-fade-in text-xs">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="p-3 bg-white/[0.02] rounded-lg border border-white/[0.06]">
-                      <span className="text-[10px] text-slate-400 uppercase font-mono block">Kurumlar Vergisi İstisnası</span>
-                      <p className="font-bold text-white text-sm mt-0.5">%100 Muafiyet (4691 Sayılı Kanun)</p>
-                      <p className="text-[11px] text-slate-400 mt-1">Yazılım ve lisans gelirleri matrahtan tam düşüldü.</p>
-                    </div>
-
-                    <div className="p-3 bg-white/[0.02] rounded-lg border border-white/[0.06]">
-                      <span className="text-[10px] text-slate-400 uppercase font-mono block">Yurt Dışı KDV İade Alacağı</span>
-                      <p className="font-bold text-emerald-400 text-sm mt-0.5">₺142,500 Mahsup Bekliyor</p>
-                      <p className="text-[11px] text-slate-400 mt-1">Q3 YMM tasdik raporu Gelir İdaresi'ne iletildi.</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeLedgerTab === 'ocr' && (
-                <div className="p-5 rounded-xl bg-black/40 border border-white/[0.06] text-center space-y-2 animate-fade-in text-xs">
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.05] text-slate-300 flex items-center justify-center mx-auto">
-                    <FileSpreadsheet className="w-5 h-5 text-indigo-400" />
-                  </div>
-                  <h4 className="font-bold text-white text-sm">Akıllı E-Arşiv & Fatura OCR Motoru</h4>
-                  <p className="text-slate-400 text-xs max-w-md mx-auto">
-                    PDF veya XML faturayı bırakın; yapay zeka matrah, KDV, tevkifat ve 120/320 cari hesap kodunu 2.1 saniyede çıkarsın.
-                  </p>
-                </div>
-              )}
-
             </div>
-
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
   );

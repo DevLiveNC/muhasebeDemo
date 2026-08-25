@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { BarChart3, TrendingUp, Download, PieChart, Users, Award, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { Download, Award } from 'lucide-react';
 
 export default function AdminReports() {
   const { addToast } = useApp();
@@ -9,131 +9,123 @@ export default function AdminReports() {
     addToast('Yönetim Raporu Oluşturuldu', `${name} PDF formatında indirildi.`, 'success');
   };
 
+  const growth = [
+    { month: 'Mart', value: 40 },
+    { month: 'Nisan', value: 43 },
+    { month: 'Mayıs', value: 45 },
+    { month: 'Haziran', value: 46 },
+    { month: 'Temmuz', value: 47 },
+    { month: 'Ağustos', value: 48 }
+  ];
+
+  const revenueMix = [
+    { label: 'Tekdüzen Muhasebe & Vergi', pct: 46, amount: '₺850K' },
+    { label: 'E-Dönüşüm & Berat Yönetimi', pct: 22, amount: '₺403K' },
+    { label: 'Teşvik & İade Danışmanlığı', pct: 18, amount: '₺329K' },
+    { label: 'Sanal CFO & Raporlama', pct: 14, amount: '₺256K' }
+  ];
+
   return (
-    <div className="space-y-6 animate-fade-in text-xs sm:text-sm">
-      
-      {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/[0.06]">
+    <div className="space-y-6 animate-fade-in">
+
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center space-x-2">
-            <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px] uppercase tracking-wider border border-emerald-500/20">
-              Yönetici Analitik Kokpiti
-            </span>
-            <span className="text-slate-500 font-mono text-xs">2026 Mali Yıl</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="badge badge-pine">Yönetici Analitik Kokpiti</span>
+            <span className="text-ink-400 font-mono text-xs">2026 Mali Yıl</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">Yönetim Raporları & Firma Analitiği</h1>
-          <p className="text-xs text-slate-400 font-mono">Portföy büyümesi, SMMM operasyon verimliliği ve kârlılık metrikleri</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">
+            Yönetim Raporları & Firma Analitiği
+          </h1>
+          <p className="text-xs text-ink-400 mt-1">Portföy büyümesi, SMMM operasyon verimliliği ve kârlılık metrikleri</p>
         </div>
 
         <button
           onClick={() => handleExport('VELOX_2026_Yonetici_Konsolide_Raporu')}
-          className="px-4 py-2 bg-white hover:bg-slate-200 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-luxury transition-all"
+          className="btn btn-primary btn-sm shrink-0"
         >
-          <Download className="w-3.5 h-3.5 text-black" />
-          <span>Konsolide PDF Raporunu İndir</span>
+          <Download className="w-3.5 h-3.5" />
+          <span>Konsolide PDF İndir</span>
         </button>
       </div>
 
-      {/* 3 Analytics Cards */}
+      {/* Analytics Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-5 rounded-2xl obsidian-card border border-white/[0.08] space-y-1">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500">Mükellef Sadakat Oranı (Retention)</span>
-          <p className="text-2xl font-bold font-mono text-emerald-400">%98.4</p>
-          <p className="text-[11px] font-mono text-slate-400">Sektör ortalaması %82</p>
+        <div className="card p-5 space-y-1.5">
+          <span className="kpi-label">Mükellef Sadakat Oranı (Retention)</span>
+          <p className="font-mono text-2xl font-semibold text-pine-700 tracking-tight">%98.4</p>
+          <p className="text-[11px] font-mono text-ink-400">Sektör ortalaması %82</p>
         </div>
-
-        <div className="p-5 rounded-2xl obsidian-card border border-white/[0.08] space-y-1">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500">Ortalama OCR Fatura İndeksleme</span>
-          <p className="text-2xl font-bold font-mono text-white">2.1 Saniye / Fatura</p>
-          <p className="text-[11px] font-mono text-slate-400">Neural OCR & Tekdüzen AI Eşleme</p>
+        <div className="card p-5 space-y-1.5">
+          <span className="kpi-label">Ortalama OCR Fatura İndeksleme</span>
+          <p className="font-mono text-2xl font-semibold text-ink-900 tracking-tight">2.1 Saniye / Fatura</p>
+          <p className="text-[11px] font-mono text-ink-400">Neural OCR & Tekdüzen AI Eşleme</p>
         </div>
-
-        <div className="p-5 rounded-2xl obsidian-card border border-white/[0.08] space-y-1">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500">Mükellef Başına Ortalama Gelir (ARPU)</span>
-          <p className="text-2xl font-bold font-mono text-white">₺18,500 / Ay</p>
-          <p className="text-[11px] font-mono text-emerald-400/80">+%22 Büyüme (Yıllık)</p>
+        <div className="card p-5 space-y-1.5">
+          <span className="kpi-label">Mükellef Başına Ortalama Gelir (ARPU)</span>
+          <p className="font-mono text-2xl font-semibold text-ink-900 tracking-tight">₺18.500 / Ay</p>
+          <p className="text-[11px] font-mono text-success-deep">+%22 Büyüme (Yıllık)</p>
         </div>
       </div>
 
-      {/* Visual Charts Grid */}
+      {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        {/* Left: Monthly Revenue Growth */}
-        <div className="lg:col-span-7 p-6 rounded-2xl obsidian-card border border-white/[0.08] space-y-5 shadow-cinema">
+
+        {/* Portfolio Growth */}
+        <div className="lg:col-span-7 card p-6 space-y-5">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-white text-sm sm:text-base">Mali Müşavirlik Ciro Gelişimi (2026)</h3>
-            <span className="text-xs font-mono text-emerald-400">Toplam: ₺7.8M (YTD)</span>
+            <h3 className="font-bold text-ink-900 text-sm">Portföy Büyümesi (Son 6 Ay)</h3>
+            <span className="badge badge-success">+8 Yeni Mükellef</span>
           </div>
 
-          <div className="h-48 flex items-end justify-between gap-3 pt-4 px-2 border-b border-white/[0.06]">
-            {[
-              { m: 'Oca', h: 60, val: '₺580K' },
-              { m: 'Şub', h: 65, val: '₺610K' },
-              { m: 'Mar', h: 72, val: '₺640K' },
-              { m: 'Nis', h: 76, val: '₺660K' },
-              { m: 'May', h: 84, val: '₺690K' },
-              { m: 'Haz', h: 88, val: '₺710K' },
-              { m: 'Tem', h: 95, val: '₺720K' },
-            ].map((bar, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center gap-1.5 group cursor-pointer">
-                <div 
-                  style={{ height: `${bar.h}%` }}
-                  className="w-full bg-white/[0.15] border border-white/20 rounded-t group-hover:bg-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] transition-all"
-                  title={bar.val}
+          <div className="h-44 flex items-end justify-between gap-3 pt-4 px-2 border-b border-line">
+            {growth.map((g, i) => (
+              <div key={i} className="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                <span className="text-[10px] font-mono text-ink-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {g.value}
+                </span>
+                <div
+                  style={{ height: `${(g.value / 48) * 100}%` }}
+                  className="w-full max-w-[42px] bg-pine-600 group-hover:bg-pine-700 rounded-t transition-colors"
                 />
-                <span className="text-[10px] font-mono text-slate-500 group-hover:text-white transition-colors">{bar.m}</span>
+                <span className="text-[10px] font-mono text-ink-400">{g.month}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Right: Portfolio by Sector */}
-        <div className="lg:col-span-5 p-6 rounded-2xl obsidian-card border border-white/[0.08] space-y-4 shadow-cinema">
-          <h3 className="font-bold text-white text-sm sm:text-base">Portföy Sektörel Dağılımı</h3>
+        {/* Revenue Mix */}
+        <div className="lg:col-span-5 card p-6 space-y-5">
+          <h3 className="font-bold text-ink-900 text-sm">Hizmet Gelir Dağılımı (Ağustos)</h3>
 
-          <div className="space-y-3.5 text-xs font-mono">
-            <div>
-              <div className="flex justify-between text-slate-300 mb-1">
-                <span>Teknoloji & SaaS (Teknopark)</span>
-                <span className="font-bold text-white">42% (20 Şirket)</span>
+          <div className="space-y-4">
+            {revenueMix.map((r, i) => (
+              <div key={i}>
+                <div className="flex justify-between text-[13px] mb-1.5">
+                  <span className="text-ink-600">{r.label}</span>
+                  <span className="font-mono font-bold text-ink-900">
+                    %{r.pct} <span className="text-ink-400 font-medium">({r.amount})</span>
+                  </span>
+                </div>
+                <div className="progress">
+                  <div
+                    style={{ width: `${r.pct}%` }}
+                    className={`h-full rounded-full ${['bg-pine-600', 'bg-pine-400', 'bg-gold-400', 'bg-pine-200'][i]}`}
+                  />
+                </div>
               </div>
-              <div className="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
-                <div className="w-[42%] h-full bg-white rounded-full"></div>
-              </div>
-            </div>
+            ))}
+          </div>
 
-            <div>
-              <div className="flex justify-between text-slate-300 mb-1">
-                <span>E-Ticaret & E-İhracat</span>
-                <span className="font-bold text-white">28% (14 Şirket)</span>
-              </div>
-              <div className="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
-                <div className="w-[28%] h-full bg-slate-300 rounded-full"></div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between text-slate-300 mb-1">
-                <span>Lojistik & Dış Ticaret</span>
-                <span className="font-bold text-white">18% (9 Şirket)</span>
-              </div>
-              <div className="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
-                <div className="w-[18%] h-full bg-emerald-400 rounded-full"></div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between text-slate-300 mb-1">
-                <span>Hizmet & Mimarlık</span>
-                <span className="font-bold text-white">12% (5 Şirket)</span>
-              </div>
-              <div className="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
-                <div className="w-[12%] h-full bg-amber-400 rounded-full"></div>
-              </div>
-            </div>
+          <div className="p-3.5 rounded-xl bg-pine-50 border border-pine-100 text-[12px] text-pine-900 leading-relaxed flex items-start gap-2.5">
+            <Award className="w-4 h-4 text-gold-500 shrink-0 mt-0.5" />
+            <span>
+              <strong>Yıllık Hedef:</strong> Yıllık ₺14,2M ciro hedefinin %91,3'ü
+              karşılandı; Q4 hedefi ₺1,6M.
+            </span>
           </div>
         </div>
-
       </div>
 
     </div>

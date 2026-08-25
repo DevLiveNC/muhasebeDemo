@@ -1,22 +1,15 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import {
-  Calendar,
   Clock,
   CheckCircle2,
-  AlertTriangle,
   Send,
-  Download,
-  ShieldCheck,
-  Building,
-  Users,
-  Layers,
-  ArrowUpRight
+  ShieldCheck
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export default function AdminTaxCalendar() {
-  const { taxCalendar, clients, sendMissingDocAlert, addToast } = useApp();
+  const { taxCalendar, sendMissingDocAlert, addToast } = useApp();
 
   const handleBulkReminder = (taxTitle) => {
     sendMissingDocAlert('Kalan Mükellefler', taxTitle);
@@ -24,97 +17,101 @@ export default function AdminTaxCalendar() {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in text-xs sm:text-sm">
-      
-      {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/[0.06]">
+    <div className="space-y-6 animate-fade-in">
+
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center space-x-2">
-            <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px] uppercase tracking-wider border border-emerald-500/20">
-              GİB & SGK Otomasyonu
-            </span>
-            <span className="text-slate-500 font-mono text-xs">VUK 213 & 5510 Sayılı Kanun Uyumlu</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="badge badge-pine">GİB & SGK Otomasyonu</span>
+            <span className="text-ink-400 font-mono text-xs">VUK 213 & 5510 Sayılı Kanun Uyumlu</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">Resmi Vergi & Yasal Beyan Takvimi</h1>
-          <p className="text-xs text-slate-400 font-mono">2026 Gelir İdaresi Başkanlığı, SGK ve Ticaret Sicil bildirim terminleri</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">
+            Resmi Vergi & Yasal Beyan Takvimi
+          </h1>
+          <p className="text-xs text-ink-400 mt-1">2026 Gelir İdaresi Başkanlığı, SGK ve Ticaret Sicil bildirim terminleri</p>
         </div>
 
-        <div className="flex items-center space-x-2">
-          <span className="px-3 py-1.5 rounded-xl bg-white/[0.04] text-slate-300 font-mono text-xs border border-white/[0.08] flex items-center space-x-1.5">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>%99.98 Zamanında Beyan Başarısı</span>
-          </span>
-        </div>
+        <span className="badge badge-success self-start">
+          <ShieldCheck className="w-3.5 h-3.5" />
+          Otomatik Beyan Motoru Aktif
+        </span>
       </div>
 
       {/* Tax Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {taxCalendar.map((tax) => {
           const isUrgent = tax.remainingDays <= 4 && tax.remainingDays > 0;
           const isDone = tax.status === 'Tamamlandı';
-          const completionRate = Math.round((tax.completedClients / tax.totalClients) * 100);
+          const completionRate = tax.totalClients
+            ? Math.round((tax.completedClients / tax.totalClients) * 100)
+            : 0;
+          const remaining = tax.totalClients
+            ? tax.totalClients - tax.completedClients
+            : 0;
 
           return (
             <div
               key={tax.id}
               className={cn(
-                "p-6 rounded-2xl obsidian-card border transition-all space-y-4 shadow-cinema",
-                isUrgent ? "border-amber-500/40 bg-amber-500/[0.02]" : "border-white/[0.08]"
+                'card p-6 space-y-4 transition-all',
+                isUrgent && !isDone && 'border-warning/40 ring-1 ring-warning/20',
+                isDone && 'border-success/30'
               )}
             >
               {/* Card Header */}
-              <div className="flex items-center justify-between font-mono text-[10px]">
-                <span className="px-2.5 py-0.5 rounded bg-white/10 text-slate-300">
-                  {tax.type}
-                </span>
+              <div className="flex items-center justify-between gap-3 font-mono text-[11px]">
+                <span className="badge badge-neutral">{tax.type}</span>
 
                 <span className={cn(
-                  "px-2.5 py-0.5 rounded font-bold",
-                  isDone 
-                    ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" 
-                    : isUrgent 
-                    ? "bg-amber-500/10 text-amber-400 border border-amber-500/20" 
-                    : "bg-white/10 text-slate-300"
+                  'badge font-bold',
+                  isDone ? 'badge-success' : isUrgent ? 'badge-warning' : 'badge-neutral'
                 )}>
-                  {isDone ? '✓ %100 Beyan Edildi' : `${tax.remainingDays} Gün Kaldı (Son Gün: ${tax.deadline})`}
+                  <Clock className="w-3 h-3" />
+                  {isDone ? '%100 Beyan Edildi' : `${tax.remainingDays} Gün Kaldı (Son: ${tax.deadline})`}
                 </span>
               </div>
 
-              {/* Title & Desc */}
+              {/* Title */}
               <div>
-                <h3 className="font-bold text-white text-sm sm:text-base">{tax.title}</h3>
-                <p className="text-xs text-slate-400 mt-1 leading-relaxed">{tax.description}</p>
+                <h3 className="font-bold text-ink-900 text-[15px] leading-snug">{tax.title}</h3>
+                <p className="text-xs text-ink-500 mt-1.5 leading-relaxed">{tax.description}</p>
+                <p className="text-[10px] font-mono text-ink-400 mt-1.5">{tax.legalBasis}</p>
               </div>
 
-              {/* Progress Bar for Clients */}
-              <div className="space-y-2 p-3.5 bg-black/40 rounded-xl border border-white/[0.06] font-mono">
+              {/* Portfolio Progress */}
+              <div className="space-y-2 p-4 bg-paper-50 rounded-xl border border-line">
                 <div className="flex justify-between text-xs">
-                  <span className="text-slate-400">Portföy Beyan Oranı:</span>
-                  <span className="text-white font-bold">{tax.completedClients} / {tax.totalClients} Şirket (%{completionRate})</span>
+                  <span className="text-ink-500">Portföy Beyan Oranı:</span>
+                  <span className={cn('font-mono font-bold', isDone ? 'text-success-deep' : 'text-ink-900')}>
+                    %{completionRate}
+                  </span>
                 </div>
-                <div className="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
-                  <div 
-                    style={{ width: `${completionRate}%` }} 
-                    className={cn("h-full rounded-full transition-all duration-500", completionRate === 100 ? "bg-emerald-400" : "bg-white")}
+                <div className="progress">
+                  <div
+                    style={{ width: `${completionRate}%` }}
+                    className={cn('progress-bar', isDone && 'progress-bar-success')}
                   />
                 </div>
-                {tax.criticalClients > 0 && (
-                  <p className="text-[11px] text-amber-400 font-mono pt-1 flex items-center space-x-1">
-                    <span>⚠️ {tax.criticalClients} şirkette eksik evrak nedeniyle onay bekliyor.</span>
-                  </p>
-                )}
+                <p className="text-[10px] font-mono text-ink-400">
+                  {tax.completedClients}/{tax.totalClients} şirket tamamlandı
+                </p>
               </div>
 
               {/* Actions */}
-              {!isDone && (
-                <div className="pt-2 flex justify-end">
-                  <button
-                    onClick={() => handleBulkReminder(tax.title)}
-                    className="px-4 py-2 bg-white hover:bg-slate-200 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 shadow-luxury transition-all"
-                  >
-                    <Send className="w-3.5 h-3.5 text-black" />
-                    <span>Kalan {tax.totalClients - tax.completedClients} Şirkete Hatırlat</span>
-                  </button>
+              {!isDone && remaining > 0 && (
+                <button
+                  onClick={() => handleBulkReminder(tax.title)}
+                  className="btn btn-outline btn-sm w-full"
+                >
+                  <Send className="w-3.5 h-3.5 text-pine-700" />
+                  <span>Kalan {remaining} Şirkete Hatırlat</span>
+                </button>
+              )}
+              {isDone && (
+                <div className="flex items-center gap-2 text-xs font-mono text-success-deep">
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>Tüm portföy beyanları kapandı.</span>
                 </div>
               )}
             </div>

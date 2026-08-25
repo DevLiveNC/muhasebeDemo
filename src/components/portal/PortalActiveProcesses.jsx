@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { CheckCircle2, UserCheck } from 'lucide-react';
+import { CheckCircle2, UserCheck, Circle } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export default function PortalActiveProcesses() {
@@ -18,7 +18,7 @@ export default function PortalActiveProcesses() {
         { name: 'Mizan & Fatura Çapraz Kontrolleri', done: true, date: '21 Ağustos' },
         { name: '4691 Teknopark İstisna Hesaplaması', done: true, date: '22 Ağustos' },
         { name: 'GİB Sistemi Taslak Beyanname', done: true, date: '23 Ağustos' },
-        { name: 'Son Tahakkuk & Ödeme Fişi', done: false, date: 'Bekliyor' },
+        { name: 'Son Tahakkuk & Ödeme Fişi', done: false, date: 'Bekliyor' }
       ]
     },
     {
@@ -30,7 +30,7 @@ export default function PortalActiveProcesses() {
         { name: 'Puantaj ve İzin Tablosu Girişi', done: true, date: '15 Ağustos' },
         { name: '4691 Sayılı Kanun Teşvik Simülasyonu', done: true, date: '16 Ağustos' },
         { name: 'Bordro İcmalinin Onaylanması', done: true, date: '17 Ağustos' },
-        { name: 'SGK ve Stopaj Tahakkuku Alımı', done: true, date: '20 Ağustos' },
+        { name: 'SGK ve Stopaj Tahakkuku Alımı', done: true, date: '20 Ağustos' }
       ]
     },
     {
@@ -42,69 +42,82 @@ export default function PortalActiveProcesses() {
         { name: 'Yevmiye ve Kebir Kapanış Kontrolleri', done: true, date: '20 Ağustos' },
         { name: 'GİB Şematron XML Doğrulaması', done: true, date: '22 Ağustos' },
         { name: 'Zaman Damgası & Mali Mühür İmza', done: false, date: '28 Ağustos' },
-        { name: 'GİB Portalına Yükleme & Berat Alımı', done: false, date: '31 Ağustos' },
+        { name: 'GİB Portalına Yükleme & Berat Alımı', done: false, date: '31 Ağustos' }
       ]
     }
   ];
 
   return (
-    <div className="space-y-6 animate-fade-in text-xs sm:text-sm">
-      
+    <div className="space-y-6 animate-fade-in">
+
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Canlı Muhasebe ve Beyanname Süreçleri</h1>
-        <p className="text-xs text-slate-400 font-mono">Mali müşavirinizin şirketiniz adına yürüttüğü yasal operasyonel adımlar</p>
+        <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">
+          Canlı Muhasebe ve Beyanname Süreçleri
+        </h1>
+        <p className="text-xs text-ink-400 mt-1">
+          Mali müşavirinizin {client.shortName} adına yürüttüğü yasal operasyonel adımlar
+        </p>
       </div>
 
       <div className="space-y-6">
         {processes.map((proc, idx) => (
-          <div key={idx} className="p-6 rounded-2xl obsidian-card border border-white/[0.08] shadow-cinema space-y-5">
-            
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div key={idx} className="card p-6 space-y-5">
+
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h3 className="font-bold text-white text-base">{proc.title}</h3>
-                <p className="text-xs text-slate-400 flex items-center space-x-2 mt-0.5 font-mono">
-                  <UserCheck className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>Sorumlu Danışman: <strong className="text-slate-200">{proc.responsible}</strong></span>
+                <h3 className="font-bold text-ink-900 text-base leading-snug">{proc.title}</h3>
+                <p className="text-xs text-ink-400 flex items-center gap-2 mt-1.5">
+                  <UserCheck className="w-3.5 h-3.5 text-pine-700" />
+                  <span>
+                    Sorumlu Danışman: <strong className="text-ink-700 font-semibold">{proc.responsible}</strong>
+                  </span>
                 </p>
               </div>
 
               <span className={cn(
-                "px-3 py-1 rounded-full text-xs font-mono font-bold",
-                proc.percent === 100 ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-white/10 text-slate-200"
+                'badge shrink-0',
+                proc.percent === 100 ? 'badge-success' : 'badge-pine'
               )}>
-                {proc.status} ({proc.percent}%)
+                {proc.status} · %{proc.percent}
               </span>
             </div>
 
-            {/* Progress Bar */}
-            <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-              <div 
+            {/* Progress */}
+            <div className="progress">
+              <div
                 style={{ width: `${proc.percent}%` }}
-                className={cn(
-                  "h-full rounded-full transition-all duration-500",
-                  proc.percent === 100 ? "bg-emerald-400" : "bg-white"
-                )}
+                className={cn('progress-bar', proc.percent === 100 && 'progress-bar-success')}
               />
             </div>
 
-            {/* Sub-stages Stepper */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 pt-2">
+            {/* Stages */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3">
               {proc.stages.map((stg, sIdx) => (
                 <div
                   key={sIdx}
                   className={cn(
-                    "p-3.5 rounded-xl border text-xs space-y-1 transition-all",
-                    stg.done 
-                      ? "bg-black/40 border-white/10 text-slate-200" 
-                      : "bg-black/20 border-white/[0.04] text-slate-500"
+                    'p-3.5 rounded-xl border text-xs space-y-1.5',
+                    stg.done
+                      ? 'bg-pine-50/70 border-pine-200'
+                      : 'bg-paper-50 border-line'
                   )}
                 >
-                  <div className="flex items-center space-x-1.5 font-bold">
-                    <CheckCircle2 className={cn("w-3.5 h-3.5", stg.done ? "text-emerald-400" : "text-slate-600")} />
-                    <span className={stg.done ? "text-white font-mono text-[11px]" : "text-slate-500 font-mono text-[11px]"}>Adım {sIdx + 1}</span>
+                  <div className="flex items-center gap-1.5 font-bold">
+                    {stg.done ? (
+                      <CheckCircle2 className="w-3.5 h-3.5 text-pine-700" />
+                    ) : (
+                      <Circle className="w-3.5 h-3.5 text-ink-300" />
+                    )}
+                    <span className={cn('font-mono text-[11px]', stg.done ? 'text-pine-800' : 'text-ink-400')}>
+                      Adım {sIdx + 1}
+                    </span>
                   </div>
-                  <p className="text-[11px] leading-tight line-clamp-2">{stg.name}</p>
-                  <span className="text-[10px] font-mono text-slate-500 block pt-1">{stg.date}</span>
+                  <p className={cn('text-[11px] leading-tight', stg.done ? 'text-ink-700' : 'text-ink-400')}>
+                    {stg.name}
+                  </p>
+                  <span className={cn('text-[10px] font-mono block pt-0.5', stg.done ? 'text-ink-400' : 'text-ink-300')}>
+                    {stg.date}
+                  </span>
                 </div>
               ))}
             </div>

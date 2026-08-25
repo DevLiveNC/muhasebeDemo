@@ -3,18 +3,10 @@ import { useApp } from '../../context/AppContext';
 import {
   X,
   Calendar,
-  Clock,
-  Building,
-  User,
-  Mail,
-  Phone,
   CheckCircle2,
-  Sparkles,
   ArrowRight,
-  ShieldCheck,
   ChevronLeft
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import { cn } from '../../utils/cn';
 
 export default function ConsultationModal() {
@@ -59,11 +51,6 @@ export default function ConsultationModal() {
     setIsSubmitted(true);
 
     try {
-      confetti({
-        particleCount: 70,
-        spread: 60,
-        origin: { y: 0.6 }
-      });
     } catch (err) {
       // fallback
     }
@@ -81,258 +68,263 @@ export default function ConsultationModal() {
   ];
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in font-sans">
-      <div 
-        className="w-full max-w-xl bg-[#0b0d13] rounded-2xl shadow-2xl border border-white/10 overflow-hidden flex flex-col max-h-[92vh] transition-all transform animate-slide-down"
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/45 backdrop-blur-sm animate-fade-in">
+      <div
+        className="w-full max-w-xl bg-white rounded-2xl shadow-pop border border-line overflow-hidden flex flex-col max-h-[92vh] animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-5 bg-black/60 text-white flex items-center justify-between border-b border-white/[0.08]">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-lg bg-white/10 text-white flex items-center justify-center border border-white/20">
-              <Calendar className="w-4 h-4 text-slate-300" />
+        <div className="px-6 py-4 bg-white flex items-center justify-between border-b border-line">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-pine-50 border border-pine-100 text-pine-700 flex items-center justify-center">
+              <Calendar className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-white">Stratejik Mali Ön Görüşme</h3>
-              <p className="text-[11px] text-slate-400 font-mono">Kıdemli SMMM & Vergi Ortağı ile 30 Dk Birebir Analiz</p>
+              <h3 className="font-bold text-sm text-ink-900">Stratejik Mali Ön Görüşme</h3>
+              <p className="text-[11px] text-ink-400">Kıdemli SMMM & Vergi Ortağı ile 30 Dk Birebir Analiz</p>
             </div>
           </div>
 
           <button
             onClick={handleClose}
-            className="p-1 rounded text-slate-400 hover:text-white hover:bg-white/[0.06] transition-colors"
+            className="p-1 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
+            title="Kapat"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Form Body */}
-        <div className="p-6 overflow-y-auto flex-1 bg-[#0e1119]">
+        <div className="p-6 overflow-y-auto flex-1">
           {!isSubmitted ? (
             <div>
               {/* Progress Steps */}
-              <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/[0.06] text-xs font-mono">
-                <div className={cn("flex items-center space-x-1.5", step >= 1 ? "text-white font-bold" : "text-slate-500")}>
-                  <span className={cn("w-4 h-4 rounded flex items-center justify-center text-[10px]", step >= 1 ? "bg-white text-black font-bold" : "bg-white/10 text-slate-400")}>1</span>
-                  <span>Şirket & Yetkili</span>
+              <div className="flex items-center justify-between mb-6 pb-4 border-b border-line">
+                <div className={cn('flex items-center gap-1.5', step >= 1 ? 'text-ink-900 font-bold' : 'text-ink-300')}>
+                  <span className={cn(
+                    'w-5 h-5 rounded flex items-center justify-center text-[10px]',
+                    step >= 1 ? 'bg-pine-700 text-white font-bold' : 'bg-paper-200 text-ink-400'
+                  )}>
+                    1
+                  </span>
+                  <span className="text-xs">Şirket & Yetkili</span>
                 </div>
-                <div className="w-8 h-px bg-white/10"></div>
-                <div className={cn("flex items-center space-x-1.5", step >= 2 ? "text-white font-bold" : "text-slate-500")}>
-                  <span className={cn("w-4 h-4 rounded flex items-center justify-center text-[10px]", step >= 2 ? "bg-white text-black font-bold" : "bg-white/10 text-slate-400")}>2</span>
-                  <span>Hizmetler & Randevu</span>
+                <div className="w-8 h-px bg-line-strong"></div>
+                <div className={cn('flex items-center gap-1.5', step >= 2 ? 'text-ink-900 font-bold' : 'text-ink-300')}>
+                  <span className={cn(
+                    'w-5 h-5 rounded flex items-center justify-center text-[10px]',
+                    step >= 2 ? 'bg-pine-700 text-white font-bold' : 'bg-paper-200 text-ink-400'
+                  )}>
+                    2
+                  </span>
+                  <span className="text-xs">Hizmetler & Randevu</span>
                 </div>
               </div>
 
               {step === 1 && (
-                <div className="space-y-4 animate-fade-in text-xs font-mono">
+                <div className="space-y-4 animate-fade-in">
                   <div>
-                    <label className="block text-slate-300 mb-1">Şirket Ünvanı *</label>
+                    <label className="label">Şirket Ünvanı *</label>
                     <input
                       type="text"
                       placeholder="Örn: TechNova Yazılım A.Ş."
                       value={formData.companyName}
                       onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-white font-sans text-xs"
+                      className="input"
                       required
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-slate-300 mb-1">Şirket Türü</label>
+                      <label className="label">Şirket Türü</label>
                       <select
                         value={formData.companyType}
                         onChange={(e) => setFormData({ ...formData, companyType: e.target.value })}
-                        className="w-full px-3 py-2 rounded-lg bg-black/60 border border-white/10 text-slate-200 focus:outline-none text-xs"
+                        className="select"
                       >
                         <option>Anonim Şirket (A.Ş.)</option>
                         <option>Limited Şirket (Ltd. Şti.)</option>
                         <option>Şahıs Şirketi</option>
-                        <option>Yeni Kurulacak (Startup)</option>
                       </select>
                     </div>
-
                     <div>
-                      <label className="block text-slate-300 mb-1">Çalışan Sayısı</label>
+                      <label className="label">Çalışan Sayısı</label>
                       <select
                         value={formData.employeeCount}
                         onChange={(e) => setFormData({ ...formData, employeeCount: e.target.value })}
-                        className="w-full px-3 py-2 rounded-lg bg-black/60 border border-white/10 text-slate-200 focus:outline-none text-xs"
+                        className="select"
                       >
-                        <option>1-4 Çalışan</option>
+                        <option>1-5 Çalışan</option>
                         <option>5-20 Çalışan</option>
-                        <option>21-50 Çalışan</option>
+                        <option>20-50 Çalışan</option>
                         <option>50+ Çalışan</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-slate-300 mb-1">Yetkili Adı Soyadı *</label>
+                    <label className="label">Yetkili Adı Soyadı *</label>
                     <input
                       type="text"
-                      placeholder="Örn: Ahmet Yılmaz"
+                      placeholder="Örn: Deniz Kaya"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-white font-sans text-xs"
+                      className="input"
+                      required
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-slate-300 mb-1">E-Posta *</label>
+                      <label className="label">E-Posta *</label>
                       <input
                         type="email"
-                        placeholder="ahmet@sirketiniz.com"
+                        placeholder="deniz@sirket.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-white text-xs"
+                        className="input"
+                        required
                       />
                     </div>
                     <div>
-                      <label className="block text-slate-300 mb-1">Telefon *</label>
+                      <label className="label">Telefon *</label>
                       <input
                         type="tel"
                         placeholder="0532 000 00 00"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-white text-xs"
+                        className="input"
+                        required
                       />
                     </div>
                   </div>
 
-                  <div className="pt-4 flex justify-end">
-                    <button
-                      type="button"
-                      onClick={() => setStep(2)}
-                      className="px-6 py-2.5 bg-white hover:bg-slate-200 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center space-x-2 shadow-luxury transition-all"
-                    >
-                      <span>Devam Et</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-black" />
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => setStep(2)}
+                    className="btn btn-primary btn-md w-full"
+                  >
+                    <span>Devam Et</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
                 </div>
               )}
 
               {step === 2 && (
-                <div className="space-y-4 animate-fade-in text-xs font-mono">
+                <form onSubmit={handleSubmit} className="space-y-4 animate-fade-in">
                   <div>
-                    <label className="block text-slate-300 mb-2">İlgilendiğiniz Hizmet Alanları:</label>
-                    <div className="grid grid-cols-2 gap-2">
-                      {availableServices.map((srv, idx) => {
-                        const isSelected = formData.services.includes(srv);
+                    <label className="label">İlgilendiğiniz Hizmetler</label>
+                    <div className="space-y-2">
+                      {availableServices.map((srv) => {
+                        const selected = formData.services.includes(srv);
                         return (
                           <button
-                            key={idx}
+                            key={srv}
                             type="button"
                             onClick={() => toggleService(srv)}
                             className={cn(
-                              "p-2.5 rounded-lg border text-left text-xs transition-all flex items-center justify-between",
-                              isSelected
-                                ? "bg-white/10 border-white/30 text-white font-bold"
-                                : "bg-black/40 border-white/[0.06] text-slate-400 hover:text-white"
+                              'w-full flex items-center gap-2.5 p-3 rounded-lg border text-left text-[13px] transition-colors',
+                              selected
+                                ? 'bg-pine-50 border-pine-300 text-pine-900 font-semibold'
+                                : 'bg-white border-line-strong text-ink-600 hover:border-pine-600'
                             )}
                           >
-                            <span className="truncate">{srv}</span>
-                            {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 ml-1" />}
+                            <span className={cn(
+                              'w-4 h-4 rounded border flex items-center justify-center shrink-0',
+                              selected ? 'bg-pine-700 border-pine-700 text-white' : 'border-line-strong'
+                            )}>
+                              {selected && <CheckCircle2 className="w-3 h-3" />}
+                            </span>
+                            {srv}
                           </button>
                         );
                       })}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3 pt-2">
+                  <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-slate-300 mb-1">Tercih Edilen Tarih</label>
+                      <label className="label">Tercih Edilen Tarih</label>
                       <input
                         type="date"
                         value={formData.preferredDate}
                         onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                        className="w-full px-3 py-2 rounded-lg bg-black/40 border border-white/10 text-white focus:outline-none text-xs"
+                        className="input font-mono"
                       />
                     </div>
                     <div>
-                      <label className="block text-slate-300 mb-1">Saat Dilimi</label>
+                      <label className="label">Tercih Edilen Saat</label>
                       <select
                         value={formData.preferredTime}
                         onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                        className="w-full px-3 py-2 rounded-lg bg-black/60 border border-white/10 text-slate-200 focus:outline-none text-xs"
+                        className="select"
                       >
-                        <option value="10:00">10:00 - 10:30</option>
-                        <option value="11:30">11:30 - 12:00</option>
-                        <option value="14:00">14:00 - 14:30</option>
-                        <option value="16:00">16:00 - 16:30</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:30">15:30</option>
+                        <option value="17:00">17:00</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-slate-300 mb-1">Şirket Notları / Özel Talepler</label>
+                    <label className="label">Notunuz (İsteğe Bağlı)</label>
                     <textarea
                       rows={2}
-                      placeholder="Şirketinizin mevcut mali durumu veya özel teşvik beklentileri..."
+                      placeholder="Vergi durumunuza dair kısaca bilgi verebilirsiniz..."
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full px-3 py-2 rounded-lg bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none text-xs"
+                      className="input resize-none"
                     />
                   </div>
 
-                  <div className="pt-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2 pt-1">
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="px-3 py-1.5 text-slate-400 hover:text-white flex items-center space-x-1 text-xs"
+                      className="btn btn-ghost btn-md"
                     >
-                      <ChevronLeft className="w-3.5 h-3.5" />
+                      <ChevronLeft className="w-4 h-4" />
                       <span>Geri</span>
                     </button>
-                    <button
-                      type="button"
-                      onClick={handleSubmit}
-                      className="px-5 py-2.5 bg-white hover:bg-slate-200 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center space-x-2 shadow-luxury transition-all"
-                    >
-                      <Sparkles className="w-3.5 h-3.5 text-black" />
+                    <button type="submit" className="btn btn-primary btn-md flex-1">
+                      <Calendar className="w-4 h-4" />
                       <span>Randevuyu Onayla</span>
                     </button>
                   </div>
-                </div>
+                </form>
               )}
             </div>
           ) : (
-            <div className="py-8 text-center space-y-4 animate-fade-in font-mono">
-              <div className="w-14 h-14 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mx-auto shadow-cinema">
+            <div className="py-8 text-center space-y-4 animate-fade-in">
+              <div className="w-14 h-14 bg-success-soft text-success-deep rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
-              <div>
-                <h3 className="text-base font-bold text-white font-sans">Mali Ön Görüşme Randevunuz Alındı</h3>
-                <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto leading-relaxed">
-                  Talebiniz SMMM yönetimine iletildi. Google Meet takvim daveti <strong>{formData.email || 'e-posta adresinize'}</strong> gönderildi.
-                </p>
-              </div>
-
-              <div className="bg-black/50 p-4 rounded-xl border border-white/[0.08] max-w-sm mx-auto text-left text-xs space-y-1.5">
-                <div className="flex justify-between text-slate-400">
-                  <span>Tarih:</span>
-                  <span className="font-bold text-white">{formData.preferredDate} - {formData.preferredTime}</span>
-                </div>
-                <div className="flex justify-between text-slate-400">
-                  <span>Danışman:</span>
-                  <span className="font-bold text-white">SMMM Kemal Yıldız (Ortak)</span>
-                </div>
-                <div className="flex justify-between text-slate-400">
-                  <span>Format:</span>
-                  <span className="font-bold text-emerald-400">Google Meet / Birebir</span>
+              <h4 className="font-serif text-2xl text-ink-900">Talebiniz Alındı!</h4>
+              <p className="text-sm text-ink-500 max-w-sm mx-auto leading-relaxed">
+                <strong className="text-ink-900">{formData.companyName || 'Şirketiniz'}</strong> için{' '}
+                <strong className="text-ink-900">{formData.preferredDate} {formData.preferredTime}</strong> randevusu
+                kıdemli SMMM ortağımıza iletildi. Doğrulama e-postası{' '}
+                <strong className="text-ink-900">{formData.email || 'e-posta adresinize'}</strong> gönderildi.
+              </p>
+              <div className="p-4 rounded-xl bg-paper-50 border border-line text-left max-w-sm mx-auto">
+                <p className="mlabel mb-2">Seçilen Hizmetler</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {formData.services.map((srv) => (
+                    <span key={srv} className="badge badge-pine">{srv}</span>
+                  ))}
+                  {formData.services.length === 0 && (
+                    <span className="text-xs text-ink-400">Genel danışmanlık</span>
+                  )}
                 </div>
               </div>
-
-              <div className="pt-2">
-                <button
-                  onClick={handleClose}
-                  className="px-6 py-2.5 bg-white hover:bg-slate-200 text-black font-bold uppercase tracking-wider rounded-lg text-xs transition-colors shadow-luxury"
-                >
-                  Tamamla ve Kapat
-                </button>
-              </div>
+              <button
+                onClick={handleClose}
+                className="btn btn-primary btn-md w-full sm:w-auto"
+              >
+                <span>Anladım, Kapat</span>
+              </button>
             </div>
           )}
         </div>

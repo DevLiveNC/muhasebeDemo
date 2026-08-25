@@ -19,48 +19,43 @@ export default function TaxCalculatorSection() {
   const estimatedSmmFee = Math.max(9500, Math.round((employees * 380 + monthlyInvoices * 55) / 100) * 100);
 
   return (
-    <section id="calculator" className="py-20 md:py-28 bg-[#08090d] border-b border-white/[0.08] scroll-mt-16 text-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section id="calculator" className="py-20 md:py-28 bg-paper-100 border-y border-line scroll-mt-24">
+      <div className="container-x">
+
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <span className="text-[11px] font-mono text-emerald-400 uppercase tracking-widest block">
-            İnteraktif Vergi & Teşvik Simülatörü
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-            Şirketinizin potansiyel <br />
-            <span className="font-editorial italic font-normal text-slate-200">vergi ve SGK tasarrufunu</span> hesaplayın.
+        <div className="section-head text-center mx-auto">
+          <p className="eyebrow">03 / İnteraktif Vergi & Teşvik Simülatörü</p>
+          <h2>
+            Şirketinizin potansiyel <em>vergi ve SGK tasarrufunu</em> hesaplayın.
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400">
-            Personel sayısı, fatura hacmi ve Teknopark/Ar-Ge teşvik durumunuza göre VELOX ile elde edeceğiniz tahmini avantajı görün.
+          <p className="mx-auto">
+            Personel sayısı, fatura hacmi ve Teknopark/Ar-Ge teşvik durumunuza göre VELOX ile
+            elde edeceğiniz tahmini avantajı görün.
           </p>
         </div>
 
-        {/* Calculator Grid */}
-        <div className="max-w-4xl mx-auto rounded-2xl obsidian-card p-6 sm:p-10 border border-white/[0.08] shadow-cinema grid grid-cols-1 md:grid-cols-12 gap-8 text-xs">
-          
+        {/* Calculator Card */}
+        <div className="max-w-4xl mx-auto mt-14 card p-6 sm:p-10 grid grid-cols-1 md:grid-cols-12 gap-8">
+
           {/* Controls */}
           <div className="md:col-span-7 space-y-6">
-            
-            {/* Company type */}
+
             <div>
-              <label className="block font-mono text-[10px] uppercase tracking-widest text-slate-400 mb-2">
-                1. Şirket Statüsü
-              </label>
-              <div className="grid grid-cols-3 gap-2 text-xs">
+              <label className="label">1. Şirket Statüsü</label>
+              <div className="grid grid-cols-3 gap-2">
                 {[
                   { id: 'as', label: 'Anonim (A.Ş.)' },
                   { id: 'ltd', label: 'Limited (Ltd.)' },
-                  { id: 'sahis', label: 'Şahıs / Startup' },
+                  { id: 'sahis', label: 'Şahıs / Startup' }
                 ].map((t) => (
                   <button
                     key={t.id}
                     onClick={() => setCompanyType(t.id)}
                     className={cn(
-                      "py-2.5 px-2 rounded-lg font-semibold border text-center transition-all",
+                      'py-2.5 px-2 rounded-lg font-semibold text-xs border text-center transition-all',
                       companyType === t.id
-                        ? "bg-white text-black border-white shadow-sm"
-                        : "bg-white/[0.02] text-slate-300 border-white/[0.08] hover:bg-white/[0.06]"
+                        ? 'bg-pine-700 text-white border-pine-700 shadow-sm'
+                        : 'bg-white text-ink-500 border-line-strong hover:border-pine-600 hover:text-pine-800'
                     )}
                   >
                     {t.label}
@@ -69,11 +64,10 @@ export default function TaxCalculatorSection() {
               </div>
             </div>
 
-            {/* Slider: Employees */}
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-slate-400">2. Çalışan / Bordro Sayısı</span>
-                <span className="font-bold text-white font-mono text-xs bg-white/[0.06] px-2 py-0.5 rounded border border-white/10">
+                <span className="label mb-0">2. Çalışan / Bordro Sayısı</span>
+                <span className="font-bold text-ink-900 font-mono text-xs bg-paper-100 px-2 py-0.5 rounded border border-line">
                   {employees} Personel
                 </span>
               </div>
@@ -83,15 +77,14 @@ export default function TaxCalculatorSection() {
                 max="100"
                 value={employees}
                 onChange={(e) => setEmployees(parseInt(e.target.value))}
-                className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-white"
+                className="w-full h-1.5 rounded-lg cursor-pointer"
               />
             </div>
 
-            {/* Slider: Invoices */}
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-slate-400">3. Aylık Fatura & Belge Hacmi</span>
-                <span className="font-bold text-white font-mono text-xs bg-white/[0.06] px-2 py-0.5 rounded border border-white/10">
+                <span className="label mb-0">3. Aylık Fatura & Belge Hacmi</span>
+                <span className="font-bold text-ink-900 font-mono text-xs bg-paper-100 px-2 py-0.5 rounded border border-line">
                   ~{monthlyInvoices} Adet / Ay
                 </span>
               </div>
@@ -102,69 +95,77 @@ export default function TaxCalculatorSection() {
                 step="5"
                 value={monthlyInvoices}
                 onChange={(e) => setMonthlyInvoices(parseInt(e.target.value))}
-                className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-white"
+                className="w-full h-1.5 rounded-lg cursor-pointer"
               />
             </div>
 
-            {/* Checkbox: Incentive status */}
-            <div className="pt-2">
-              <label className="flex items-center justify-between p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08] cursor-pointer hover:bg-white/[0.04] transition-colors">
-                <div>
-                  <span className="font-bold text-white block">4691 Teknopark / 5746 Ar-Ge / E-İhracat İstisnası</span>
-                  <span className="text-[11px] text-slate-400">Yazılım teslim muafiyeti veya yurt dışı KDV istisnası</span>
-                </div>
-                <input
-                  type="checkbox"
-                  checked={hasIncentive}
-                  onChange={(e) => setHasIncentive(e.target.checked)}
-                  className="w-4 h-4 rounded text-white focus:ring-white accent-white cursor-pointer"
-                />
-              </label>
-            </div>
+            <label className="flex items-center justify-between gap-3 p-4 rounded-xl bg-paper-50 border border-line-strong cursor-pointer hover:border-pine-600 transition-colors">
+              <div>
+                <span className="font-bold text-ink-900 block text-sm">4691 Teknopark / 5746 Ar-Ge / E-İhracat İstisnası</span>
+                <span className="text-xs text-ink-400">Yazılım teslim muafiyeti veya yurt dışı KDV istisnası</span>
+              </div>
+              <input
+                type="checkbox"
+                checked={hasIncentive}
+                onChange={(e) => setHasIncentive(e.target.checked)}
+                className="w-4 h-4 rounded cursor-pointer shrink-0"
+              />
+            </label>
 
           </div>
 
-          {/* Results Box */}
-          <div className="md:col-span-5 bg-black/60 rounded-xl p-6 border border-white/[0.08] flex flex-col justify-between space-y-6">
+          {/* Results */}
+          <div className="md:col-span-5 bg-pine-800 rounded-xl p-6 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 block">
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-gold-300 block">
                 Tahmini Mali Tasarruf Raporu
               </span>
 
               <div>
-                <span className="text-slate-400 text-xs block">Yıllık Potansiyel Vergi & Teşvik Tasarrufu</span>
-                <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 ledger-mono mt-1">
+                <span className="text-pine-200 text-xs block">Yıllık Potansiyel Vergi & Teşvik Tasarrufu</span>
+                <div className="font-mono text-3xl font-semibold text-white mt-1.5 tracking-tight">
                   {formatCurrency(annualTotalBenefit)}
                 </div>
-                <p className="text-[11px] text-slate-400 mt-0.5">Aylık ortalama: {formatCurrency(totalMonthlySgkSavings)} SGK indirimi</p>
+                <p className="text-[11px] text-pine-300 mt-1">
+                  Aylık ortalama: {formatCurrency(totalMonthlySgkSavings)} SGK indirimi
+                </p>
               </div>
 
-              <div className="space-y-2 pt-3 border-t border-white/[0.08] text-xs text-slate-300">
-                <div className="flex justify-between">
-                  <span className="text-slate-400">Önerilen Hizmet:</span>
-                  <span className="font-bold text-white">{employees > 20 ? 'Kurumsal CFO & Teşvik' : 'Büyüme & E-Dönüşüm'}</span>
+              <div className="space-y-2.5 pt-4 border-t border-white/10 text-xs">
+                <div className="flex justify-between gap-3">
+                  <span className="text-pine-300">Önerilen Hizmet:</span>
+                  <span className="font-bold text-white text-right">{employees > 20 ? 'Kurumsal CFO & Teşvik' : 'Büyüme & E-Dönüşüm'}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-400">Müşavirlik Bedeli:</span>
-                  <span className="font-bold text-white ledger-mono">~{formatCurrency(estimatedSmmFee)} / ay</span>
+                <div className="flex justify-between gap-3">
+                  <span className="text-pine-300">Müşavirlik Bedeli:</span>
+                  <span className="font-bold text-white font-mono">~{formatCurrency(estimatedSmmFee)} / ay</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-400">Yatırımın Geri Dönüşü:</span>
-                  <span className="font-bold text-emerald-400 ledger-mono">%{Math.round((annualTotalBenefit / (estimatedSmmFee * 12)) * 100)} Net Getiri</span>
+                <div className="flex justify-between gap-3">
+                  <span className="text-pine-300">Yatırımın Geri Dönüşü:</span>
+                  <span className="font-bold text-gold-300 font-mono">
+                    %{Math.round((annualTotalBenefit / (estimatedSmmFee * 12)) * 100)} Net Getiri
+                  </span>
                 </div>
               </div>
             </div>
 
             <button
               onClick={() => setIsConsultationOpen(true)}
-              className="w-full py-3 bg-white hover:bg-slate-200 text-black rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 transition-all shadow-luxury"
+              className="w-full py-3 bg-white hover:bg-paper-100 text-pine-900 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all active:scale-[0.99]"
             >
               <span>Bu Tasarruf Raporunu Al</span>
-              <ArrowRight className="w-4 h-4 text-black" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
         </div>
+
+        {/* Disclaimer */}
+        <p className="max-w-4xl mx-auto mt-6 flex items-center gap-2 text-[11px] text-ink-400">
+          <ShieldCheck className="w-3.5 h-3.5 text-pine-600 shrink-0" />
+          Simülasyon, 2026 yılı vergi mevzuatına göre ortalama katsayılar üzerinden hesaplanan tahmini değerlerdir.
+          Kesin projeksiyon için ücretsiz ön görüşmede şirket verileriniz üzerinden raporlanır.
+        </p>
 
       </div>
     </section>
