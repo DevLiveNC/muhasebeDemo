@@ -43,23 +43,23 @@ export default function GlobalModeBar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#07080c] text-white border-b border-white/[0.08] backdrop-blur-xl shadow-2xl">
+    <header className="sticky top-0 z-50 bg-[#f7f5ef] text-[#20352c] border-b border-[#d9d5cc] shadow-sm">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-11 text-xs">
           
           {/* Brand mark */}
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2 pr-3 border-r border-white/10">
-              <div className="w-5 h-5 rounded-md bg-white text-black font-black flex items-center justify-center text-[11px] tracking-tighter">
+              <div className="w-5 h-5 rounded-md bg-[#173f32] text-white font-black flex items-center justify-center text-[11px] tracking-tighter">
                 V
               </div>
-              <span className="font-bold tracking-widest text-white text-[11px] uppercase font-mono hidden sm:inline">
-                VELOX <span className="text-slate-400 font-normal">MALİ KONSOL</span>
+              <span className="font-bold tracking-widest text-[#20352c] text-[11px] uppercase font-mono hidden sm:inline">
+                VELOX <span className="text-[#7b867e] font-normal">MALİ KONSOL</span>
               </span>
             </div>
 
             {/* Mode Switcher Buttons */}
-            <div className="flex items-center bg-black/60 p-0.5 rounded-lg border border-white/[0.08]">
+            <div className="flex items-center bg-[#e7e5de] p-0.5 rounded-lg border border-[#d4d2ca]">
               {modes.map((mode) => {
                 const Icon = mode.icon;
                 const isActive = currentMode === mode.id;
@@ -73,8 +73,8 @@ export default function GlobalModeBar() {
                     className={cn(
                       "flex items-center space-x-1.5 px-2.5 sm:px-3 py-1 rounded-md transition-all text-xs font-medium",
                       isActive 
-                        ? "bg-slate-800 text-white shadow-inner-line font-semibold border border-white/15" 
-                        : "text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]"
+                        ? "bg-[#173f32] text-white shadow-sm font-semibold" 
+                        : "text-[#6d786f] hover:text-[#20352c] hover:bg-white/60"
                     )}
                   >
                     <Icon className="w-3.5 h-3.5" />
