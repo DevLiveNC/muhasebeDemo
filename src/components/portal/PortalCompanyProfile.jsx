@@ -21,7 +21,7 @@ export default function PortalCompanyProfile() {
     <div className="space-y-6 animate-fade-in">
 
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">Şirket Sicil & Danışman Masası</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Şirket Sicil & Danışman Masası</h1>
         <p className="text-xs text-ink-400 mt-1">Resmi vergi dairesi kayıtları, MERSİS ve atanan SMMM direktörü</p>
       </div>
 
@@ -34,7 +34,7 @@ export default function PortalCompanyProfile() {
               TV
             </div>
             <div className="min-w-0">
-              <h3 className="font-bold text-ink-950 text-base leading-snug">{client.name}</h3>
+              <h3 className="font-bold text-ink-900 text-base leading-snug">{client.name}</h3>
               <p className="text-xs text-ink-400 mt-0.5">{client.type} · {client.sector}</p>
             </div>
           </div>
@@ -45,7 +45,7 @@ export default function PortalCompanyProfile() {
                 <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-1">
                   {f.label}
                 </span>
-                <span className="font-mono font-semibold text-ink-950 text-sm break-all">{f.value}</span>
+                <span className="font-mono font-semibold text-ink-900 text-sm break-all">{f.value}</span>
               </div>
             ))}
           </div>
@@ -91,7 +91,7 @@ export default function PortalCompanyProfile() {
                 className="w-14 h-14 rounded-xl object-cover border border-line"
               />
               <div className="min-w-0">
-                <h4 className="font-bold text-base text-ink-950">{client.assignedCPA.name}</h4>
+                <h4 className="font-bold text-base text-ink-900">{client.assignedCPA.name}</h4>
                 <p className="text-xs text-ink-500 mt-0.5">{client.assignedCPA.title}</p>
                 <span className="text-[11px] font-mono text-success-deep mt-1.5 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
@@ -131,7 +131,7 @@ export default function PortalCompanyProfile() {
                 className="w-10 h-10 rounded-lg object-cover border border-line"
               />
               <div className="text-[13px] min-w-0">
-                <p className="font-bold text-ink-950">{client.authorizedPerson.name}</p>
+                <p className="font-bold text-ink-900">{client.authorizedPerson.name}</p>
                 <p className="text-ink-400 text-xs">{client.authorizedPerson.title}</p>
               </div>
             </div>

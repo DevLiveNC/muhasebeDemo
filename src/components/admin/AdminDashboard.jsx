@@ -90,7 +90,7 @@ export default function AdminDashboard() {
             <span className="badge badge-neutral">SMMM Yönetici Kokpiti</span>
             <span className="text-ink-400 font-mono text-xs">Ağustos 2026 Beyan Dönemi</span>
           </div>
-          <h1 className="font-serif text-2xl sm:text-[26px] text-ink-950 leading-tight">
+          <h1 className="font-serif text-2xl sm:text-[26px] text-ink-900 leading-tight">
             Hoş Geldiniz, SMMM Kemal Yıldız
           </h1>
           <p className="text-[13px] text-ink-500">
@@ -130,7 +130,7 @@ export default function AdminDashboard() {
                 <span className="kpi-label">{kpi.label}</span>
                 <Icon className="w-3.5 h-3.5 text-pine-600" />
               </div>
-              <p className={cn('font-mono text-[22px] font-semibold tracking-tight leading-none', kpi.valueColor || 'text-ink-950')}>
+              <p className={cn('font-mono text-[22px] font-semibold tracking-tight leading-none', kpi.valueColor || 'text-ink-900')}>
                 {kpi.value}
               </p>
               <p className={cn('text-[10px] font-mono', kpi.subColor)}>{kpi.sub}</p>
@@ -169,7 +169,7 @@ export default function AdminDashboard() {
         <div className="lg:col-span-7 card p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-ink-950 text-sm">Müşteri Portföyü ve Dönem Durumu</h3>
+              <h3 className="font-bold text-ink-900 text-sm">Müşteri Portföyü ve Dönem Durumu</h3>
               <p className="text-[11px] text-ink-400 font-mono mt-0.5">KDV-1, SGK ve mizan tamamlanma hızı</p>
             </div>
             <button
@@ -193,7 +193,7 @@ export default function AdminDashboard() {
                     {cl.name.substring(0, 2).toUpperCase()}
                   </div>
                   <div className="min-w-0">
-                    <h4 className="font-bold text-[13px] text-ink-950 truncate">{cl.shortName}</h4>
+                    <h4 className="font-bold text-[13px] text-ink-900 truncate">{cl.shortName}</h4>
                     <p className="text-[11px] text-ink-400 font-mono truncate">
                       VN: {cl.taxNumber} · Sorumlu: {cl.assignedCPA.name.split(' ').slice(-1)[0]}
                     </p>
@@ -221,7 +221,7 @@ export default function AdminDashboard() {
         <div className="lg:col-span-5 card p-6 space-y-4 self-start">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-ink-950 text-sm">SMMM Ekip İş Yükü</h3>
+              <h3 className="font-bold text-ink-900 text-sm">SMMM Ekip İş Yükü</h3>
               <p className="text-[11px] text-ink-400 font-mono mt-0.5">Kapasite ve şirket dağılımı</p>
             </div>
             <button
@@ -238,10 +238,10 @@ export default function AdminDashboard() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <img src={st.avatar} alt={st.name} className="w-5 h-5 rounded-md object-cover" />
-                    <span className="font-bold text-[13px] text-ink-950">{st.name}</span>
+                    <span className="font-bold text-[13px] text-ink-900">{st.name}</span>
                   </div>
                   <div className="font-mono text-[11px]">
-                    <span className="text-ink-950 font-semibold">{st.clientsCount} Şirket</span>
+                    <span className="text-ink-900 font-semibold">{st.clientsCount} Şirket</span>
                     <span className="text-ink-400 ml-1">(%{st.workload})</span>
                   </div>
                 </div>
@@ -268,7 +268,7 @@ export default function AdminDashboard() {
       <div className="card p-6 space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="font-bold text-ink-950 text-sm">Merkezi Evrak Havuzu ve OCR Kayıtları</h3>
+            <h3 className="font-bold text-ink-900 text-sm">Merkezi Evrak Havuzu ve OCR Kayıtları</h3>
             <p className="text-[11px] text-ink-400 font-mono mt-0.5">Son 24 saatte sisteme iletilen fatura ve ekstreler</p>
           </div>
           <button
@@ -296,12 +296,12 @@ export default function AdminDashboard() {
             <tbody className="divide-y divide-line">
               {documents.slice(0, 5).map((doc) => (
                 <tr key={doc.id} className="hover:bg-paper-50 transition-colors">
-                  <td className="td font-semibold text-ink-950 whitespace-nowrap">{doc.client.split(' ')[0]}</td>
+                  <td className="td font-semibold text-ink-900 whitespace-nowrap">{doc.client.split(' ')[0]}</td>
                   <td className="td">
                     <span className="block truncate max-w-[200px]">{doc.name}</span>
                   </td>
                   <td className="td text-ink-500 whitespace-nowrap">{doc.category}</td>
-                  <td className="td font-mono font-semibold text-ink-950 text-right whitespace-nowrap">{doc.amount}</td>
+                  <td className="td font-mono font-semibold text-ink-900 text-right whitespace-nowrap">{doc.amount}</td>
                   <td className="td"><span className="badge badge-success">{doc.ocrConfidence}</span></td>
                   <td className="td">
                     <span className={cn('badge', doc.status === 'Onaylandı' ? 'badge-success' : 'badge-warning')}>

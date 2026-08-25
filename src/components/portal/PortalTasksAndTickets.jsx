@@ -67,7 +67,7 @@ export default function PortalTasksAndTickets() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">SMMM Danışman Masası & Talepler</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">SMMM Danışman Masası & Talepler</h1>
           <p className="text-xs text-ink-400 mt-1">Bordro, faaliyet belgesi, mizan ve özel vergi denetim talepleriniz</p>
         </div>
 
@@ -101,11 +101,11 @@ export default function PortalTasksAndTickets() {
               </div>
             </div>
 
-            <h3 className="font-bold text-ink-950 text-[15px] leading-snug">{tck.subject}</h3>
+            <h3 className="font-bold text-ink-900 text-[15px] leading-snug">{tck.subject}</h3>
 
             <div className="p-4 bg-paper-50 rounded-xl border border-line text-[13px] text-ink-600 flex items-start gap-2.5">
               <MessageSquare className="w-4 h-4 text-pine-700 shrink-0 mt-0.5" />
-              <span><strong className="text-ink-950">Son Yanıt:</strong> {tck.lastReply}</span>
+              <span><strong className="text-ink-900">Son Yanıt:</strong> {tck.lastReply}</span>
             </div>
           </div>
         ))}
@@ -119,10 +119,10 @@ export default function PortalTasksAndTickets() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-line pb-3.5">
-              <h3 className="font-bold text-base text-ink-950">SMMM Danışmanına Talep Aç</h3>
+              <h3 className="font-bold text-base text-ink-900">SMMM Danışmanına Talep Aç</h3>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+                className="p-1 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
                 title="Kapat"
               >
                 <X className="w-4 h-4" />

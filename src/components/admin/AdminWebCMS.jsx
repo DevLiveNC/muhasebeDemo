@@ -31,7 +31,7 @@ export default function AdminWebCMS() {
       {/* Header */}
       <div>
         <span className="badge badge-neutral">Web & CMS Yönetimi</span>
-        <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight mt-2">
+        <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-2">
           Web Sitesi & Gelen Talep Masası
         </h1>
         <p className="text-xs text-ink-400 mt-1">
@@ -42,7 +42,7 @@ export default function AdminWebCMS() {
       {/* Consultation Requests */}
       <div className="card overflow-hidden">
         <div className="p-5 border-b border-line flex items-center justify-between">
-          <h3 className="font-bold text-ink-950 text-sm">Gelen Ön Görüşme Randevu Talepleri</h3>
+          <h3 className="font-bold text-ink-900 text-sm">Gelen Ön Görüşme Randevu Talepleri</h3>
           <span className="badge badge-success">2 Yeni Talep</span>
         </div>
 
@@ -61,7 +61,7 @@ export default function AdminWebCMS() {
             <tbody className="divide-y divide-line">
               {consultationRequests.map((req) => (
                 <tr key={req.id} className="hover:bg-paper-50 transition-colors">
-                  <td className="td font-semibold text-ink-950 whitespace-nowrap">{req.company}</td>
+                  <td className="td font-semibold text-ink-900 whitespace-nowrap">{req.company}</td>
                   <td className="td text-ink-500 whitespace-nowrap">{req.contact}</td>
                   <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{req.phone}</td>
                   <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{req.date}</td>
@@ -107,7 +107,7 @@ export default function AdminWebCMS() {
         {/* Blog Management */}
         <div className="card p-6 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-ink-950 text-sm flex items-center gap-2">
+            <h3 className="font-bold text-ink-900 text-sm flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-pine-700" />
               Mevzuat Blog Yönetimi
             </h3>
@@ -126,7 +126,7 @@ export default function AdminWebCMS() {
                   <span className="badge badge-pine">{post.category}</span>
                   <span className="text-[10px] font-mono text-ink-400">{post.date}</span>
                 </div>
-                <p className="font-semibold text-[13px] text-ink-950 leading-snug line-clamp-2">{post.title}</p>
+                <p className="font-semibold text-[13px] text-ink-900 leading-snug line-clamp-2">{post.title}</p>
                 <div className="flex items-center justify-between pt-1">
                   <span className="text-[11px] text-ink-400">{post.author}</span>
                   <button
@@ -144,7 +144,7 @@ export default function AdminWebCMS() {
 
         {/* Testimonials */}
         <div className="card p-6 space-y-4 self-start">
-          <h3 className="font-bold text-ink-950 text-sm flex items-center gap-2">
+          <h3 className="font-bold text-ink-900 text-sm flex items-center gap-2">
             <Star className="w-4 h-4 text-gold-500" />
             Referans & Tanıklık Yönetimi
           </h3>
@@ -159,7 +159,7 @@ export default function AdminWebCMS() {
                     className="w-8 h-8 rounded-full object-cover border border-line"
                   />
                   <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-[13px] text-ink-950 truncate">{test.name}</p>
+                    <p className="font-semibold text-[13px] text-ink-900 truncate">{test.name}</p>
                     <p className="text-[11px] text-ink-400 truncate">{test.role} · {test.company}</p>
                   </div>
                   <span className="badge badge-success shrink-0">Yayında</span>

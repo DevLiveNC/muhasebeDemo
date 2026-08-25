@@ -122,12 +122,12 @@ export default function CommandPalette() {
             placeholder="Mükellef unvanı, VKN, evrak veya işlem ara... (örn: TechVision, 876045, KDV)"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full bg-transparent text-sm text-ink-950 placeholder-ink-300 focus:outline-none font-mono"
+            className="w-full bg-transparent text-sm text-ink-900 placeholder-ink-300 focus:outline-none font-mono"
             autoFocus
           />
           <button
             onClick={() => setIsCommandPaletteOpen(false)}
-            className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-200 transition-colors"
+            className="p-1 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-200 transition-colors"
             title="Kapat"
           >
             <X className="w-4 h-4" />
@@ -156,7 +156,7 @@ export default function CommandPalette() {
                           <Icon className="w-3.5 h-3.5" />
                         </div>
                         <div>
-                          <p className="font-semibold text-[13px] text-ink-950">{action.title}</p>
+                          <p className="font-semibold text-[13px] text-ink-900">{action.title}</p>
                           <p className="text-[11px] text-ink-400">{action.category}</p>
                         </div>
                       </div>
@@ -189,7 +189,7 @@ export default function CommandPalette() {
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="font-bold text-[13px] text-ink-950 truncate">{client.name}</span>
+                          <span className="font-bold text-[13px] text-ink-900 truncate">{client.name}</span>
                           <span className="badge badge-neutral shrink-0">{client.type}</span>
                         </div>
                         <p className="text-[11px] text-ink-400 font-mono truncate">

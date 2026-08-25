@@ -6,7 +6,7 @@ export default function PublicFooter() {
   const { navigateToMode, setIsConsultationOpen } = useApp();
 
   return (
-    <footer className="bg-pine-950 text-pine-200 text-xs">
+    <footer className="bg-pine-900 text-pine-200 text-xs">
       <div className="container-x py-16">
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
@@ -17,7 +17,7 @@ export default function PublicFooter() {
               <div className="w-8 h-8 rounded-lg bg-white text-pine-900 font-serif font-bold flex items-center justify-center text-sm">
                 V
               </div>
-              <span className="font-extrabold text-base tracking-[0.14em] text-white">
+              <span className="font-bold text-base tracking-[0.14em] text-white">
                 VELOX <span className="text-pine-300 font-medium">DENETİM</span>
               </span>
             </div>

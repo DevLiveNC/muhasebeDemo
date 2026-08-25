@@ -42,7 +42,7 @@ export default function App() {
         <div className="fixed bottom-6 right-6 z-40 animate-fade-in">
           <button
             onClick={() => setIsAiAssistantOpen(true)}
-            className="group flex items-center gap-3 pl-3.5 pr-4 py-3 bg-pine-800 hover:bg-pine-900 text-white rounded-full shadow-pop transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+            className="group flex items-center gap-3 pl-3.5 pr-4 py-3 bg-pine-700 hover:bg-pine-800 text-white rounded-full shadow-pop transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
           >
             <span className="flex items-center gap-2 text-xs font-bold tracking-wide">
               <Zap className="w-4 h-4 text-gold-300" />

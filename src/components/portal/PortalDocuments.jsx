@@ -67,7 +67,7 @@ export default function PortalDocuments() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">Belgelerim ve Dijital Arşiv</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Belgelerim ve Dijital Arşiv</h1>
           <p className="text-xs text-ink-400 mt-1">Faturalar, banka ekstreleri, SGK bordroları ve resmi tahakkuk kayıtları</p>
         </div>
 
@@ -106,7 +106,7 @@ export default function PortalDocuments() {
         </div>
 
         <div>
-          <h3 className="font-bold text-ink-950 text-sm">
+          <h3 className="font-bold text-ink-900 text-sm">
             {isUploading ? 'Yapay Zeka Faturayı Okuyor ve Doğruluyor...' : 'Evraklarınızı Buraya Sürükleyin veya Tıklayın'}
           </h3>
           <p className="text-[11px] text-ink-400 font-mono mt-1">
@@ -193,12 +193,12 @@ export default function PortalDocuments() {
                     <td className="td">
                       <div className="flex items-center gap-2">
                         <FileText className="w-3.5 h-3.5 text-pine-700 shrink-0" />
-                        <span className="truncate max-w-[180px] font-semibold text-ink-950">{doc.name}</span>
+                        <span className="truncate max-w-[180px] font-semibold text-ink-900">{doc.name}</span>
                       </div>
                     </td>
                     <td className="td text-ink-500 whitespace-nowrap">{doc.category}</td>
                     <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{doc.uploadDate}</td>
-                    <td className="td font-mono font-semibold text-ink-950 text-right whitespace-nowrap">{doc.amount}</td>
+                    <td className="td font-mono font-semibold text-ink-900 text-right whitespace-nowrap">{doc.amount}</td>
                     <td className="td">
                       <span className="badge badge-success">{doc.ocrConfidence}</span>
                     </td>

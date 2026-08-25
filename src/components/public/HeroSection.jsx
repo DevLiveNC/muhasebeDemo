@@ -55,10 +55,10 @@ export default function HeroSection() {
 
           {/* Left: Copy */}
           <div className="space-y-7">
-            <h1 className="font-serif text-ink-950 text-[44px] sm:text-6xl md:text-[68px] leading-[1.04] tracking-tight">
+            <h1 className="font-serif text-ink-900 text-[44px] sm:text-6xl md:text-[68px] leading-[1.04] tracking-tight">
               Muhasebenizi değil,
               <br />
-              <em className="text-pine-700">işinizi büyütmeye</em>
+              <em className="text-pine-600">işinizi büyütmeye</em>
               <br />
               odaklanın.
             </h1>
@@ -112,7 +112,7 @@ export default function HeroSection() {
           <div className="relative">
             <div className="card overflow-hidden p-0 rotate-0">
               {/* Report top bar */}
-              <div className="bg-pine-800 px-5 py-3 flex items-center justify-between">
+              <div className="bg-pine-700 px-5 py-3 flex items-center justify-between">
                 <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-white/90">
                   VELOX / Finansal Rapor
                 </span>
@@ -122,7 +122,7 @@ export default function HeroSection() {
               {/* Report body */}
               <div className="p-6 sm:p-7 space-y-5">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-serif text-[22px] text-ink-950">İşletme performansı</h3>
+                  <h3 className="font-serif text-[22px] text-ink-900">İşletme performansı</h3>
                   <div className="flex items-center gap-1 bg-paper-200 p-0.5 rounded-lg border border-line text-[11px]">
                     {tabs.map((t) => (
                       <button
@@ -142,7 +142,7 @@ export default function HeroSection() {
                 <div>
                   <p className="kpi-label mb-1">Net Dönem Hasılatı</p>
                   <div className="flex items-end gap-3">
-                    <span className="font-mono text-[32px] font-semibold text-ink-950 tracking-tight leading-none">₺842.600</span>
+                    <span className="font-mono text-[32px] font-semibold text-ink-900 tracking-tight leading-none">₺842.600</span>
                     <span className="badge badge-success mb-1">
                       <TrendingUp className="w-3 h-3" />
                       +18,4%
@@ -197,11 +197,11 @@ export default function HeroSection() {
                     ].map((row, i) => (
                       <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-paper-50 border border-line text-xs">
                         <div className="min-w-0">
-                          <p className="font-mono text-[11px] text-ink-950 truncate">{row.file}</p>
+                          <p className="font-mono text-[11px] text-ink-900 truncate">{row.file}</p>
                           <p className="text-[10px] text-ink-400 mt-0.5">{row.code}</p>
                         </div>
                         <div className="text-right shrink-0">
-                          <p className="font-mono font-semibold text-ink-950">{row.amt}</p>
+                          <p className="font-mono font-semibold text-ink-900">{row.amt}</p>
                           <span className="text-[9px] font-mono text-success flex items-center gap-1 justify-end">
                             <Sparkles className="w-2.5 h-2.5" /> %99.9 OCR
                           </span>
@@ -220,7 +220,7 @@ export default function HeroSection() {
             </div>
 
             {/* Floating note card */}
-            <div className="absolute -bottom-6 -left-3 sm:-left-6 bg-pine-800 text-white rounded-xl p-4 shadow-pop flex items-start gap-3 max-w-[240px]">
+            <div className="absolute -bottom-6 -left-3 sm:-left-6 bg-pine-700 text-white rounded-xl p-4 shadow-pop flex items-start gap-3 max-w-[240px]">
               <CalendarDays className="w-4 h-4 text-gold-300 shrink-0 mt-0.5" />
               <div>
                 <p className="text-[9px] font-mono tracking-[0.14em] uppercase text-pine-200">Yaklaşan Yükümlülük</p>

@@ -134,7 +134,7 @@ export default function AiAssistantModal() {
     const items = data.items || [];
     return (
       <div className="space-y-3">
-        <h4 className="font-bold text-[13px] text-ink-950 leading-snug">{data.title}</h4>
+        <h4 className="font-bold text-[13px] text-ink-900 leading-snug">{data.title}</h4>
         <p className="text-xs text-ink-500 leading-relaxed">{data.content}</p>
 
         {items.length > 0 && (
@@ -144,7 +144,7 @@ export default function AiAssistantModal() {
                 {/* evrak_summary */}
                 {item.company && item.missing && (
                   <>
-                    <p className="font-bold text-xs text-ink-950">{item.company}</p>
+                    <p className="font-bold text-xs text-ink-900">{item.company}</p>
                     <p className="text-[11px] text-ink-500 leading-relaxed">{item.missing}</p>
                     <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
                       <span className="badge badge-danger">{item.urgency}</span>
@@ -163,7 +163,7 @@ export default function AiAssistantModal() {
                 {item.title && item.company && (
                   <>
                     <div className="flex items-center justify-between gap-2">
-                      <p className="font-bold text-xs text-ink-950">{item.title}</p>
+                      <p className="font-bold text-xs text-ink-900">{item.title}</p>
                       <Clock className="w-3 h-3 text-ink-300 shrink-0" />
                     </div>
                     <p className="text-[11px] text-ink-500">
@@ -242,13 +242,13 @@ export default function AiAssistantModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center sm:p-4 bg-ink-950/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center sm:p-4 bg-ink-950/45 backdrop-blur-sm animate-fade-in">
       <div
         className="w-full max-w-2xl bg-white rounded-t-2xl sm:rounded-2xl shadow-pop border border-line overflow-hidden flex flex-col h-[88vh] sm:h-[80vh] max-h-[720px] animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-5 py-4 bg-pine-800 flex items-center justify-between">
+        <div className="px-5 py-4 bg-pine-700 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-white/10 text-gold-300 flex items-center justify-center border border-white/10">
               <Sparkles className="w-4 h-4" />

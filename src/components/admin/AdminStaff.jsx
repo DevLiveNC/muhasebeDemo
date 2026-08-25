@@ -16,7 +16,7 @@ export default function AdminStaff() {
             <span className="badge badge-pine">SMMM & Denetçi Kadrosu</span>
             <span className="text-ink-400 font-mono text-xs">TÜRMOB Ruhsatlı Uzmanlar</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight mt-1.5">
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">
             Ekip & Denetçi Kapasite Yönetimi
           </h1>
           <p className="text-xs text-ink-400 mt-1">
@@ -49,7 +49,7 @@ export default function AdminStaff() {
               />
               <div className="space-y-1 min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-bold text-ink-950">{st.name}</h3>
+                  <h3 className="font-bold text-ink-900">{st.name}</h3>
                   <span className="badge badge-neutral shrink-0">{st.role}</span>
                 </div>
                 <p className="text-xs text-ink-500">{st.specialty}</p>
@@ -86,11 +86,11 @@ export default function AdminStaff() {
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3 bg-paper-50 rounded-xl border border-line text-center">
                 <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block">Sorumlu Portföy</span>
-                <span className="font-mono font-bold text-ink-950 text-sm block mt-1">{st.clientsCount} Mükellef</span>
+                <span className="font-mono font-bold text-ink-900 text-sm block mt-1">{st.clientsCount} Mükellef</span>
               </div>
               <div className="p-3 bg-paper-50 rounded-xl border border-line text-center">
                 <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block">Açık İş Emirleri</span>
-                <span className="font-mono font-bold text-ink-950 text-sm block mt-1">{st.activeTasks} Görev</span>
+                <span className="font-mono font-bold text-ink-900 text-sm block mt-1">{st.activeTasks} Görev</span>
               </div>
             </div>
 

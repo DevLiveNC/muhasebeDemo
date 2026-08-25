@@ -37,7 +37,7 @@ export default function ServiceDetailModal() {
   const Icon = iconMap[srv.icon] || Receipt;
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/45 backdrop-blur-sm animate-fade-in">
       <div
         className="w-full max-w-2xl bg-white rounded-2xl shadow-pop border border-line overflow-hidden flex flex-col max-h-[90vh] animate-scale-in"
         onClick={(e) => e.stopPropagation()}
@@ -50,13 +50,13 @@ export default function ServiceDetailModal() {
             </div>
             <div className="min-w-0">
               <span className="badge badge-neutral">{srv.badge || srv.subtitle}</span>
-              <h3 className="font-bold text-base text-ink-950 mt-1.5 leading-snug">{srv.title}</h3>
+              <h3 className="font-bold text-base text-ink-900 mt-1.5 leading-snug">{srv.title}</h3>
             </div>
           </div>
 
           <button
             onClick={() => setSelectedServiceDetail(null)}
-            className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors shrink-0"
+            className="p-1 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors shrink-0"
             title="Kapat"
           >
             <X className="w-4 h-4" />

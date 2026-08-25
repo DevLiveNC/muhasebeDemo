@@ -21,7 +21,7 @@ export default function AdminPayments() {
             <span className="badge badge-neutral">Tahsilat & e-SMM</span>
             <span className="text-ink-400 font-mono text-xs">Ağustos 2026 Dönemi</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight mt-1.5">
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">
             Müşavirlik Ücreti Tahsilatları
           </h1>
         </div>
@@ -36,7 +36,7 @@ export default function AdminPayments() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="card p-5 space-y-1.5">
           <span className="kpi-label">Toplam Kesilen e-SMM (Ağustos)</span>
-          <p className="font-mono text-2xl font-semibold text-ink-950 tracking-tight">₺720.000</p>
+          <p className="font-mono text-2xl font-semibold text-ink-900 tracking-tight">₺720.000</p>
           <p className="text-[11px] font-mono text-ink-400">48 Portföy Mükellefi</p>
         </div>
         <div className="card p-5 space-y-1.5">
@@ -54,7 +54,7 @@ export default function AdminPayments() {
       {/* Filter & Table */}
       <div className="card overflow-hidden">
         <div className="p-4 border-b border-line flex items-center justify-between gap-3 flex-wrap">
-          <h3 className="font-bold text-ink-950 text-sm">Resmi Serbest Meslek Makbuzları (e-SMM)</h3>
+          <h3 className="font-bold text-ink-900 text-sm">Resmi Serbest Meslek Makbuzları (e-SMM)</h3>
 
           <select
             value={filterStatus}
@@ -87,13 +87,13 @@ export default function AdminPayments() {
               {filteredPayments.map((p) => (
                 <tr key={p.id} className="hover:bg-paper-50 transition-colors">
                   <td className="td">
-                    <span className="font-semibold text-ink-950 block max-w-[200px] truncate">{p.client}</span>
+                    <span className="font-semibold text-ink-900 block max-w-[200px] truncate">{p.client}</span>
                   </td>
                   <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{p.smmNo}</td>
                   <td className="td text-ink-500 whitespace-nowrap">{p.period}</td>
                   <td className="td font-mono text-ink-700 text-right whitespace-nowrap">{p.amount}</td>
                   <td className="td font-mono text-ink-500 text-right whitespace-nowrap">{p.vatAmount}</td>
-                  <td className="td font-mono font-bold text-ink-950 text-right whitespace-nowrap">{p.totalAmount}</td>
+                  <td className="td font-mono font-bold text-ink-900 text-right whitespace-nowrap">{p.totalAmount}</td>
                   <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">{p.dueDate}</td>
                   <td className="td">
                     <span className={cn(

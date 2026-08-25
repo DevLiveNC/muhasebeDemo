@@ -62,7 +62,7 @@ export default function WhyUsSection() {
             {comparisonRows.map((row, idx) => (
               <div key={idx} className="grid grid-cols-1 md:grid-cols-12 p-5 sm:p-6 items-center gap-4 hover:bg-paper-50 transition-colors">
                 <div className="md:col-span-4">
-                  <span className="font-bold text-[15px] text-ink-950">{row.feature}</span>
+                  <span className="font-bold text-[15px] text-ink-900">{row.feature}</span>
                 </div>
 
                 <div className="md:col-span-4 flex items-start gap-2.5 text-ink-400 p-3 rounded-xl bg-danger-soft/40 border border-danger/10 md:bg-transparent md:p-0 md:border-0">
@@ -86,7 +86,7 @@ export default function WhyUsSection() {
         {/* Callout */}
         <div className="mt-10 p-6 rounded-2xl bg-pine-50 border border-pine-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <h4 className="font-bold text-[15px] text-ink-950">Mevcut muhasebenizden VELOX'a geçiş 24 saatte tamamlanır.</h4>
+            <h4 className="font-bold text-[15px] text-ink-900">Mevcut muhasebenizden VELOX'a geçiş 24 saatte tamamlanır.</h4>
             <p className="text-sm text-ink-500 mt-1">
               Eski mali müşaviriniz ile devir teslim tutanaklarını ve GİB yetkilendirmesini ekibimiz yönetir.
             </p>

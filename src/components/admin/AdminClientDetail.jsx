@@ -93,7 +93,7 @@ export default function AdminClientDetail() {
               {selectedClient.name.substring(0, 2).toUpperCase()}
             </div>
             <div className="min-w-0">
-              <h1 className="font-serif text-xl sm:text-2xl text-ink-950 leading-tight">{selectedClient.name}</h1>
+              <h1 className="font-serif text-xl sm:text-2xl text-ink-900 leading-tight">{selectedClient.name}</h1>
               <p className="text-xs text-ink-400 mt-1">
                 {selectedClient.type} · {selectedClient.sector} · {selectedClient.taxOffice}
               </p>
@@ -160,7 +160,7 @@ export default function AdminClientDetail() {
       {activeSubTab === 'info' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-fade-in">
           <div className="lg:col-span-7 card p-6 space-y-5">
-            <h3 className="font-bold text-ink-950 text-sm">Sicil & Mali Kimlik</h3>
+            <h3 className="font-bold text-ink-900 text-sm">Sicil & Mali Kimlik</h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
@@ -173,7 +173,7 @@ export default function AdminClientDetail() {
               ].map(([label, value], i) => (
                 <div key={i} className="p-3.5 bg-paper-50 rounded-xl border border-line">
                   <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-1">{label}</span>
-                  <span className="font-mono font-semibold text-ink-950 text-[13px] break-all">{value}</span>
+                  <span className="font-mono font-semibold text-ink-900 text-[13px] break-all">{value}</span>
                 </div>
               ))}
             </div>
@@ -185,13 +185,13 @@ export default function AdminClientDetail() {
 
             {/* Ledger entries */}
             <div>
-              <h4 className="font-bold text-ink-950 text-sm mb-3">Son Yevmiye Kayıtları</h4>
+              <h4 className="font-bold text-ink-900 text-sm mb-3">Son Yevmiye Kayıtları</h4>
               <div className="space-y-2.5">
                 {(selectedClient.recentLedgerEntries || []).map((entry, i) => (
                   <div key={i} className="p-3.5 rounded-xl border border-line bg-white hover:border-pine-300 transition-colors">
                     <div className="flex items-center justify-between gap-3">
                       <span className="font-mono text-[11px] font-bold text-pine-700">{entry.yevmiyeNo}</span>
-                      <span className="font-mono text-[13px] font-bold text-ink-950">{entry.amount}</span>
+                      <span className="font-mono text-[13px] font-bold text-ink-900">{entry.amount}</span>
                     </div>
                     <p className="text-xs text-ink-600 mt-1.5 leading-relaxed">{entry.desc}</p>
                     <p className="text-[10px] font-mono text-ink-400 mt-1.5">
@@ -205,7 +205,7 @@ export default function AdminClientDetail() {
 
           <div className="lg:col-span-5 space-y-6">
             <div className="card p-6 space-y-4">
-              <h3 className="font-bold text-ink-950 text-sm">Vergi & Teşvik Pozisyonu</h3>
+              <h3 className="font-bold text-ink-900 text-sm">Vergi & Teşvik Pozisyonu</h3>
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between p-3 rounded-lg bg-paper-50 border border-line text-[13px]">
                   <span className="text-ink-500">KDV-1</span>
@@ -232,7 +232,7 @@ export default function AdminClientDetail() {
             </div>
 
             <div className="card p-6 space-y-3">
-              <h3 className="font-bold text-ink-950 text-sm">Sorumlu Ekibiniz</h3>
+              <h3 className="font-bold text-ink-900 text-sm">Sorumlu Ekibiniz</h3>
               <div className="flex items-center gap-3">
                 <img
                   src={selectedClient.assignedCPA.avatar}
@@ -240,7 +240,7 @@ export default function AdminClientDetail() {
                   className="w-11 h-11 rounded-lg object-cover border border-line"
                 />
                 <div className="min-w-0">
-                  <p className="font-bold text-[13px] text-ink-950">{selectedClient.assignedCPA.name}</p>
+                  <p className="font-bold text-[13px] text-ink-900">{selectedClient.assignedCPA.name}</p>
                   <p className="text-[11px] text-ink-400">{selectedClient.assignedCPA.title}</p>
                   <p className="text-[11px] font-mono text-ink-500 mt-0.5">{selectedClient.assignedCPA.email}</p>
                 </div>
@@ -253,7 +253,7 @@ export default function AdminClientDetail() {
       {/* ---- DOCS ---- */}
       {activeSubTab === 'docs' && (
         <div className="card p-6 space-y-4 animate-fade-in">
-          <h3 className="font-bold text-ink-950 text-sm">Mükellef Evrak Havuzu ({clientDocs.length})</h3>
+          <h3 className="font-bold text-ink-900 text-sm">Mükellef Evrak Havuzu ({clientDocs.length})</h3>
           <div className="overflow-x-auto -mx-6 px-6">
             <table className="w-full text-left min-w-[640px]">
               <thead>
@@ -269,11 +269,11 @@ export default function AdminClientDetail() {
               <tbody className="divide-y divide-line">
                 {clientDocs.map((doc) => (
                   <tr key={doc.id} className="hover:bg-paper-50 transition-colors">
-                    <td className="td font-semibold text-ink-950">
+                    <td className="td font-semibold text-ink-900">
                       <span className="block truncate max-w-[220px]">{doc.name}</span>
                     </td>
                     <td className="td text-ink-500 whitespace-nowrap">{doc.category}</td>
-                    <td className="td font-mono font-semibold text-ink-950 text-right">{doc.amount}</td>
+                    <td className="td font-mono font-semibold text-ink-900 text-right">{doc.amount}</td>
                     <td className="td"><span className="badge badge-success">{doc.ocrConfidence}</span></td>
                     <td className="td">
                       <span className={cn(
@@ -299,7 +299,7 @@ export default function AdminClientDetail() {
       {/* ---- TAX OPS ---- */}
       {activeSubTab === 'tax-ops' && (
         <div className="card p-6 space-y-4 animate-fade-in">
-          <h3 className="font-bold text-ink-950 text-sm">Dönemsel Beyan & SGK Adımları</h3>
+          <h3 className="font-bold text-ink-900 text-sm">Dönemsel Beyan & SGK Adımları</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {taxCalendar.map((tax) => (
               <div key={tax.id} className={cn(
@@ -315,7 +315,7 @@ export default function AdminClientDetail() {
                     {tax.status === 'Tamamlandı' ? 'Kapatıldı' : `${tax.remainingDays} Gün`}
                   </span>
                 </div>
-                <p className="font-semibold text-[13px] text-ink-950 leading-snug">{tax.title}</p>
+                <p className="font-semibold text-[13px] text-ink-900 leading-snug">{tax.title}</p>
                 <p className="text-[11px] font-mono text-ink-400">Termin: {tax.deadline}</p>
               </div>
             ))}
@@ -326,7 +326,7 @@ export default function AdminClientDetail() {
       {/* ---- PAYMENTS ---- */}
       {activeSubTab === 'payments' && (
         <div className="card p-6 space-y-4 animate-fade-in">
-          <h3 className="font-bold text-ink-950 text-sm">Cari Hesap & e-SMM Makbuzları</h3>
+          <h3 className="font-bold text-ink-900 text-sm">Cari Hesap & e-SMM Makbuzları</h3>
           {clientPayments.length === 0 ? (
             <p className="text-sm text-ink-400 py-8 text-center">Bu mükellef için kayıtlı ödeme makbuzu bulunamadı.</p>
           ) : (
@@ -346,10 +346,10 @@ export default function AdminClientDetail() {
                 <tbody className="divide-y divide-line">
                   {clientPayments.map((p) => (
                     <tr key={p.id} className="hover:bg-paper-50 transition-colors">
-                      <td className="td font-semibold text-ink-950 whitespace-nowrap">{p.period}</td>
+                      <td className="td font-semibold text-ink-900 whitespace-nowrap">{p.period}</td>
                       <td className="td font-mono text-xs text-ink-500">{p.smmNo}</td>
                       <td className="td font-mono text-ink-700 text-right">{p.amount}</td>
-                      <td className="td font-mono font-bold text-ink-950 text-right">{p.totalAmount}</td>
+                      <td className="td font-mono font-bold text-ink-900 text-right">{p.totalAmount}</td>
                       <td className="td font-mono text-xs text-ink-500 whitespace-nowrap">
                         {p.dueDate}{p.paidDate ? ` · ${p.paidDate}` : ''}
                       </td>
@@ -379,7 +379,7 @@ export default function AdminClientDetail() {
       {/* ---- TASKS ---- */}
       {activeSubTab === 'tasks' && (
         <div className="card p-6 space-y-4 animate-fade-in">
-          <h3 className="font-bold text-ink-950 text-sm">Görevler & Hatırlatıcılar ({clientTasks.length})</h3>
+          <h3 className="font-bold text-ink-900 text-sm">Görevler & Hatırlatıcılar ({clientTasks.length})</h3>
           {clientTasks.length === 0 ? (
             <p className="text-sm text-ink-400 py-8 text-center">Bu mükellef için açık görev bulunamadı.</p>
           ) : (
@@ -387,7 +387,7 @@ export default function AdminClientDetail() {
               {clientTasks.map((t) => (
                 <div key={t.id} className="p-4 rounded-xl border border-line bg-paper-50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="font-semibold text-[13px] text-ink-950">{t.title}</p>
+                    <p className="font-semibold text-[13px] text-ink-900">{t.title}</p>
                     <p className="text-[11px] font-mono text-ink-400 mt-1">
                       {t.assignedTo} · Son: {t.dueDate} · {t.category}
                     </p>
@@ -408,7 +408,7 @@ export default function AdminClientDetail() {
       {/* ---- NOTES ---- */}
       {activeSubTab === 'notes' && (
         <div className="card p-6 space-y-5 animate-fade-in">
-          <h3 className="font-bold text-ink-950 text-sm">SMMM Denetim Notları</h3>
+          <h3 className="font-bold text-ink-900 text-sm">SMMM Denetim Notları</h3>
 
           <form onSubmit={handleAddNote} className="space-y-3">
             <textarea
@@ -430,7 +430,7 @@ export default function AdminClientDetail() {
             {notesList.map((note) => (
               <div key={note.id} className="p-4 rounded-xl border border-line bg-paper-50">
                 <div className="flex items-center justify-between gap-3 mb-2">
-                  <span className="font-bold text-xs text-ink-950">{note.author}</span>
+                  <span className="font-bold text-xs text-ink-900">{note.author}</span>
                   <span className="text-[10px] font-mono text-ink-400">{note.date}</span>
                 </div>
                 <p className="text-[13px] text-ink-600 leading-relaxed">{note.text}</p>

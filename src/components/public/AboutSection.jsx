@@ -38,12 +38,12 @@ export default function AboutSection() {
           <div className="lg:col-span-6 space-y-6">
             <p className="eyebrow">06 / Kurumsal Kimlik & Akreditasyon</p>
 
-            <h2 className="font-serif text-ink-950 text-3xl sm:text-4xl md:text-[44px] leading-[1.08] tracking-tight">
+            <h2 className="font-serif text-ink-900 text-3xl sm:text-4xl md:text-[44px] leading-[1.08] tracking-tight">
               Mali müşavirliği bir yük olmaktan çıkarıp <em className="text-pine-700">büyüme kaldıracına</em> dönüştürüyoruz.
             </h2>
 
             <p className="text-sm text-ink-600 leading-relaxed">
-              2016 yılında kurulan <strong className="text-ink-950">{firmInfo.legalName}</strong>,
+              2016 yılında kurulan <strong className="text-ink-900">{firmInfo.legalName}</strong>,
               köklü vergi hukuku tecrübesini yeni nesil bulut teknolojileri ve analitik raporlama
               araçlarıyla harmanlayan öncü bir kurumdur.
             </p>
@@ -59,7 +59,7 @@ export default function AboutSection() {
                 <div key={lic.no} className="flex items-center gap-3 p-3.5 rounded-xl bg-paper-50 border border-line">
                   <ShieldCheck className="w-4 h-4 text-pine-700 shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-[13px] font-semibold text-ink-950 truncate">{lic.title}</p>
+                    <p className="text-[13px] font-semibold text-ink-900 truncate">{lic.title}</p>
                     <p className="text-[10px] font-mono text-ink-400 mt-0.5">Ruhsat / Yetki No: {lic.no}</p>
                   </div>
                 </div>
@@ -92,7 +92,7 @@ export default function AboutSection() {
                   <div className="w-9 h-9 rounded-lg bg-pine-50 border border-pine-100 text-pine-700 flex items-center justify-center">
                     <Icon className="w-4 h-4" />
                   </div>
-                  <h4 className="font-bold text-sm text-ink-950">{st.title}</h4>
+                  <h4 className="font-bold text-sm text-ink-900">{st.title}</h4>
                   <p className="text-xs text-ink-500 leading-relaxed">{st.desc}</p>
                 </div>
               );
@@ -104,7 +104,7 @@ export default function AboutSection() {
         <div className="mt-20 pt-12 border-t border-line">
           <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
             <p className="eyebrow">Sorumlu Ortaklar</p>
-            <h3 className="font-serif text-3xl text-ink-950">Kıdemli Danışman Kadromuz</h3>
+            <h3 className="font-serif text-3xl text-ink-900">Kıdemli Danışman Kadromuz</h3>
             <p className="text-sm text-ink-500">
               Her mükellefimize özel atanan lisanslı SMMM ve YMM uzmanlarımız.
             </p>
@@ -119,7 +119,7 @@ export default function AboutSection() {
                   className="w-16 h-16 rounded-xl object-cover mx-auto border border-line"
                 />
                 <div>
-                  <h4 className="font-bold text-sm text-ink-950">{st.name}</h4>
+                  <h4 className="font-bold text-sm text-ink-900">{st.name}</h4>
                   <p className="text-[11px] font-mono text-pine-700 mt-0.5">{st.role}</p>
                   <p className="text-[11px] text-ink-400 mt-1 leading-relaxed">{st.specialty}</p>
                   {st.license && (

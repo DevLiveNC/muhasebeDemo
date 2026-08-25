@@ -44,7 +44,7 @@ export default function TrustStatsBar() {
   ];
 
   return (
-    <section className="py-14 bg-pine-900">
+    <section className="py-14 bg-pine-800">
       <div className="container-x">
 
         {/* Metric Grid */}
@@ -54,7 +54,7 @@ export default function TrustStatsBar() {
             return (
               <div
                 key={idx}
-                className="bg-pine-900 p-5 sm:p-6 space-y-2 hover:bg-pine-800 transition-colors"
+                className="bg-pine-800 p-5 sm:p-6 space-y-2 hover:bg-pine-700 transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-pine-200">

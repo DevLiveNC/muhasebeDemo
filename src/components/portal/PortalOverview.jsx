@@ -63,7 +63,7 @@ export default function PortalOverview() {
             </span>
             <span className="text-ink-400 font-mono text-xs">{client.taxOffice}</span>
           </div>
-          <h1 className="font-serif text-2xl sm:text-[28px] text-ink-950 leading-tight">
+          <h1 className="font-serif text-2xl sm:text-[28px] text-ink-900 leading-tight">
             {client.name}
           </h1>
           <p className="text-[13px] text-ink-500">
@@ -97,7 +97,7 @@ export default function PortalOverview() {
             <span className="kpi-label">Nakit Runway & Burn Rate</span>
             <TrendingUp className="w-3.5 h-3.5 text-success" />
           </div>
-          <div className="font-mono text-[26px] font-semibold text-ink-950 tracking-tight leading-none">
+          <div className="font-mono text-[26px] font-semibold text-ink-900 tracking-tight leading-none">
             {client.cashRunwayMonths}
           </div>
           <p className="text-[11px] text-ink-400 font-mono">Aylık Tüketim: {client.monthlyBurnRate}</p>
@@ -119,7 +119,7 @@ export default function PortalOverview() {
             <span className="kpi-label">Temmuz KDV-1 Beyannamesi</span>
             <FileText className="w-3.5 h-3.5 text-pine-600" />
           </div>
-          <div className="text-lg font-bold text-ink-950 leading-tight">Taslak Onaylandı</div>
+          <div className="text-lg font-bold text-ink-900 leading-tight">Taslak Onaylandı</div>
           <p className="text-[11px] text-success-deep font-mono font-semibold">GİB Onayına 4 Gün Kaldı</p>
         </div>
 
@@ -128,7 +128,7 @@ export default function PortalOverview() {
             <span className="kpi-label">Q3 Net Hasılat</span>
             <CreditCard className="w-3.5 h-3.5 text-ink-400" />
           </div>
-          <div className="font-mono text-[26px] font-semibold text-ink-950 tracking-tight leading-none">
+          <div className="font-mono text-[26px] font-semibold text-ink-900 tracking-tight leading-none">
             {client.quarterlyRevenue}
           </div>
           <p className="text-[11px] text-ink-400 font-mono">Faaliyet Kâr Marjı: {client.netMargin}</p>
@@ -142,7 +142,7 @@ export default function PortalOverview() {
         <div className="lg:col-span-7 card p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-ink-950 text-sm">Dönemsel Beyanname ve Müşavirlik Süreçleri</h3>
+              <h3 className="font-bold text-ink-900 text-sm">Dönemsel Beyanname ve Müşavirlik Süreçleri</h3>
               <p className="text-[11px] text-ink-400 font-mono mt-0.5">Ağustos 2026 İşlem Takibi</p>
             </div>
             <button
@@ -158,7 +158,7 @@ export default function PortalOverview() {
             {processes.map((proc, i) => (
               <div key={i} className="p-4 rounded-xl bg-paper-50 border border-line space-y-2.5">
                 <div className="flex items-center justify-between gap-3">
-                  <span className="font-bold text-[13px] text-ink-950">{proc.title}</span>
+                  <span className="font-bold text-[13px] text-ink-900">{proc.title}</span>
                   <span className={cn(
                     'badge shrink-0',
                     proc.percent === 100 ? 'badge-success' : 'badge-neutral'
@@ -182,7 +182,7 @@ export default function PortalOverview() {
         <div className="lg:col-span-5 space-y-6">
           <div className="card p-6 space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-ink-950 text-sm">Resmi Vergi & SGK Terminleri</h3>
+              <h3 className="font-bold text-ink-900 text-sm">Resmi Vergi & SGK Terminleri</h3>
               <span className="text-[10px] font-mono text-ink-400">GİB Takvimi</span>
             </div>
 
@@ -195,7 +195,7 @@ export default function PortalOverview() {
                     urgent ? 'bg-warning-soft/50 border-warning/30' : 'bg-paper-50 border-line'
                   )}>
                     <div className="flex items-center justify-between gap-3">
-                      <span className="font-bold text-[13px] text-ink-950 leading-snug">{tax.title}</span>
+                      <span className="font-bold text-[13px] text-ink-900 leading-snug">{tax.title}</span>
                       <span className={cn('badge shrink-0', urgent ? 'badge-warning' : 'badge-success')}>
                         {tax.remainingDays > 0 ? `${tax.remainingDays} Gün Kaldı` : 'Kapatıldı'}
                       </span>
@@ -217,7 +217,7 @@ export default function PortalOverview() {
 
           {/* Quick Actions */}
           <div className="card p-6 space-y-3">
-            <h3 className="font-bold text-ink-950 text-sm">Hızlı İşlemler</h3>
+            <h3 className="font-bold text-ink-900 text-sm">Hızlı İşlemler</h3>
             <button
               onClick={() => setPortalTab('documents')}
               className="btn btn-outline btn-sm w-full justify-start"

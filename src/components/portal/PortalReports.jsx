@@ -32,7 +32,7 @@ export default function PortalReports() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">Finansal Analiz & Sanal CFO Konsolu</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Finansal Analiz & Sanal CFO Konsolu</h1>
           <p className="text-xs text-ink-400 mt-1">Gelir-gider tabloları, EBITDA kârlılık kırılımları ve nakit runway modelleri</p>
         </div>
 
@@ -61,7 +61,7 @@ export default function PortalReports() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="card p-6 space-y-1.5">
           <span className="kpi-label">Net Dönem Hasılatı</span>
-          <p className="font-mono text-3xl font-semibold text-ink-950 tracking-tight">₺5.420.000</p>
+          <p className="font-mono text-3xl font-semibold text-ink-900 tracking-tight">₺5.420.000</p>
           <span className="text-[11px] text-success-deep font-semibold flex items-center gap-1 font-mono">
             <ArrowUpRight className="w-3.5 h-3.5" />
             +%28.4 Çeyreklik Büyüme
@@ -76,7 +76,7 @@ export default function PortalReports() {
 
         <div className="card p-6 space-y-1.5">
           <span className="kpi-label">4691 Teşvik Kazancı</span>
-          <p className="font-mono text-3xl font-semibold text-ink-950 tracking-tight">₺198.400</p>
+          <p className="font-mono text-3xl font-semibold text-ink-900 tracking-tight">₺198.400</p>
           <span className="text-[11px] text-ink-400 font-mono">Teknopark & Ar-Ge İndirimi</span>
         </div>
       </div>
@@ -87,7 +87,7 @@ export default function PortalReports() {
         {/* Revenue Stream */}
         <div className="lg:col-span-7 card p-6 space-y-5">
           <div className="flex items-center justify-between gap-3 flex-wrap">
-            <h3 className="font-bold text-ink-950 text-sm">Aylık Gelir - Gider ve Nakit Akışı</h3>
+            <h3 className="font-bold text-ink-900 text-sm">Aylık Gelir - Gider ve Nakit Akışı</h3>
             <div className="flex items-center gap-4 text-[11px] font-mono text-ink-500">
               <span className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-pine-600"></span>
@@ -121,14 +121,14 @@ export default function PortalReports() {
 
         {/* Cost Breakdown */}
         <div className="lg:col-span-5 card p-6 space-y-5">
-          <h3 className="font-bold text-ink-950 text-sm">Gider Dağılımı (Q2 2026)</h3>
+          <h3 className="font-bold text-ink-900 text-sm">Gider Dağılımı (Q2 2026)</h3>
 
           <div className="space-y-4">
             {costs.map((c, i) => (
               <div key={i}>
                 <div className="flex justify-between text-[13px] mb-1.5">
                   <span className="text-ink-600">{c.label}</span>
-                  <span className="font-mono font-bold text-ink-950">
+                  <span className="font-mono font-bold text-ink-900">
                     %{c.pct} <span className="text-ink-400 font-medium">({c.amount})</span>
                   </span>
                 </div>

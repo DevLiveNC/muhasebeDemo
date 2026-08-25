@@ -33,7 +33,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-pine-900 scroll-mt-24">
+    <section id="contact" className="py-20 md:py-28 bg-pine-800 scroll-mt-24">
       <div className="container-x">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
 
@@ -92,7 +92,7 @@ export default function ContactSection() {
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-1.5">
-                  <h3 className="font-serif text-2xl text-ink-950">Ön Görüşme Talebi</h3>
+                  <h3 className="font-serif text-2xl text-ink-900">Ön Görüşme Talebi</h3>
                   <p className="text-xs text-ink-400">
                     Formu doldurun; kıdemli SMMM ortağımız sizi arasın.
                   </p>
@@ -170,7 +170,7 @@ export default function ContactSection() {
                 <div className="w-14 h-14 bg-success-soft text-success-deep rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h4 className="font-bold text-ink-950 text-lg">Talebiniz SMMM Masasına İletildi</h4>
+                <h4 className="font-bold text-ink-900 text-lg">Talebiniz SMMM Masasına İletildi</h4>
                 <p className="text-sm text-ink-500 max-w-sm mx-auto leading-relaxed">
                   SMMM Kemal Yıldız ve vergi denetim ekibimiz mesajınızı incelemeye aldı.
                   En geç 2 saat içinde aranacaksınız.

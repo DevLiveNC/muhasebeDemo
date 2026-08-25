@@ -81,11 +81,11 @@ export default function AdminLayout() {
       {/* SMMM Header */}
       <div className="p-4 border-b border-line">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-pine-800 text-white flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-lg bg-pine-700 text-white flex items-center justify-center shrink-0">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div className="min-w-0 flex-1">
-            <h3 className="font-bold text-[13px] text-ink-950 truncate">VELOX DENETİM</h3>
+            <h3 className="font-bold text-[13px] text-ink-900 truncate">VELOX DENETİM</h3>
             <p className="text-[10px] text-ink-400 font-mono mt-0.5">SMMM Yönetici Kokpiti</p>
             <span className="inline-flex items-center gap-1 text-[10px] font-mono text-success-deep">
               <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
@@ -141,7 +141,7 @@ export default function AdminLayout() {
           className="w-9 h-9 rounded-lg object-cover border border-line"
         />
         <div className="min-w-0 flex-1 text-xs">
-          <p className="font-bold text-ink-950 truncate">SMMM Kemal Yıldız</p>
+          <p className="font-bold text-ink-900 truncate">SMMM Kemal Yıldız</p>
           <p className="text-[10px] text-ink-400 font-mono truncate">Yönetici Ortak · 349102</p>
         </div>
       </div>
@@ -192,7 +192,7 @@ export default function AdminLayout() {
               <Menu className="w-5 h-5" />
             </button>
             <div className="flex items-center gap-2">
-              <h2 className="font-bold text-ink-950 text-sm">
+              <h2 className="font-bold text-ink-900 text-sm">
                 {menuItems.find((m) => m.id === adminTab)?.label}
               </h2>
               {adminTab === 'client-detail' && (
@@ -225,7 +225,7 @@ export default function AdminLayout() {
             <div className="relative">
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="p-2 rounded-lg text-ink-500 hover:text-ink-950 hover:bg-paper-100 relative transition-colors"
+                className="p-2 rounded-lg text-ink-500 hover:text-ink-900 hover:bg-paper-100 relative transition-colors"
                 title="Bildirimler"
               >
                 <Bell className="w-4 h-4" />
@@ -235,10 +235,10 @@ export default function AdminLayout() {
               {showNotifications && (
                 <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-pop border border-line p-3 space-y-2 animate-slide-down z-50">
                   <div className="flex items-center justify-between pb-2 border-b border-line">
-                    <span className="font-bold text-[13px] text-ink-950">SMMM Bildirimleri</span>
+                    <span className="font-bold text-[13px] text-ink-900">SMMM Bildirimleri</span>
                     <button
                       onClick={() => setShowNotifications(false)}
-                      className="text-[11px] font-mono text-ink-400 hover:text-ink-950"
+                      className="text-[11px] font-mono text-ink-400 hover:text-ink-900"
                     >
                       Kapat
                     </button>
@@ -249,7 +249,7 @@ export default function AdminLayout() {
                         'p-3 rounded-lg border',
                         n.unread ? 'bg-warning-soft/50 border-warning/20' : 'bg-paper-50 border-line'
                       )}>
-                        <p className="font-bold text-[13px] text-ink-950">{n.title}</p>
+                        <p className="font-bold text-[13px] text-ink-900">{n.title}</p>
                         <p className="text-ink-500 text-[11px] mt-1 leading-relaxed">{n.text}</p>
                         <span className="text-[10px] font-mono text-ink-300 mt-1.5 block">{n.time}</span>
                       </div>

@@ -73,7 +73,7 @@ export default function AdminClients() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">Müşteri Portföy Masası</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Müşteri Portföy Masası</h1>
           <p className="text-xs text-ink-400 mt-1">Kayıtlı 48 şirket, vergi dairesi durumları ve SMMM atamaları</p>
         </div>
 
@@ -146,7 +146,7 @@ export default function AdminClients() {
                         {cl.name.substring(0, 2).toUpperCase()}
                       </div>
                       <div className="min-w-0">
-                        <h4 className="font-bold text-[13px] text-ink-950 truncate max-w-[220px]">{cl.shortName}</h4>
+                        <h4 className="font-bold text-[13px] text-ink-900 truncate max-w-[220px]">{cl.shortName}</h4>
                         <p className="text-[11px] font-mono text-ink-400 truncate">
                           VN: {cl.taxNumber} · {cl.taxOffice}
                         </p>
@@ -163,7 +163,7 @@ export default function AdminClients() {
                     </span>
                   </td>
                   <td className="td text-ink-500 whitespace-nowrap">{cl.assignedCPA.name}</td>
-                  <td className="td font-mono font-semibold text-ink-950 text-right whitespace-nowrap">
+                  <td className="td font-mono font-semibold text-ink-900 text-right whitespace-nowrap">
                     {formatNumber(cl.monthlyFee)}
                   </td>
                   <td className="td">
@@ -193,12 +193,12 @@ export default function AdminClients() {
           >
             <div className="px-6 py-4 border-b border-line flex items-center justify-between">
               <div>
-                <h3 className="font-bold text-ink-950 text-[15px]">Yeni Mükellef Kaydı</h3>
+                <h3 className="font-bold text-ink-900 text-[15px]">Yeni Mükellef Kaydı</h3>
                 <p className="text-[11px] text-ink-400 mt-0.5">Portföye eklenen müşteriye ilk açılış bildirimleri otomatik gider.</p>
               </div>
               <button
                 onClick={() => setIsAddModalOpen(false)}
-                className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+                className="p-1 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
                 title="Kapat"
               >
                 <X className="w-4 h-4" />

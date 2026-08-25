@@ -43,7 +43,7 @@ export default function TestimonialsSection() {
                   className="w-10 h-10 rounded-full object-cover border border-line"
                 />
                 <div className="text-xs min-w-0">
-                  <h4 className="font-bold text-ink-950">{test.name}</h4>
+                  <h4 className="font-bold text-ink-900">{test.name}</h4>
                   <p className="text-ink-400 text-[11px] truncate">
                     {test.role} · <strong className="text-ink-600 font-semibold">{test.company}</strong>
                   </p>

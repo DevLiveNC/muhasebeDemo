@@ -41,12 +41,12 @@ export default function ToastContainer() {
               <Icon className="w-4 h-4" />
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="text-xs font-bold text-ink-950">{toast.title}</h4>
+              <h4 className="text-xs font-bold text-ink-900">{toast.title}</h4>
               <p className="text-[11px] text-ink-500 mt-0.5 leading-relaxed">{toast.message}</p>
             </div>
             <button
               onClick={() => removeToast(toast.id)}
-              className="p-1 rounded text-ink-300 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+              className="p-1 rounded text-ink-300 hover:text-ink-900 hover:bg-paper-100 transition-colors"
               title="Kapat"
             >
               <X className="w-3.5 h-3.5" />

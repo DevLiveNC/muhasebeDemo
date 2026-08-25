@@ -57,7 +57,7 @@ export default function AdminDocuments() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">Evrak & OCR Onay Masası</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Evrak & OCR Onay Masası</h1>
           <p className="text-xs text-ink-400 mt-1">Tüm mükelleflerden gelen fatura ve ekstrelerin merkezi işleme havuzu</p>
         </div>
 
@@ -139,13 +139,13 @@ export default function AdminDocuments() {
             <tbody className="divide-y divide-line">
               {filteredDocs.map((doc) => (
                 <tr key={doc.id} className="hover:bg-paper-50 transition-colors">
-                  <td className="td font-semibold text-ink-950 whitespace-nowrap">{doc.client.split(' ').slice(0, 2).join(' ')}</td>
+                  <td className="td font-semibold text-ink-900 whitespace-nowrap">{doc.client.split(' ').slice(0, 2).join(' ')}</td>
                   <td className="td">
                     <span className="block truncate max-w-[200px]">{doc.name}</span>
                     <span className="text-[10px] font-mono text-ink-400">{doc.uploadDate}</span>
                   </td>
                   <td className="td text-ink-500 whitespace-nowrap">{doc.category}</td>
-                  <td className="td font-mono font-semibold text-ink-950 text-right whitespace-nowrap">{doc.amount}</td>
+                  <td className="td font-mono font-semibold text-ink-900 text-right whitespace-nowrap">{doc.amount}</td>
                   <td className="td"><span className="badge badge-success">{doc.ocrConfidence}</span></td>
                   <td className="td">
                     <span className={cn(

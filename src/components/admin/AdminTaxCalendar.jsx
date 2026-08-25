@@ -26,7 +26,7 @@ export default function AdminTaxCalendar() {
             <span className="badge badge-pine">GİB & SGK Otomasyonu</span>
             <span className="text-ink-400 font-mono text-xs">VUK 213 & 5510 Sayılı Kanun Uyumlu</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight mt-1.5">
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">
             Resmi Vergi & Yasal Beyan Takvimi
           </h1>
           <p className="text-xs text-ink-400 mt-1">2026 Gelir İdaresi Başkanlığı, SGK ve Ticaret Sicil bildirim terminleri</p>
@@ -74,7 +74,7 @@ export default function AdminTaxCalendar() {
 
               {/* Title */}
               <div>
-                <h3 className="font-bold text-ink-950 text-[15px] leading-snug">{tax.title}</h3>
+                <h3 className="font-bold text-ink-900 text-[15px] leading-snug">{tax.title}</h3>
                 <p className="text-xs text-ink-500 mt-1.5 leading-relaxed">{tax.description}</p>
                 <p className="text-[10px] font-mono text-ink-400 mt-1.5">{tax.legalBasis}</p>
               </div>
@@ -83,7 +83,7 @@ export default function AdminTaxCalendar() {
               <div className="space-y-2 p-4 bg-paper-50 rounded-xl border border-line">
                 <div className="flex justify-between text-xs">
                   <span className="text-ink-500">Portföy Beyan Oranı:</span>
-                  <span className={cn('font-mono font-bold', isDone ? 'text-success-deep' : 'text-ink-950')}>
+                  <span className={cn('font-mono font-bold', isDone ? 'text-success-deep' : 'text-ink-900')}>
                     %{completionRate}
                   </span>
                 </div>

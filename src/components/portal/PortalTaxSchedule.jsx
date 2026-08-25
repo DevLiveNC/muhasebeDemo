@@ -26,7 +26,7 @@ export default function PortalTaxSchedule() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">Resmi Vergi ve SGK Takvimi</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Resmi Vergi ve SGK Takvimi</h1>
           <p className="text-xs text-ink-400 mt-1">Gelir İdaresi Başkanlığı yasal bildirim son günleri ve onaylı tahakkuk fişleri</p>
         </div>
 
@@ -63,7 +63,7 @@ export default function PortalTaxSchedule() {
               </div>
 
               <div>
-                <h3 className="font-bold text-ink-950 text-base leading-snug">{tax.title}</h3>
+                <h3 className="font-bold text-ink-900 text-base leading-snug">{tax.title}</h3>
                 <p className="text-xs text-ink-500 mt-1.5 leading-relaxed">{tax.description}</p>
                 <span className="text-[10px] font-mono text-ink-400 mt-2 block">{tax.legalBasis}</span>
               </div>
@@ -71,7 +71,7 @@ export default function PortalTaxSchedule() {
               <div className="p-3.5 bg-paper-50 rounded-xl border border-line flex items-center justify-between text-xs">
                 <div>
                   <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-0.5">Yasal Son Gün</span>
-                  <span className="font-mono font-bold text-ink-950">{tax.deadline}</span>
+                  <span className="font-mono font-bold text-ink-900">{tax.deadline}</span>
                 </div>
                 <div className="text-right">
                   <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block mb-0.5">Durum</span>

@@ -57,13 +57,13 @@ export default function DemoGuideModal() {
   ];
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/45 backdrop-blur-sm animate-fade-in">
       <div
         className="w-full max-w-2xl bg-white rounded-2xl shadow-pop border border-line overflow-hidden flex flex-col max-h-[90vh] animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-4 bg-pine-800 flex items-center justify-between">
+        <div className="px-6 py-4 bg-pine-700 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-white/10 text-gold-300 flex items-center justify-center border border-white/10">
               <Info className="w-4 h-4" />
@@ -92,7 +92,7 @@ export default function DemoGuideModal() {
                   <div className="w-8 h-8 rounded-lg bg-pine-50 border border-pine-100 text-pine-700 flex items-center justify-center shrink-0">
                     <Icon className="w-4 h-4" />
                   </div>
-                  <h4 className="font-bold text-[14px] text-ink-950">{section.title}</h4>
+                  <h4 className="font-bold text-[14px] text-ink-900">{section.title}</h4>
                 </div>
                 <ul className="space-y-2">
                   {section.lines.map((line, i) => (

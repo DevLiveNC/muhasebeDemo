@@ -45,7 +45,7 @@ export default function PortalShowcaseSection() {
   ];
 
   return (
-    <section id="portal-preview" className="py-20 md:py-28 bg-pine-900 scroll-mt-24 overflow-hidden">
+    <section id="portal-preview" className="py-20 md:py-28 bg-pine-800 scroll-mt-24 overflow-hidden">
       <div className="container-x">
 
         {/* Header */}
@@ -87,7 +87,7 @@ export default function PortalShowcaseSection() {
                     )}>
                       <Icon className="w-4 h-4" />
                     </div>
-                    <h3 className={cn('font-bold text-[15px]', isSelected ? 'text-ink-950' : 'text-white')}>
+                    <h3 className={cn('font-bold text-[15px]', isSelected ? 'text-ink-900' : 'text-white')}>
                       {tab.title}
                     </h3>
                   </div>
@@ -117,7 +117,7 @@ export default function PortalShowcaseSection() {
                   <span className="w-2.5 h-2.5 rounded-full bg-line-strong"></span>
                   <span className="w-2.5 h-2.5 rounded-full bg-line-strong"></span>
                 </div>
-                <span className="font-semibold text-ink-950 truncate">TechVision Bilişim A.Ş. — Müşteri Paneli</span>
+                <span className="font-semibold text-ink-900 truncate">TechVision Bilişim A.Ş. — Müşteri Paneli</span>
               </div>
               <span className="flex items-center gap-1.5 font-mono text-[10px] font-semibold text-success-deep shrink-0">
                 <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
@@ -134,13 +134,13 @@ export default function PortalShowcaseSection() {
                     <div className="w-11 h-11 rounded-xl bg-pine-50 text-pine-700 flex items-center justify-center mx-auto">
                       <UploadCloud className="w-5 h-5" />
                     </div>
-                    <p className="font-bold text-sm text-ink-950">Faturayı Buraya Sürükleyin veya Seçin</p>
+                    <p className="font-bold text-sm text-ink-900">Faturayı Buraya Sürükleyin veya Seçin</p>
                     <p className="text-[11px] text-ink-400 font-mono">PDF, PNG, XML — Yapay Zeka OCR 2.1 Sn</p>
                   </div>
 
                   <div className="p-4 rounded-xl bg-white border border-line flex items-center justify-between gap-3">
                     <div className="min-w-0">
-                      <span className="font-mono text-xs text-ink-950 block truncate">AWS_EMEA_SARL_Temmuz.pdf</span>
+                      <span className="font-mono text-xs text-ink-900 block truncate">AWS_EMEA_SARL_Temmuz.pdf</span>
                       <span className="text-[10px] text-ink-400">770.01 Bulut Sunucu / ₺142.850,00</span>
                     </div>
                     <span className="badge badge-success shrink-0">
@@ -155,7 +155,7 @@ export default function PortalShowcaseSection() {
                 <div className="space-y-3">
                   <div className="p-4 bg-white rounded-xl border border-line flex items-center justify-between gap-3">
                     <div>
-                      <span className="font-bold text-ink-950 block text-sm">Temmuz 2026 KDV-1 Beyannamesi</span>
+                      <span className="font-bold text-ink-900 block text-sm">Temmuz 2026 KDV-1 Beyannamesi</span>
                       <p className="text-xs text-ink-400 mt-0.5">Son Gün: 28 Ağustos 2026 (Kalan: 4 Gün)</p>
                     </div>
                     <span className="badge badge-success shrink-0">Taslak Onaylandı</span>
@@ -163,7 +163,7 @@ export default function PortalShowcaseSection() {
 
                   <div className="p-4 bg-white rounded-xl border border-line flex items-center justify-between gap-3">
                     <div>
-                      <span className="font-bold text-ink-950 block text-sm">Muhtasar & SGK Prim Hizmet</span>
+                      <span className="font-bold text-ink-900 block text-sm">Muhtasar & SGK Prim Hizmet</span>
                       <p className="text-xs text-ink-400 mt-0.5">Son Gün: 26 Ağustos 2026 (Kalan: 2 Gün)</p>
                     </div>
                     <span className="badge badge-warning shrink-0">Tahakkuk Alındı</span>
@@ -171,7 +171,7 @@ export default function PortalShowcaseSection() {
 
                   <div className="p-4 bg-white rounded-xl border border-line flex items-center justify-between gap-3">
                     <div>
-                      <span className="font-bold text-ink-950 block text-sm">Haziran 2026 Geçici Kurumlar</span>
+                      <span className="font-bold text-ink-900 block text-sm">Haziran 2026 Geçici Kurumlar</span>
                       <p className="text-xs text-ink-400 mt-0.5">Son Gün: 31 Temmuz 2026</p>
                     </div>
                     <span className="badge badge-neutral shrink-0">Dönem Kapatıldı</span>
@@ -184,7 +184,7 @@ export default function PortalShowcaseSection() {
                   <div className="grid grid-cols-2 gap-3">
                     <div className="p-4 bg-white rounded-xl border border-line">
                       <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-ink-400 block">Nakit Runway</span>
-                      <span className="font-mono text-2xl font-semibold text-ink-950 block mt-1">18.4 Ay</span>
+                      <span className="font-mono text-2xl font-semibold text-ink-900 block mt-1">18.4 Ay</span>
                       <p className="text-[11px] text-success-deep font-semibold mt-1 flex items-center gap-1">
                         <TrendingUp className="w-3 h-3" /> ₺845K Aylık Burn Rate
                       </p>
@@ -226,7 +226,7 @@ export default function PortalShowcaseSection() {
                       className="w-11 h-11 rounded-lg object-cover border border-line"
                     />
                     <div>
-                      <p className="font-bold text-ink-950 text-sm">SMMM Kemal Yıldız</p>
+                      <p className="font-bold text-ink-900 text-sm">SMMM Kemal Yıldız</p>
                       <p className="text-xs text-ink-400">Kıdemli Vergi & Teknopark Direktörü</p>
                       <span className="text-[10px] font-mono text-success-deep flex items-center gap-1 mt-0.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-success"></span>

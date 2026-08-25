@@ -74,7 +74,7 @@ export default function ConsultationModal() {
   ];
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/45 backdrop-blur-sm animate-fade-in">
       <div
         className="w-full max-w-xl bg-white rounded-2xl shadow-pop border border-line overflow-hidden flex flex-col max-h-[92vh] animate-scale-in"
         onClick={(e) => e.stopPropagation()}
@@ -86,14 +86,14 @@ export default function ConsultationModal() {
               <Calendar className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-ink-950">Stratejik Mali Ön Görüşme</h3>
+              <h3 className="font-bold text-sm text-ink-900">Stratejik Mali Ön Görüşme</h3>
               <p className="text-[11px] text-ink-400">Kıdemli SMMM & Vergi Ortağı ile 30 Dk Birebir Analiz</p>
             </div>
           </div>
 
           <button
             onClick={handleClose}
-            className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+            className="p-1 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
             title="Kapat"
           >
             <X className="w-4 h-4" />
@@ -106,7 +106,7 @@ export default function ConsultationModal() {
             <div>
               {/* Progress Steps */}
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-line">
-                <div className={cn('flex items-center gap-1.5', step >= 1 ? 'text-ink-950 font-bold' : 'text-ink-300')}>
+                <div className={cn('flex items-center gap-1.5', step >= 1 ? 'text-ink-900 font-bold' : 'text-ink-300')}>
                   <span className={cn(
                     'w-5 h-5 rounded flex items-center justify-center text-[10px]',
                     step >= 1 ? 'bg-pine-700 text-white font-bold' : 'bg-paper-200 text-ink-400'
@@ -116,7 +116,7 @@ export default function ConsultationModal() {
                   <span className="text-xs">Şirket & Yetkili</span>
                 </div>
                 <div className="w-8 h-px bg-line-strong"></div>
-                <div className={cn('flex items-center gap-1.5', step >= 2 ? 'text-ink-950 font-bold' : 'text-ink-300')}>
+                <div className={cn('flex items-center gap-1.5', step >= 2 ? 'text-ink-900 font-bold' : 'text-ink-300')}>
                   <span className={cn(
                     'w-5 h-5 rounded flex items-center justify-center text-[10px]',
                     step >= 2 ? 'bg-pine-700 text-white font-bold' : 'bg-paper-200 text-ink-400'
@@ -307,12 +307,12 @@ export default function ConsultationModal() {
               <div className="w-14 h-14 bg-success-soft text-success-deep rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
-              <h4 className="font-serif text-2xl text-ink-950">Talebiniz Alındı!</h4>
+              <h4 className="font-serif text-2xl text-ink-900">Talebiniz Alındı!</h4>
               <p className="text-sm text-ink-500 max-w-sm mx-auto leading-relaxed">
-                <strong className="text-ink-950">{formData.companyName || 'Şirketiniz'}</strong> için{' '}
-                <strong className="text-ink-950">{formData.preferredDate} {formData.preferredTime}</strong> randevusu
+                <strong className="text-ink-900">{formData.companyName || 'Şirketiniz'}</strong> için{' '}
+                <strong className="text-ink-900">{formData.preferredDate} {formData.preferredTime}</strong> randevusu
                 kıdemli SMMM ortağımıza iletildi. Doğrulama e-postası{' '}
-                <strong className="text-ink-950">{formData.email || 'e-posta adresinize'}</strong> gönderildi.
+                <strong className="text-ink-900">{formData.email || 'e-posta adresinize'}</strong> gönderildi.
               </p>
               <div className="p-4 rounded-xl bg-paper-50 border border-line text-left max-w-sm mx-auto">
                 <p className="text-[10px] font-mono uppercase tracking-[0.14em] text-ink-400 mb-2">Seçilen Hizmetler</p>

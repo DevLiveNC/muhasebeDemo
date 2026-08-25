@@ -23,7 +23,7 @@ export default class ErrorBoundary extends React.Component {
             <div className="w-12 h-12 rounded-full bg-danger-soft text-danger-deep flex items-center justify-center mx-auto">
               <AlertTriangle className="w-6 h-6" />
             </div>
-            <h1 className="font-serif text-2xl text-ink-950">Bir şeyler ters gitti</h1>
+            <h1 className="font-serif text-2xl text-ink-900">Bir şeyler ters gitti</h1>
             <p className="text-sm text-ink-500 leading-relaxed">
               Arayüzde beklenmeyen bir hata oluştu. Verileriniz güvenlidir; sayfayı yenileyerek devam edebilirsiniz.
             </p>

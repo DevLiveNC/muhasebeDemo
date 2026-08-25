@@ -14,7 +14,7 @@ export default function BlogReaderModal() {
       if (!line.trim()) return <div key={i} className="h-3" />;
       const bolded = line.split(/(\*\*[^*]+\*\*)/g).map((part, j) =>
         part.startsWith('**') && part.endsWith('**') ? (
-          <strong key={j} className="font-semibold text-ink-950">{part.slice(2, -2)}</strong>
+          <strong key={j} className="font-semibold text-ink-900">{part.slice(2, -2)}</strong>
         ) : (
           <span key={j}>{part}</span>
         )
@@ -39,7 +39,7 @@ export default function BlogReaderModal() {
     });
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/45 backdrop-blur-sm animate-fade-in">
       <div
         className="w-full max-w-2xl bg-white rounded-2xl shadow-pop border border-line overflow-hidden flex flex-col max-h-[90vh] animate-scale-in"
         onClick={(e) => e.stopPropagation()}
@@ -56,7 +56,7 @@ export default function BlogReaderModal() {
           </div>
           <button
             onClick={() => setSelectedBlogForReader(null)}
-            className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+            className="p-1 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
             title="Kapat"
           >
             <X className="w-4 h-4" />
@@ -65,7 +65,7 @@ export default function BlogReaderModal() {
 
         {/* Body */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-5">
-          <h2 className="font-serif text-2xl sm:text-[28px] leading-tight text-ink-950">
+          <h2 className="font-serif text-2xl sm:text-[28px] leading-tight text-ink-900">
             {post.title}
           </h2>
 
@@ -77,7 +77,7 @@ export default function BlogReaderModal() {
               className="w-10 h-10 rounded-full object-cover border border-line"
             />
             <div>
-              <p className="font-bold text-[13px] text-ink-950">{post.author}</p>
+              <p className="font-bold text-[13px] text-ink-900">{post.author}</p>
               <p className="text-[11px] font-mono text-ink-400 flex items-center gap-2 mt-0.5">
                 {post.date}
                 <span className="flex items-center gap-1">

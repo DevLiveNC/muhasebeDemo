@@ -46,7 +46,7 @@ export default function AdminTasks() {
             <span className="badge badge-neutral">Operasyonel İş Emirleri</span>
             <span className="text-ink-400 font-mono text-xs">{staff.length} Denetçi / {tasks.length} Aktif İşlem</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight mt-1.5">İş Takip Panosu</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">İş Takip Panosu</h1>
         </div>
 
         <button
@@ -101,7 +101,7 @@ export default function AdminTasks() {
               {filteredTasks.map((t) => (
                 <tr key={t.id} className="hover:bg-paper-50 transition-colors">
                   <td className="td">
-                    <span className="font-semibold text-ink-950 block max-w-[240px] truncate">{t.title}</span>
+                    <span className="font-semibold text-ink-900 block max-w-[240px] truncate">{t.title}</span>
                   </td>
                   <td className="td text-ink-500 whitespace-nowrap">{t.client.split(' ').slice(0, 2).join(' ')}</td>
                   <td className="td text-ink-500 whitespace-nowrap">{t.assignedTo}</td>
@@ -156,10 +156,10 @@ export default function AdminTasks() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="px-6 py-4 border-b border-line flex items-center justify-between">
-              <h3 className="font-bold text-ink-950 text-[15px]">Yeni İş Emri Oluştur</h3>
+              <h3 className="font-bold text-ink-900 text-[15px]">Yeni İş Emri Oluştur</h3>
               <button
                 onClick={() => setIsNewModalOpen(false)}
-                className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+                className="p-1 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
                 title="Kapat"
               >
                 <X className="w-4 h-4" />

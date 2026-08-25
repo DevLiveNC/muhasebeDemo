@@ -51,7 +51,7 @@ export default function PortalActiveProcesses() {
     <div className="space-y-6 animate-fade-in">
 
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">
+        <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">
           Canlı Muhasebe ve Beyanname Süreçleri
         </h1>
         <p className="text-xs text-ink-400 mt-1">
@@ -65,7 +65,7 @@ export default function PortalActiveProcesses() {
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h3 className="font-bold text-ink-950 text-base leading-snug">{proc.title}</h3>
+                <h3 className="font-bold text-ink-900 text-base leading-snug">{proc.title}</h3>
                 <p className="text-xs text-ink-400 flex items-center gap-2 mt-1.5">
                   <UserCheck className="w-3.5 h-3.5 text-pine-700" />
                   <span>

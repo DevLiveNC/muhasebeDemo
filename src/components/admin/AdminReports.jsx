@@ -35,7 +35,7 @@ export default function AdminReports() {
             <span className="badge badge-pine">Yönetici Analitik Kokpiti</span>
             <span className="text-ink-400 font-mono text-xs">2026 Mali Yıl</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight mt-1.5">
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">
             Yönetim Raporları & Firma Analitiği
           </h1>
           <p className="text-xs text-ink-400 mt-1">Portföy büyümesi, SMMM operasyon verimliliği ve kârlılık metrikleri</p>
@@ -59,12 +59,12 @@ export default function AdminReports() {
         </div>
         <div className="card p-5 space-y-1.5">
           <span className="kpi-label">Ortalama OCR Fatura İndeksleme</span>
-          <p className="font-mono text-2xl font-semibold text-ink-950 tracking-tight">2.1 Saniye / Fatura</p>
+          <p className="font-mono text-2xl font-semibold text-ink-900 tracking-tight">2.1 Saniye / Fatura</p>
           <p className="text-[11px] font-mono text-ink-400">Neural OCR & Tekdüzen AI Eşleme</p>
         </div>
         <div className="card p-5 space-y-1.5">
           <span className="kpi-label">Mükellef Başına Ortalama Gelir (ARPU)</span>
-          <p className="font-mono text-2xl font-semibold text-ink-950 tracking-tight">₺18.500 / Ay</p>
+          <p className="font-mono text-2xl font-semibold text-ink-900 tracking-tight">₺18.500 / Ay</p>
           <p className="text-[11px] font-mono text-success-deep">+%22 Büyüme (Yıllık)</p>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function AdminReports() {
         {/* Portfolio Growth */}
         <div className="lg:col-span-7 card p-6 space-y-5">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-ink-950 text-sm">Portföy Büyümesi (Son 6 Ay)</h3>
+            <h3 className="font-bold text-ink-900 text-sm">Portföy Büyümesi (Son 6 Ay)</h3>
             <span className="badge badge-success">+8 Yeni Mükellef</span>
           </div>
 
@@ -97,14 +97,14 @@ export default function AdminReports() {
 
         {/* Revenue Mix */}
         <div className="lg:col-span-5 card p-6 space-y-5">
-          <h3 className="font-bold text-ink-950 text-sm">Hizmet Gelir Dağılımı (Ağustos)</h3>
+          <h3 className="font-bold text-ink-900 text-sm">Hizmet Gelir Dağılımı (Ağustos)</h3>
 
           <div className="space-y-4">
             {revenueMix.map((r, i) => (
               <div key={i}>
                 <div className="flex justify-between text-[13px] mb-1.5">
                   <span className="text-ink-600">{r.label}</span>
-                  <span className="font-mono font-bold text-ink-950">
+                  <span className="font-mono font-bold text-ink-900">
                     %{r.pct} <span className="text-ink-400 font-medium">({r.amount})</span>
                   </span>
                 </div>

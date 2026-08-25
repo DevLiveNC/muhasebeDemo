@@ -13,7 +13,7 @@ export default function BlogSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-line">
           <div className="max-w-2xl space-y-3">
             <p className="eyebrow">04 / Mevzuat & Vergi Analizleri</p>
-            <h2 className="font-serif text-ink-950 text-3xl sm:text-4xl md:text-[44px] leading-[1.08] tracking-tight">
+            <h2 className="font-serif text-ink-900 text-3xl sm:text-4xl md:text-[44px] leading-[1.08] tracking-tight">
               Şirketinizi geleceğe taşıyacak <em className="text-pine-700">mali ve vergisel kılavuzlar.</em>
             </h2>
           </div>
@@ -41,7 +41,7 @@ export default function BlogSection() {
                   </span>
                 </div>
 
-                <h3 className="font-serif text-[20px] leading-snug text-ink-950 group-hover:text-pine-800 transition-colors">
+                <h3 className="font-serif text-[20px] leading-snug text-ink-900 group-hover:text-pine-800 transition-colors">
                   {post.title}
                 </h3>
 

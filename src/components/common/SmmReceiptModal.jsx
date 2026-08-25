@@ -26,7 +26,7 @@ export default function SmmReceiptModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6 bg-ink-950/45 backdrop-blur-sm animate-fade-in">
       <div
         className="w-full max-w-2xl bg-white rounded-2xl shadow-pop border border-line overflow-hidden flex flex-col max-h-[90vh] animate-scale-in"
         onClick={(e) => e.stopPropagation()}
@@ -35,18 +35,18 @@ export default function SmmReceiptModal() {
         <div className="px-6 py-4 bg-white flex items-center justify-between border-b border-line">
           <div className="flex items-center gap-2.5 min-w-0">
             <ShieldCheck className="w-4 h-4 text-pine-700 shrink-0" />
-            <h3 className="font-bold text-sm text-ink-950 font-mono truncate">
+            <h3 className="font-bold text-sm text-ink-900 font-mono truncate">
               GİB e-SMM Makbuzu ({payment.smmNo})
             </h3>
           </div>
           <div className="flex items-center gap-1.5 shrink-0">
-            <button onClick={handleDownload} className="p-1.5 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors" title="İndir">
+            <button onClick={handleDownload} className="p-1.5 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors" title="İndir">
               <Download className="w-4 h-4" />
             </button>
-            <button onClick={handlePrint} className="p-1.5 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors" title="Yazdır">
+            <button onClick={handlePrint} className="p-1.5 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors" title="Yazdır">
               <Printer className="w-4 h-4" />
             </button>
-            <button onClick={() => setIsSmmModalOpen(null)} className="p-1.5 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors" title="Kapat">
+            <button onClick={() => setIsSmmModalOpen(null)} className="p-1.5 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors" title="Kapat">
               <X className="w-4 h-4" />
             </button>
           </div>
@@ -59,7 +59,7 @@ export default function SmmReceiptModal() {
             {/* Top Bar */}
             <div className="flex justify-between items-start border-b border-line pb-4 gap-4">
               <div className="min-w-0">
-                <span className="font-bold text-sm text-ink-950 tracking-wide">GİB E-SERBEST MESLEK MAKBUZU</span>
+                <span className="font-bold text-sm text-ink-900 tracking-wide">GİB E-SERBEST MESLEK MAKBUZU</span>
                 <p className="text-[10px] text-ink-400 font-mono mt-1.5">GİB İmzalı ETTN: 2026-SMM-{payment.id}</p>
                 <p className="text-[10px] text-ink-400 font-mono">Düzenleme Tarihi: {payment.issueDate}</p>
               </div>
@@ -73,13 +73,13 @@ export default function SmmReceiptModal() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white p-4 rounded-lg border border-line">
               <div>
                 <span className="font-bold text-ink-400 uppercase text-[9px] font-mono tracking-[0.12em] block">Düzenleyen (SMMM)</span>
-                <p className="font-bold text-ink-950 mt-1 text-[13px]">VELOX MALİ MÜŞAVİRLİK A.Ş.</p>
+                <p className="font-bold text-ink-900 mt-1 text-[13px]">VELOX MALİ MÜŞAVİRLİK A.Ş.</p>
                 <p className="text-ink-500 text-xs">SMMM Kemal Yıldız (Ruhsat: 349102)</p>
                 <p className="text-ink-400 text-xs font-mono">Maslak V.D. - 8290192831</p>
               </div>
               <div>
                 <span className="font-bold text-ink-400 uppercase text-[9px] font-mono tracking-[0.12em] block">Hizmeti Alan (Mükellef)</span>
-                <p className="font-bold text-ink-950 mt-1 text-[13px]">{payment.client}</p>
+                <p className="font-bold text-ink-900 mt-1 text-[13px]">{payment.client}</p>
                 <p className="text-ink-500 text-xs">Dönem: {payment.period}</p>
                 <p className="text-ink-400 text-xs">
                   Durum:{' '}
@@ -109,7 +109,7 @@ export default function SmmReceiptModal() {
                     <td className="p-2.5 text-ink-600">{payment.period} SMMM Mali Müşavirlik & Vergi Denetim</td>
                     <td className="p-2.5 text-right font-mono text-ink-700">{payment.amount}</td>
                     <td className="p-2.5 text-right font-mono text-success-deep">{payment.vatAmount}</td>
-                    <td className="p-2.5 text-right font-mono font-bold text-ink-950">{payment.totalAmount}</td>
+                    <td className="p-2.5 text-right font-mono font-bold text-ink-900">{payment.totalAmount}</td>
                   </tr>
                 </tbody>
               </table>
@@ -123,14 +123,14 @@ export default function SmmReceiptModal() {
               </div>
               <div className="text-right">
                 <span className="text-ink-400 text-xs mr-2">Net Tutar:</span>
-                <span className="font-mono font-bold text-ink-950">{payment.totalAmount}</span>
+                <span className="font-mono font-bold text-ink-900">{payment.totalAmount}</span>
               </div>
             </div>
 
             {/* Method */}
             <div className="flex items-center justify-between text-[11px] font-mono text-ink-500 bg-white p-3 rounded-lg border border-line">
               <span>Ödeme Yöntemi:</span>
-              <span className="font-bold text-ink-950">{payment.method}</span>
+              <span className="font-bold text-ink-900">{payment.method}</span>
             </div>
           </div>
         </div>

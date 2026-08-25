@@ -67,7 +67,7 @@ export default function TaxCalculatorSection() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="label mb-0 font-mono uppercase tracking-[0.14em] text-ink-400">2. Çalışan / Bordro Sayısı</span>
-                <span className="font-bold text-ink-950 font-mono text-xs bg-paper-100 px-2 py-0.5 rounded border border-line">
+                <span className="font-bold text-ink-900 font-mono text-xs bg-paper-100 px-2 py-0.5 rounded border border-line">
                   {employees} Personel
                 </span>
               </div>
@@ -84,7 +84,7 @@ export default function TaxCalculatorSection() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="label mb-0 font-mono uppercase tracking-[0.14em] text-ink-400">3. Aylık Fatura & Belge Hacmi</span>
-                <span className="font-bold text-ink-950 font-mono text-xs bg-paper-100 px-2 py-0.5 rounded border border-line">
+                <span className="font-bold text-ink-900 font-mono text-xs bg-paper-100 px-2 py-0.5 rounded border border-line">
                   ~{monthlyInvoices} Adet / Ay
                 </span>
               </div>
@@ -101,7 +101,7 @@ export default function TaxCalculatorSection() {
 
             <label className="flex items-center justify-between gap-3 p-4 rounded-xl bg-paper-50 border border-line-strong cursor-pointer hover:border-pine-600 transition-colors">
               <div>
-                <span className="font-bold text-ink-950 block text-sm">4691 Teknopark / 5746 Ar-Ge / E-İhracat İstisnası</span>
+                <span className="font-bold text-ink-900 block text-sm">4691 Teknopark / 5746 Ar-Ge / E-İhracat İstisnası</span>
                 <span className="text-xs text-ink-400">Yazılım teslim muafiyeti veya yurt dışı KDV istisnası</span>
               </div>
               <input
@@ -115,7 +115,7 @@ export default function TaxCalculatorSection() {
           </div>
 
           {/* Results */}
-          <div className="md:col-span-5 bg-pine-900 rounded-xl p-6 flex flex-col justify-between space-y-6">
+          <div className="md:col-span-5 bg-pine-800 rounded-xl p-6 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-gold-300 block">
                 Tahmini Mali Tasarruf Raporu

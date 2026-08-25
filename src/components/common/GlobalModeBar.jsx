@@ -33,10 +33,10 @@ export default function GlobalModeBar() {
           {/* Brand */}
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2 pr-3 border-r border-line">
-              <div className="w-6 h-6 rounded-md bg-pine-800 text-white font-serif font-bold flex items-center justify-center text-[13px]">
+              <div className="w-6 h-6 rounded-md bg-pine-700 text-white font-serif font-bold flex items-center justify-center text-[13px]">
                 V
               </div>
-              <span className="hidden sm:inline font-mono text-[10px] font-semibold tracking-[0.2em] text-ink-950 uppercase">
+              <span className="hidden sm:inline font-mono text-[10px] font-semibold tracking-[0.2em] text-ink-900 uppercase">
                 VELOX <span className="text-ink-400 font-medium">MALİ KONSOL</span>
               </span>
             </div>
@@ -57,7 +57,7 @@ export default function GlobalModeBar() {
                       'flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-md transition-all text-xs font-medium',
                       isActive
                         ? 'bg-pine-700 text-white shadow-sm font-semibold'
-                        : 'text-ink-500 hover:text-ink-950 hover:bg-white'
+                        : 'text-ink-500 hover:text-ink-900 hover:bg-white'
                     )}
                   >
                     <Icon className="w-3.5 h-3.5" />
@@ -85,7 +85,7 @@ export default function GlobalModeBar() {
 
             <button
               onClick={() => setIsAiAssistantOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-pine-700 hover:bg-pine-800 text-white font-semibold text-xs transition-all shadow-sm"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-pine-700 hover:bg-pine-700 text-white font-semibold text-xs transition-all shadow-sm"
             >
               <Sparkles className="w-3.5 h-3.5 text-gold-300" />
               <span className="hidden sm:inline">VELOX AI</span>
@@ -93,7 +93,7 @@ export default function GlobalModeBar() {
 
             <button
               onClick={() => setIsDemoGuideOpen(true)}
-              className="hidden xl:flex items-center gap-1 px-2 py-1 rounded-md text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+              className="hidden xl:flex items-center gap-1 px-2 py-1 rounded-md text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
               title="Sunum Rehberi"
             >
               <Info className="w-3.5 h-3.5" />

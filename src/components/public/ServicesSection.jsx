@@ -41,7 +41,7 @@ export default function ServicesSection() {
                   <Icon className="w-4 h-4" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-serif text-[22px] text-ink-950 leading-tight">
+                  <h3 className="font-serif text-[22px] text-ink-900 leading-tight">
                     {srv.title}
                   </h3>
                   <p className="text-xs sm:text-[13px] text-ink-500 mt-1.5 leading-relaxed max-w-xl">

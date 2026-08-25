@@ -59,7 +59,7 @@ export default function AdminCRMLeads() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-950 tracking-tight">CRM & Satış Hattı</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">CRM & Satış Hattı</h1>
           <p className="text-xs text-ink-400 mt-1">Yeni mükellef adayları, teklif aşamaları ve potansiyel gelir hattı</p>
         </div>
 
@@ -71,7 +71,7 @@ export default function AdminCRMLeads() {
                 onClick={() => setViewMode(mode)}
                 className={cn(
                   'px-3 py-1 rounded-md text-xs font-medium transition-colors',
-                  viewMode === mode ? 'bg-white text-ink-950 shadow-sm font-semibold' : 'text-ink-400 hover:text-ink-800'
+                  viewMode === mode ? 'bg-white text-ink-900 shadow-sm font-semibold' : 'text-ink-400 hover:text-ink-800'
                 )}
               >
                 {mode === 'kanban' ? 'Kanban' : 'Liste'}
@@ -107,7 +107,7 @@ export default function AdminCRMLeads() {
                     return (
                       <div key={lead.id} className="card p-3.5 space-y-2.5">
                         <div>
-                          <h4 className="font-bold text-[13px] text-ink-950 leading-snug">{lead.companyName}</h4>
+                          <h4 className="font-bold text-[13px] text-ink-900 leading-snug">{lead.companyName}</h4>
                           <p className="text-[11px] text-ink-400 mt-0.5">
                             {lead.contactPerson} · {lead.sector}
                           </p>
@@ -120,7 +120,7 @@ export default function AdminCRMLeads() {
                           <button
                             disabled={idx === 0}
                             onClick={() => handleMoveStage(lead.id, stages[idx - 1].id)}
-                            className="p-1.5 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                            className="p-1.5 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
                             title="Önceki aşama"
                           >
                             <ChevronLeft className="w-3.5 h-3.5" />
@@ -128,7 +128,7 @@ export default function AdminCRMLeads() {
                           <button
                             disabled={idx === stages.length - 1}
                             onClick={() => handleMoveStage(lead.id, stages[idx + 1].id)}
-                            className="p-1.5 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                            className="p-1.5 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
                             title="Sonraki aşama"
                           >
                             <ChevronRight className="w-3.5 h-3.5" />
@@ -165,7 +165,7 @@ export default function AdminCRMLeads() {
               <tbody className="divide-y divide-line">
                 {leadList.map((lead) => (
                   <tr key={lead.id} className="hover:bg-paper-50 transition-colors">
-                    <td className="td font-semibold text-ink-950">{lead.companyName}</td>
+                    <td className="td font-semibold text-ink-900">{lead.companyName}</td>
                     <td className="td text-ink-500">{lead.contactPerson}</td>
                     <td className="td">
                       <select
@@ -196,10 +196,10 @@ export default function AdminCRMLeads() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="px-6 py-4 border-b border-line flex items-center justify-between">
-              <h3 className="font-bold text-ink-950 text-[15px]">Yeni Müşteri Adayı</h3>
+              <h3 className="font-bold text-ink-900 text-[15px]">Yeni Müşteri Adayı</h3>
               <button
                 onClick={() => setIsAddModalOpen(false)}
-                className="p-1 rounded text-ink-400 hover:text-ink-950 hover:bg-paper-100 transition-colors"
+                className="p-1 rounded text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
                 title="Kapat"
               >
                 <X className="w-4 h-4" />
