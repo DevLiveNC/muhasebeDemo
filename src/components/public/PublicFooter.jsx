@@ -45,33 +45,33 @@ export default function PublicFooter() {
 
           {/* Services */}
           <div className="space-y-3">
-            <h4 className="text-[11px] font-semibold text-white/80">Hizmet Kapsamı</h4>
+            <h4 className="text-[11px] font-semibold text-white/80">Hizmetler</h4>
             <ul className="space-y-2 text-pine-300">
-              <li><a href="#services" className="hover:text-white transition-colors">E-Fatura & E-Defter</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Kurumlar Vergisi Denetimi</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">4691 & 5746 Ar-Ge Teşviki</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Sanal CFO & Nakit Runway</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">İhracat KDV İadesi</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">e-Fatura ve e-Defter</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">Vergi beyanı</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">Teknopark ve Ar-Ge indirimi</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">Nakit ve finans raporu</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">İhracat KDV iadesi</a></li>
             </ul>
           </div>
 
           {/* Consoles */}
           <div className="space-y-3">
-            <h4 className="text-[11px] font-semibold text-white/80">Konsol & Paneller</h4>
+            <h4 className="text-[11px] font-semibold text-white/80">Paneller</h4>
             <ul className="space-y-2 text-pine-300">
               <li>
                 <button onClick={() => navigateToMode('portal')} className="hover:text-white transition-colors">
-                  Müşteri Konsolu
+                  Müşteri paneli
                 </button>
               </li>
               <li>
                 <button onClick={() => navigateToMode('admin')} className="hover:text-white transition-colors">
-                  SMMM Yönetim Paneli
+                  Ofis paneli
                 </button>
               </li>
               <li>
                 <button onClick={() => setIsConsultationOpen(true)} className="hover:text-white transition-colors">
-                  Ön Görüşme Talebi
+                  Ücretsiz görüşme
                 </button>
               </li>
             </ul>
@@ -79,7 +79,7 @@ export default function PublicFooter() {
 
           {/* Accreditation */}
           <div className="space-y-3">
-            <h4 className="text-[11px] font-semibold text-white/80">Akreditasyon & Ruhsat</h4>
+            <h4 className="text-[11px] font-semibold text-white/80">Ruhsatlar</h4>
             <ul className="space-y-2.5 text-pine-300">
               {firmInfo.licenses.map((lic) => (
                 <li key={lic.no} className="leading-relaxed">

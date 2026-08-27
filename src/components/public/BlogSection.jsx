@@ -12,15 +12,14 @@ export default function BlogSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-line">
           <div className="max-w-2xl space-y-3">
-            <p className="eyebrow">04 / Mevzuat & Vergi Analizleri</p>
+            <p className="mlabel text-pine-700">Yazılar</p>
             <h2 className="font-serif text-ink-900 text-3xl sm:text-4xl md:text-[44px] leading-[1.08] tracking-tight">
-              Şirketinizi geleceğe taşıyacak <em className="text-pine-700">mali ve vergisel kılavuzlar.</em>
+              Vergiyi ve mevzuatı <em className="text-pine-700">sade anlatan</em> notlar.
             </h2>
           </div>
 
           <p className="text-sm text-ink-500 max-w-sm leading-relaxed">
-            Kıdemli SMMM ve YMM danışmanlarımız tarafından hazırlanan güncel mevzuat analizleri,
-            teşvik kılavuzları ve uygulama notları.
+            Mali müşavirlerimizin yazdığı güncel kılavuzlar: indirimler, ihracat KDV, e-Defter.
           </p>
         </div>
 
@@ -64,7 +63,7 @@ export default function BlogSection() {
                 </div>
 
                 <span className="flex items-center gap-1 text-xs font-semibold text-pine-700 group-hover:gap-2 transition-all shrink-0">
-                  <span>İncele</span>
+                  <span>Oku</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </div>

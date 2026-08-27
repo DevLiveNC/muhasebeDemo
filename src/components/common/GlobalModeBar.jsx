@@ -20,9 +20,9 @@ export default function GlobalModeBar() {
   } = useApp();
 
   const modes = [
-    { id: 'public', label: 'Kurumsal Web Sitesi', short: 'Web', icon: Globe },
-    { id: 'portal', label: 'Müşteri Konsolu', short: 'Müşteri', icon: Building2 },
-    { id: 'admin', label: 'SMMM Yönetim Paneli', short: 'SMMM', icon: ShieldCheck }
+    { id: 'public', label: 'Web sitesi', short: 'Web', icon: Globe },
+    { id: 'portal', label: 'Müşteri paneli', short: 'Müşteri', icon: Building2 },
+    { id: 'admin', label: 'Ofis paneli', short: 'Ofis', icon: ShieldCheck }
   ];
 
   return (
@@ -36,8 +36,8 @@ export default function GlobalModeBar() {
               <div className="w-6 h-6 rounded-md bg-pine-700 text-white font-serif font-bold flex items-center justify-center text-[13px]">
                 V
               </div>
-              <span className="hidden sm:inline font-mono text-[10px] font-semibold tracking-[0.2em] text-ink-900 uppercase">
-                VELOX <span className="text-ink-400 font-medium">MALİ KONSOL</span>
+              <span className="hidden sm:inline text-[11px] font-semibold tracking-wide text-ink-900">
+                VELOX <span className="text-ink-400 font-medium">Mali</span>
               </span>
             </div>
 
@@ -94,10 +94,10 @@ export default function GlobalModeBar() {
             <button
               onClick={() => setIsDemoGuideOpen(true)}
               className="hidden xl:flex items-center gap-1 px-2 py-1 rounded-md text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
-              title="Sunum Rehberi"
+              title="Sunum notları"
             >
               <Info className="w-3.5 h-3.5" />
-              <span className="text-[11px] font-medium">Sunum Notları</span>
+              <span className="text-[11px] font-medium">Sunum notları</span>
             </button>
           </div>
 

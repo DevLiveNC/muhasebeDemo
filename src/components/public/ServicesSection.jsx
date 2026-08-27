@@ -14,13 +14,13 @@ export default function ServicesSection() {
 
         {/* Header */}
         <div className="section-head">
-          <p className="eyebrow">01 / Kurumsal Mali Müşavirlik & Denetim Alanları</p>
+          <p className="mlabel text-pine-700">Hizmetler</p>
           <h2>
-            Şirketinizin tüm finansal döngüsü <em>tek bir konsolda</em> güvende.
+            Vergi, bordro ve rapor <em>tek yerde</em>.
           </h2>
           <p className="max-w-lg">
-            Klasik defter tutmanın ötesinde; e-dönüşümden Ar-Ge vergi muafiyetlerine, ihracat KDV
-            iadesinden sanal CFO danışmanlığına kadar 360° kurumsal müşavirlik.
+            Defter tutmanın ötesinde: e-Fatura, vergi indirimleri, ihracat KDV iadesi ve nakit planı.
+            İhtiyacınız olanı seçin, detayı açın.
           </p>
         </div>
 
@@ -60,13 +60,13 @@ export default function ServicesSection() {
         {/* Bottom CTA */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-ink-500">
-            Hangi hizmetin sizin için doğru olduğu konusunda emin misiniz?
+            Hangisinin size uygun olduğundan emin değil misiniz?
           </p>
           <button
             onClick={() => setIsConsultationOpen(true)}
             className="btn btn-outline btn-md"
           >
-            <span>Bize Danışın</span>
+            <span>Bize sorun</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>

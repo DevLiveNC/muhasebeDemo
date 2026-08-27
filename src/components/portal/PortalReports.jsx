@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Download, ArrowUpRight } from 'lucide-react';
+import PageIntro from '../common/PageIntro';
 
 export default function PortalReports() {
   const { addToast } = useApp();
@@ -31,10 +32,10 @@ export default function PortalReports() {
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Finansal Analiz & Sanal CFO Konsolu</h1>
-          <p className="text-xs text-ink-400 mt-1">Gelir-gider tabloları, EBITDA kârlılık kırılımları ve nakit runway modelleri</p>
-        </div>
+        <PageIntro
+          title="Raporlar"
+          lead="Satış, kâr, gider ve kasadaki paranın kaç ay yeteceği."
+        />
 
         <div className="flex items-center gap-2">
           <select
@@ -52,7 +53,7 @@ export default function PortalReports() {
             className="btn btn-primary btn-sm shrink-0"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Mali Raporu İndir</span>
+            <span>Raporu indir</span>
           </button>
         </div>
       </div>
@@ -60,7 +61,7 @@ export default function PortalReports() {
       {/* Analytics Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="card p-6 space-y-1.5">
-          <span className="kpi-label">Net Dönem Hasılatı</span>
+          <span className="kpi-label">Dönem net satış</span>
           <p className="font-mono text-3xl font-semibold text-ink-900 tracking-tight">₺5.420.000</p>
           <span className="text-[11px] text-success-deep font-semibold flex items-center gap-1 font-mono">
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -69,13 +70,13 @@ export default function PortalReports() {
         </div>
 
         <div className="card p-6 space-y-1.5">
-          <span className="kpi-label">Faaliyet Kâr Marjı (EBITDA)</span>
+          <span className="kpi-label">Faaliyet kâr marjı</span>
           <p className="font-mono text-3xl font-semibold text-pine-700 tracking-tight">%36.8</p>
           <span className="text-[11px] text-ink-400 font-mono">Sektör ortalaması %22</span>
         </div>
 
         <div className="card p-6 space-y-1.5">
-          <span className="kpi-label">4691 Teşvik Kazancı</span>
+          <span className="kpi-label">Teknopark vergi indirimi</span>
           <p className="font-mono text-3xl font-semibold text-ink-900 tracking-tight">₺198.400</p>
           <span className="text-[11px] text-ink-400 font-mono">Teknopark & Ar-Ge İndirimi</span>
         </div>

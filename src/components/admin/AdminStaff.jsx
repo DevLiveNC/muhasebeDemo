@@ -13,15 +13,13 @@ export default function AdminStaff() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="badge badge-pine">SMMM & Denetçi Kadrosu</span>
-            <span className="text-ink-400 font-mono text-xs">TÜRMOB Ruhsatlı Uzmanlar</span>
+            <span className="badge badge-pine">SMMM kadrosu</span>
+            <span className="text-ink-400 text-xs">TÜRMOB ruhsatlı</span>
           </div>
           <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">
-            Ekip & Denetçi Kapasite Yönetimi
+            Ekip
           </h1>
-          <p className="text-xs text-ink-400 mt-1">
-            Mali müşavirler, vergi uzmanları, iş yükü doluluk oranları ve mükellef dağılımı
-          </p>
+          <p className="page-lead">Kim ne kadar yüklü, hangi şirketler kime bağlı.</p>
         </div>
 
         <button
@@ -86,7 +84,7 @@ export default function AdminStaff() {
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3 bg-paper-50 rounded-xl border border-line text-center">
                 <span className="mlabel block">Sorumlu Portföy</span>
-                <span className="font-mono font-bold text-ink-900 text-sm block mt-1">{st.clientsCount} Mükellef</span>
+                <span className="font-mono font-bold text-ink-900 text-sm block mt-1">{st.clientsCount} müşteri</span>
               </div>
               <div className="p-3 bg-paper-50 rounded-xl border border-line text-center">
                 <span className="mlabel block">Açık İş Emirleri</span>

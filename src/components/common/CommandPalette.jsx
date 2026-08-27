@@ -35,8 +35,8 @@ export default function CommandPalette() {
   const quickActions = [
     {
       id: 'act-ai',
-      title: 'VELOX AI Finans & Mevzuat Asistanını Başlat',
-      category: 'Yapay Zeka',
+      title: 'VELOX AI asistanını aç',
+      category: 'Yapay zeka',
       icon: Sparkles,
       action: () => {
         setIsCommandPaletteOpen(false);
@@ -45,8 +45,8 @@ export default function CommandPalette() {
     },
     {
       id: 'act-consult',
-      title: 'Mali Müşavirlik Ön Görüşme Randevusu Al',
-      category: 'Hızlı İşlem',
+      title: 'Ücretsiz görüşme alın',
+      category: 'Hızlı işlem',
       icon: Calendar,
       action: () => {
         setIsCommandPaletteOpen(false);
@@ -55,8 +55,8 @@ export default function CommandPalette() {
     },
     {
       id: 'act-portal-docs',
-      title: 'Müşteri Konsolu — e-Arşiv / Fatura OCR Masası',
-      category: 'Müşteri Konsolu',
+      title: 'Müşteri paneli — belgeler',
+      category: 'Müşteri paneli',
       icon: FileSpreadsheet,
       action: () => {
         setIsCommandPaletteOpen(false);
@@ -65,8 +65,8 @@ export default function CommandPalette() {
     },
     {
       id: 'act-admin-calendar',
-      title: 'SMMM Paneli — GİB & SGK Beyanname Takvimi',
-      category: 'Yönetim Paneli',
+      title: 'Ofis paneli — vergi takvimi',
+      category: 'Ofis paneli',
       icon: Calendar,
       action: () => {
         setIsCommandPaletteOpen(false);
@@ -75,8 +75,8 @@ export default function CommandPalette() {
     },
     {
       id: 'act-admin-docs',
-      title: 'SMMM Paneli — Merkezi Evrak & OCR Onay Havuzu',
-      category: 'Yönetim Paneli',
+      title: 'Ofis paneli — belgeler',
+      category: 'Ofis paneli',
       icon: FileText,
       action: () => {
         setIsCommandPaletteOpen(false);
@@ -85,8 +85,8 @@ export default function CommandPalette() {
     },
     {
       id: 'act-admin-crm',
-      title: 'SMMM Paneli — CRM & Lead Satış Hattı',
-      category: 'Yönetim Paneli',
+      title: 'Ofis paneli — adaylar',
+      category: 'Ofis paneli',
       icon: Briefcase,
       action: () => {
         setIsCommandPaletteOpen(false);
@@ -119,7 +119,7 @@ export default function CommandPalette() {
           <Search className="w-4 h-4 text-ink-400 mr-3 shrink-0" />
           <input
             type="text"
-            placeholder="Mükellef unvanı, VKN, evrak veya işlem ara... (örn: TechVision, 876045, KDV)"
+            placeholder="Şirket, vergi no veya işlem ara..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full bg-transparent text-sm text-ink-900 placeholder-ink-300 focus:outline-none font-mono"
@@ -139,8 +139,8 @@ export default function CommandPalette() {
 
           {filteredActions.length > 0 && (
             <div>
-              <div className="px-3 py-1 text-[10px] font-mono font-semibold tracking-[0.14em] text-ink-400 uppercase">
-                Hızlı İşlemler & Navigasyon
+              <div className="px-3 py-1 text-[10px] font-semibold text-ink-400">
+                Hızlı işlemler
               </div>
               <div className="mt-1 space-y-1">
                 {filteredActions.map((action) => {
@@ -171,7 +171,7 @@ export default function CommandPalette() {
           {filteredClients.length > 0 && (
             <div>
               <div className="px-3 py-1 text-[10px] font-mono font-semibold tracking-[0.14em] text-ink-400 uppercase">
-                Portföy Mükellefleri ({filteredClients.length})
+                Müşteriler ({filteredClients.length})
               </div>
               <div className="mt-1 space-y-1">
                 {filteredClients.map((client) => (

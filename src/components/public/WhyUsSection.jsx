@@ -7,29 +7,29 @@ export default function WhyUsSection() {
 
   const comparisonRows = [
     {
-      feature: 'Evrak ve Fatura Teslimi',
-      traditional: 'Ay sonunda poşet/kurye ile fiziksel evrak trafiği veya kaybolan WhatsApp fotoğrafları',
-      velox: 'Mobil ve web portalından tek tıkla yükleme, 2.1 sn yapay zeka OCR otomatik tekdüzen kodlaması'
+      feature: 'Fatura ve evrak',
+      traditional: 'Ay sonunda poşet, kurye veya kaybolan WhatsApp fotoğrafları',
+      velox: 'Telefondan veya bilgisayardan yükleyin. Sistem 2 saniyede okur, muhasebeye işler.'
     },
     {
-      feature: 'Vergi ve Beyanname Şeffaflığı',
-      traditional: 'Son gün çıkan sürpriz vergi ödemeleri ve gerekçesi anlaşılmayan tahakkuk fişleri',
-      velox: 'Canlı vergi takvimi, 15 gün önceden tahmini vergi projeksiyonu ve otomatik bildirimler'
+      feature: 'Vergi ve beyan',
+      traditional: 'Son gün çıkan sürpriz vergi ve anlaşılmayan ödeme fişleri',
+      velox: 'Takvimde son günleri görün. 15 gün önce tahmini tutarı öğrenin.'
     },
     {
-      feature: 'Mali Müşavire Erişim & SLA',
-      traditional: 'Ulaşılamayan telefonlar, cevapsız e-postalar ve mesai saatleri dışı kapalılık',
-      velox: 'Atanmış kıdemli SMMM + 12 dakika altında yanıt süreli doğrudan destek masası ve 7/24 AI terminali'
+      feature: 'Mali müşavire ulaşmak',
+      traditional: 'Cevapsız telefon, geciken e-posta, mesai dışı sessizlik',
+      velox: 'Size atanan mali müşavir + 12 dakikada yanıt. Gece de asistan açık.'
     },
     {
-      feature: 'Finansal Karar & Sanal CFO',
-      traditional: 'Sadece geriye dönük yasal defter kaydı; geleceğe dair hiçbir finansal içgörü yok',
-      velox: 'Sanal CFO paneli, 90 günlük nakit akışı (cash runway) simülasyonu ve birim kârlılık analitiği'
+      feature: 'Karar için sayı',
+      traditional: 'Sadece geçmişe dönük defter. Yarın için içgörü yok.',
+      velox: 'Kasadaki paranın kaç ay yeteceği, kâr marjı ve nakit planı.'
     },
     {
-      feature: 'Mevzuat & Teşvik Optimizasyonu',
-      traditional: 'Standart işlemler; gözden kaçan Ar-Ge, Teknopark ve SGK istihdam muafiyetleri',
-      velox: 'Otomatik teşvik tarama algoritması ile her ay 4691, 5746 ve ihracat KDV iadelerinin eksiksiz işletilmesi'
+      feature: 'Vergi indirimleri',
+      traditional: 'Standart işlem. Teknopark, Ar-Ge ve ihracat KDV kaçabilir.',
+      velox: 'Her ay uygun indirimleri tarar, dosyalar, nakit olarak gösteririz.'
     }
   ];
 
@@ -39,23 +39,22 @@ export default function WhyUsSection() {
 
         {/* Header */}
         <div className="section-head text-center mx-auto">
-          <p className="eyebrow">02 / Değer Önerimiz ve Kurumsal Farkımız</p>
+          <p className="mlabel text-pine-700">Neden biz?</p>
           <h2>
-            Neden 48+ teknoloji ve ihracat şirketi <em>VELOX'a emanet etti?</em>
+            48 şirket mali işini <em>neden VELOX'a verdi?</em>
           </h2>
           <p className="mx-auto">
-            Eski usul muhasebe anlayışıyla modern büyüme yönetilemez. Şirketinizin ihtiyacı olan
-            hız, şeffaflık ve finansal zekayı sunuyoruz.
+            Eski usul muhasebe büyümeyi yavaşlatır. Size hız, net rakam ve zamanında beyan gerekir.
           </p>
         </div>
 
         {/* Comparison Matrix */}
         <div className="mt-14 rounded-2xl border border-line overflow-hidden shadow-card bg-white">
 
-          <div className="grid grid-cols-1 md:grid-cols-12 bg-paper-100 text-[11px] font-mono py-3.5 px-6 border-b border-line">
-            <div className="md:col-span-4 uppercase tracking-[0.12em] text-ink-400 font-semibold">Değerlendirme Kriteri</div>
-            <div className="hidden md:block md:col-span-4 uppercase tracking-[0.12em] text-ink-400 font-semibold">Geleneksel Muhasebe</div>
-            <div className="hidden md:block md:col-span-4 uppercase tracking-[0.12em] text-pine-700 font-bold">VELOX Finansal Zeka</div>
+          <div className="grid grid-cols-1 md:grid-cols-12 bg-paper-100 text-[11px] py-3.5 px-6 border-b border-line">
+            <div className="md:col-span-4 text-ink-400 font-semibold">Konu</div>
+            <div className="hidden md:block md:col-span-4 text-ink-400 font-semibold">Klasik muhasebe</div>
+            <div className="hidden md:block md:col-span-4 text-pine-700 font-bold">VELOX</div>
           </div>
 
           <div className="divide-y divide-line">
@@ -86,16 +85,16 @@ export default function WhyUsSection() {
         {/* Callout */}
         <div className="mt-10 p-6 rounded-2xl bg-pine-50 border border-pine-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <h4 className="font-bold text-[15px] text-ink-900">Mevcut muhasebenizden VELOX'a geçiş 24 saatte tamamlanır.</h4>
+            <h4 className="font-bold text-[15px] text-ink-900">Mevcut muhasebenizden geçiş 24 saatte biter.</h4>
             <p className="text-sm text-ink-500 mt-1">
-              Eski mali müşaviriniz ile devir teslim tutanaklarını ve GİB yetkilendirmesini ekibimiz yönetir.
+              Eski mali müşavirinizle teslimatı ve Gelir İdaresi yetkisini biz yönetiriz.
             </p>
           </div>
           <button
             onClick={() => setIsConsultationOpen(true)}
             className="btn btn-primary btn-md shrink-0"
           >
-            <span>Geçiş Sürecini Başlat</span>
+            <span>Geçişe başlayın</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

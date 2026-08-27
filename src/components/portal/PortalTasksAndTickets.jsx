@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { MessageSquare, Plus, X } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import PageIntro from '../common/PageIntro';
 
 const CATEGORIES = [
-  'Vergi & Beyanname',
-  'Bordro & Teşvik',
-  'Resmi Yazışma & Denetim',
-  'E-Dönüşüm & Belgeler',
+  'Vergi ve beyan',
+  'Bordro',
+  'Resmi yazı',
+  'Belgeler',
   'Diğer'
 ];
 
@@ -37,7 +38,7 @@ export default function PortalTasksAndTickets() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newSubject, setNewSubject] = useState('');
-  const [newCategory, setNewCategory] = useState('Vergi & Beyanname');
+  const [newCategory, setNewCategory] = useState('Vergi ve beyan');
   const [newDetails, setNewDetails] = useState('');
 
   const handleCreateTicket = (e) => {
@@ -66,17 +67,17 @@ export default function PortalTasksAndTickets() {
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">SMMM Danışman Masası & Talepler</h1>
-          <p className="text-xs text-ink-400 mt-1">Bordro, faaliyet belgesi, mizan ve özel vergi denetim talepleriniz</p>
-        </div>
+        <PageIntro
+          title="Destek"
+          lead="Mali müşavirinize yazın. Belge, açıklama veya rapor isteyin."
+        />
 
         <button
           onClick={() => setIsModalOpen(true)}
           className="btn btn-primary btn-sm shrink-0"
         >
           <Plus className="w-3.5 h-3.5" />
-          <span>Yeni Talep Oluştur</span>
+          <span>Yeni talep</span>
         </button>
       </div>
 

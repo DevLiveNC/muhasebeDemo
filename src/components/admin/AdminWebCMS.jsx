@@ -30,19 +30,17 @@ export default function AdminWebCMS() {
 
       {/* Header */}
       <div>
-        <span className="badge badge-neutral">Web & CMS Yönetimi</span>
+        <span className="badge badge-neutral">Web sitesi</span>
         <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-2">
-          Web Sitesi & Gelen Talep Masası
+          Web sitesi
         </h1>
-        <p className="text-xs text-ink-400 mt-1">
-          Gelen ön görüşme randevuları, mevzuat blog makaleleri ve mükellef referansları
-        </p>
+        <p className="page-lead">Gelen görüşme talepleri, yazılar ve referanslar.</p>
       </div>
 
       {/* Consultation Requests */}
       <div className="card overflow-hidden">
         <div className="p-5 border-b border-line flex items-center justify-between">
-          <h3 className="font-bold text-ink-900 text-sm">Gelen Ön Görüşme Randevu Talepleri</h3>
+          <h3 className="font-bold text-ink-900 text-sm">Gelen görüşme talepleri</h3>
           <span className="badge badge-success">2 Yeni Talep</span>
         </div>
 

@@ -73,8 +73,8 @@ export default function AdminClients() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Müşteri Portföy Masası</h1>
-          <p className="text-xs text-ink-400 mt-1">Kayıtlı 48 şirket, vergi dairesi durumları ve SMMM atamaları</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Müşteriler</h1>
+          <p className="page-lead">Tüm şirketler, durumları ve atanan danışman.</p>
         </div>
 
         <div className="flex items-center gap-2">
@@ -124,11 +124,11 @@ export default function AdminClients() {
           <table className="w-full text-left min-w-[760px]">
             <thead>
               <tr className="border-b border-line bg-paper-50">
-                <th className="th">Mükellef</th>
+                <th className="th">Müşteri</th>
                 <th className="th">Sektör</th>
-                <th className="th">KDV-1 Durumu</th>
-                <th className="th">Sorumlu SMMM</th>
-                <th className="th text-right">Aylık Ücret</th>
+                <th className="th">KDV durumu</th>
+                <th className="th">Sorumlu</th>
+                <th className="th text-right">Aylık ücret</th>
                 <th className="th">Evrak</th>
                 <th className="th text-right"></th>
               </tr>
@@ -187,7 +187,7 @@ export default function AdminClients() {
           >
             <div className="px-6 py-4 border-b border-line flex items-center justify-between">
               <div>
-                <h3 className="font-bold text-ink-900 text-[15px]">Yeni Mükellef Kaydı</h3>
+                <h3 className="font-bold text-ink-900 text-[15px]">Yeni müşteri</h3>
                 <p className="text-[11px] text-ink-400 mt-0.5">Portföye eklenen müşteriye ilk açılış bildirimleri otomatik gider.</p>
               </div>
               <button

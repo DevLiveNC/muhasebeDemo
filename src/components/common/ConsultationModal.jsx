@@ -20,7 +20,7 @@ export default function ConsultationModal() {
     email: '',
     phone: '',
     employeeCount: '5-20 Çalışan',
-    services: ['E-Fatura / E-Defter Berat', 'Tekdüzen Genel Muhasebe & Vergi'],
+    services: ['e-Fatura / e-Defter', 'Muhasebe ve vergi'],
     preferredDate: '2026-08-27',
     preferredTime: '14:00',
     notes: ''
@@ -55,16 +55,16 @@ export default function ConsultationModal() {
       // fallback
     }
 
-    addToast('Ön Görüşme Talebiniz Alındı', 'Kıdemli SMMM ortağımız randevu saatinde sizinle online bağlantı kuracaktır.', 'success');
+    addToast('Görüşme talebiniz alındı', 'Mali müşaviriniz randevu saatinde sizinle bağlanacak.', 'success');
   };
 
   const availableServices = [
-    'Tekdüzen Genel Muhasebe & Vergi',
-    'E-Fatura / E-Defter Berat',
-    'Bordrolama & 5510 Teşvik',
-    'Sanal CFO & IFRS Raporlama',
-    'Şirket Kuruluşu & Sermaye',
-    'Ar-Ge 5746 / 4691 Teşvik'
+    'Muhasebe ve vergi',
+    'e-Fatura / e-Defter',
+    'Bordro ve SGK teşviki',
+    'Finans raporu',
+    'Şirket kuruluşu',
+    'Teknopark / Ar-Ge indirimi'
   ];
 
   return (
@@ -80,8 +80,8 @@ export default function ConsultationModal() {
               <Calendar className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-ink-900">Stratejik Mali Ön Görüşme</h3>
-              <p className="text-[11px] text-ink-400">Kıdemli SMMM & Vergi Ortağı ile 30 Dk Birebir Analiz</p>
+              <h3 className="font-bold text-sm text-ink-900">Ücretsiz görüşme</h3>
+              <p className="text-[11px] text-ink-400">Mali müşavir ile 30 dakikalık görüşme</p>
             </div>
           </div>
 
@@ -107,7 +107,7 @@ export default function ConsultationModal() {
                   )}>
                     1
                   </span>
-                  <span className="text-xs">Şirket & Yetkili</span>
+                  <span className="text-xs">Şirket ve yetkili</span>
                 </div>
                 <div className="w-8 h-px bg-line-strong"></div>
                 <div className={cn('flex items-center gap-1.5', step >= 2 ? 'text-ink-900 font-bold' : 'text-ink-300')}>
@@ -117,14 +117,14 @@ export default function ConsultationModal() {
                   )}>
                     2
                   </span>
-                  <span className="text-xs">Hizmetler & Randevu</span>
+                  <span className="text-xs">Hizmet ve randevu</span>
                 </div>
               </div>
 
               {step === 1 && (
                 <div className="space-y-4 animate-fade-in">
                   <div>
-                    <label className="label">Şirket Ünvanı *</label>
+                    <label className="label">Şirket ünvanı *</label>
                     <input
                       type="text"
                       placeholder="Örn: TechNova Yazılım A.Ş."
@@ -137,7 +137,7 @@ export default function ConsultationModal() {
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="label">Şirket Türü</label>
+                      <label className="label">Şirket türü</label>
                       <select
                         value={formData.companyType}
                         onChange={(e) => setFormData({ ...formData, companyType: e.target.value })}
@@ -149,7 +149,7 @@ export default function ConsultationModal() {
                       </select>
                     </div>
                     <div>
-                      <label className="label">Çalışan Sayısı</label>
+                      <label className="label">Çalışan sayısı</label>
                       <select
                         value={formData.employeeCount}
                         onChange={(e) => setFormData({ ...formData, employeeCount: e.target.value })}
@@ -164,7 +164,7 @@ export default function ConsultationModal() {
                   </div>
 
                   <div>
-                    <label className="label">Yetkili Adı Soyadı *</label>
+                    <label className="label">Yetkili adı soyadı *</label>
                     <input
                       type="text"
                       placeholder="Örn: Deniz Kaya"
@@ -290,7 +290,7 @@ export default function ConsultationModal() {
                     </button>
                     <button type="submit" className="btn btn-primary btn-md flex-1">
                       <Calendar className="w-4 h-4" />
-                      <span>Randevuyu Onayla</span>
+                      <span>Randevuyu onayla</span>
                     </button>
                   </div>
                 </form>

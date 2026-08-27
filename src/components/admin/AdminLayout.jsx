@@ -49,30 +49,31 @@ export default function AdminLayout() {
   const [showNotifications, setShowNotifications] = useState(false);
 
   const menuItems = [
-    { id: 'dashboard', label: 'Genel Kokpit', icon: LayoutDashboard },
-    { id: 'clients', label: 'Müşteri Portföyü', icon: Users, badge: '48' },
-    { id: 'client-detail', label: '360° Müşteri Kartı', icon: Building2, sub: true },
-    { id: 'crm', label: 'CRM & Satış Hattı', icon: Briefcase, badge: '3 Yeni' },
-    { id: 'documents', label: 'Evrak & OCR Masası', icon: FileText, badge: '2 Kritik' },
-    { id: 'tasks', label: 'İş Takip Panosu', icon: CheckSquare, badge: '5' },
-    { id: 'calendar', label: 'Vergi ve Beyan Takvimi', icon: Calendar, badge: '4 Gün' },
-    { id: 'payments', label: 'Tahsilat & e-SMM', icon: CreditCard },
-    { id: 'reports', label: 'Firma Analitiği', icon: BarChart3 },
-    { id: 'staff', label: 'SMMM Ekip & Kapasite', icon: UserCheck },
-    { id: 'cms', label: 'Web Sitesi CMS', icon: Globe },
-    { id: 'settings', label: 'GİB / SGK Ayarları', icon: Settings }
+    { id: 'dashboard', label: 'Özet', icon: LayoutDashboard },
+    { id: 'clients', label: 'Müşteriler', icon: Users, badge: '48' },
+    { id: 'client-detail', label: 'Müşteri kartı', icon: Building2, sub: true },
+    { id: 'crm', label: 'Adaylar', icon: Briefcase, badge: '3 yeni' },
+    { id: 'documents', label: 'Belgeler', icon: FileText, badge: '2 kritik' },
+    { id: 'tasks', label: 'İşler', icon: CheckSquare, badge: '5' },
+    { id: 'calendar', label: 'Vergi takvimi', icon: Calendar, badge: '4 gün' },
+    { id: 'payments', label: 'Tahsilat', icon: CreditCard },
+    { id: 'reports', label: 'Raporlar', icon: BarChart3 },
+    { id: 'staff', label: 'Ekip', icon: UserCheck },
+    { id: 'cms', label: 'Web sitesi', icon: Globe },
+    { id: 'settings', label: 'Ayarlar', icon: Settings }
   ];
 
   const adminNotifications = [
-    { id: 1, title: 'Artisan Gıda 2 Eksik Evrak', text: 'KDV-1 beyanı için ihracat GÇB intaç teyidi bekleniyor.', time: '10 dk önce', unread: true },
-    { id: 2, title: 'Solvy Enerji Yeni Başvuru', text: 'Web sitesi üzerinden 25 çalışanlı A.Ş. teklif istedi.', time: '1 saat önce', unread: true },
-    { id: 3, title: 'E-Defter Şematron Tamam', text: '32 şirketin Mayıs berat dosyaları hatasız doğrulandı.', time: '3 saat önce', unread: false }
+    { id: 1, title: 'Artisan Gıda — 2 eksik evrak', text: 'KDV beyanı için ihracat gümrük kapanışı bekleniyor.', time: '10 dk önce', unread: true },
+    { id: 2, title: 'Solvy Enerji yeni başvuru', text: 'Siteden 25 çalışanlı A.Ş. teklif istedi.', time: '1 saat önce', unread: true },
+    { id: 3, title: 'e-Defter kontrolü tamam', text: '32 şirketin Mayıs dosyaları hatasız doğrulandı.', time: '3 saat önce', unread: false }
   ];
 
   const badgeStyle = (badge) => {
-    if (badge.includes('Kritik')) return 'bg-danger-soft text-danger-deep border border-danger/20';
-    if (badge.includes('Gün')) return 'bg-warning-soft text-warning-deep border border-warning/20';
-    if (badge.includes('Yeni')) return 'bg-success-soft text-success-deep border border-success/20';
+    const b = badge.toLowerCase();
+    if (b.includes('kritik')) return 'bg-danger-soft text-danger-deep border border-danger/20';
+    if (b.includes('gün')) return 'bg-warning-soft text-warning-deep border border-warning/20';
+    if (b.includes('yeni')) return 'bg-success-soft text-success-deep border border-success/20';
     return 'bg-paper-200 text-ink-500';
   };
 
@@ -86,10 +87,10 @@ export default function AdminLayout() {
           </div>
           <div className="min-w-0 flex-1">
             <h3 className="font-bold text-[13px] text-ink-900 truncate">VELOX DENETİM</h3>
-            <p className="text-[10px] text-ink-400 font-mono mt-0.5">SMMM Yönetici Kokpiti</p>
+            <p className="text-[10px] text-ink-400 mt-0.5">Ofis paneli</p>
             <span className="inline-flex items-center gap-1 text-[10px] font-mono text-success-deep">
               <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
-              GİB & SGK API Aktif
+              GİB ve SGK bağlı
             </span>
           </div>
         </div>
@@ -97,8 +98,8 @@ export default function AdminLayout() {
 
       {/* Navigation */}
       <div className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
-        <div className="px-3 pb-2 text-[10px] font-mono uppercase tracking-[0.16em] text-ink-400">
-          Yönetim Masası
+        <div className="px-3 pb-2 mlabel">
+          Ofis
         </div>
         {menuItems.map((item) => {
           const Icon = item.icon;
@@ -142,7 +143,7 @@ export default function AdminLayout() {
         />
         <div className="min-w-0 flex-1 text-xs">
           <p className="font-bold text-ink-900 truncate">SMMM Kemal Yıldız</p>
-          <p className="text-[10px] text-ink-400 font-mono truncate">Yönetici Ortak · 349102</p>
+          <p className="text-[10px] text-ink-400 truncate">Yönetici ortak · 349102</p>
         </div>
       </div>
     </div>
@@ -207,7 +208,7 @@ export default function AdminLayout() {
               className="btn btn-outline btn-sm"
             >
               <Search className="w-3.5 h-3.5 text-ink-400" />
-              <span className="hidden md:inline">Müşteri / Evrak Ara...</span>
+              <span className="hidden md:inline">Müşteri veya belge ara...</span>
               <kbd className="hidden lg:inline px-1.5 py-0.5 bg-paper-100 rounded border border-line text-[10px] font-mono text-ink-500">
                 ⌘K
               </kbd>
@@ -235,7 +236,7 @@ export default function AdminLayout() {
               {showNotifications && (
                 <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-pop border border-line p-3 space-y-2 animate-slide-down z-50">
                   <div className="flex items-center justify-between pb-2 border-b border-line">
-                    <span className="font-bold text-[13px] text-ink-900">SMMM Bildirimleri</span>
+                    <span className="font-bold text-[13px] text-ink-900">Bildirimler</span>
                     <button
                       onClick={() => setShowNotifications(false)}
                       className="text-[11px] font-mono text-ink-400 hover:text-ink-900"

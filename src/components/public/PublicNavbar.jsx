@@ -18,12 +18,12 @@ export default function PublicNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Hizmet Kapsamı', href: '#services' },
-    { label: 'Neden Velox?', href: '#why-us' },
-    { label: 'Dijital Konsol', href: '#portal-preview' },
-    { label: 'Vergi Simülatörü', href: '#calculator' },
-    { label: 'Mevzuat & Blog', href: '#blog' },
-    { label: 'Kurumsal & Ekip', href: '#about' },
+    { label: 'Hizmetler', href: '#services' },
+    { label: 'Neden biz?', href: '#why-us' },
+    { label: 'Müşteri paneli', href: '#portal-preview' },
+    { label: 'Vergi hesaplama', href: '#calculator' },
+    { label: 'Yazılar', href: '#blog' },
+    { label: 'Hakkımızda', href: '#about' },
     { label: 'İletişim', href: '#contact' },
   ];
 
@@ -77,7 +77,7 @@ export default function PublicNavbar() {
               className="btn btn-ghost btn-sm"
             >
               <Building2 className="w-3.5 h-3.5 text-pine-700" />
-              <span>Müşteri Girişi</span>
+              <span>Müşteri girişi</span>
               <ArrowUpRight className="w-3 h-3" />
             </button>
             <button
@@ -85,14 +85,14 @@ export default function PublicNavbar() {
               className="btn btn-primary btn-sm"
             >
               <Calendar className="w-3.5 h-3.5" />
-              <span>Ön Görüşme Al</span>
+              <span>Görüşme alın</span>
             </button>
           </div>
 
           {/* Mobile Trigger */}
           <div className="flex lg:hidden items-center gap-2">
             <button onClick={() => setIsConsultationOpen(true)} className="btn btn-primary btn-sm">
-              Ön Görüşme
+              Görüşme
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -131,7 +131,7 @@ export default function PublicNavbar() {
               className="btn btn-outline btn-sm w-full"
             >
               <Building2 className="w-3.5 h-3.5" />
-              <span>Müşteri Konsolu</span>
+              <span>Müşteri paneli</span>
             </button>
             <button
               onClick={() => {
@@ -141,7 +141,7 @@ export default function PublicNavbar() {
               className="btn btn-outline btn-sm w-full"
             >
               <ShieldCheck className="w-3.5 h-3.5 text-pine-700" />
-              <span>SMMM Masası</span>
+              <span>Ofis paneli</span>
             </button>
           </div>
         </div>

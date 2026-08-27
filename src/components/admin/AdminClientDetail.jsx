@@ -50,12 +50,12 @@ export default function AdminClientDetail() {
   const clientPayments = payments.filter((p) => p.clientId === selectedClient.id);
 
   const subTabs = [
-    { id: 'info', label: 'Firma & Sicil', icon: Building2 },
-    { id: 'docs', label: 'Evraklar & OCR', icon: FileText, count: clientDocs.length },
-    { id: 'tax-ops', label: 'Beyanname & SGK', icon: Calendar },
-    { id: 'payments', label: 'Cari & e-SMM', icon: CreditCard },
+    { id: 'info', label: 'Firma', icon: Building2 },
+    { id: 'docs', label: 'Belgeler', icon: FileText, count: clientDocs.length },
+    { id: 'tax-ops', label: 'Beyanlar', icon: Calendar },
+    { id: 'payments', label: 'Tahsilat', icon: CreditCard },
     { id: 'tasks', label: 'Görevler', icon: CheckSquare, count: clientTasks.length },
-    { id: 'notes', label: 'Denetim Notları', icon: StickyNote }
+    { id: 'notes', label: 'Notlar', icon: StickyNote }
   ];
 
   const handleAddNote = (e) => {
@@ -71,7 +71,7 @@ export default function AdminClientDetail() {
       ...prev
     ]);
     setNewNote('');
-    addToast('Denetim Notu Eklendi', 'Not, müşteri 360° dosyasına kaydedildi.', 'success');
+    addToast('Not eklendi', 'Not müşteri dosyasına kaydedildi.', 'success');
   };
 
   return (
@@ -117,11 +117,11 @@ export default function AdminClientDetail() {
               <span>Evrak İste (SMS)</span>
             </button>
             <button
-              onClick={() => addToast('360° Rapor Oluşturuldu', `${selectedClient.shortName} yıllık denetim raporu PDF olarak indirildi.`, 'success')}
+              onClick={() => addToast('Rapor oluşturuldu', `${selectedClient.shortName} yıllık raporu PDF olarak indirildi.`, 'success')}
               className="btn btn-primary btn-sm"
             >
               <Sparkles className="w-3.5 h-3.5 text-gold-300" />
-              <span>360° Rapor</span>
+              <span>Rapor</span>
             </button>
           </div>
         </div>
@@ -253,7 +253,7 @@ export default function AdminClientDetail() {
       {/* ---- DOCS ---- */}
       {activeSubTab === 'docs' && (
         <div className="card p-6 space-y-4 animate-fade-in">
-          <h3 className="font-bold text-ink-900 text-sm">Mükellef Evrak Havuzu ({clientDocs.length})</h3>
+          <h3 className="font-bold text-ink-900 text-sm">Belgeler ({clientDocs.length})</h3>
           <div className="overflow-x-auto -mx-6 px-6">
             <table className="w-full text-left min-w-[640px]">
               <thead>

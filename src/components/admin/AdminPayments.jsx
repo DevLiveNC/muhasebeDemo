@@ -18,12 +18,13 @@ export default function AdminPayments() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="badge badge-neutral">Tahsilat & e-SMM</span>
-            <span className="text-ink-400 font-mono text-xs">Ağustos 2026 Dönemi</span>
+            <span className="badge badge-neutral">Tahsilat</span>
+            <span className="text-ink-400 text-xs">Ağustos 2026</span>
           </div>
           <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">
-            Müşavirlik Ücreti Tahsilatları
+            Tahsilat
           </h1>
+          <p className="page-lead">Aylık ücretler ve e-SMM makbuzları.</p>
         </div>
 
         <span className="badge badge-success self-start">
@@ -37,12 +38,12 @@ export default function AdminPayments() {
         <div className="card p-5 space-y-1.5">
           <span className="kpi-label">Toplam Kesilen e-SMM (Ağustos)</span>
           <p className="font-mono text-2xl font-semibold text-ink-900 tracking-tight">₺720.000</p>
-          <p className="text-[11px] font-mono text-ink-400">48 Portföy Mükellefi</p>
+          <p className="text-[11px] text-ink-400">48 müşteri</p>
         </div>
         <div className="card p-5 space-y-1.5">
           <span className="kpi-label">Tahsil Edilen Tutar</span>
           <p className="font-mono text-2xl font-semibold text-pine-700 tracking-tight">₺684.500</p>
-          <p className="text-[11px] font-mono text-success-deep">✓ 44 Mükellef Cari Kapandı</p>
+          <p className="text-[11px] text-success-deep">✓ 44 müşteri kapandı</p>
         </div>
         <div className="card p-5 space-y-1.5">
           <span className="kpi-label">Geciken / Açık Bakiye</span>
@@ -72,7 +73,7 @@ export default function AdminPayments() {
           <table className="w-full text-left min-w-[860px]">
             <thead>
               <tr className="border-b border-line bg-paper-50">
-                <th className="th">Mükellef Unvanı</th>
+                <th className="th">Müşteri</th>
                 <th className="th">e-SMM Seri & No</th>
                 <th className="th">Dönem</th>
                 <th className="th text-right">Brüt Ücret</th>

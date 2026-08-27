@@ -29,40 +29,40 @@ export default function AdminDashboard() {
 
   const kpis = [
     {
-      label: 'Toplam Portföy',
+      label: 'Toplam müşteri',
       value: '48',
-      sub: '+3 Bu Çeyrek Yeni',
+      sub: '+3 bu çeyrek',
       subColor: 'text-success-deep',
       icon: Users,
       tab: 'clients'
     },
     {
-      label: 'Açık Görevler',
+      label: 'Açık işler',
       value: '19',
-      sub: '5 Acil Öncelikli',
+      sub: '5 acil',
       subColor: 'text-warning-deep',
       icon: CheckSquare,
       tab: 'tasks'
     },
     {
-      label: 'Eksik Evrak',
-      value: '6 Belge',
+      label: 'Eksik belge',
+      value: '6',
       valueColor: 'text-danger',
-      sub: '2 Mükellefte Kritik',
+      sub: '2 müşteride kritik',
       subColor: 'text-danger',
       icon: FileText,
       tab: 'documents'
     },
     {
-      label: 'Son 4 Gün (KDV)',
-      value: '12 Beyan',
-      sub: '41/48 Tamamlandı',
+      label: 'KDV son 4 gün',
+      value: '12 beyan',
+      sub: '41 / 48 tamam',
       subColor: 'text-success-deep',
       icon: Calendar,
       tab: 'calendar'
     },
     {
-      label: 'Aylık Tahsilat',
+      label: 'Aylık tahsilat',
       value: '%95.1',
       valueColor: 'text-pine-700',
       sub: '₺684K / ₺720K',
@@ -71,9 +71,9 @@ export default function AdminDashboard() {
       tab: 'payments'
     },
     {
-      label: 'Satış Hattı (CRM)',
-      value: '3 Lead',
-      sub: '₺82.5K / Ay Potansiyel',
+      label: 'Yeni adaylar',
+      value: '3',
+      sub: '₺82.5K / ay potansiyel',
       subColor: 'text-success-deep',
       icon: TrendingUp,
       tab: 'crm'
@@ -87,14 +87,14 @@ export default function AdminDashboard() {
       <div className="card p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1.5">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="badge badge-neutral">SMMM Yönetici Kokpiti</span>
-            <span className="text-ink-400 font-mono text-xs">Ağustos 2026 Beyan Dönemi</span>
+            <span className="badge badge-neutral">Ofis paneli</span>
+            <span className="text-ink-400 text-xs">Ağustos 2026 beyan dönemi</span>
           </div>
           <h1 className="font-serif text-2xl sm:text-[26px] text-ink-900 leading-tight">
-            Hoş Geldiniz, SMMM Kemal Yıldız
+            Hoş geldiniz, Kemal Yıldız
           </h1>
           <p className="text-[13px] text-ink-500">
-            Portföydeki 48 kurumsal mükellefin 44'ünde mizan mutabakatı tamamlandı. Bu hafta 12 KDV-1 beyannamesi onay bekliyor.
+            48 şirketin 44'ünde dönem kapanışı tamam. Bu hafta 12 KDV beyannamesi onay bekliyor.
           </p>
         </div>
 
@@ -104,7 +104,7 @@ export default function AdminDashboard() {
             className="btn btn-primary btn-sm"
           >
             <Sparkles className="w-3.5 h-3.5 text-gold-300" />
-            <span>AI Masası</span>
+            <span>AI asistan</span>
           </button>
           <button
             onClick={() => setAdminTab('calendar')}
@@ -146,9 +146,9 @@ export default function AdminDashboard() {
             <AlertTriangle className="w-4 h-4" />
           </div>
           <div>
-            <h4 className="font-bold text-warning-deep text-sm">Kritik Beyan Öncesi Eksik Evrak Uyarısı</h4>
+            <h4 className="font-bold text-warning-deep text-sm">Eksik evrak uyarısı</h4>
             <p className="text-xs text-ink-600 mt-1">
-              <strong>Artisan Gurme Gıda Ltd.</strong> (İhracat GÇB) ve <strong>Pulse Dijital Medya Ltd.</strong> (Meta 2 No KDV) için evraklar eksiktir.
+              <strong>Artisan Gurme Gıda Ltd.</strong> (ihracat gümrük) ve <strong>Pulse Dijital Medya Ltd.</strong> (reklam KDV) için evrak eksik.
             </p>
           </div>
         </div>
@@ -158,7 +158,7 @@ export default function AdminDashboard() {
           className="btn btn-gold btn-sm shrink-0"
         >
           <Send className="w-3.5 h-3.5" />
-          <span>Toplu SMS / WhatsApp İlet</span>
+          <span>Hatırlatma gönder</span>
         </button>
       </div>
 
@@ -169,14 +169,14 @@ export default function AdminDashboard() {
         <div className="lg:col-span-7 card p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-ink-900 text-sm">Müşteri Portföyü ve Dönem Durumu</h3>
-              <p className="text-[11px] text-ink-400 font-mono mt-0.5">KDV-1, SGK ve mizan tamamlanma hızı</p>
+              <h3 className="font-bold text-ink-900 text-sm">Müşteriler</h3>
+              <p className="text-[11px] text-ink-400 mt-0.5">KDV, SGK ve belge durumu</p>
             </div>
             <button
               onClick={() => setAdminTab('clients')}
               className="text-xs font-semibold text-pine-700 hover:text-pine-900 flex items-center gap-1 transition-colors"
             >
-              <span>Tümünü Listele (48)</span>
+              <span>Tümünü gör (48)</span>
               <ArrowRight className="w-3 h-3" />
             </button>
           </div>
@@ -218,8 +218,8 @@ export default function AdminDashboard() {
         <div className="lg:col-span-5 card p-6 space-y-4 self-start">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-ink-900 text-sm">SMMM Ekip İş Yükü</h3>
-              <p className="text-[11px] text-ink-400 font-mono mt-0.5">Kapasite ve şirket dağılımı</p>
+              <h3 className="font-bold text-ink-900 text-sm">Ekip iş yükü</h3>
+              <p className="text-[11px] text-ink-400 mt-0.5">Kapasite ve şirket dağılımı</p>
             </div>
             <button
               onClick={() => setAdminTab('staff')}
@@ -254,7 +254,7 @@ export default function AdminDashboard() {
 
           <div className="pt-2 border-t border-line">
             <div className="flex items-center justify-between text-[13px] text-ink-500 bg-paper-50 p-3.5 rounded-xl">
-              <span>Toplam Ekip Verimlilik Skoru:</span>
+              <span>Toplam ekip doluluk:</span>
               <span className="font-bold text-success-deep font-mono">%94.2 (Mükemmel)</span>
             </div>
           </div>
@@ -265,14 +265,14 @@ export default function AdminDashboard() {
       <div className="card p-6 space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="font-bold text-ink-900 text-sm">Merkezi Evrak Havuzu ve OCR Kayıtları</h3>
-            <p className="text-[11px] text-ink-400 font-mono mt-0.5">Son 24 saatte sisteme iletilen fatura ve ekstreler</p>
+            <h3 className="font-bold text-ink-900 text-sm">Son belgeler</h3>
+            <p className="text-[11px] text-ink-400 mt-0.5">Son 24 saatte gelen fatura ve ekstreler</p>
           </div>
           <button
             onClick={() => setAdminTab('documents')}
             className="text-xs font-semibold text-pine-700 hover:text-pine-900 flex items-center gap-1 transition-colors"
           >
-            <span>Evrak Masasını Aç</span>
+            <span>Belgeleri aç</span>
             <ArrowRight className="w-3 h-3" />
           </button>
         </div>

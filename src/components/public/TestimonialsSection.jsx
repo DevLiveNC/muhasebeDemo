@@ -11,9 +11,9 @@ export default function TestimonialsSection() {
 
         {/* Header */}
         <div className="section-head text-center mx-auto">
-          <p className="eyebrow">05 / Müşteri Deneyimleri ve Güven</p>
+          <p className="mlabel text-pine-700">Müşteriler</p>
           <h2>
-            Girişimciler ve finans direktörleri <em>VELOX hakkında ne diyor?</em>
+            Girişimciler ve finans yöneticileri <em>ne diyor?</em>
           </h2>
         </div>
 
