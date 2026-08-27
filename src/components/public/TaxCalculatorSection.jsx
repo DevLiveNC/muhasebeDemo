@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
 import { cn, formatCurrency } from '../../utils/cn';
+import Term from '../common/Term';
 
 export default function TaxCalculatorSection() {
   const { setIsConsultationOpen } = useApp();
@@ -26,7 +27,7 @@ export default function TaxCalculatorSection() {
         <div className="section-head text-center mx-auto">
           <p className="mlabel text-pine-700">Vergi hesaplama</p>
           <h2>
-            Şirketinizin potansiyel <em>vergi ve SGK tasarrufunu</em> hesaplayın.
+            Şirketinizin potansiyel <em>vergi ve <Term meaning="Sosyal Güvenlik Kurumu — çalışan primleri">SGK</Term> tasarrufunu</em> hesaplayın.
           </h2>
           <p className="mx-auto">
             Personel sayısı, fatura adedi ve Teknopark / Ar-Ge durumunuza göre tahmini avantajı görün.

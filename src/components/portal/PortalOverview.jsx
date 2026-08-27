@@ -12,6 +12,7 @@ import {
   Download
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import Term from '../common/Term';
 
 export default function PortalOverview() {
   const {
@@ -116,7 +117,7 @@ export default function PortalOverview() {
 
         <div className="card p-5 space-y-2">
           <div className="flex items-center justify-between text-ink-400">
-            <span className="kpi-label">Temmuz KDV beyannamesi</span>
+            <span className="kpi-label">Temmuz <Term meaning="Katma Değer Vergisi — satış vergisinin aylık beyannamesi">KDV</Term> beyannamesi</span>
             <FileText className="w-3.5 h-3.5 text-pine-600" />
           </div>
           <div className="text-lg font-bold text-ink-900 leading-tight">Taslak Onaylandı</div>
