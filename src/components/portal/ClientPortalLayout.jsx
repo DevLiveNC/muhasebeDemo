@@ -41,19 +41,19 @@ export default function ClientPortalLayout() {
   const activeClient = clients.find((c) => c.id === 'cli-1') || clients[0];
 
   const menuItems = [
-    { id: 'overview', label: 'Mali Kokpit', icon: LayoutDashboard },
-    { id: 'documents', label: 'Belgeler & Yevmiye', icon: FileText, badge: '4' },
-    { id: 'tax-schedule', label: 'Vergi ve Beyan Takvimi', icon: Calendar, badge: '4 Gün' },
-    { id: 'processes', label: 'Canlı Beyan Süreçleri', icon: Layers },
-    { id: 'tasks', label: 'Talepler & SMMM Masası', icon: MessageSquare },
-    { id: 'reports', label: 'Nakit Runway & Raporlar', icon: BarChart3 },
-    { id: 'profile', label: 'Şirket Sicil & Danışman', icon: Building }
+    { id: 'overview', label: 'Ana sayfa', icon: LayoutDashboard },
+    { id: 'documents', label: 'Belgeler', icon: FileText, badge: '4' },
+    { id: 'tax-schedule', label: 'Vergi takvimi', icon: Calendar, badge: '4 gün' },
+    { id: 'processes', label: 'Süreçler', icon: Layers },
+    { id: 'tasks', label: 'Destek', icon: MessageSquare },
+    { id: 'reports', label: 'Raporlar', icon: BarChart3 },
+    { id: 'profile', label: 'Şirket', icon: Building }
   ];
 
   const notifications = [
-    { id: 1, title: 'Temmuz KDV-1 Beyannamesi', text: 'Taslak mizanla mutabık olarak hazırlandı, onayınız bekleniyor.', time: '2 saat önce', unread: true },
-    { id: 2, title: '4691 Bordro Teşvik Onayı', text: '34 personel için ₺38.400 gelir vergisi terkin indirimi uygulandı.', time: '1 gün önce', unread: false },
-    { id: 3, title: 'AWS Yurt Dışı Faturası', text: '₺142.850 tutarındaki fatura 2 No KDV tevkifatıyla işlendi.', time: '3 gün önce', unread: false }
+    { id: 1, title: 'Temmuz KDV beyannamesi', text: 'Taslak hazır. Onayınız bekleniyor.', time: '2 saat önce', unread: true },
+    { id: 2, title: 'Bordro vergi indirimi', text: '34 personel için aylık ₺38.400 stopaj indirimi uygulandı.', time: '1 gün önce', unread: false },
+    { id: 3, title: 'AWS yurt dışı faturası', text: '₺142.850 tutarındaki fatura KDV tevkifatıyla işlendi.', time: '3 gün önce', unread: false }
   ];
 
   const Sidebar = (
@@ -69,7 +69,7 @@ export default function ClientPortalLayout() {
             <p className="text-[10px] text-ink-400 font-mono mt-0.5">VN: {activeClient.taxNumber}</p>
             <span className="inline-flex items-center gap-1 text-[10px] font-mono text-success-deep">
               <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
-              4691 Teknopark Aktif
+              Teknopark indirimi açık
             </span>
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function ClientPortalLayout() {
       {/* Navigation */}
       <div className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
         <div className="px-3 pb-2 mlabel">
-          Müşteri Konsolu
+          Müşteri paneli
         </div>
         {menuItems.map((item) => {
           const Icon = item.icon;
@@ -113,7 +113,7 @@ export default function ClientPortalLayout() {
       <div className="p-3 m-3 rounded-xl bg-paper-50 border border-line space-y-2.5">
         <div className="flex items-center gap-1.5 mlabel">
           <ShieldCheck className="w-3 h-3 text-pine-700" />
-          <span>Sorumlu Mali Müşavir</span>
+          <span>Size atanan mali müşavir</span>
         </div>
         <div className="flex items-center gap-2.5">
           <img
@@ -123,14 +123,14 @@ export default function ClientPortalLayout() {
           />
           <div className="min-w-0 text-xs">
             <p className="font-bold text-ink-900 truncate">{activeClient.assignedCPA.name}</p>
-            <p className="text-[10px] text-ink-400 truncate font-mono">Vergi & Teknopark Direktörü</p>
+            <p className="text-[10px] text-ink-400 truncate">Vergi ve Teknopark</p>
           </div>
         </div>
         <button
           onClick={() => setPortalTab('tasks')}
           className="btn btn-outline btn-sm w-full"
         >
-          Danışmana Doğrudan Yaz
+          Mali müşavire yaz
         </button>
       </div>
     </div>
@@ -216,7 +216,7 @@ export default function ClientPortalLayout() {
               {showNotifications && (
                 <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-pop border border-line p-3 space-y-2 animate-slide-down z-50">
                   <div className="flex items-center justify-between pb-2 border-b border-line">
-                    <span className="font-bold text-[13px] text-ink-900">Mali Bildirimler</span>
+                    <span className="font-bold text-[13px] text-ink-900">Bildirimler</span>
                     <button
                       onClick={() => setShowNotifications(false)}
                       className="text-[11px] font-mono text-ink-400 hover:text-ink-900"

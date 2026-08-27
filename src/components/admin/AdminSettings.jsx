@@ -11,20 +11,20 @@ export default function AdminSettings() {
 
   const integrations = [
     {
-      title: 'Gelir İdaresi Başkanlığı (GİB) Entegratör API',
-      desc: 'E-Fatura, E-Arşiv ve E-Defter berat gönderim hattı',
+      title: 'Gelir İdaresi (GİB) bağlantısı',
+      desc: 'e-Fatura, e-Arşiv ve e-Defter gönderimi',
       status: 'Bağlı (Aktif)',
       ok: true
     },
     {
-      title: 'SGK İşe Giriş / Çıkış & Teşvik Motoru',
-      desc: 'Otomatik teşvik tarama ve bildirim servisi',
+      title: 'SGK işe giriş / çıkış',
+      desc: 'Teşvik tarama ve bildirim',
       status: 'Bağlı (Aktif)',
       ok: true
     },
     {
-      title: 'Netgsm / İletiMerkezi SMS Ağ Geçidi',
-      desc: 'Mükelleflere eksik evrak ve vergi bildirim SMS\'leri',
+      title: 'SMS bildirimi',
+      desc: 'Eksik evrak ve vergi hatırlatmaları',
       status: '14.250 SMS Kredisi',
       ok: false
     }
@@ -36,15 +36,13 @@ export default function AdminSettings() {
       {/* Header */}
       <div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="badge badge-pine">Sistem Mimarisi & Güvenlik</span>
-          <span className="text-ink-400 font-mono text-xs">AES-256 E2E Encryption</span>
+          <span className="badge badge-pine">Bağlantılar</span>
+          <span className="text-ink-400 text-xs">Güvenli bağlantı</span>
         </div>
         <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-2">
-          Sistem & Entegrasyon Parametreleri
+          Ayarlar
         </h1>
-        <p className="text-xs text-ink-400 mt-1">
-          GİB, SGK, E-Devlet API bağlantıları, SMS ağ geçitleri ve kurumsal SMMM yetkilendirmeleri
-        </p>
+        <p className="page-lead">Gelir İdaresi, SGK ve bildirim bağlantıları.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">

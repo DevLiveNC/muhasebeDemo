@@ -26,22 +26,22 @@ export default function PortalOverview() {
 
   const processes = [
     {
-      title: 'Temmuz 2026 KDV-1 Beyannamesi (0015)',
-      desc: 'Teknopark KDV Geçici 20/1 yazılım istisnası kontrol edildi. GİB taslak onayında.',
+      title: 'Temmuz 2026 KDV beyannamesi',
+      desc: 'Teknopark yazılım KDV istisnası kontrol edildi. Taslak onayda.',
       percent: 85,
-      label: '%85 Tamamlandı'
+      label: '%85 tamamlandı'
     },
     {
-      title: 'Muhtasar ve SGK Prim Hizmet Bildirimi',
-      desc: '34 personel bordro icmali onaylandı, resmi tahakkuk sisteme yüklendi.',
+      title: 'Stopaj ve SGK bildirimi',
+      desc: '34 personel bordrosu onaylandı, ödeme bildirimi alındı.',
       percent: 100,
-      label: '%100 Tahakkuk Alındı'
+      label: '%100 ödendi'
     },
     {
-      title: 'Mayıs 2026 E-Defter Berat Yüklemesi',
-      desc: 'Yevmiye ve Kebir berat dosyaları zaman damgası hazırlığında.',
+      title: 'Mayıs 2026 e-Defter yüklemesi',
+      desc: 'Defter dosyaları zaman damgası hazırlığında.',
       percent: 50,
-      label: '%50 Şematron Kontrolünde'
+      label: '%50 kontrolde'
     }
   ];
 
@@ -59,7 +59,7 @@ export default function PortalOverview() {
           <div className="flex flex-wrap items-center gap-2">
             <span className="badge badge-pine">
               <span className="w-1.5 h-1.5 rounded-full bg-pine-600"></span>
-              4691 Teknopark Kurumlar Muafiyeti Aktif
+              Teknopark vergi indirimi açık
             </span>
             <span className="text-ink-400 font-mono text-xs">{client.taxOffice}</span>
           </div>
@@ -67,7 +67,7 @@ export default function PortalOverview() {
             {client.name}
           </h1>
           <p className="text-[13px] text-ink-500">
-            Ağustos 2026 mali dönemi mizan mutabakatı eksiksizdir. Q3 KDV iade dosyası YMM onayına sunuldu.
+            Ağustos 2026 dönemi tamam. Çeyrek KDV iade dosyası yeminli mali müşavire gönderildi.
           </p>
         </div>
 
@@ -94,44 +94,44 @@ export default function PortalOverview() {
 
         <div className="card p-5 space-y-2">
           <div className="flex items-center justify-between text-ink-400">
-            <span className="kpi-label">Nakit Runway & Burn Rate</span>
+            <span className="kpi-label">Kalan nakit</span>
             <TrendingUp className="w-3.5 h-3.5 text-success" />
           </div>
           <div className="font-mono text-[26px] font-semibold text-ink-900 tracking-tight leading-none">
             {client.cashRunwayMonths}
           </div>
-          <p className="text-[11px] text-ink-400 font-mono">Aylık Tüketim: {client.monthlyBurnRate}</p>
+          <p className="text-[11px] text-ink-400">Aylık harcama: {client.monthlyBurnRate}</p>
         </div>
 
         <div className="card p-5 space-y-2">
           <div className="flex items-center justify-between text-ink-400">
-            <span className="kpi-label">4691 SGK & Bordro Teşviki</span>
+            <span className="kpi-label">Teknopark bordro indirimi</span>
             <Sparkles className="w-3.5 h-3.5 text-gold-500" />
           </div>
           <div className="font-mono text-[26px] font-semibold text-pine-700 tracking-tight leading-none">
             ₺38.400 / Ay
           </div>
-          <p className="text-[11px] text-ink-400 font-mono">34 Mühendis Gelir Stopaj Terkini</p>
+          <p className="text-[11px] text-ink-400">34 mühendis stopaj indirimi</p>
         </div>
 
         <div className="card p-5 space-y-2">
           <div className="flex items-center justify-between text-ink-400">
-            <span className="kpi-label">Temmuz KDV-1 Beyannamesi</span>
+            <span className="kpi-label">Temmuz KDV beyannamesi</span>
             <FileText className="w-3.5 h-3.5 text-pine-600" />
           </div>
           <div className="text-lg font-bold text-ink-900 leading-tight">Taslak Onaylandı</div>
-          <p className="text-[11px] text-success-deep font-mono font-semibold">GİB Onayına 4 Gün Kaldı</p>
+          <p className="text-[11px] text-success-deep font-semibold">Gelir İdaresi onayına 4 gün</p>
         </div>
 
         <div className="card p-5 space-y-2">
           <div className="flex items-center justify-between text-ink-400">
-            <span className="kpi-label">Q3 Net Hasılat</span>
+            <span className="kpi-label">Çeyrek net satış</span>
             <CreditCard className="w-3.5 h-3.5 text-ink-400" />
           </div>
           <div className="font-mono text-[26px] font-semibold text-ink-900 tracking-tight leading-none">
             {client.quarterlyRevenue}
           </div>
-          <p className="text-[11px] text-ink-400 font-mono">Faaliyet Kâr Marjı: {client.netMargin}</p>
+          <p className="text-[11px] text-ink-400">Faaliyet kâr marjı: {client.netMargin}</p>
         </div>
       </div>
 
@@ -142,14 +142,14 @@ export default function PortalOverview() {
         <div className="lg:col-span-7 card p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-ink-900 text-sm">Dönemsel Beyanname ve Müşavirlik Süreçleri</h3>
-              <p className="text-[11px] text-ink-400 font-mono mt-0.5">Ağustos 2026 İşlem Takibi</p>
+              <h3 className="font-bold text-ink-900 text-sm">Devam eden işler</h3>
+              <p className="text-[11px] text-ink-400 mt-0.5">Ağustos 2026</p>
             </div>
             <button
               onClick={() => setPortalTab('processes')}
               className="text-xs font-semibold text-pine-700 hover:text-pine-900 flex items-center gap-1 transition-colors"
             >
-              <span>Detaylı Süreç Masası</span>
+              <span>Tüm süreçler</span>
               <ArrowRight className="w-3 h-3" />
             </button>
           </div>
@@ -182,8 +182,8 @@ export default function PortalOverview() {
         <div className="lg:col-span-5 space-y-6">
           <div className="card p-6 space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-ink-900 text-sm">Resmi Vergi & SGK Terminleri</h3>
-              <span className="text-[10px] font-mono text-ink-400">GİB Takvimi</span>
+              <h3 className="font-bold text-ink-900 text-sm">Yaklaşan ödemeler</h3>
+              <span className="text-[10px] text-ink-400">Vergi takvimi</span>
             </div>
 
             <div className="space-y-2.5">
@@ -197,7 +197,7 @@ export default function PortalOverview() {
                     <div className="flex items-center justify-between gap-3">
                       <span className="font-bold text-[13px] text-ink-900 leading-snug">{tax.title}</span>
                       <span className={cn('badge shrink-0', urgent ? 'badge-warning' : 'badge-success')}>
-                        {tax.remainingDays > 0 ? `${tax.remainingDays} Gün Kaldı` : 'Kapatıldı'}
+                        {tax.remainingDays > 0 ? `${tax.remainingDays} gün` : 'Kapandı'}
                       </span>
                     </div>
                     <div className="flex items-center justify-between text-[11px] font-mono text-ink-400">
@@ -217,34 +217,34 @@ export default function PortalOverview() {
 
           {/* Quick Actions */}
           <div className="card p-6 space-y-3">
-            <h3 className="font-bold text-ink-900 text-sm">Hızlı İşlemler</h3>
+            <h3 className="font-bold text-ink-900 text-sm">Hızlı işlemler</h3>
             <button
               onClick={() => setPortalTab('documents')}
               className="btn btn-outline btn-sm w-full justify-start"
             >
               <UploadCloud className="w-3.5 h-3.5 text-pine-700" />
-              <span>Fatura / Evrak Yükle (OCR)</span>
+              <span>Fatura yükle</span>
             </button>
             <button
               onClick={() => setPortalTab('tasks')}
               className="btn btn-outline btn-sm w-full justify-start"
             >
               <MessageSquare className="w-3.5 h-3.5 text-pine-700" />
-              <span>SMMM'ye Talep Aç</span>
+              <span>Mali müşavire yaz</span>
             </button>
             <button
-              onClick={() => addToast('Mali Rapor İndirildi', 'Ağustos 2026 yönetim özeti PDF formatında indirildi.', 'success')}
+              onClick={() => addToast('Rapor indirildi', 'Ağustos 2026 özeti PDF olarak indirildi.', 'success')}
               className="btn btn-outline btn-sm w-full justify-start"
             >
               <Download className="w-3.5 h-3.5 text-pine-700" />
-              <span>Aylık Yönetim Raporunu İndir</span>
+              <span>Aylık raporu indir</span>
             </button>
             <button
               onClick={() => setPortalTab('tax-schedule')}
               className="btn btn-outline btn-sm w-full justify-start"
             >
               <Calendar className="w-3.5 h-3.5 text-pine-700" />
-              <span>Tüm Terminleri Gör</span>
+              <span>Tüm son günleri gör</span>
             </button>
           </div>
         </div>

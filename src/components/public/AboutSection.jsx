@@ -7,23 +7,23 @@ export default function AboutSection() {
 
   const standards = [
     {
-      title: 'TÜRMOB & KGK Akredite Denetim',
-      desc: 'Tüm beyanname ve bilanço süreçleri çifte kontrol süzgecinden ve YMM denetim protokolünden geçirilir.',
+      title: 'Ruhsatlı denetim',
+      desc: 'Beyan ve bilanço çift kontrolden geçer. Yeminli mali müşavir protokolü uygulanır.',
       icon: ShieldCheck
     },
     {
-      title: 'Yapay Zeka Destekli OCR & Otomasyon',
-      desc: 'Manuel veri girişini sıfırlayarak fatura ve ekstreleri 2.1 saniyelik şematron doğrulamasıyla işliyoruz.',
+      title: 'Fatura otomatik okunur',
+      desc: 'Elle veri girişi yok. Fatura ve ekstre yaklaşık 2 saniyede işlenir.',
       icon: FileCheck2
     },
     {
-      title: 'Maksimum Yasal Teşvik & İade',
-      desc: '4691 Teknopark, 5746 Ar-Ge ve ihracat KDV iadelerini her ay şirketinizin nakit pozisyonuna kazandırıyoruz.',
+      title: 'Vergi indirimleri takipte',
+      desc: 'Teknopark, Ar-Ge ve ihracat KDV iadesini her ay nakit olarak gösteririz.',
       icon: Award
     },
     {
-      title: 'Banka Seviyesinde ISO 27001 Güvenlik',
-      desc: '256-bit SSL şifreleme, bağımsız yedekli bulut ve KVKK mevzuatına tam uyumlu gizlilik protokolü.',
+      title: 'Banka seviyesinde güvenlik',
+      desc: 'Şifreli bağlantı, yedekli bulut ve KVKK uyumlu gizlilik.',
       icon: Lock
     }
   ];
@@ -36,21 +36,19 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
           <div className="lg:col-span-6 space-y-6">
-            <p className="eyebrow">06 / Kurumsal Kimlik & Akreditasyon</p>
+            <p className="mlabel text-pine-700">Hakkımızda</p>
 
             <h2 className="font-serif text-ink-900 text-3xl sm:text-4xl md:text-[44px] leading-[1.08] tracking-tight">
-              Mali müşavirliği bir yük olmaktan çıkarıp <em className="text-pine-700">büyüme kaldıracına</em> dönüştürüyoruz.
+              Mali müşavirliği yük olmaktan çıkarıp <em className="text-pine-700">büyüme aracına</em> çeviriyoruz.
             </h2>
 
             <p className="text-sm text-ink-600 leading-relaxed">
               2016 yılında kurulan <strong className="text-ink-900">{firmInfo.legalName}</strong>,
-              köklü vergi hukuku tecrübesini yeni nesil bulut teknolojileri ve analitik raporlama
-              araçlarıyla harmanlayan öncü bir kurumdur.
+              vergi hukuku deneyimini sade bir dijital panel ve net raporlarla birleştirir.
             </p>
             <p className="text-sm text-ink-500 leading-relaxed">
-              TÜRMOB ve KGK Bağımsız Denetim yetkilerine sahip 28 kişilik uzman kadromuzla;
-              teknoloji girişimlerinden e-ihracatçılara, KOBİ'lerden holding iştiraklerine kadar
-              geniş bir portföye stratejik danışmanlık sağlıyoruz.
+              TÜRMOB ve KGK yetkili 28 kişilik ekibimiz; teknoloji girişimlerinden e-ihracatçılara,
+              KOBİ'lerden holding iştiraklerine kadar şirketlere mali danışmanlık verir.
             </p>
 
             {/* Licenses */}
@@ -103,10 +101,10 @@ export default function AboutSection() {
         {/* Team */}
         <div className="mt-20 pt-12 border-t border-line">
           <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-            <p className="eyebrow">Sorumlu Ortaklar</p>
-            <h3 className="font-serif text-3xl text-ink-900">Kıdemli Danışman Kadromuz</h3>
+            <p className="mlabel text-pine-700">Ortaklar</p>
+            <h3 className="font-serif text-3xl text-ink-900">Kıdemli danışman kadromuz</h3>
             <p className="text-sm text-ink-500">
-              Her mükellefimize özel atanan lisanslı SMMM ve YMM uzmanlarımız.
+              Her şirkete atanan lisanslı mali müşavir.
             </p>
           </div>
 

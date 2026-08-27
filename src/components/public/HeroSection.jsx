@@ -23,9 +23,9 @@ export default function HeroSection() {
   const [activeTab, setActiveTab] = useState('performance');
 
   const tabs = [
-    { id: 'performance', label: 'Performans' },
-    { id: 'tax', label: 'Vergi & Teşvik' },
-    { id: 'ocr', label: 'OCR Kayıtları' }
+    { id: 'performance', label: 'Satış' },
+    { id: 'tax', label: 'Vergi indirimi' },
+    { id: 'ocr', label: 'Okunan faturalar' }
   ];
 
   return (
@@ -34,10 +34,9 @@ export default function HeroSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* Left: Copy */}
           <div className="space-y-6">
-            <p className="text-[11px] font-medium tracking-[0.08em] uppercase text-pine-700">
-              TÜRMOB 349102 · KGK Bağımsız Denetim · GİB Özel Entegratör
+            <p className="mlabel text-pine-700">
+              Ruhsatlı mali müşavirlik ve bağımsız denetim
             </p>
             <h1 className="font-serif text-ink-900 text-[44px] sm:text-6xl md:text-[68px] leading-[1.04] tracking-tight">
               Muhasebenizi değil,
@@ -56,7 +55,7 @@ export default function HeroSection() {
                 onClick={() => setIsConsultationOpen(true)}
                 className="btn btn-primary btn-md w-full sm:w-auto text-[13px]"
               >
-                <span>Ücretsiz Mali Ön Görüşme Al</span>
+                <span>Ücretsiz görüşme alın</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button
@@ -64,46 +63,42 @@ export default function HeroSection() {
                 className="btn btn-outline btn-md w-full sm:w-auto text-[13px]"
               >
                 <Building2 className="w-4 h-4 text-pine-700" />
-                <span>Müşteri Konsolunu İncele</span>
+                <span>Müşteri panelini görün</span>
               </button>
               <button
                 onClick={() => navigateToMode('admin')}
                 className="btn btn-ghost btn-md w-full sm:w-auto text-[13px]"
               >
                 <ShieldCheck className="w-4 h-4 text-pine-700" />
-                <span>SMMM Yönetim Masası</span>
+                <span>Ofis panelini görün</span>
               </button>
             </div>
 
-            {/* Trust Guarantees */}
             <div className="flex flex-wrap gap-x-6 gap-y-2 pt-1 text-xs font-medium text-ink-600">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-pine-600" />
-                GİB & E-Defter %100 Entegre
+                e-Fatura ve e-Defter bağlı
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-pine-600" />
-                Sıfır Ceza & Hata Güvencesi
+                Kaçırılan beyan, ceza yok
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-pine-600" />
-                Atanmış Kıdemli SMMM Masası
+                Size özel mali müşavir
               </span>
             </div>
           </div>
 
-          {/* Right: Report Visual */}
           <div className="relative">
-            <div className="card overflow-hidden p-0 rotate-0">
-              {/* Report top bar */}
+            <div className="card overflow-hidden p-0">
               <div className="bg-pine-700 px-5 py-3 flex items-center justify-between">
-                <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-white/90">
-                  VELOX / Finansal Rapor
+                <span className="text-[11px] font-medium text-white/90">
+                  Aylık finansal özet
                 </span>
-                <span className="font-mono text-[10px] text-pine-200">AĞUSTOS 2026</span>
+                <span className="font-mono text-[10px] text-pine-200">Ağustos 2026</span>
               </div>
 
-              {/* Report body */}
               <div className="p-6 sm:p-7 space-y-5">
                 <div className="flex items-center justify-between">
                   <h3 className="font-serif text-[22px] text-ink-900">İşletme performansı</h3>
@@ -124,7 +119,7 @@ export default function HeroSection() {
                 </div>
 
                 <div>
-                  <p className="kpi-label mb-1">Net Dönem Hasılatı</p>
+                  <p className="kpi-label mb-1">Bu dönem net satış</p>
                   <div className="flex items-end gap-3">
                     <span className="font-mono text-[32px] font-semibold text-ink-900 tracking-tight leading-none">₺842.600</span>
                     <span className="badge badge-success mb-1">
@@ -158,9 +153,9 @@ export default function HeroSection() {
                 {activeTab === 'tax' && (
                   <div className="space-y-2">
                     {[
-                      { label: '4691 Teknopark Kurumlar İstisnası', value: '₺38.400 / ay', ok: true },
-                      { label: 'KDV Geçici 20/1 Yazılım İstisnası', value: '%0 KDV', ok: true },
-                      { label: 'Ar-Ge Bordro Stopaj Terkini', value: '34 personel', ok: true }
+                      { label: 'Teknopark kurumlar vergisi muafiyeti', value: '₺38.400 / ay' },
+                      { label: 'Yazılım satışında KDV yok', value: '%0 KDV' },
+                      { label: 'Ar-Ge personeli stopaj indirimi', value: '34 personel' }
                     ].map((row, i) => (
                       <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-paper-50 border border-line text-xs">
                         <span className="text-ink-600 font-medium">{row.label}</span>
@@ -176,8 +171,8 @@ export default function HeroSection() {
                 {activeTab === 'ocr' && (
                   <div className="space-y-2">
                     {[
-                      { file: 'AWS_EMEA_SARL_Temmuz.pdf', code: '770.01 Bulut Sunucu', amt: '₺142.850' },
-                      { file: 'Garanti_Ekstre_20.08.pdf', code: '102.01 Ticari Mevduat', amt: '₺650.000' }
+                      { file: 'AWS_EMEA_SARL_Temmuz.pdf', code: 'Bulut sunucu gideri', amt: '₺142.850' },
+                      { file: 'Garanti_Ekstre_20.08.pdf', code: 'Ticari mevduat', amt: '₺650.000' }
                     ].map((row, i) => (
                       <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-paper-50 border border-line text-xs">
                         <div className="min-w-0">
@@ -186,27 +181,20 @@ export default function HeroSection() {
                         </div>
                         <div className="text-right shrink-0">
                           <p className="font-mono font-semibold text-ink-900">{row.amt}</p>
-                          <span className="text-[9px] font-mono text-success">OCR %99.9</span>
+                          <span className="text-[9px] text-success">Okundu</span>
                         </div>
                       </div>
                     ))}
                   </div>
                 )}
 
-                {/* Report footer */}
-                <div className="flex items-center justify-between pt-3 border-t border-line">
-                  <span className="text-[10px] font-mono tracking-[0.12em] uppercase text-ink-400">Net Nakit Pozisyonu</span>
-                  <span className="font-mono text-sm font-bold text-pine-800">₺216.480</span>
+                <div className="flex items-center justify-between pt-3 border-t border-line gap-3">
+                  <span className="flex items-center gap-1.5 text-[11px] text-ink-500">
+                    <CalendarDays className="w-3.5 h-3.5 text-pine-600 shrink-0" />
+                    Yaklaşan ödeme: stopaj ve SGK · 26 gün
+                  </span>
+                  <span className="font-mono text-sm font-bold text-pine-800 shrink-0">₺216.480 nakit</span>
                 </div>
-              </div>
-            </div>
-
-            {/* Floating note card */}
-            <div className="absolute -bottom-6 -left-3 sm:-left-6 bg-pine-700 text-white rounded-xl p-4 shadow-pop flex items-start gap-3 max-w-[240px]">
-              <CalendarDays className="w-4 h-4 text-gold-300 shrink-0 mt-0.5" />
-              <div>
-                <p className="text-[9px] font-mono tracking-[0.14em] uppercase text-pine-200">Yaklaşan Yükümlülük</p>
-                <p className="text-[13px] font-semibold mt-1">Muhtasar & SGK · 26 gün</p>
               </div>
             </div>
           </div>

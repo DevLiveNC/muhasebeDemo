@@ -19,10 +19,10 @@ export default function AdminReports() {
   ];
 
   const revenueMix = [
-    { label: 'Tekdüzen Muhasebe & Vergi', pct: 46, amount: '₺850K' },
-    { label: 'E-Dönüşüm & Berat Yönetimi', pct: 22, amount: '₺403K' },
-    { label: 'Teşvik & İade Danışmanlığı', pct: 18, amount: '₺329K' },
-    { label: 'Sanal CFO & Raporlama', pct: 14, amount: '₺256K' }
+    { label: 'Muhasebe ve vergi', pct: 46, amount: '₺850K' },
+    { label: 'e-Fatura ve e-Defter', pct: 22, amount: '₺403K' },
+    { label: 'Vergi indirimi ve iade', pct: 18, amount: '₺329K' },
+    { label: 'Finans raporu', pct: 14, amount: '₺256K' }
   ];
 
   return (
@@ -32,13 +32,13 @@ export default function AdminReports() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="badge badge-pine">Yönetici Analitik Kokpiti</span>
-            <span className="text-ink-400 font-mono text-xs">2026 Mali Yıl</span>
+            <span className="badge badge-pine">Ofis raporları</span>
+            <span className="text-ink-400 text-xs">2026</span>
           </div>
           <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">
-            Yönetim Raporları & Firma Analitiği
+            Raporlar
           </h1>
-          <p className="text-xs text-ink-400 mt-1">Portföy büyümesi, SMMM operasyon verimliliği ve kârlılık metrikleri</p>
+          <p className="page-lead">Portföy büyümesi, iş yükü ve kârlılık.</p>
         </div>
 
         <button
@@ -46,14 +46,14 @@ export default function AdminReports() {
           className="btn btn-primary btn-sm shrink-0"
         >
           <Download className="w-3.5 h-3.5" />
-          <span>Konsolide PDF İndir</span>
+          <span>PDF indir</span>
         </button>
       </div>
 
       {/* Analytics Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="card p-5 space-y-1.5">
-          <span className="kpi-label">Mükellef Sadakat Oranı (Retention)</span>
+          <span className="kpi-label">Müşteri kalıcılığı</span>
           <p className="font-mono text-2xl font-semibold text-pine-700 tracking-tight">%98.4</p>
           <p className="text-[11px] font-mono text-ink-400">Sektör ortalaması %82</p>
         </div>
@@ -63,7 +63,7 @@ export default function AdminReports() {
           <p className="text-[11px] font-mono text-ink-400">Neural OCR & Tekdüzen AI Eşleme</p>
         </div>
         <div className="card p-5 space-y-1.5">
-          <span className="kpi-label">Mükellef Başına Ortalama Gelir (ARPU)</span>
+          <span className="kpi-label">Müşteri başına ortalama gelir</span>
           <p className="font-mono text-2xl font-semibold text-ink-900 tracking-tight">₺18.500 / Ay</p>
           <p className="text-[11px] font-mono text-success-deep">+%22 Büyüme (Yıllık)</p>
         </div>
@@ -76,7 +76,7 @@ export default function AdminReports() {
         <div className="lg:col-span-7 card p-6 space-y-5">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-ink-900 text-sm">Portföy Büyümesi (Son 6 Ay)</h3>
-            <span className="badge badge-success">+8 Yeni Mükellef</span>
+            <span className="badge badge-success">+8 yeni müşteri</span>
           </div>
 
           <div className="h-44 flex items-end justify-between gap-3 pt-4 px-2 border-b border-line">

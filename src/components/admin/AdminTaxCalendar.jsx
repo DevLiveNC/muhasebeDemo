@@ -12,8 +12,8 @@ export default function AdminTaxCalendar() {
   const { taxCalendar, sendMissingDocAlert, addToast } = useApp();
 
   const handleBulkReminder = (taxTitle) => {
-    sendMissingDocAlert('Kalan Mükellefler', taxTitle);
-    addToast('GİB Hatırlatma Bildirimi Gönderildi', `${taxTitle} için kalan tüm şirketlere SMS ve e-posta ihtar gönderildi.`, 'success');
+    sendMissingDocAlert('Kalan müşteriler', taxTitle);
+    addToast('Hatırlatma gönderildi', `${taxTitle} için kalan şirketlere SMS ve e-posta gitti.`, 'success');
   };
 
   return (
@@ -23,18 +23,18 @@ export default function AdminTaxCalendar() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="badge badge-pine">GİB & SGK Otomasyonu</span>
-            <span className="text-ink-400 font-mono text-xs">VUK 213 & 5510 Sayılı Kanun Uyumlu</span>
+            <span className="badge badge-pine">Vergi ve SGK</span>
+            <span className="text-ink-400 text-xs">2026 yasal takvim</span>
           </div>
           <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">
-            Resmi Vergi & Yasal Beyan Takvimi
+            Vergi takvimi
           </h1>
-          <p className="text-xs text-ink-400 mt-1">2026 Gelir İdaresi Başkanlığı, SGK ve Ticaret Sicil bildirim terminleri</p>
+          <p className="page-lead">Tüm müşteriler için son günler ve hatırlatmalar.</p>
         </div>
 
         <span className="badge badge-success self-start">
           <ShieldCheck className="w-3.5 h-3.5" />
-          Otomatik Beyan Motoru Aktif
+          Otomatik beyan açık
         </span>
       </div>
 

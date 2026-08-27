@@ -41,7 +41,7 @@ export default function AdminDocuments() {
         approveDocument(d.id);
       }
     });
-    addToast('Toplu Yevmiye Onayı', 'Filtrelenen tüm belgeler resmi Tekdüzen yevmiye defterine işlendi.', 'success');
+    addToast('Toplu onay', 'Seçilen belgeler muhasebe kaydına işlendi.', 'success');
   };
 
   const tabs = [
@@ -57,24 +57,24 @@ export default function AdminDocuments() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Evrak & OCR Onay Masası</h1>
-          <p className="text-xs text-ink-400 mt-1">Tüm mükelleflerden gelen fatura ve ekstrelerin merkezi işleme havuzu</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Belgeler</h1>
+          <p className="page-lead">Onay bekleyen fatura ve evraklar.</p>
         </div>
 
         <div className="flex items-center gap-2">
           <button
-            onClick={() => sendMissingDocAlert('Eksik Evraklı Mükellefler', 'Bekleyen Evrak Kapsamı')}
+            onClick={() => sendMissingDocAlert('Eksik evraklı müşteriler', 'Bekleyen evraklar')}
             className="btn btn-outline btn-sm"
           >
             <Send className="w-3.5 h-3.5 text-pine-700" />
-            <span>Eksik Evrak Bildir</span>
+            <span>Eksik evrak bildir</span>
           </button>
           <button
             onClick={handleBatchApprove}
             className="btn btn-primary btn-sm"
           >
             <CheckCheck className="w-3.5 h-3.5" />
-            <span>Toplu Yevmiye Onayı</span>
+            <span>Toplu onay</span>
           </button>
         </div>
       </div>
@@ -127,13 +127,13 @@ export default function AdminDocuments() {
           <table className="w-full text-left min-w-[820px]">
             <thead>
               <tr className="border-b border-line bg-paper-50">
-                <th className="th">Mükellef</th>
+                <th className="th">Müşteri</th>
                 <th className="th">Belge</th>
                 <th className="th">Kategori</th>
                 <th className="th text-right">Tutar</th>
-                <th className="th">OCR</th>
+                <th className="th">Okuma</th>
                 <th className="th">Durum</th>
-                <th className="th text-right">İşlemler</th>
+                <th className="th text-right">İşlem</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-line">

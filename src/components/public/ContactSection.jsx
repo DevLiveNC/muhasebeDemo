@@ -26,8 +26,8 @@ export default function ContactSection() {
     e.preventDefault();
     setSubmitted(true);
     addToast(
-      'Ön Görüşme Talebi Alındı',
-      'SMMM ortağımız en geç 2 saat içinde sizinle iletişime geçecektir.',
+      'Görüşme talebi alındı',
+      'Mali müşavirimiz en geç 2 saat içinde sizi arar.',
       'success'
     );
   };
@@ -41,14 +41,14 @@ export default function ContactSection() {
           <div className="lg:col-span-5 space-y-8">
             <div>
               <p className="text-[11px] font-semibold text-gold-300">
-                Bir Sonraki Adım
+                Sonraki adım
               </p>
               <h2 className="font-serif text-white text-3xl sm:text-4xl md:text-5xl leading-[1.08] tracking-tight mt-4">
-                İşinizi büyütürken, <em className="text-gold-300">finansınızı bize bırakın.</em>
+                Siz işinizi büyütün, <em className="text-gold-300">mali işi bize bırakın.</em>
               </h2>
               <p className="text-sm text-pine-200 mt-5 leading-relaxed max-w-md">
-                İlk görüşme ücretsizdir. Vergi durumunuzu, teşvik haklarınızı ve büyüme planınızı
-                30 dakikada netleştiriyoruz.
+                İlk görüşme ücretsizdir. 30 dakikada vergi durumunuzu, indirim haklarınızı
+                ve büyüme planınızı netleştiririz.
               </p>
             </div>
 
@@ -92,15 +92,15 @@ export default function ContactSection() {
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-1.5">
-                  <h3 className="font-serif text-2xl text-ink-900">Ön Görüşme Talebi</h3>
+                  <h3 className="font-serif text-2xl text-ink-900">Ücretsiz görüşme</h3>
                   <p className="text-xs text-ink-400">
-                    Formu doldurun; kıdemli SMMM ortağımız sizi arasın.
+                    Formu doldurun; mali müşavirimiz sizi arasın.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="label">Adınız Soyadınız *</label>
+                    <label className="label">Ad soyad *</label>
                     <input
                       type="text"
                       placeholder="Örn: Caner Yılmaz"
@@ -111,7 +111,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div>
-                    <label className="label">Şirket Adı & Faaliyet *</label>
+                    <label className="label">Şirket adı *</label>
                     <input
                       type="text"
                       placeholder="Örn: Quantum Teknoloji A.Ş."
@@ -136,7 +136,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div>
-                    <label className="label">Telefon Numarası *</label>
+                    <label className="label">Telefon *</label>
                     <input
                       type="tel"
                       placeholder="0532 000 00 00"
@@ -149,10 +149,10 @@ export default function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="label">Danışmanlık Talebiniz / Konu *</label>
+                  <label className="label">Ne konuşmak istersiniz? *</label>
                   <textarea
                     rows={3}
-                    placeholder="Mevcut vergi durumu, Teknopark/Ar-Ge teşvikleri veya e-ihracat KDV iade beklentileriniz..."
+                    placeholder="Vergi durumu, Teknopark indirimi veya ihracat KDV iadesi..."
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -162,7 +162,7 @@ export default function ContactSection() {
 
                 <button type="submit" className="btn btn-primary btn-md w-full">
                   <Send className="w-4 h-4" />
-                  <span>Ön Görüşme Talebini İlet</span>
+                  <span>Görüşme isteyin</span>
                 </button>
               </form>
             ) : (
@@ -170,10 +170,9 @@ export default function ContactSection() {
                 <div className="w-14 h-14 bg-success-soft text-success-deep rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h4 className="font-bold text-ink-900 text-lg">Talebiniz SMMM Masasına İletildi</h4>
+                <h4 className="font-bold text-ink-900 text-lg">Talebiniz alındı</h4>
                 <p className="text-sm text-ink-500 max-w-sm mx-auto leading-relaxed">
-                  SMMM Kemal Yıldız ve vergi denetim ekibimiz mesajınızı incelemeye aldı.
-                  En geç 2 saat içinde aranacaksınız.
+                  Kemal Yıldız ve ekibi mesajınıza bakıyor. En geç 2 saat içinde aranacaksınız.
                 </p>
                 <button
                   onClick={() => {

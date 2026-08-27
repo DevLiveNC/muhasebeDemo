@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
   UploadCloud,
-  FileCheck2,
   Calendar,
   LineChart,
   MessageSquare,
   ArrowRight,
-  TrendingUp,
   Sparkles,
   CheckCircle2
 } from 'lucide-react';
@@ -21,26 +19,26 @@ export default function PortalShowcaseSection() {
     {
       id: 'ocr',
       icon: UploadCloud,
-      title: 'Akıllı OCR & Otomatik Yevmiye',
-      desc: 'Fatura ve ekstreleri yükleyin; sistem matrah, KDV oranı, tevkifat ve 120/320 cari hesaplarını 2.1 saniyede bağlasın.'
+      title: 'Fatura yükleyin, sistem okusun',
+      desc: 'Fatura ve ekstreleri bırakın. Tutar, KDV ve hesap 2 saniyede doldurulur.'
     },
     {
       id: 'tax',
       icon: Calendar,
-      title: 'Canlı Vergi ve Beyan Takvimi',
-      desc: 'KDV, Muhtasar ve SGK için yasal son günleri geri sayımla izleyin; sürpriz vergi ödemelerini 15 gün önceden görün.'
+      title: 'Vergi takvimi',
+      desc: 'KDV, stopaj ve SGK son günlerini geri sayımla izleyin. Sürpriz ödeme olmasın.'
     },
     {
       id: 'cashflow',
       icon: LineChart,
-      title: 'Sanal CFO & Nakit Runway Analitiği',
-      desc: 'Gelir-gider dengesi, aylık nakit tüketimi (burn rate) ve kârlılık kırılımlarını anlık grafiklerle takip edin.'
+      title: 'Nakit ve kâr özeti',
+      desc: 'Gelir-gider, aylık harcama ve kâr kırılımını grafik olarak görün.'
     },
     {
       id: 'cpa',
       icon: MessageSquare,
-      title: 'Atanmış SMMM & Danışman Masası',
-      desc: 'Şirketinize özel atanan kıdemli mali müşavir ile doğrudan yazışın, faaliyet belgesi ve YMM tasdik raporu talep edin.'
+      title: 'Size atanan mali müşavir',
+      desc: 'Doğrudan yazın. Faaliyet belgesi veya rapor isteyin, yanıt gelir.'
     }
   ];
 
@@ -50,15 +48,14 @@ export default function PortalShowcaseSection() {
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-gold-300">
-            Müşterilerimize Özel Dijital Deneyim
+          <p className="text-[11px] font-medium text-gold-300">
+            Müşterilere özel panel
           </p>
           <h2 className="font-serif text-white text-3xl sm:text-4xl md:text-[44px] leading-[1.08] tracking-tight">
-            Şirketinizin mali kontrol merkezi: <em className="text-gold-300">VELOX Müşteri Konsolu</em>
+            Şirketinizin mali işleri: <em className="text-gold-300">tek ekran</em>
           </h2>
           <p className="text-sm text-pine-200">
-            Tarayıcınızdan veya mobil cihazınızdan tüm finansal ve resmi muhasebe işlemlerinizi
-            tek ekranda yönetin.
+            Tarayıcıdan veya telefondan fatura, vergi ve raporlarınızı yönetin.
           </p>
         </div>
 
@@ -102,7 +99,7 @@ export default function PortalShowcaseSection() {
               onClick={() => navigateToMode('portal')}
               className="w-full mt-2 py-3.5 bg-white hover:bg-paper-100 text-pine-900 font-bold text-[13px] rounded-xl shadow-pop flex items-center justify-center gap-2 transition-all active:scale-[0.99]"
             >
-              <span>Müşteri Konsolu Canlı Demosunu Başlat</span>
+              <span>Müşteri paneli demosunu aç</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -117,11 +114,11 @@ export default function PortalShowcaseSection() {
                   <span className="w-2.5 h-2.5 rounded-full bg-line-strong"></span>
                   <span className="w-2.5 h-2.5 rounded-full bg-line-strong"></span>
                 </div>
-                <span className="font-semibold text-ink-900 truncate">TechVision Bilişim A.Ş. — Müşteri Paneli</span>
+                <span className="font-semibold text-ink-900 truncate">TechVision Bilişim A.Ş. — Müşteri paneli</span>
               </div>
               <span className="flex items-center gap-1.5 font-mono text-[10px] font-semibold text-success-deep shrink-0">
                 <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
-                4691 Teşvik Aktif
+                Teknopark indirimi açık
               </span>
             </div>
 
@@ -134,8 +131,8 @@ export default function PortalShowcaseSection() {
                     <div className="w-11 h-11 rounded-xl bg-pine-50 text-pine-700 flex items-center justify-center mx-auto">
                       <UploadCloud className="w-5 h-5" />
                     </div>
-                    <p className="font-bold text-sm text-ink-900">Faturayı Buraya Sürükleyin veya Seçin</p>
-                    <p className="text-[11px] text-ink-400 font-mono">PDF, PNG, XML — Yapay Zeka OCR 2.1 Sn</p>
+                    <p className="font-bold text-sm text-ink-900">Faturayı buraya bırakın veya seçin</p>
+                    <p className="text-[11px] text-ink-400">PDF, PNG, XML — yaklaşık 2 saniyede okunur</p>
                   </div>
 
                   <div className="p-4 rounded-xl bg-white border border-line flex items-center justify-between gap-3">
@@ -145,7 +142,7 @@ export default function PortalShowcaseSection() {
                     </div>
                     <span className="badge badge-success shrink-0">
                       <CheckCircle2 className="w-3 h-3" />
-                      %99.9 OCR Okundu
+                      Okundu
                     </span>
                   </div>
                 </div>
@@ -155,26 +152,26 @@ export default function PortalShowcaseSection() {
                 <div className="space-y-3">
                   <div className="p-4 bg-white rounded-xl border border-line flex items-center justify-between gap-3">
                     <div>
-                      <span className="font-bold text-ink-900 block text-sm">Temmuz 2026 KDV-1 Beyannamesi</span>
-                      <p className="text-xs text-ink-400 mt-0.5">Son Gün: 28 Ağustos 2026 (Kalan: 4 Gün)</p>
+                      <span className="font-bold text-ink-900 block text-sm">Temmuz 2026 KDV beyannamesi</span>
+                      <p className="text-xs text-ink-400 mt-0.5">Son gün: 28 Ağustos 2026 (4 gün kaldı)</p>
                     </div>
                     <span className="badge badge-success shrink-0">Taslak Onaylandı</span>
                   </div>
 
                   <div className="p-4 bg-white rounded-xl border border-line flex items-center justify-between gap-3">
                     <div>
-                      <span className="font-bold text-ink-900 block text-sm">Muhtasar & SGK Prim Hizmet</span>
-                      <p className="text-xs text-ink-400 mt-0.5">Son Gün: 26 Ağustos 2026 (Kalan: 2 Gün)</p>
+                      <span className="font-bold text-ink-900 block text-sm">Stopaj ve SGK bildirimi</span>
+                      <p className="text-xs text-ink-400 mt-0.5">Son gün: 26 Ağustos 2026 (2 gün kaldı)</p>
                     </div>
                     <span className="badge badge-warning shrink-0">Tahakkuk Alındı</span>
                   </div>
 
                   <div className="p-4 bg-white rounded-xl border border-line flex items-center justify-between gap-3">
                     <div>
-                      <span className="font-bold text-ink-900 block text-sm">Haziran 2026 Geçici Kurumlar</span>
-                      <p className="text-xs text-ink-400 mt-0.5">Son Gün: 31 Temmuz 2026</p>
+                      <span className="font-bold text-ink-900 block text-sm">Haziran geçici kurumlar vergisi</span>
+                      <p className="text-xs text-ink-400 mt-0.5">Son gün: 31 Temmuz 2026</p>
                     </div>
-                    <span className="badge badge-neutral shrink-0">Dönem Kapatıldı</span>
+                    <span className="badge badge-neutral shrink-0">Dönem kapandı</span>
                   </div>
                 </div>
               )}
@@ -183,22 +180,22 @@ export default function PortalShowcaseSection() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-3">
                     <div className="p-4 bg-white rounded-xl border border-line">
-                      <span className="mlabel block">Nakit Runway</span>
+                      <span className="mlabel block">Kalan nakit</span>
                       <span className="font-mono text-2xl font-semibold text-ink-900 block mt-1">18.4 Ay</span>
                       <p className="text-[11px] text-success-deep font-semibold mt-1 flex items-center gap-1">
-                        <TrendingUp className="w-3 h-3" /> ₺845K Aylık Burn Rate
+                        ₺845K aylık harcama
                       </p>
                     </div>
                     <div className="p-4 bg-white rounded-xl border border-line">
-                      <span className="mlabel block">4691 Teşvik Avantajı</span>
+                      <span className="mlabel block">Teknopark vergi indirimi</span>
                       <span className="font-mono text-2xl font-semibold text-pine-700 block mt-1">₺38.400</span>
-                      <p className="text-[11px] text-ink-400 mt-1">34 personel stopaj muafiyeti</p>
+                      <p className="text-[11px] text-ink-400 mt-1">34 personel stopaj indirimi</p>
                     </div>
                   </div>
 
                   <div className="p-4 bg-white rounded-xl border border-line">
                     <span className="mlabel block mb-3">
-                      Aylık Nakit Akışı
+                      Aylık nakit akışı
                     </span>
                     <div className="flex items-end gap-1.5 h-20 border-b border-line">
                       {[42, 55, 48, 62, 70, 58, 76, 88].map((h, i) => (
@@ -227,10 +224,10 @@ export default function PortalShowcaseSection() {
                     />
                     <div>
                       <p className="font-bold text-ink-900 text-sm">SMMM Kemal Yıldız</p>
-                      <p className="text-xs text-ink-400">Kıdemli Vergi & Teknopark Direktörü</p>
+                      <p className="text-xs text-ink-400">Vergi ve Teknopark danışmanı</p>
                       <span className="text-[10px] font-mono text-success-deep flex items-center gap-1 mt-0.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
-                        Çevrimiçi · Doğrudan Masası
+                        Çevrimiçi · doğrudan yazışma
                       </span>
                     </div>
                   </div>
@@ -238,10 +235,10 @@ export default function PortalShowcaseSection() {
                   <div className="p-4 bg-white rounded-xl border border-line text-[13px] text-ink-700 leading-relaxed max-w-md">
                     <span className="flex items-center gap-1.5 mlabel mb-1.5">
                       <Sparkles className="w-3 h-3 text-gold-500" />
-                      SMMM Notu
+                      Mali müşavir notu
                     </span>
                     "Kerem Bey merhaba, Teknopark kurumlar vergisi muafiyeti ve Temmuz bordroları onaylandı.
-                    Herhangi bir evrak eksiğiniz bulunmamaktadır."
+                    Evrak eksiğiniz yok."
                   </div>
                 </div>
               )}

@@ -43,10 +43,11 @@ export default function AdminTasks() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="badge badge-neutral">Operasyonel İş Emirleri</span>
-            <span className="text-ink-400 font-mono text-xs">{staff.length} Denetçi / {tasks.length} Aktif İşlem</span>
+            <span className="badge badge-neutral">Görevler</span>
+            <span className="text-ink-400 text-xs">{staff.length} kişi / {tasks.length} açık iş</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">İş Takip Panosu</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight mt-1.5">İşler</h1>
+          <p className="page-lead">Ekibin üzerindeki görevler.</p>
         </div>
 
         <button
@@ -54,7 +55,7 @@ export default function AdminTasks() {
           className="btn btn-primary btn-sm shrink-0"
         >
           <Plus className="w-3.5 h-3.5" />
-          <span>Yeni İş Emri</span>
+          <span>Yeni iş</span>
         </button>
       </div>
 
@@ -89,7 +90,7 @@ export default function AdminTasks() {
             <thead>
               <tr className="border-b border-line bg-paper-50">
                 <th className="th">Görev</th>
-                <th className="th">Mükellef</th>
+                <th className="th">Müşteri</th>
                 <th className="th">Sorumlu</th>
                 <th className="th">Son Tarih</th>
                 <th className="th">Öncelik</th>

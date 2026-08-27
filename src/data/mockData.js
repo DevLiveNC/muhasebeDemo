@@ -4,9 +4,9 @@
 export const FIRM_INFO = {
   name: "VELOX",
   legalName: "Velox Bağımsız Denetim ve Yeminli Mali Müşavirlik A.Ş.",
-  tagline: "Kurumsal Vergi Denetimi, E-Dönüşüm ve Finansal Zeka",
+  tagline: "Vergi, muhasebe ve mali danışmanlık",
   mainSlogan: "Muhasebenizi değil, işinizi büyütmeye odaklanın.",
-  subSlogan: "4691 Teknopark, 5746 Ar-Ge teşvikleri, ihracat KDV iadesi ve uçtan uca dijital defter yönetimini tek bir rafine finans konsolunda birleştiren yeni nesil kurumsal müşavirlik.",
+  subSlogan: "Fatura, vergi, bordro ve raporlarınız tek yerde. Kaçırılan süre yok, sürpriz ödeme yok.",
   phone: "+90 (212) 809 45 00",
   email: "partner@veloxfinans.com",
   hq: "Büyükdere Cad. No: 195 Kanyon Ofis K:12, Levent / İstanbul",
@@ -582,100 +582,100 @@ export const MOCK_SERVICES = [
   {
     id: "srv-1",
     number: "01",
-    title: "E-Dönüşüm & GİB Defter Entegrasyonu",
-    subtitle: "Uçtan Uca Dijital Mali Altyapı",
-    shortDesc: "GİB regülasyonlarına %100 uyumlu e-Fatura, e-Arşiv ve e-Defter berat yönetimi. Sıfır kağıt, anlık şematron doğrulaması.",
+    title: "E-Fatura, e-Arşiv ve e-Defter",
+    subtitle: "Kağıtsız, resmi uyumlu",
+    shortDesc: "Faturalarınızı elektronik gönderir, defterlerinizi zamanında yükleriz. Kağıt yok, kaçırılan süre yok.",
     features: [
-      "GİB Özel Entegratör ve E-Defter Berat Doğrulama",
-      "Yapay Zeka Destekli 2.1 Sn OCR Fatura Okuma",
-      "Tekdüzen Hesap Planına Otomatik Yevmiye Kodlaması",
-      "Uluslararası ERP & Banka API Entegrasyonları"
+      "e-Fatura ve e-Arşiv gönderimi",
+      "Faturanın 2 saniyede otomatik okunması",
+      "Muhasebe hesabına otomatik işleme",
+      "Banka ve ERP bağlantıları"
     ],
-    fullDesc: "Şirketinizin tüm muhasebe akışını geleneksel kağıt karmaşasından kurtarıyoruz. Faturaların yevmiyeye dönüştürülmesinden berat dosyalarının zaman damgalı GİB yüklemesine kadar tüm süreci dijital bir saat mekanizması gibi işletiyoruz."
+    fullDesc: "Faturaların muhasebeye işlenmesinden e-Defter'in Gelir İdaresi'ne yüklenmesine kadar süreci sizin yerinize yürütürüz. Siz evrakı yüklersiniz; gerisini biz tamamlarız."
   },
   {
     id: "srv-2",
     number: "02",
-    title: "Kurumlar Vergisi & Stratejik Vergi Planlaması",
-    subtitle: "Yasal Çerçevede Maksimum Vergi Optimizasyonu",
-    shortDesc: "KDV, Muhtasar, Geçici Vergi ve Kurumlar Vergisi süreçlerinin cezai risklerden arındırılarak yönetilmesi.",
+    title: "Vergi beyanı ve planlama",
+    subtitle: "Sürpriz vergi yok",
+    shortDesc: "KDV, stopaj ve kurumlar vergisini son günden önce hazırlarız. Ne ödeyeceğinizi önceden görürsünüz.",
     features: [
-      "Aylık KDV-1, KDV-2 ve Muhtasar Beyan Kontrolü",
-      "Geçici ve Yıllık Kurumlar Vergisi Hesaplaması",
-      "Mizan, Bilanço ve Gelir Tablosu Çift SMM Onayı",
-      "Transfer Fiyatlandırması ve Örtülü Sermaye Denetimi"
+      "Aylık KDV ve stopaj beyanı",
+      "Geçici ve yıllık kurumlar vergisi",
+      "Bilanço ve gelir tablosu çifte kontrol",
+      "İlişkili işlem ve örtülü sermaye denetimi"
     ],
-    fullDesc: "Vergi bir ceza riski değil, doğru yönetildiğinde nakit akışını güçlendiren bir stratejidir. Mevzuatın sunduğu tüm indirim, istisna ve amortisman haklarınızı şirketinizin kârlılığına yansıtıyoruz."
+    fullDesc: "Vergi, doğru yönetildiğinde nakit bırakır. İndirim ve istisna haklarınızı kaçırmadan beyan eder; ceza riskini baştan kapatırız."
   },
   {
     id: "srv-3",
     number: "03",
-    title: "4691 & 5746 Ar-Ge Teşvik Danışmanlığı",
-    subtitle: "Teknoloji ve Yazılım Şirketlerine Özel Muafiyetler",
-    shortDesc: "Teknopark kurumlar vergisi muafiyeti, personel gelir vergisi stopaj terkini ve YMM tasdik raporlama süreçleri.",
+    title: "Teknopark ve Ar-Ge vergi indirimleri",
+    subtitle: "Yazılım ve teknoloji şirketleri için",
+    shortDesc: "Teknopark ve Ar-Ge kanunlarındaki vergi indirimlerini her ay uygularız. Bordro ve kurumlar vergisinde nakit kalır.",
     features: [
-      "Teknopark Kurumlar Vergisi %100 İstisna Dosyası",
-      "Ar-Ge Personeli SGK ve Stopaj Hazine Desteği",
-      "TÜBİTAK 1501 / 1507 Harcama Denetim Raporları",
-      "KDV Geçici 20/1 Yazılım Satış İstisnası Uygulaması"
+      "Teknopark kurumlar vergisi muafiyeti",
+      "Ar-Ge personeli SGK ve stopaj desteği",
+      "TÜBİTAK harcama raporları",
+      "Yazılım satışında KDV istisnası"
     ],
-    fullDesc: "Teknoloji şirketlerinin en büyük maliyet kalemi olan bordro ve vergi yükünü, 4691 ve 5746 sayılı teşvik kanunları kapsamında optimize ederek her ay yüzbinlerce liralık net nakit avantajı sağlıyoruz."
+    fullDesc: "Teknoloji şirketinin en büyük kalemi bordro ve vergidir. Teknopark ve Ar-Ge indirimlerini her ay dosyalar; nakit avantajını tabloda gösteririz."
   },
   {
     id: "srv-4",
     number: "04",
-    title: "Sanal CFO & Finansal Karar Konsolu",
-    subtitle: "Geçmişi Kaydeden Değil, Geleceği Yöneten Finans",
-    shortDesc: "90 günlük nakit akış (cash runway) simülasyonu, birim ekonomi analitiği ve yatırımcı hazır mali tablolar.",
+    title: "Finans raporu ve nakit planı",
+    subtitle: "Sadece defter değil, karar desteği",
+    shortDesc: "Kasadaki paranın kaç ay yeteceğini, kâr marjını ve yatırımcıya gösterilecek tabloları net görürsünüz.",
     features: [
-      "Canlı Nakit Akış ve Burn Rate Modellemesi",
-      "Dönemsel EBITDA ve Faaliyet Kâr Marjı Raporları",
-      "Yatırım Turu & Due Diligence Finansal Hazırlığı",
-      "Aylık Yönetim Kurulu ve Finans Direktörü Masası"
+      "Kalan nakit ve aylık harcama",
+      "Dönem kâr marjı raporları",
+      "Yatırım turu mali hazırlığı",
+      "Aylık yönetim özeti"
     ],
-    fullDesc: "Geleneksel muhasebe geriye bakar; VELOX Sanal CFO hizmeti ise şirketinizin önündeki 12 ayı simüle eder. Yatırımcı görüşmelerinde, kredi müzakerelerinde ve büyüme planlarında finansal kokpitiniz oluyoruz."
+    fullDesc: "Klasik muhasebe geriye bakar. Biz önünüzdeki 12 ayı da gösteririz: kasa, kâr ve büyüme planı tek raporda."
   },
   {
     id: "srv-5",
     number: "05",
-    title: "İhracat & Yatırım KDV İadesi",
-    subtitle: "Hızlı Nakit ve Mahsuben İade Dosyaları",
-    shortDesc: "Mal ve hizmet ihracatı KDV istisnası, indirimli oran ve tevkifattan doğan alacakların GİB'den hızlı tahsili.",
+    title: "İhracat KDV iadesi",
+    subtitle: "Devletten alacağınızı geri alın",
+    shortDesc: "Yurt dışı satışlardan doğan KDV iadesini dosyalar, takip eder, hesabınıza dönmesini hızlandırırız.",
     features: [
-      "3065 Sayılı Kanun 11/1-a Mal İhracatı İade Dosyası",
-      "Yurtdışı Yazılım ve Mühendislik %80 Kazanç İndirimi",
-      "VEDOP GÇB İntaç Teyitleri ve Karşıt İnceleme",
-      "Yeminli Mali Müşavir (YMM) Tasdik Raporu"
+      "Mal ihracatı KDV iade dosyası",
+      "Yurt dışı hizmette kazanç indirimi",
+      "Gümrük kapanış teyitleri",
+      "Yeminli mali müşavir tasdik raporu"
     ],
-    fullDesc: "Devletten alacaklı olduğunuz KDV tutarlarını bürokrasiye takılmadan, karşıt inceleme ve YMM raporlarıyla hızla şirket kasanıza geri kazandırıyoruz."
+    fullDesc: "Devlete ödediğiniz KDV'nin iadesini evrak ve tasdikle takip eder, şirket hesabına dönmesini hızlandırırız."
   },
   {
     id: "srv-6",
     number: "06",
-    title: "Bordrolama & İstihdam Teşvikleri",
-    subtitle: "Hatasız Bordro ve Maksimum SGK Teşviki",
-    shortDesc: "Kişiye özel e-imzalı bordrolar, kıdem-ihbar fonu yönetimi ve otomatik SGK teşvik optimizasyonu.",
+    title: "Bordro ve SGK teşvikleri",
+    subtitle: "Doğru bordro, daha düşük maliyet",
+    shortDesc: "Maaşları hatasız hesaplar, size uygun SGK indirimlerini her ay tararız.",
     features: [
-      "5510, 6111 ve 7103 SGK Teşvik Algoritması",
-      "KVKK Uyumlu Şifreli Dijital Bordro Dağıtımı",
-      "İşe Giriş / Çıkış ve İcra/BES Süreç Takibi",
-      "İş Hukuku ve İş Sözleşmeleri Denetimi"
+      "Uygun SGK teşvik kodunun seçimi",
+      "Şifreli dijital bordro dağıtımı",
+      "İşe giriş, çıkış ve icra takibi",
+      "İş sözleşmesi kontrolü"
     ],
-    fullDesc: "Her ay personelleriniz için en yüksek tasarruf sağlayan SGK teşvik kodunu tarayarak bordro maliyetlerinde %18 ile %35 arasında değişen sürdürülebilir avantaj elde ediyoruz."
+    fullDesc: "Her ay personele en uygun SGK indirimini tararız. Bordro maliyeti genelde yüzde 18–35 arasında düşer."
   }
 ];
 
 export const MOCK_BLOG_POSTS = [
   {
     id: "post-1",
-    title: "Teknoloji Şirketlerinde 4691 ve 5746 Sayılı Kanun Uygulamaları: 2026 Vergi Kılavuzu",
+    title: "Teknoloji şirketleri için 2026 vergi indirimleri",
     slug: "teknoloji-sirketleri-2026-vergi-muafiyeti",
     category: "Vergi Mevzuatı",
     readTime: "5 dk",
     date: "18 Ağustos 2026",
     author: "SMMM Kemal Yıldız",
     authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    summary: "Teknopark sınırları içinde üretilen yazılım kazançlarının kurumlar vergisinden %100 istisnası ve yazılımcı bordrolarındaki stopaj terkininin incelikleri.",
+    summary: "Teknopark yazılım kazancı kurumlar vergisinden muaf olabilir. Bordrodaki stopaj indirimi nasıl uygulanır, 2026'da nelere bakılır.",
     content: `Teknoloji Geliştirme Bölgeleri (TGB) ve Ar-Ge Merkezleri, yüksek katma değerli üretim yapan girişimlerin küresel rekabet gücünü artırmak amacıyla önemli mali avantajlarla donatılmıştır.
 
 2026 yılı itibarıyla dikkat edilmesi gereken kritik başlıklar:
@@ -687,14 +687,14 @@ VELOX olarak her ay mükelleflerimizin YMM tasdik dosyalarını eksiksiz hazırl
   },
   {
     id: "post-2",
-    title: "E-İhracat ve Hizmet İhracatında KDV İstisnası ile %80 Kazanç İndirimi",
+    title: "Yurt dışı satışta KDV istisnası ve kazanç indirimi",
     slug: "e-ihracat-kdv-istisnasi-80-kazanc-indirimi",
     category: "Dış Ticaret & Finans",
     readTime: "4 dk",
     date: "12 Ağustos 2026",
     author: "SMMM Elif Kaya",
     authorAvatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
-    summary: "Yurtdışına yazılım, tasarım, mühendislik veya veri analitiği ihraç eden şirketlerin Kurumlar Vergisi Kanunu Madde 10/1-ğ kapsamındaki avantajları.",
+    summary: "Yurt dışına yazılım veya tasarım satan şirketler KDV ödemeyebilir; kazancın yüzde 80'i kurumlar vergisinden düşülebilir.",
     content: `Türkiye'de yerleşik şirketlerin yurt dışındaki müşterilerine sundukları mimarlık, mühendislik, tasarım, yazılım, veri saklama ve çağrı merkezi hizmetlerinden elde ettikleri kazançların %80'i kurumlar vergisi matrahından indirilebilir.
 
 Temel Şartlar:
@@ -706,14 +706,14 @@ Bu düzenleme ile fiili kurumlar vergisi yükü %25'ten %5 seviyelerine kadar ge
   },
   {
     id: "post-3",
-    title: "E-Defter Berat Yüklemelerinde Şematron Hataları ve Mücbir Sebep Süreçleri",
+    title: "e-Defter yüklemesinde sık hatalar ve süre uzatma",
     slug: "e-defter-berat-yukleme-kriterleri-2026",
     category: "E-Dönüşüm",
     readTime: "6 dk",
     date: "04 Ağustos 2026",
     author: "SMMM Kemal Yıldız",
     authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    summary: "GİB e-Defter portalında berat onaylama süreçlerinde karşılaşılan XML format uyuşmazlıkları ve cezai yaptırımlardan korunma yöntemleri.",
+    summary: "e-Defter dosyası neden reddedilir, süre kaçarsa ne olur ve cezadan nasıl korunursunuz.",
     content: `Yevmiye ve Kebir defterlerinin yasal süresinde GİB sistemine aktarılması, VUK 359 ve 353 uyarınca özel usulsüzlük cezalarının önüne geçmek için kritik önem taşır.
 
 VELOX platformu, berat dosyalarını yüklemeden önce yapay zeka ön şematron testine tabi tutar ve hesap planındaki kuruş hatalarını anında tespit eder.`
@@ -727,7 +727,7 @@ export const MOCK_TESTIMONIALS = [
     role: "Yönetim Kurulu Başkanı",
     company: "TechVision Bilişim A.Ş.",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-    quote: "Teknopark'ta 34 kişilik mühendislik ekibimizin bordro teşviklerini ve yıllık kurumlar vergisi muafiyetini VELOX ekibiyle sıfır hatayla yönetiyoruz. Finansal raporlama kaliteleri yatırımcı müzakerelerimizde elimizi çok güçlendirdi.",
+    quote: "34 kişilik ekibin bordro indirimleri ve kurumlar vergisi muafiyeti hatasız işliyor. Yatırımcıya verdiğimiz raporlar artık net ve tartışmasız.",
     rating: 5,
     tag: "Yazılım / Teknopark",
     metric: "₺460K+ Yıllık Tasarruf"
@@ -738,7 +738,7 @@ export const MOCK_TESTIMONIALS = [
     role: "Mali İşler Direktörü (CFO)",
     company: "Nexus Entegre Lojistik A.Ş.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
-    quote: "60+ araçlık filomuzun uluslararası navlun KDV istisna süreçlerini ve aylık e-defter beratlarını saat gibi işleyen bir dijital disiplinle yürütüyorlar. SMMM Kemal Bey'in mevzuat hakimiyeti birinci sınıf.",
+    quote: "Filomuzun yurt dışı taşıma KDV istisnası ve aylık e-Defter yüklemeleri aksamasız gidiyor. Kemal Bey mevzuatı sade anlatıyor.",
     rating: 5,
     tag: "Lojistik & Taşımacılık",
     metric: "%100 Zamanında Uyum"
@@ -749,7 +749,7 @@ export const MOCK_TESTIMONIALS = [
     role: "Kurucu & Ar-Ge Direktörü",
     company: "Nova Biyoteknoloji A.Ş.",
     image: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=150&auto=format&fit=crop&q=80",
-    quote: "TÜBİTAK projelerimizin mali raporlamasında ve 5746 Ar-Ge indirimlerinde SMMM Zeynep Hanım ile çalışmak büyük bir konfor. Muhasebeyi arkamıza bakmadan emanet ettiğimiz tek iş ortağımız.",
+    quote: "TÜBİTAK harcamaları ve Ar-Ge indirimleri Zeynep Hanım'da. Muhasebeye arkamızı dönüp işimize bakabiliyoruz.",
     rating: 5,
     tag: "Biyoteknoloji & Ar-Ge",
     metric: "TÜBİTAK Tam Uyum"
@@ -874,9 +874,9 @@ export const MOCK_LEADS = [
 
 export const AI_PRECONFIGURED_RESPONSES = {
   "evrak": {
-    title: "Haftalık Kritik Evrak & Beyanname Denetim Raporu",
+    title: "Bu hafta eksik evraklar",
     type: "evrak_summary",
-    content: "Temmuz 2026 KDV-1 ve Muhtasar beyan dönemi için 2 mükellefte kritik evrak eksiği bulunmaktadır:",
+    content: "Temmuz KDV ve stopaj dönemi için 2 şirkette evrak eksiği var:",
     items: [
       {
         company: "Artisan Gurme Gıda Ltd.",
@@ -894,9 +894,9 @@ export const AI_PRECONFIGURED_RESPONSES = {
     summaryStats: "Toplam 48 kurumsal mükellefin 44'ünde (%91.6) tüm mizan evrakları eksiksiz kapandı."
   },
   "geciken": {
-    title: "Gecikme & Risk Matrisi Analizi",
+    title: "Geciken işler ve riskler",
     type: "delay_summary",
-    content: "Sistemde öncelikli aksiyon bekleyen 3 operasyon tespit edildi:",
+    content: "Öncelikli 3 iş bekliyor:",
     items: [
       {
         title: "Temmuz 2026 KDV-1 Beyanname Taslağı",
@@ -920,7 +920,7 @@ export const AI_PRECONFIGURED_RESPONSES = {
     recommendation: "Pulse Medya yetkilisi Canberk Eren'e 2 No'lu KDV tevkifat cezai riskleri hakkında resmi e-posta bildirimi yapılması önerilir."
   },
   "bugun": {
-    title: "Bugünün Yasal İş Planı (24 Ağustos 2026)",
+    title: "Bugünün iş listesi (24 Ağustos 2026)",
     type: "today_summary",
     content: "Bugünkü takvimde 4 kritik mali işlem yer almaktadır:",
     items: [
@@ -952,15 +952,15 @@ export const AI_PRECONFIGURED_RESPONSES = {
     productivityTip: "KDV beyannamelerinin %85'i hazırlandı; kalan 3 beyanname tamamlandığında haftalık hedef %100 olacak."
   },
   "techvision": {
-    title: "TechVision Bilişim ve Yapay Zeka A.Ş. — 360° Finansal Durum",
+    title: "TechVision A.Ş. özeti",
     type: "client_summary",
-    content: "TechVision A.Ş. için mali ve vergisel göstergeler üst düzeydedir:",
+    content: "TechVision için mali göstergeler güçlü:",
     metrics: [
-      { label: "Vergi Uyum Skoru", value: "%99.4 (Kusursuz)" },
-      { label: "KDV-1 Durumu", value: "Taslak Onaylandı (GİB Bekliyor)" },
-      { label: "Bordro Teşviki", value: "34 Personel / 4691 İstisna Uygulandı" },
-      { label: "Nakit Runway", value: "18.4 Ay (Güçlü Nakit Akışı)" },
-      { label: "Cari Bakiye", value: "₺0.00 (Borcu Yok)" }
+      { label: "Vergi uyumu", value: "%99.4" },
+      { label: "KDV durumu", value: "Taslak onaylandı (GİB bekliyor)" },
+      { label: "Bordro indirimi", value: "34 personel / Teknopark uygulandı" },
+      { label: "Kalan nakit", value: "18.4 ay" },
+      { label: "Cari bakiye", value: "₺0 (borç yok)" }
     ],
     notes: "Teknopark kurumlar vergisi muafiyeti eksiksiz işletildi. Q3 KDV iade mahsup dosyası YMM tasdik raporuyla hazırlandı."
   }

@@ -98,11 +98,11 @@ export function AppProvider({ children }) {
         doc.id === docId ? { ...doc, status: 'Onaylandı', notes: 'SMMM Kemal Yıldız tarafından onaylandı ve kayda alındı.' } : doc
       )
     );
-    addToast('Evrak Onaylandı', 'Belge resmi muhasebe kayıtlarına aktarıldı.', 'success');
+    addToast('Belge onaylandı', 'Kayıt muhasebeye işlendi.', 'success');
   };
 
   const sendMissingDocAlert = (clientName, missingDocs) => {
-    addToast('Eksik Evrak Bildirimi Gönderildi', `${clientName} yetkilisine SMS ve E-Posta ile evrak yükleme linki iletildi.`, 'info');
+    addToast('Hatırlatma gönderildi', `${clientName} yetkilisine SMS ve e-posta iletildi.`, 'info');
   };
 
   const updateTaskStatus = (taskId, newStatus) => {
@@ -117,7 +117,7 @@ export function AppProvider({ children }) {
           : task
       )
     );
-    addToast('Görev Güncellendi', `Görev durumu "${newStatus}" olarak kaydedildi.`, 'success');
+    addToast('Görev güncellendi', `Durum: "${newStatus}".`, 'success');
   };
 
   const addNewDocument = (newDoc) => {
@@ -127,7 +127,7 @@ export function AppProvider({ children }) {
       uploadDate: new Date().toISOString().split('T')[0]
     };
     setDocuments((prev) => [docWithId, ...prev]);
-    addToast('Evrak Başarıyla Yüklendi', `${newDoc.name} sisteme yüklendi ve yapay zeka OCR taraması tamamlandı (%99.4).`, 'success');
+    addToast('Belge yüklendi', `${newDoc.name} okundu ve sisteme alındı.`, 'success');
   };
 
   const addNewClient = (newClient) => {
@@ -141,7 +141,7 @@ export function AppProvider({ children }) {
       complianceScore: 100
     };
     setClients((prev) => [clientWithId, ...prev]);
-    addToast('Yeni Müşteri Eklendi', `${newClient.name} portföye eklendi ve ilk açılış bildirimleri gönderildi.`, 'success');
+    addToast('Yeni müşteri eklendi', `${newClient.name} listeye alındı.`, 'success');
   };
 
   const openClientDetail = (clientId) => {

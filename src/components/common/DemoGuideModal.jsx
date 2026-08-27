@@ -5,42 +5,42 @@ import { X, Info, Globe, Building2, ShieldCheck, Sparkles, ArrowRight } from 'lu
 const GUIDE = [
   {
     icon: Globe,
-    title: '1 · Kurumsal Web Sitesi',
+    title: '1 · Web sitesi',
     lines: [
-      'Ziyaretçi, hizmet kapsamını, kurumsal akreditasyonları ve referansları tek sayfada görür.',
-      'Vergi Simülatörü ile şirket büyüklüğüne göre tasarruf projeksiyonu anında hesaplanır.',
-      '"Ön Görüşme Al" butonu SMMM masasına doğrudan randevu talebi düşer.',
-      'Müşteri Girişi ile canlı portal demosuna, SMMM Masası ile yönetim kokpitine geçilir.'
+      'Ziyaretçi hizmetleri, ekibi ve referansları tek sayfada görür.',
+      'Vergi hesaplama ile tahmini tasarrufu hemen çıkarır.',
+      '“Görüşme alın” formu mali müşavire randevu düşürür.',
+      'Müşteri girişi panele, ofis paneli de yönetim ekranına geçer.'
     ]
   },
   {
     icon: Building2,
-    title: '2 · Müşteri Konsolu',
+    title: '2 · Müşteri paneli',
     lines: [
-      'Kokpitte nakit runway, 4691 teşviki, KDV durumu ve çeyrek hasılat 4 KPI ile özetlenir.',
-      'Belgeler sekmesinden fatura sürüklenebilir; OCR 2.1 sn içinde tekdüzen kodlar.',
-      'Vergi takviminde acil terminler amber renkle uyarı verir; tahakkuk ve banka talimatı tek tıkla inir.',
-      'Canlı süreçler, SMMM adımlarını müşteriye şeffaf biçimde görüntüler.'
+      'Ana sayfada kalan nakit, vergi indirimi, KDV durumu ve çeyrek satış özetlenir.',
+      'Belgelerden fatura yüklenir; sistem birkaç saniyede okur.',
+      'Vergi takviminde yaklaşan son günler sarı uyarı verir.',
+      'Süreçler, mali müşavirin attığı adımları şeffaf gösterir.'
     ]
   },
   {
     icon: ShieldCheck,
-    title: '3 · SMMM Yönetim Paneli',
+    title: '3 · Ofis paneli',
     lines: [
-      'Genel kokpit 6 KPI, kritik evrak uyarısı, portföy durumu ve ekip iş yükünü birleştirir.',
-      'Evrak & OCR Masası\'nda tekil ve toplu yevmiye onayı yapılır.',
-      'CRM kanbanında leadler aşama aşama taşınır; 360° müşteri kartı altı sekmede derinlemesine incelenebilir.',
-      'Tahsilat ekranında e-SMM makbuzları GİB formatında görüntülenir ve indirilir.'
+      'Özet: 6 sayı, eksik evrak uyarısı, müşteri listesi ve ekip yükü.',
+      'Belgelerde tekil veya toplu onay yapılır.',
+      'Adaylar kartlarda ilerler; müşteri kartında detay incelenir.',
+      'Tahsilatta e-SMM makbuzları açılır ve indirilir.'
     ]
   },
   {
     icon: Sparkles,
-    title: '4 · VELOX AI Asistanı',
+    title: '4 · VELOX AI',
     lines: [
-      'Portföy geneli evrak eksiği, gecikme risk matrisi ve günün iş planı saniyeler içinde özetlenir.',
-      'Yapılandırılmış cevaplar aksiyon butonlarıyla birleşir (örn: SMS hatırlatma gönder).',
-      'TechVision 360° sorusu, müşteri kartını doğrudan açan kısayol sunar.',
-      '⌘K komut paleti ile herhangi bir modda mükellef, evrak veya menüye anında sıçranır.'
+      'Eksik evrak, gecikme riski ve günün iş listesi saniyeler içinde özetlenir.',
+      'Cevaplar aksiyon butonlarıyla gelir (ör. hatırlatma gönder).',
+      'TechVision sorusu müşteri kartını doğrudan açar.',
+      '⌘K ile herhangi bir modda şirket, belge veya menüye atlanır.'
     ]
   }
 ];
@@ -51,9 +51,9 @@ export default function DemoGuideModal() {
   if (!isDemoGuideOpen) return null;
 
   const modes = [
-    { id: 'public', label: 'Web Sitesi' },
-    { id: 'portal', label: 'Müşteri Konsolu' },
-    { id: 'admin', label: 'SMMM Paneli' }
+    { id: 'public', label: 'Web sitesi' },
+    { id: 'portal', label: 'Müşteri paneli' },
+    { id: 'admin', label: 'Ofis paneli' }
   ];
 
   return (
@@ -62,15 +62,14 @@ export default function DemoGuideModal() {
         className="w-full max-w-2xl bg-white rounded-2xl shadow-pop border border-line overflow-hidden flex flex-col max-h-[90vh] animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="px-6 py-4 bg-pine-700 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-white/10 text-gold-300 flex items-center justify-center border border-white/10">
               <Info className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-white">Sunum Rehberi & Demo Notları</h3>
-              <p className="text-[11px] text-pine-200 font-mono">VELOX platformunun 4 katmanı, 90 saniyede</p>
+              <h3 className="font-bold text-sm text-white">Sunum notları</h3>
+              <p className="text-[11px] text-pine-200">VELOX’un 4 katmanı, 90 saniyede</p>
             </div>
           </div>
           <button
@@ -82,55 +81,41 @@ export default function DemoGuideModal() {
           </button>
         </div>
 
-        {/* Body */}
         <div className="p-6 overflow-y-auto space-y-5">
-          {GUIDE.map((section) => {
-            const Icon = section.icon;
+          {GUIDE.map((block) => {
+            const Icon = block.icon;
             return (
-              <div key={section.title} className="card p-5 space-y-3">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-pine-50 border border-pine-100 text-pine-700 flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <h4 className="font-bold text-[14px] text-ink-900">{section.title}</h4>
+              <div key={block.title} className="flex gap-4">
+                <div className="w-9 h-9 rounded-lg bg-pine-50 border border-pine-100 text-pine-700 flex items-center justify-center shrink-0">
+                  <Icon className="w-4 h-4" />
                 </div>
-                <ul className="space-y-2">
-                  {section.lines.map((line, i) => (
-                    <li key={i} className="text-[13px] text-ink-600 leading-relaxed flex items-start gap-2">
-                      <span className="w-1 h-1 rounded-full bg-pine-600 mt-2 shrink-0"></span>
-                      {line}
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <h4 className="font-bold text-sm text-ink-900">{block.title}</h4>
+                  <ul className="mt-2 space-y-1.5 text-[13px] text-ink-600 leading-relaxed">
+                    {block.lines.map((line) => (
+                      <li key={line}>· {line}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             );
           })}
         </div>
 
-        {/* Footer */}
-        <div className="px-6 py-4 bg-paper-50 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-1.5">
-            {modes.map((m, i) => (
-              <React.Fragment key={m.id}>
-                <button
-                  onClick={() => {
-                    navigateToMode(m.id);
-                    setIsDemoGuideOpen(false);
-                  }}
-                  className="btn btn-outline btn-sm"
-                >
-                  {m.label}
-                </button>
-                {i < modes.length - 1 && <ArrowRight className="w-3 h-3 text-ink-300" />}
-              </React.Fragment>
-            ))}
-          </div>
-          <button
-            onClick={() => setIsDemoGuideOpen(false)}
-            className="btn btn-primary btn-sm"
-          >
-            Sunumu Başlat
-          </button>
+        <div className="px-6 py-4 border-t border-line flex flex-wrap gap-2">
+          {modes.map((m) => (
+            <button
+              key={m.id}
+              onClick={() => {
+                setIsDemoGuideOpen(false);
+                navigateToMode(m.id);
+              }}
+              className="btn btn-outline btn-sm"
+            >
+              <span>{m.label}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          ))}
         </div>
       </div>
     </div>

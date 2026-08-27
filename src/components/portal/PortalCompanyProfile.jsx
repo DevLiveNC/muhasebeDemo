@@ -1,29 +1,30 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { ShieldCheck, Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
+import PageIntro from '../common/PageIntro';
 
 export default function PortalCompanyProfile() {
   const { clients, addToast } = useApp();
   const client = clients.find((c) => c.id === 'cli-1') || clients[0];
 
   const handleDirectConnect = () => {
-    addToast('Görüşme Masası Açıldı', `${client.assignedCPA.name} ile doğrudan toplantı talebi iletildi.`, 'info');
+    addToast('Görüşme isteği gönderildi', `${client.assignedCPA.name} ile toplantı talebi iletildi.`, 'info');
   };
 
   const registryFields = [
-    { label: 'Vergi Kimlik Numarası', value: client.taxNumber },
-    { label: 'Bağlı Vergi Dairesi', value: client.taxOffice },
-    { label: 'Ticaret Sicil No', value: client.tradeRegisterNo },
-    { label: 'MERSİS Numarası', value: client.mersisNo }
+    { label: 'Vergi numarası', value: client.taxNumber },
+    { label: 'Vergi dairesi', value: client.taxOffice },
+    { label: 'Ticaret sicil no', value: client.tradeRegisterNo },
+    { label: 'MERSİS', value: client.mersisNo }
   ];
 
   return (
     <div className="space-y-6 animate-fade-in">
 
-      <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Şirket Sicil & Danışman Masası</h1>
-        <p className="text-xs text-ink-400 mt-1">Resmi vergi dairesi kayıtları, MERSİS ve atanan SMMM direktörü</p>
-      </div>
+        <PageIntro
+          title="Şirket"
+          lead="Sicil bilgileri ve size atanan mali müşavir."
+        />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 

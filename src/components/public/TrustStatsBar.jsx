@@ -7,27 +7,27 @@ export default function TrustStatsBar() {
 
   const metrics = [
     {
-      label: 'Yıllık Yönetilen Finansal Hacim',
+      label: 'Yönetilen tutar',
       value: firmInfo.stats.managedCapital,
-      sub: 'GİB ve banka mutabakatlı portföy',
+      sub: 'Banka ve vergi dairesi kayıtlı',
       icon: Award
     },
     {
-      label: 'Vergi Denetim & Beyan Doğruluğu',
+      label: 'Beyan doğruluğu',
       value: firmInfo.stats.taxAuditAccuracy,
-      sub: 'Sıfır inceleme cezası güvencesi',
+      sub: 'Ceza çıkmayan dosya oranı',
       icon: ShieldCheck
     },
     {
-      label: 'Ortalama Danışman Yanıt Süresi',
+      label: 'Ortalama yanıt',
       value: firmInfo.stats.avgSlaMinutes,
-      sub: 'Atanmış kıdemli SMMM masası',
+      sub: 'Size atanan mali müşavir',
       icon: Clock
     },
     {
-      label: 'Sağlanan Yıllık Vergi Teşviki',
+      label: 'Yıllık vergi tasarrufu',
       value: firmInfo.stats.totalTaxSavings,
-      sub: '4691, 5746 ve ihracat KDV iadesi',
+      sub: 'Teknopark, Ar-Ge ve ihracat KDV',
       icon: Users
     }
   ];
@@ -57,7 +57,7 @@ export default function TrustStatsBar() {
                 className="bg-pine-800 p-5 sm:p-6 space-y-2 hover:bg-pine-700 transition-colors"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-pine-200">
+                  <span className="text-[11px] font-medium text-pine-200">
                     {item.label}
                   </span>
                   <Icon className="w-4 h-4 text-gold-300" />
@@ -73,8 +73,8 @@ export default function TrustStatsBar() {
 
         {/* Accreditation Row */}
         <div className="mt-10 pt-8 border-t border-white/10 text-center">
-          <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-pine-300 mb-5">
-            Resmi Mali Standartlar ve Bankacılık Altyapılarıyla %100 Uyumlu
+          <p className="text-[11px] font-medium text-pine-300 mb-5">
+            Gelir İdaresi, TÜRMOB ve banka altyapılarıyla uyumlu
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2.5">
             {partners.map((partner, i) => (

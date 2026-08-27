@@ -1,10 +1,9 @@
 # HALLMARK — VELOX Arayüz Tasarım Skill'i
 
-> **v1.2** — v1.1: palet ~%25 yumuşatıldı (soft token seti), gölgeler/radyüs/motion yumuşatıldı.
-> v1.2: profesyonelleşme kuralları eklendi (§5.12); hero, footer, AI orb ve tablo durumları güncellendi.
+> **v1.3** — v1.1: palet ~%25 yumuşatıldı. v1.2: profesyonelleşme (§5.12). v1.3: **anlaşılır dil** (§11) — her ekran sade Türkçe ile okunur; jargon ya çevrilir ya da bir cümleyle açıklanır.
 
-> **Skill amacı:** VELOX platformunun (kurumsal tanıtım sitesi + müşteri konsolu + SMMM yönetim paneli) tüm arayüzlerini tek, tutarlı ve premium bir tasarım diliyle yeniden inşa etme kural seti.
-> **Kırmızı çizgi:** Veri katmanına ( `src/context/AppContext.jsx`, `src/data/mockData.js` ) ve bileşen sözleşmelerine (dosya adları, export'lar, tab kimlikleri, context aksiyonları) dokunulmaz. HALLMARK yalnızca **sunum katmanını** yönetir.
+> **Skill amacı:** VELOX platformunun (kurumsal site + müşteri paneli + ofis paneli) tüm arayüzlerini tek, tutarlı, premium ve **anlaşılır** bir tasarım diliyle yönetmek.
+> **Kırmızı çizgi:** Veri katmanı şemasına (`src/context/AppContext.jsx` alan adları, `src/data/mockData.js` id/status/alanları) ve bileşen sözleşmelerine (dosya adları, export'lar, tab kimlikleri, context aksiyonları) dokunulmaz. HALLMARK yalnızca **sunum katmanını** ve **görünen metinleri** yönetir.
 
 ---
 
@@ -178,14 +177,14 @@ Bölüm sırası: Navbar → Hero → Güven Şeridi (koyu bant, 4 metrik) → H
 - Hero: sol metin (tek satır sakin eyebrow — HİÇBİR PİL/ROZET yok + serif H1 + lead + 3 CTA + güven işaretleri), sağ "finansal rapor" görsel kartı. Yüzen/örtüşen not kartı YOK; yaklaşıyor yükümlülük satırı rapor kartının içine alt satır olarak girer. Nokta dokusu (dot-grid) zemini YOK.
 - Hizmet satırları: 40px mono numara + icon + serif başlık + açıklama + ok; tıklanınca `ServiceDetailModal`.
 
-### 6.2 Müşteri Konsolu (portal)
+### 6.2 Müşteri paneli (portal)
 - Zemin `paper-100`; kartlar beyaz.
-- Kokpit: karşılama banner'ı (4691 rozeti + şirket adı serif) → 4 KPI → süreç boru hattı (7/5 grid) + yaklaşan terminler (5).
+- Ana sayfa: şirket adı + bir cümle durum → 4 KPI (kalan nakit, vergi indirimi, KDV durumu, çeyrek satış) → devam eden işler + yaklaşan ödemeler.
 - Belgeler: kesikli yükleme alanı + klasör listesi + tablo.
 - Vergi takvimi: acil kartlarda `warning` kenar; tamamlananlarda `success` damga.
 
-### 6.3 SMMM Yönetim Paneli (admin)
-Portal ile aynı tasarım dili; veri yoğunluğu daha yüksek: 6 KPI satırı, kritik uyarı bandı (amber), geniş tablolar, kanban (CRM). Tüm sayfa başlıkları sol üstte; sağda birincil aksiyon butonu.
+### 6.3 Ofis paneli (admin)
+Portal ile aynı tasarım dili; veri yoğunluğu daha yüksek: 6 KPI satırı, kritik uyarı bandı (amber), geniş tablolar, kanban (adaylar). Tüm sayfa başlıkları sol üstte; sağda birincil aksiyon butonu. Menü etiketleri kısa: Özet, Müşteriler, Belgeler, İşler.
 
 ---
 
@@ -214,6 +213,7 @@ Portal ile aynı tasarım dili; veri yoğunluğu daha yüksek: 6 KPI satırı, k
 3. Context'ten gelen her veri alanını aynı adla kullan; `mockData.js` alan ek/çıkarma.
 4. Sayfa başlık hiyerarşisi: panel sayfası = `h1` 20px/700 sans; site bölümü = serif display.
 5. Her ekranı 360px genişlikte test et: sidebar kayar, tablolar yatay kaydırır, grid'ler tek kolona iner.
+6. Yeni metin yazarken §11'i uygula: başlık 2–6 kelime, alt satır bir cümle, buton fiil + nesne.
 
 ## 10. Doğrulama Listesi
 
@@ -225,3 +225,58 @@ Portal ile aynı tasarım dili; veri yoğunluğu daha yüksek: 6 KPI satırı, k
 - [ ] Komut paleti (⌘K), AI asistanı ve tüm modallar her modda açılıyor
 - [ ] Durum renkleri tüm panellerde tutarlı
 - [ ] Mobil (360px) ve masaüstü (1440px) kırılımlar temiz
+- [ ] §11 anlaşılır dil: menü etiketleri 1–3 kelime; her panel sayfasında bir cümlelik `page-lead`; kamu metninde "konsol / kokpit / şematron / runway" yok
+
+---
+
+## 11. Anlaşılır Dil (UX yazımı)
+
+Premium görünüm, anlaşılmayan cümleyle bozulur. VELOX metni **sakin, kısa, konuşma Türkçesi** kullanır — dergi başlığı, iç jargon yığını veya İngilizce finans argosu değil.
+
+### 11.1 Üç kural
+
+1. **Başlık ne olduğunu söyler.** Menü ve `h1` 1–6 kelime: *Belgeler*, *Vergi takvimi*, *Müşteriler*. "Mali Kokpit", "360° Müşteri Kartı", "Evrak & OCR Masası" yasak.
+2. **Alt satır ne işe yaradığını söyler.** Her panel sayfasında `page-lead`: tek cümle, fiil içerir. "Faturaları buraya yükleyin; sistem okur, muhasebeye işler."
+3. **Buton bir iş yapar.** Fiil + nesne: *Görüşme alın*, *Fatura yükle*, *Raporu indir*. "Ön Görüşme Talebini İlet" gibi bürokrasi yok.
+
+### 11.2 Üç ses, üç kitle
+
+| Yüzey | Kitle | Ses |
+|---|---|---|
+| Site (public) | Şirket sahibi / CFO adayı | Günlük dil. Kanun numarası ancak açıklamayla. |
+| Müşteri paneli | Şirket yetkilisi | "Sizin işiniz" dili. KDV/SGK kalır; yanında ne olduğu yazılır. |
+| Ofis paneli (admin) | Mali müşavir | Mesleki terim serbest; menü yine kısa. "Mükellef" yerine "müşteri" (ekran etiketi). |
+
+### 11.3 Sözlük (görünen metin)
+
+| Yazma | Yazma |
+|---|---|
+| Konsol, kokpit, masa, terminal | Panel, özet, ana sayfa |
+| OCR | Otomatik okuma / "sistem okur" |
+| Yevmiye (menüde) | Muhasebe kaydı — hesap kodu tabloda kalabilir |
+| Nakit runway / burn rate | Kalan nakit / aylık harcama |
+| Şematron | Sistem kontrolü |
+| Tahakkuk (müşteriye) | Ödeme bildirimi |
+| Lead | Aday |
+| SMMM Yönetim Paneli | Ofis paneli |
+| Müşteri Konsolu | Müşteri paneli |
+| Mali ön görüşme | Ücretsiz görüşme |
+
+Resmi adlar (KDV, SGK, e-Fatura, e-Defter, GİB) **silinmez**. İlk geçişte kısa açıklama veya `Term` (noktalı alt çizgi + `title`) kullanılır.
+
+### 11.4 Sayfa iskeleti (panel)
+
+```
+h1          → 20–22px / 700 / ink-900   "Belgeler"
+.page-lead  → 13–14px / ink-500         "Ne yapabileceğinizi bir cümlede."
+birincil CTA → sağda, tek btn-primary
+```
+
+### 11.5 Yasak kalıplar
+
+- Bir cümlede üç kanun numarası (4691, 5746, 11/1-a) + üç ürün adı
+- "Uçtan uca / 360° / yeni nesil / rafine / finansal zeka" pazarlama yığını
+- İngilizce bırakılmış terimler: cash runway, due diligence, burn rate, lead (menüde)
+- Kullanıcının bilmediği kısaltmayı açıklamasız bırakmak (OCR, GÇB, MPHB)
+
+---

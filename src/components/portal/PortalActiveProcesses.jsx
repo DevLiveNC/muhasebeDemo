@@ -2,6 +2,7 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { CheckCircle2, UserCheck, Circle } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import PageIntro from '../common/PageIntro';
 
 export default function PortalActiveProcesses() {
   const { clients } = useApp();
@@ -9,40 +10,40 @@ export default function PortalActiveProcesses() {
 
   const processes = [
     {
-      title: 'Temmuz 2026 KDV-1 ve 2 No KDV Beyannamesi',
+      title: 'Temmuz 2026 KDV beyannamesi',
       responsible: 'SMMM Kemal Yıldız',
-      status: 'Mükellef Onayı & GİB Gönderiminde',
+      status: 'Sizin onayınız ve gönderim bekleniyor',
       percent: 85,
       stages: [
-        { name: 'Evrakların Toplanması & OCR', done: true, date: '18 Ağustos' },
-        { name: 'Mizan & Fatura Çapraz Kontrolleri', done: true, date: '21 Ağustos' },
-        { name: '4691 Teknopark İstisna Hesaplaması', done: true, date: '22 Ağustos' },
-        { name: 'GİB Sistemi Taslak Beyanname', done: true, date: '23 Ağustos' },
-        { name: 'Son Tahakkuk & Ödeme Fişi', done: false, date: 'Bekliyor' }
+        { name: 'Evrak toplama ve okuma', done: true, date: '18 Ağustos' },
+        { name: 'Fatura ve mizan kontrolü', done: true, date: '21 Ağustos' },
+        { name: 'Teknopark istisna hesabı', done: true, date: '22 Ağustos' },
+        { name: 'Gelir İdaresi taslak beyan', done: true, date: '23 Ağustos' },
+        { name: 'Ödeme bildirimi', done: false, date: 'Bekliyor' }
       ]
     },
     {
-      title: 'Temmuz 2026 Muhtasar ve Prim Hizmet Beyannamesi (SGK)',
+      title: 'Temmuz 2026 stopaj ve SGK bildirimi',
       responsible: 'SMMM Burak Demir',
-      status: 'Tamamlandı & Onaylandı',
+      status: 'Tamamlandı',
       percent: 100,
       stages: [
-        { name: 'Puantaj ve İzin Tablosu Girişi', done: true, date: '15 Ağustos' },
-        { name: '4691 Sayılı Kanun Teşvik Simülasyonu', done: true, date: '16 Ağustos' },
-        { name: 'Bordro İcmalinin Onaylanması', done: true, date: '17 Ağustos' },
-        { name: 'SGK ve Stopaj Tahakkuku Alımı', done: true, date: '20 Ağustos' }
+        { name: 'Puantaj ve izin girişi', done: true, date: '15 Ağustos' },
+        { name: 'Teknopark indirim hesabı', done: true, date: '16 Ağustos' },
+        { name: 'Bordro onayı', done: true, date: '17 Ağustos' },
+        { name: 'SGK ve stopaj bildirimi', done: true, date: '20 Ağustos' }
       ]
     },
     {
-      title: 'Mayıs 2026 E-Defter Berat Yüklemesi',
+      title: 'Mayıs 2026 e-Defter yüklemesi',
       responsible: 'SMMM Kemal Yıldız',
-      status: 'Hazırlık Aşamasında',
+      status: 'Hazırlık',
       percent: 50,
       stages: [
-        { name: 'Yevmiye ve Kebir Kapanış Kontrolleri', done: true, date: '20 Ağustos' },
-        { name: 'GİB Şematron XML Doğrulaması', done: true, date: '22 Ağustos' },
-        { name: 'Zaman Damgası & Mali Mühür İmza', done: false, date: '28 Ağustos' },
-        { name: 'GİB Portalına Yükleme & Berat Alımı', done: false, date: '31 Ağustos' }
+        { name: 'Defter kapanış kontrolü', done: true, date: '20 Ağustos' },
+        { name: 'Sistem doğrulaması', done: true, date: '22 Ağustos' },
+        { name: 'Zaman damgası ve mali mühür', done: false, date: '28 Ağustos' },
+        { name: 'Gelir İdaresi yüklemesi', done: false, date: '31 Ağustos' }
       ]
     }
   ];
@@ -50,14 +51,10 @@ export default function PortalActiveProcesses() {
   return (
     <div className="space-y-6 animate-fade-in">
 
-      <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">
-          Canlı Muhasebe ve Beyanname Süreçleri
-        </h1>
-        <p className="text-xs text-ink-400 mt-1">
-          Mali müşavirinizin {client.shortName} adına yürüttüğü yasal operasyonel adımlar
-        </p>
-      </div>
+        <PageIntro
+          title="Süreçler"
+          lead={`${client.shortName} için mali müşavirinizin yürüttüğü işlerin adımları.`}
+        />
 
       <div className="space-y-6">
         {processes.map((proc, idx) => (

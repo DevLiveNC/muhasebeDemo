@@ -8,16 +8,17 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import PageIntro from '../common/PageIntro';
 
 export default function PortalTaxSchedule() {
   const { taxCalendar, addToast } = useApp();
 
   const handleDownloadSlip = (title) => {
-    addToast('Tahakkuk Fişi İndirildi', `${title} resmi GİB tahakkuk fişi PDF olarak indirildi.`, 'success');
+    addToast('Ödeme bildirimi indirildi', `${title} PDF olarak indirildi.`, 'success');
   };
 
   const handleBankOrder = (title) => {
-    addToast('Banka Ödeme Talimatı Hazırlandı', `${title} için kurumsal EFT/Havale talimat formatı oluşturuldu.`, 'info');
+    addToast('Banka talimatı hazır', `${title} için EFT / havale talimatı oluşturuldu.`, 'info');
   };
 
   return (
@@ -25,14 +26,14 @@ export default function PortalTaxSchedule() {
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Resmi Vergi ve SGK Takvimi</h1>
-          <p className="text-xs text-ink-400 mt-1">Gelir İdaresi Başkanlığı yasal bildirim son günleri ve onaylı tahakkuk fişleri</p>
-        </div>
+        <PageIntro
+          title="Vergi takvimi"
+          lead="Ödenecek vergiler ve son günler. Sürpriz yok."
+        />
 
         <span className="badge badge-success self-start">
           <ShieldCheck className="w-3.5 h-3.5" />
-          GİB E-Beyanname Tam Uyumlu
+          Gelir İdaresi ile uyumlu
         </span>
       </div>
 

@@ -42,8 +42,8 @@ export default function App() {
         <div className="fixed bottom-6 right-6 z-40 animate-fade-in">
           <button
             onClick={() => setIsAiAssistantOpen(true)}
-            aria-label="VELOX AI Asistanını aç"
-            title="VELOX AI Asistanı"
+            aria-label="VELOX asistanını aç"
+            title="VELOX asistanı"
             className="w-12 h-12 rounded-full bg-pine-700 hover:bg-pine-800 text-white shadow-pop transition-all duration-200 hover:-translate-y-0.5 active:scale-95 flex items-center justify-center relative"
           >
             <Zap className="w-5 h-5 text-gold-300" />

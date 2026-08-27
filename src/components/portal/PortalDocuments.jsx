@@ -9,6 +9,7 @@ import {
   Plus
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import PageIntro from '../common/PageIntro';
 
 export default function PortalDocuments() {
   const {
@@ -25,10 +26,10 @@ export default function PortalDocuments() {
   const clientDocs = documents.filter((d) => d.clientId === 'cli-1' || d.clientId === 'all');
 
   const folders = [
-    { id: 'all', name: 'Tüm Belgeler & Yevmiye' },
-    { id: 'Alış Faturası', name: 'Alış Faturaları (770 Hesaplar)' },
-    { id: 'Banka Ekstresi', name: 'Banka Ekstreleri (102 Hesap)' },
-    { id: 'Bordro / SGK', name: 'Personel & 4691 Bordro İcmalleri' }
+    { id: 'all', name: 'Tüm belgeler' },
+    { id: 'Alış Faturası', name: 'Alış faturaları' },
+    { id: 'Banka Ekstresi', name: 'Banka ekstreleri' },
+    { id: 'Bordro / SGK', name: 'Bordro ve SGK' }
   ];
 
   const filteredDocs = clientDocs.filter((d) => {
@@ -66,10 +67,10 @@ export default function PortalDocuments() {
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight">Belgelerim ve Dijital Arşiv</h1>
-          <p className="text-xs text-ink-400 mt-1">Faturalar, banka ekstreleri, SGK bordroları ve resmi tahakkuk kayıtları</p>
-        </div>
+        <PageIntro
+          title="Belgeler"
+          lead="Faturaları buraya yükleyin. Sistem okur, muhasebeye işler."
+        />
 
         <button
           onClick={() => handleSimulateUpload('Google_Workspace_Temmuz_2026.pdf', 'Alış Faturası', '₺18.400,00')}
@@ -77,7 +78,7 @@ export default function PortalDocuments() {
           className="btn btn-primary btn-sm shrink-0"
         >
           <Plus className="w-3.5 h-3.5" />
-          <span>Fatura Yükle (OCR Demo)</span>
+          <span>Fatura yükle</span>
         </button>
       </div>
 
@@ -107,10 +108,10 @@ export default function PortalDocuments() {
 
         <div>
           <h3 className="font-bold text-ink-900 text-sm">
-            {isUploading ? 'Yapay Zeka Faturayı Okuyor ve Doğruluyor...' : 'Evraklarınızı Buraya Sürükleyin veya Tıklayın'}
+            {isUploading ? 'Fatura okunuyor...' : 'Dosyayı buraya bırakın veya seçin'}
           </h3>
-          <p className="text-[11px] text-ink-400 font-mono mt-1">
-            PDF, PNG, JPEG, Excel, E-Arşiv XML (Maks. 50 MB) — Otomatik OCR 2.1 Sn
+          <p className="text-[11px] text-ink-400 mt-1">
+            PDF, PNG, JPEG veya XML — en fazla 50 MB, yaklaşık 2 saniyede okunur
           </p>
         </div>
 
@@ -119,7 +120,7 @@ export default function PortalDocuments() {
           disabled={isUploading}
           className="btn btn-outline btn-sm"
         >
-          {isUploading ? 'OCR İşleniyor (%99.9)...' : 'Dosya Seç & Yükle'}
+          {isUploading ? 'Okunuyor...' : 'Dosya seç'}
         </button>
       </div>
 
@@ -129,7 +130,7 @@ export default function PortalDocuments() {
         {/* Folders */}
         <div className="lg:col-span-4 card p-5 space-y-2 self-start">
           <span className="mlabel block px-2 mb-2">
-            Arşiv Klasörleri
+            Klasörler
           </span>
           {folders.map((folder) => {
             const count = folder.id === 'all'

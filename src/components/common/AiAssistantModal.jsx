@@ -31,13 +31,13 @@ export default function AiAssistantModal() {
     {
       id: 'msg-0',
       sender: 'ai',
-      text: 'VELOX Finansal AI Motoru devrede. 48 portföy mükellefi, Tekdüzen hesap planı, GİB beyanname takvimi ve e-Defter beratları senkronize edildi. Hangi konuda analiz veya işlem yapmak istersiniz?',
+      text: 'VELOX asistanı hazır. 48 şirket, vergi takvimi ve belgeler güncel. Ne sormak istersiniz?',
       timestamp: 'Şimdi',
       chips: [
-        { label: 'Bu hafta hangi mükelleflerden evrak bekliyoruz?', key: 'evrak' },
-        { label: 'Geciken işlemleri ve yasal riskleri göster', key: 'geciken' },
-        { label: 'Bugün yapılması gereken SMMM görevlerini listele', key: 'bugun' },
-        { label: 'TechVision A.Ş. 360° denetim & mizan raporu', key: 'techvision' }
+        { label: 'Bu hafta kimden evrak bekliyoruz?', key: 'evrak' },
+        { label: 'Geciken işleri ve riskleri göster', key: 'geciken' },
+        { label: 'Bugün yapılması gerekenleri listele', key: 'bugun' },
+        { label: 'TechVision A.Ş. özet raporu', key: 'techvision' }
       ]
     }
   ]);
@@ -118,13 +118,13 @@ export default function AiAssistantModal() {
       {
         id: 'msg-0',
         sender: 'ai',
-        text: 'Finansal oturum sıfırlandı. Portföyünüz veya mevzuat süreçlerinizle ilgili ne analiz etmek istersiniz?',
+        text: 'Sohbet sıfırlandı. Şirketleriniz veya vergi işlemleriniz hakkında ne sormak istersiniz?',
         timestamp: 'Şimdi',
         chips: [
-          { label: 'Bu hafta hangi mükelleflerden evrak bekliyoruz?', key: 'evrak' },
-          { label: 'Geciken işlemleri ve yasal riskleri göster', key: 'geciken' },
-          { label: 'Bugün yapılması gereken SMMM görevlerini listele', key: 'bugun' },
-          { label: 'TechVision A.Ş. 360° denetim & mizan raporu', key: 'techvision' }
+          { label: 'Bu hafta kimden evrak bekliyoruz?', key: 'evrak' },
+          { label: 'Geciken işleri ve riskleri göster', key: 'geciken' },
+          { label: 'Bugün yapılması gerekenleri listele', key: 'bugun' },
+          { label: 'TechVision A.Ş. özet raporu', key: 'techvision' }
         ]
       }
     ]);
@@ -233,7 +233,7 @@ export default function AiAssistantModal() {
             className="btn btn-primary btn-sm w-full sm:w-auto"
           >
             <Building2 className="w-3.5 h-3.5" />
-            <span>360° Müşteri Kartını Aç</span>
+            <span>Müşteri kartını aç</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         )}
@@ -341,7 +341,7 @@ export default function AiAssistantModal() {
           <div className="flex items-center gap-2">
             <input
               type="text"
-              placeholder="Mevzuat, portföy veya operasyon sorusu yazın..."
+              placeholder="Soru yazın..."
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
               className="input py-2.5 text-[13px]"

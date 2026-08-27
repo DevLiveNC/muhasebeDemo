@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ShieldCheck } from 'lucide-react';
 import { cn, formatCurrency } from '../../utils/cn';
 
 export default function TaxCalculatorSection() {
@@ -24,13 +24,12 @@ export default function TaxCalculatorSection() {
 
         {/* Header */}
         <div className="section-head text-center mx-auto">
-          <p className="eyebrow">03 / İnteraktif Vergi & Teşvik Simülatörü</p>
+          <p className="mlabel text-pine-700">Vergi hesaplama</p>
           <h2>
             Şirketinizin potansiyel <em>vergi ve SGK tasarrufunu</em> hesaplayın.
           </h2>
           <p className="mx-auto">
-            Personel sayısı, fatura hacmi ve Teknopark/Ar-Ge teşvik durumunuza göre VELOX ile
-            elde edeceğiniz tahmini avantajı görün.
+            Personel sayısı, fatura adedi ve Teknopark / Ar-Ge durumunuza göre tahmini avantajı görün.
           </p>
         </div>
 
@@ -41,7 +40,7 @@ export default function TaxCalculatorSection() {
           <div className="md:col-span-7 space-y-6">
 
             <div>
-              <label className="label">1. Şirket Statüsü</label>
+              <label className="label">1. Şirket türü</label>
               <div className="grid grid-cols-3 gap-2">
                 {[
                   { id: 'as', label: 'Anonim (A.Ş.)' },
@@ -66,7 +65,7 @@ export default function TaxCalculatorSection() {
 
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <span className="label mb-0">2. Çalışan / Bordro Sayısı</span>
+                <span className="label mb-0">2. Çalışan sayısı</span>
                 <span className="font-bold text-ink-900 font-mono text-xs bg-paper-100 px-2 py-0.5 rounded border border-line">
                   {employees} Personel
                 </span>
@@ -83,7 +82,7 @@ export default function TaxCalculatorSection() {
 
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <span className="label mb-0">3. Aylık Fatura & Belge Hacmi</span>
+                <span className="label mb-0">3. Aylık fatura adedi</span>
                 <span className="font-bold text-ink-900 font-mono text-xs bg-paper-100 px-2 py-0.5 rounded border border-line">
                   ~{monthlyInvoices} Adet / Ay
                 </span>
@@ -101,8 +100,8 @@ export default function TaxCalculatorSection() {
 
             <label className="flex items-center justify-between gap-3 p-4 rounded-xl bg-paper-50 border border-line-strong cursor-pointer hover:border-pine-600 transition-colors">
               <div>
-                <span className="font-bold text-ink-900 block text-sm">4691 Teknopark / 5746 Ar-Ge / E-İhracat İstisnası</span>
-                <span className="text-xs text-ink-400">Yazılım teslim muafiyeti veya yurt dışı KDV istisnası</span>
+                <span className="font-bold text-ink-900 block text-sm">Teknopark, Ar-Ge veya e-ihracat indirimi var</span>
+                <span className="text-xs text-ink-400">Yazılım satışı veya yurt dışı satışta KDV / vergi indirimi</span>
               </div>
               <input
                 type="checkbox"
@@ -117,12 +116,12 @@ export default function TaxCalculatorSection() {
           {/* Results */}
           <div className="md:col-span-5 bg-pine-800 rounded-xl p-6 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
-              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-gold-300 block">
-                Tahmini Mali Tasarruf Raporu
+              <span className="text-[11px] font-medium text-gold-300 block">
+                Tahmini tasarruf
               </span>
 
               <div>
-                <span className="text-pine-200 text-xs block">Yıllık Potansiyel Vergi & Teşvik Tasarrufu</span>
+                <span className="text-pine-200 text-xs block">Yıllık vergi ve SGK tasarrufu</span>
                 <div className="font-mono text-3xl font-semibold text-white mt-1.5 tracking-tight">
                   {formatCurrency(annualTotalBenefit)}
                 </div>
@@ -133,15 +132,15 @@ export default function TaxCalculatorSection() {
 
               <div className="space-y-2.5 pt-4 border-t border-white/10 text-xs">
                 <div className="flex justify-between gap-3">
-                  <span className="text-pine-300">Önerilen Hizmet:</span>
-                  <span className="font-bold text-white text-right">{employees > 20 ? 'Kurumsal CFO & Teşvik' : 'Büyüme & E-Dönüşüm'}</span>
+                  <span className="text-pine-300">Önerilen hizmet:</span>
+                  <span className="font-bold text-white text-right">{employees > 20 ? 'Kurumsal paket' : 'Büyüme paketi'}</span>
                 </div>
                 <div className="flex justify-between gap-3">
-                  <span className="text-pine-300">Müşavirlik Bedeli:</span>
+                  <span className="text-pine-300">Müşavirlik ücreti:</span>
                   <span className="font-bold text-white font-mono">~{formatCurrency(estimatedSmmFee)} / ay</span>
                 </div>
                 <div className="flex justify-between gap-3">
-                  <span className="text-pine-300">Yatırımın Geri Dönüşü:</span>
+                  <span className="text-pine-300">Yatırımın geri dönüşü:</span>
                   <span className="font-bold text-gold-300 font-mono">
                     %{Math.round((annualTotalBenefit / (estimatedSmmFee * 12)) * 100)} Net Getiri
                   </span>
@@ -153,7 +152,7 @@ export default function TaxCalculatorSection() {
               onClick={() => setIsConsultationOpen(true)}
               className="w-full py-3 bg-white hover:bg-paper-100 text-pine-900 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all active:scale-[0.99]"
             >
-              <span>Bu Tasarruf Raporunu Al</span>
+              <span>Bu tasarrufu görüşelim</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -163,8 +162,7 @@ export default function TaxCalculatorSection() {
         {/* Disclaimer */}
         <p className="max-w-4xl mx-auto mt-6 flex items-center gap-2 text-[11px] text-ink-400">
           <ShieldCheck className="w-3.5 h-3.5 text-pine-600 shrink-0" />
-          Simülasyon, 2026 yılı vergi mevzuatına göre ortalama katsayılar üzerinden hesaplanan tahmini değerlerdir.
-          Kesin projeksiyon için ücretsiz ön görüşmede şirket verileriniz üzerinden raporlanır.
+          Bu bir tahmindir (2026 ortalama katsayılar). Kesin tutar ücretsiz görüşmede şirket verilerinizle çıkar.
         </p>
 
       </div>
