@@ -8,11 +8,13 @@ import {
   Calendar,
   ArrowUpRight
 } from 'lucide-react';
+import BrandMark from '../common/BrandMark';
 
 export default function PublicNavbar() {
   const {
     navigateToMode,
-    setIsConsultationOpen
+    setIsConsultationOpen,
+    firmInfo
   } = useApp();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,12 +43,10 @@ export default function PublicNavbar() {
 
           {/* Brand */}
           <a href="#top" onClick={(e) => handleScrollTo(e, '#top')} className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-lg bg-pine-700 text-white font-serif font-bold flex items-center justify-center text-lg shadow-sm group-hover:bg-pine-900 transition-colors">
-              V
-            </div>
+            <BrandMark size="md" className="group-hover:bg-pine-900 transition-colors" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-base tracking-[0.14em] text-ink-900">VELOX</span>
+                <span className="font-bold text-base text-ink-900">{firmInfo.name}</span>
                 <span className="text-[9px] px-1.5 py-0.5 bg-pine-50 text-pine-700 font-mono rounded border border-pine-100 tracking-[0.18em] uppercase">
                   Denetim
                 </span>

@@ -3,33 +3,33 @@ import { useApp } from '../../context/AppContext';
 import { Check, X, ArrowRight } from 'lucide-react';
 
 export default function WhyUsSection() {
-  const { setIsConsultationOpen } = useApp();
+  const { setIsConsultationOpen, firmInfo } = useApp();
 
   const comparisonRows = [
     {
       feature: 'Fatura ve evrak',
       traditional: 'Ay sonunda poşet, kurye veya kaybolan WhatsApp fotoğrafları',
-      velox: 'Telefondan veya bilgisayardan yükleyin. Sistem 2 saniyede okur, muhasebeye işler.'
+      ours: 'Telefondan veya bilgisayardan yükleyin. Sistem 2 saniyede okur, muhasebeye işler.'
     },
     {
       feature: 'Vergi ve beyan',
       traditional: 'Son gün çıkan sürpriz vergi ve anlaşılmayan ödeme fişleri',
-      velox: 'Takvimde son günleri görün. 15 gün önce tahmini tutarı öğrenin.'
+      ours: 'Takvimde son günleri görün. 15 gün önce tahmini tutarı öğrenin.'
     },
     {
       feature: 'Mali müşavire ulaşmak',
       traditional: 'Cevapsız telefon, geciken e-posta, mesai dışı sessizlik',
-      velox: 'Size atanan mali müşavir + 12 dakikada yanıt. Gece de asistan açık.'
+      ours: 'Size atanan mali müşavir + 12 dakikada yanıt. Gece de asistan açık.'
     },
     {
       feature: 'Karar için sayı',
       traditional: 'Sadece geçmişe dönük defter. Yarın için içgörü yok.',
-      velox: 'Kasadaki paranın kaç ay yeteceği, kâr marjı ve nakit planı.'
+      ours: 'Kasadaki paranın kaç ay yeteceği, kâr marjı ve nakit planı.'
     },
     {
       feature: 'Vergi indirimleri',
       traditional: 'Standart işlem. Teknopark, Ar-Ge ve ihracat KDV kaçabilir.',
-      velox: 'Her ay uygun indirimleri tarar, dosyalar, nakit olarak gösteririz.'
+      ours: 'Her ay uygun indirimleri tarar, dosyalar, nakit olarak gösteririz.'
     }
   ];
 
@@ -41,7 +41,7 @@ export default function WhyUsSection() {
         <div className="section-head text-center mx-auto">
           <p className="mlabel text-pine-700">Neden biz?</p>
           <h2>
-            48 şirket mali işini <em>neden VELOX'a verdi?</em>
+            48 şirket mali işini <em>neden {firmInfo.name}'ye verdi?</em>
           </h2>
           <p className="mx-auto">
             Eski usul muhasebe büyümeyi yavaşlatır. Size hız, net rakam ve zamanında beyan gerekir.
@@ -54,7 +54,7 @@ export default function WhyUsSection() {
           <div className="grid grid-cols-1 md:grid-cols-12 bg-paper-100 text-[11px] py-3.5 px-6 border-b border-line">
             <div className="md:col-span-4 text-ink-400 font-semibold">Konu</div>
             <div className="hidden md:block md:col-span-4 text-ink-400 font-semibold">Klasik muhasebe</div>
-            <div className="hidden md:block md:col-span-4 text-pine-700 font-bold">VELOX</div>
+            <div className="hidden md:block md:col-span-4 text-pine-700 font-bold">{firmInfo.name}</div>
           </div>
 
           <div className="divide-y divide-line">
@@ -75,7 +75,7 @@ export default function WhyUsSection() {
                   <div className="w-5 h-5 rounded-full bg-pine-700 text-white flex items-center justify-center shrink-0 mt-0.5">
                     <Check className="w-3 h-3" />
                   </div>
-                  <span className="leading-relaxed text-xs font-medium text-pine-900">{row.velox}</span>
+                  <span className="leading-relaxed text-xs font-medium text-pine-900">{row.ours}</span>
                 </div>
               </div>
             ))}

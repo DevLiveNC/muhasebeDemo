@@ -16,11 +16,11 @@ import {
   Sparkles,
   Search,
   Bell,
-  ShieldCheck,
   Menu,
   X
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import BrandMark from '../common/BrandMark';
 
 // Sub views
 import AdminDashboard from './AdminDashboard';
@@ -42,7 +42,9 @@ export default function AdminLayout() {
     setAdminTab,
     setIsAiAssistantOpen,
     setIsCommandPaletteOpen,
-    selectedClient
+    selectedClient,
+    firmInfo,
+    demoAdmin
   } = useApp();
 
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -82,11 +84,9 @@ export default function AdminLayout() {
       {/* SMMM Header */}
       <div className="p-4 border-b border-line">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-pine-700 text-white flex items-center justify-center shrink-0">
-            <ShieldCheck className="w-5 h-5" />
-          </div>
+          <BrandMark size="lg" />
           <div className="min-w-0 flex-1">
-            <h3 className="font-bold text-[13px] text-ink-900 truncate">VELOX DENETİM</h3>
+            <h3 className="font-bold text-[13px] text-ink-900 truncate">{firmInfo.name}</h3>
             <p className="text-[10px] text-ink-400 mt-0.5">Ofis paneli</p>
             <span className="inline-flex items-center gap-1 text-[10px] font-mono text-success-deep">
               <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
@@ -137,13 +137,13 @@ export default function AdminLayout() {
       {/* SMMM Profile Card */}
       <div className="p-3 m-3 rounded-xl bg-paper-50 border border-line flex items-center gap-3">
         <img
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
-          alt="SMMM Kemal Yıldız"
-          className="w-9 h-9 rounded-lg object-cover border border-line"
+          src={demoAdmin.avatar}
+          alt={demoAdmin.name}
+          className="avatar w-9 h-9 rounded-lg border border-line"
         />
         <div className="min-w-0 flex-1 text-xs">
-          <p className="font-bold text-ink-900 truncate">SMMM Kemal Yıldız</p>
-          <p className="text-[10px] text-ink-400 truncate">Yönetici ortak · 349102</p>
+          <p className="font-bold text-ink-900 truncate">{demoAdmin.name}</p>
+          <p className="text-[10px] text-ink-400 truncate">Yönetici ortak · {demoAdmin.licenseNo}</p>
         </div>
       </div>
     </div>
@@ -219,7 +219,7 @@ export default function AdminLayout() {
               className="btn btn-primary btn-sm"
             >
               <Sparkles className="w-3.5 h-3.5 text-gold-300" />
-              <span className="hidden sm:inline">VELOX AI</span>
+              <span className="hidden sm:inline">Asistan</span>
             </button>
 
             {/* Notifications */}
@@ -263,11 +263,11 @@ export default function AdminLayout() {
             {/* Profile */}
             <div className="flex items-center gap-2 pl-3 border-l border-line">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
-                alt="SMMM Kemal Yıldız"
-                className="w-8 h-8 rounded-lg object-cover border border-line"
+                src={demoAdmin.avatar}
+                alt={demoAdmin.name}
+                className="avatar w-8 h-8 rounded-lg border border-line"
               />
-              <span className="hidden md:inline font-medium text-ink-700 text-xs">SMMM Kemal Yıldız</span>
+              <span className="hidden md:inline font-medium text-ink-700 text-xs">{demoAdmin.name}</span>
             </div>
           </div>
         </header>

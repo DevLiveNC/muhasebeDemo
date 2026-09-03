@@ -43,7 +43,7 @@ export default function AdminStaff() {
               <img
                 src={st.avatar}
                 alt={st.name}
-                className="w-14 h-14 rounded-xl object-cover border border-line"
+                className="avatar w-14 h-14 rounded-xl border border-line"
               />
               <div className="space-y-1 min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-2">

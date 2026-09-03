@@ -21,7 +21,8 @@ export default function CommandPalette() {
     openClientDetail,
     clients,
     setIsAiAssistantOpen,
-    setIsConsultationOpen
+    setIsConsultationOpen,
+    firmInfo
   } = useApp();
 
   const [query, setQuery] = useState('');
@@ -35,7 +36,7 @@ export default function CommandPalette() {
   const quickActions = [
     {
       id: 'act-ai',
-      title: 'VELOX AI asistanını aç',
+      title: `${firmInfo.name} asistanını aç`,
       category: 'Yapay zeka',
       icon: Sparkles,
       action: () => {
@@ -222,7 +223,7 @@ export default function CommandPalette() {
           <span>
             Kısayol: <kbd className="px-1.5 py-0.5 rounded bg-paper-200 border border-line text-ink-500 font-mono">ESC</kbd> ile kapat
           </span>
-          <span className="font-mono text-[10px] tracking-widest uppercase">VELOX Command Bar</span>
+          <span className="font-mono text-[10px] tracking-widest uppercase">{firmInfo.name} Command Bar</span>
         </div>
       </div>
     </div>

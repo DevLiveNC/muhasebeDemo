@@ -8,6 +8,7 @@ import {
   X
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import { DEMO_ADMIN, PORTRAITS } from '../../data/mockData';
 
 export default function AdminClients() {
   const { clients, openClientDetail, addNewClient, addToast } = useApp();
@@ -28,18 +29,18 @@ export default function AdminClients() {
     employeeCount: 15,
     monthlyFee: 20000,
     authorizedPerson: {
-      name: 'Deniz Kaya',
+      name: 'Yaşar Kırmızıyüz',
       title: 'Genel Müdür',
-      email: 'deniz@sirket.com',
+      email: 'yasar@sirket.com',
       phone: '+90 532 111 22 33',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'
+      avatar: PORTRAITS.yasar
     },
     assignedCPA: {
-      name: 'SMMM Kemal Yıldız',
+      name: DEMO_ADMIN.name,
       title: 'Kıdemli Vergi Direktörü',
-      email: 'kemal.yildiz@veloxfinans.com',
-      phone: '+90 212 809 45 11',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80'
+      email: DEMO_ADMIN.email,
+      phone: DEMO_ADMIN.phone,
+      avatar: DEMO_ADMIN.avatar
     },
     notes: 'Yeni eklenen müşteri.',
     kdvStatus: 'Hazırlanıyor',

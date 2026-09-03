@@ -167,7 +167,7 @@ export default function ConsultationModal() {
                     <label className="label">Yetkili adı soyadı *</label>
                     <input
                       type="text"
-                      placeholder="Örn: Deniz Kaya"
+                      placeholder="Örn: Yaşar Kırmızıyüz"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       className="input"
@@ -180,7 +180,7 @@ export default function ConsultationModal() {
                       <label className="label">E-Posta *</label>
                       <input
                         type="email"
-                        placeholder="deniz@sirket.com"
+                        placeholder="yasar@sirket.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="input"

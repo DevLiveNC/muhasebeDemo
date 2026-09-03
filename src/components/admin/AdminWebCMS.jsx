@@ -151,7 +151,7 @@ export default function AdminWebCMS() {
                   <img
                     src={test.image}
                     alt={test.name}
-                    className="w-8 h-8 rounded-full object-cover border border-line"
+                    className="avatar w-8 h-8 rounded-full border border-line"
                   />
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold text-[13px] text-ink-900 truncate">{test.name}</p>

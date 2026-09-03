@@ -1,14 +1,29 @@
-// VELOX Mali Müşavirlik, Vergi Denetimi & Finansal Zeka Platformu
+// liveMuhasebe — Mali Müşavirlik, Vergi Denetimi & Finansal Zeka Platformu
 // Yüksek Sadakatli Resmi Veriler & Tekdüzen Hesap Planı
 
+const portrait = (id) =>
+  `https://images.unsplash.com/photo-${id}?w=400&h=400&fit=crop&crop=faces&q=80&auto=format`;
+
+export const PORTRAITS = {
+  yasar: portrait("1540569014015-19a7be504e3a"),
+  elif: portrait("1573497019940-1c28c88b4f3e"),
+  burak: portrait("1556157382-97eda2d62296"),
+  zeynep: portrait("1551836022-d5d88e9218df"),
+  selin: portrait("1573496359142-b8d87734a5a2"),
+  murat: portrait("1506794778202-cad84cf45f1d"),
+  canberk: portrait("1472099645785-5658abf4ff4e"),
+  aylin: portrait("1580894732444-8ecded7900cd")
+};
+
 export const FIRM_INFO = {
-  name: "VELOX",
-  legalName: "Velox Bağımsız Denetim ve Yeminli Mali Müşavirlik A.Ş.",
+  name: "liveMuhasebe",
+  legalName: "liveMuhasebe Mali Müşavirlik ve Denetim A.Ş.",
+  mark: "lM",
   tagline: "Vergi, muhasebe ve mali danışmanlık",
   mainSlogan: "Muhasebenizi değil, işinizi büyütmeye odaklanın.",
   subSlogan: "Fatura, vergi, bordro ve raporlarınız tek yerde. Kaçırılan süre yok, sürpriz ödeme yok.",
   phone: "+90 (212) 809 45 00",
-  email: "partner@veloxfinans.com",
+  email: "partner@livemuhasebe.com",
   hq: "Büyükdere Cad. No: 195 Kanyon Ofis K:12, Levent / İstanbul",
   technoparkOffice: "İTÜ ARI Teknokent 3 No: 402, Maslak / İstanbul",
   licenses: [
@@ -25,6 +40,23 @@ export const FIRM_INFO = {
   }
 };
 
+export const DEMO_ADMIN = {
+  id: "stf-1",
+  name: "SMMM Yaşar Kırmızıyüz",
+  displayName: "Yaşar Kırmızıyüz",
+  role: "Yönetici Ortak & Vergi Direktörü",
+  title: "Kıdemli SMMM & Bağımsız Denetçi",
+  license: "TÜRMOB Ruhsat No: 349102",
+  licenseNo: "349102",
+  email: "yasar.kirmiziyuz@livemuhasebe.com",
+  phone: "+90 (212) 809 45 11",
+  clientsCount: 16,
+  activeTasks: 6,
+  workload: 85,
+  avatar: PORTRAITS.yasar,
+  specialty: "Kurumlar Vergisi, 4691 Teknopark Mevzuatı & Bilanço Analitiği"
+};
+
 export const MOCK_CLIENTS = [
   {
     id: "cli-1",
@@ -39,18 +71,18 @@ export const MOCK_CLIENTS = [
     foundedDate: "14.03.2021",
     address: "İTÜ Ayazağa Kampüsü ARI Teknokent 3 No: 402, Maslak / İstanbul",
     authorizedPerson: {
-      name: "Kerem Aksu",
+      name: "Yaşar Kırmızıyüz",
       title: "Yönetim Kurulu Başkanı & CEO",
-      email: "kerem@techvision.io",
+      email: "yasar@techvision.io",
       phone: "+90 (533) 456 78 90",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+      avatar: PORTRAITS.yasar
     },
     assignedCPA: {
-      name: "SMMM Kemal Yıldız",
+      name: DEMO_ADMIN.name,
       title: "Kıdemli Vergi & Teknopark Direktörü",
-      email: "kemal.yildiz@veloxfinans.com",
-      phone: "+90 (212) 809 45 11",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+      email: DEMO_ADMIN.email,
+      phone: DEMO_ADMIN.phone,
+      avatar: DEMO_ADMIN.avatar
     },
     employeeCount: 34,
     monthlyFee: 26500,
@@ -96,14 +128,14 @@ export const MOCK_CLIENTS = [
       title: "Genel Müdür",
       email: "selin@artisangurme.com",
       phone: "+90 (532) 890 12 34",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80"
+      avatar: PORTRAITS.selin
     },
     assignedCPA: {
       name: "SMMM Elif Kaya",
       title: "E-Dönüşüm & Dış Ticaret Sorumlusu",
-      email: "elif.kaya@veloxfinans.com",
+      email: "elif.kaya@livemuhasebe.com",
       phone: "+90 (212) 809 45 14",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80"
+      avatar: PORTRAITS.elif
     },
     employeeCount: 18,
     monthlyFee: 18500,
@@ -147,14 +179,14 @@ export const MOCK_CLIENTS = [
       title: "Mali İşler Direktörü (CFO)",
       email: "murat.demirkan@nexusglobal.com",
       phone: "+90 (533) 112 33 44",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80"
+      avatar: PORTRAITS.murat
     },
     assignedCPA: {
-      name: "SMMM Kemal Yıldız",
+      name: DEMO_ADMIN.name,
       title: "Kıdemli Vergi & Teknopark Direktörü",
-      email: "kemal.yildiz@veloxfinans.com",
-      phone: "+90 (212) 809 45 11",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+      email: DEMO_ADMIN.email,
+      phone: DEMO_ADMIN.phone,
+      avatar: DEMO_ADMIN.avatar
     },
     employeeCount: 64,
     monthlyFee: 34000,
@@ -198,14 +230,14 @@ export const MOCK_CLIENTS = [
       title: "Yönetici Ortak",
       email: "canberk@pulsecreative.co",
       phone: "+90 (535) 777 88 99",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80"
+      avatar: PORTRAITS.canberk
     },
     assignedCPA: {
       name: "SMMM Burak Demir",
       title: "Bordro & Teşvik Uzmanı",
-      email: "burak.demir@veloxfinans.com",
+      email: "burak.demir@livemuhasebe.com",
       phone: "+90 (212) 809 45 16",
-      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80"
+      avatar: PORTRAITS.burak
     },
     employeeCount: 14,
     monthlyFee: 15500,
@@ -248,14 +280,14 @@ export const MOCK_CLIENTS = [
       title: "Ar-Ge Direktörü & Kurucu",
       email: "aylin@novabio.com.tr",
       phone: "+90 (530) 222 33 44",
-      avatar: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=150&auto=format&fit=crop&q=80"
+      avatar: PORTRAITS.aylin
     },
     assignedCPA: {
       name: "SMMM Zeynep Aydın",
       title: "5746 Ar-Ge & Proje Denetçisi",
-      email: "zeynep.aydin@veloxfinans.com",
+      email: "zeynep.aydin@livemuhasebe.com",
       phone: "+90 (212) 809 45 18",
-      avatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&auto=format&fit=crop&q=80"
+      avatar: PORTRAITS.zeynep
     },
     employeeCount: 28,
     monthlyFee: 31000,
@@ -442,32 +474,19 @@ export const MOCK_TAX_CALENDAR = [
 ];
 
 export const MOCK_STAFF = [
-  {
-    id: "stf-1",
-    name: "SMMM Kemal Yıldız",
-    role: "Yönetici Ortak & Vergi Direktörü",
-    title: "Kıdemli SMMM & Bağımsız Denetçi",
-    license: "TÜRMOB Ruhsat No: 349102",
-    email: "kemal.yildiz@veloxfinans.com",
-    phone: "+90 (212) 809 45 11",
-    clientsCount: 16,
-    activeTasks: 6,
-    workload: 85,
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    specialty: "Kurumlar Vergisi, 4691 Teknopark Mevzuatı & Bilanço Analitiği"
-  },
+  { ...DEMO_ADMIN },
   {
     id: "stf-2",
     name: "SMMM Elif Kaya",
     role: "Kıdemli Ortak & Dış Ticaret Sorumlusu",
     title: "Mali Müşavir & KDV İade Uzmanı",
     license: "TÜRMOB Ruhsat No: 381290",
-    email: "elif.kaya@veloxfinans.com",
+    email: "elif.kaya@livemuhasebe.com",
     phone: "+90 (212) 809 45 14",
     clientsCount: 14,
     activeTasks: 4,
     workload: 72,
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
+    avatar: PORTRAITS.elif,
     specialty: "E-Fatura, E-Defter, E-İhracat KDV İadesi ve Transfer Fiyatlandırması"
   },
   {
@@ -476,12 +495,12 @@ export const MOCK_STAFF = [
     role: "Bordrolama & İş Hukuku Direktörü",
     title: "Vergi & SGK Danışmanı",
     license: "TÜRMOB Ruhsat No: 412093",
-    email: "burak.demir@veloxfinans.com",
+    email: "burak.demir@livemuhasebe.com",
     phone: "+90 (212) 809 45 16",
     clientsCount: 11,
     activeTasks: 5,
     workload: 80,
-    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
+    avatar: PORTRAITS.burak,
     specialty: "İstihdam Teşvikleri, Muhtasar ve Prim Hizmet Beyannamesi"
   },
   {
@@ -490,12 +509,12 @@ export const MOCK_STAFF = [
     role: "Ar-Ge & Finansal Raporlama Danışmanı",
     title: "5746 Mevzuat Uzmanı & YMM Denetçisi",
     license: "TÜRMOB Ruhsat No: 439102",
-    email: "zeynep.aydin@veloxfinans.com",
+    email: "zeynep.aydin@livemuhasebe.com",
     phone: "+90 (212) 809 45 18",
     clientsCount: 7,
     activeTasks: 4,
     workload: 64,
-    avatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&auto=format&fit=crop&q=80",
+    avatar: PORTRAITS.zeynep,
     specialty: "TÜBİTAK, 5746 Ar-Ge İndirimi, Sanal CFO & Nakit Akış Modelleme"
   }
 ];
@@ -673,8 +692,8 @@ export const MOCK_BLOG_POSTS = [
     category: "Vergi Mevzuatı",
     readTime: "5 dk",
     date: "18 Ağustos 2026",
-    author: "SMMM Kemal Yıldız",
-    authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    author: "SMMM Yaşar Kırmızıyüz",
+    authorAvatar: PORTRAITS.yasar,
     summary: "Teknopark yazılım kazancı kurumlar vergisinden muaf olabilir. Bordrodaki stopaj indirimi nasıl uygulanır, 2026'da nelere bakılır.",
     content: `Teknoloji Geliştirme Bölgeleri (TGB) ve Ar-Ge Merkezleri, yüksek katma değerli üretim yapan girişimlerin küresel rekabet gücünü artırmak amacıyla önemli mali avantajlarla donatılmıştır.
 
@@ -683,7 +702,7 @@ export const MOCK_BLOG_POSTS = [
 2. **KDV Geçici 20/1 İstisnası:** TGB'de üretilen sistem yönetimi, veri yönetimi ve iş uygulamaları yazılımlarının satışı KDV'den istisnadır.
 3. **Bordro Stopaj Terkini:** Ar-Ge ve destek personelinin fiilen projede harcadığı süreye isabet eden gelir vergisi muhtasar beyannamesinde terkin edilir.
 
-VELOX olarak her ay mükelleflerimizin YMM tasdik dosyalarını eksiksiz hazırlıyor, olası vergi incelemelerinde %100 güvence sağlıyoruz.`
+liveMuhasebe olarak her ay mükelleflerimizin YMM tasdik dosyalarını eksiksiz hazırlıyor, olası vergi incelemelerinde %100 güvence sağlıyoruz.`
   },
   {
     id: "post-2",
@@ -693,7 +712,7 @@ VELOX olarak her ay mükelleflerimizin YMM tasdik dosyalarını eksiksiz hazırl
     readTime: "4 dk",
     date: "12 Ağustos 2026",
     author: "SMMM Elif Kaya",
-    authorAvatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
+    authorAvatar: PORTRAITS.elif,
     summary: "Yurt dışına yazılım veya tasarım satan şirketler KDV ödemeyebilir; kazancın yüzde 80'i kurumlar vergisinden düşülebilir.",
     content: `Türkiye'de yerleşik şirketlerin yurt dışındaki müşterilerine sundukları mimarlık, mühendislik, tasarım, yazılım, veri saklama ve çağrı merkezi hizmetlerinden elde ettikleri kazançların %80'i kurumlar vergisi matrahından indirilebilir.
 
@@ -711,23 +730,23 @@ Bu düzenleme ile fiili kurumlar vergisi yükü %25'ten %5 seviyelerine kadar ge
     category: "E-Dönüşüm",
     readTime: "6 dk",
     date: "04 Ağustos 2026",
-    author: "SMMM Kemal Yıldız",
-    authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    author: "SMMM Yaşar Kırmızıyüz",
+    authorAvatar: PORTRAITS.yasar,
     summary: "e-Defter dosyası neden reddedilir, süre kaçarsa ne olur ve cezadan nasıl korunursunuz.",
     content: `Yevmiye ve Kebir defterlerinin yasal süresinde GİB sistemine aktarılması, VUK 359 ve 353 uyarınca özel usulsüzlük cezalarının önüne geçmek için kritik önem taşır.
 
-VELOX platformu, berat dosyalarını yüklemeden önce yapay zeka ön şematron testine tabi tutar ve hesap planındaki kuruş hatalarını anında tespit eder.`
+liveMuhasebe platformu, berat dosyalarını yüklemeden önce yapay zeka ön şematron testine tabi tutar ve hesap planındaki kuruş hatalarını anında tespit eder.`
   }
 ];
 
 export const MOCK_TESTIMONIALS = [
   {
     id: "test-1",
-    name: "Kerem Aksu",
+    name: "Yaşar Kırmızıyüz",
     role: "Yönetim Kurulu Başkanı",
     company: "TechVision Bilişim A.Ş.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-    quote: "34 kişilik ekibin bordro indirimleri ve kurumlar vergisi muafiyeti hatasız işliyor. Yatırımcıya verdiğimiz raporlar artık net ve tartışmasız.",
+    image: PORTRAITS.yasar,
+    quote: "34 kişilik Ar-Ge kadrosunun bordro teşvikleri ve teknopark kurumlar vergisi istisnası dönem sonuna kadar eksiksiz işletildi. Yatırımcıya sunulan mali tablolar denetlenebilir ve tartışmasız hale geldi.",
     rating: 5,
     tag: "Yazılım / Teknopark",
     metric: "₺460K+ Yıllık Tasarruf"
@@ -737,8 +756,8 @@ export const MOCK_TESTIMONIALS = [
     name: "Murat Demirkan",
     role: "Mali İşler Direktörü (CFO)",
     company: "Nexus Entegre Lojistik A.Ş.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
-    quote: "Filomuzun yurt dışı taşıma KDV istisnası ve aylık e-Defter yüklemeleri aksamasız gidiyor. Kemal Bey mevzuatı sade anlatıyor.",
+    image: PORTRAITS.murat,
+    quote: "Uluslararası taşımacılık KDV istisnası ve aylık e-Defter berat yüklemeleri yasal süresinde tamamlanıyor. Beyan takvimi ve nakit planı tek raporda izlenebiliyor.",
     rating: 5,
     tag: "Lojistik & Taşımacılık",
     metric: "%100 Zamanında Uyum"
@@ -748,8 +767,8 @@ export const MOCK_TESTIMONIALS = [
     name: "Dr. Aylin Çetin",
     role: "Kurucu & Ar-Ge Direktörü",
     company: "Nova Biyoteknoloji A.Ş.",
-    image: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=150&auto=format&fit=crop&q=80",
-    quote: "TÜBİTAK harcamaları ve Ar-Ge indirimleri Zeynep Hanım'da. Muhasebeye arkamızı dönüp işimize bakabiliyoruz.",
+    image: PORTRAITS.aylin,
+    quote: "TÜBİTAK proje harcamaları ve 5746 sayılı kanun kapsamındaki Ar-Ge indirimleri YMM tasdik protokolüyle yürütülüyor. Laboratuvar faaliyetine odaklanabiliyoruz.",
     rating: 5,
     tag: "Biyoteknoloji & Ar-Ge",
     metric: "TÜBİTAK Tam Uyum"
@@ -762,7 +781,7 @@ export const MOCK_TASKS = [
     title: "Temmuz 2026 KDV-1 Beyannamelerinin GİB Sistemine Paketlenmesi",
     client: "TechVision Bilişim ve Yapay Zeka A.Ş.",
     clientId: "cli-1",
-    assignedTo: "SMMM Kemal Yıldız",
+    assignedTo: "SMMM Yaşar Kırmızıyüz",
     dueDate: "2026-08-26",
     priority: "Acil",
     status: "İnceleniyor",
@@ -788,7 +807,7 @@ export const MOCK_TASKS = [
     title: "Nexus Lojistik Mayıs E-Defter Berat Şematron Testi",
     client: "Nexus Entegre Lojistik ve Taşımacılık A.Ş.",
     clientId: "cli-3",
-    assignedTo: "SMMM Kemal Yıldız",
+    assignedTo: "SMMM Yaşar Kırmızıyüz",
     dueDate: "2026-08-30",
     priority: "Normal",
     status: "Yapılacak",

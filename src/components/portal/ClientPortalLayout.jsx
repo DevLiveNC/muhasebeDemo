@@ -119,7 +119,7 @@ export default function ClientPortalLayout() {
           <img
             src={activeClient.assignedCPA.avatar}
             alt={activeClient.assignedCPA.name}
-            className="w-9 h-9 rounded-lg object-cover border border-line"
+            className="avatar w-9 h-9 rounded-lg border border-line"
           />
           <div className="min-w-0 text-xs">
             <p className="font-bold text-ink-900 truncate">{activeClient.assignedCPA.name}</p>
@@ -199,7 +199,7 @@ export default function ClientPortalLayout() {
               className="btn btn-outline btn-sm"
             >
               <Sparkles className="w-3.5 h-3.5 text-gold-500" />
-              <span className="hidden sm:inline">VELOX AI</span>
+              <span className="hidden sm:inline">Asistan</span>
             </button>
 
             {/* Notifications */}
@@ -245,7 +245,7 @@ export default function ClientPortalLayout() {
               <img
                 src={activeClient.authorizedPerson.avatar}
                 alt={activeClient.authorizedPerson.name}
-                className="w-8 h-8 rounded-lg object-cover border border-line"
+                className="avatar w-8 h-8 rounded-lg border border-line"
               />
               <span className="hidden md:inline font-medium text-ink-700 text-xs">
                 {activeClient.authorizedPerson.name}

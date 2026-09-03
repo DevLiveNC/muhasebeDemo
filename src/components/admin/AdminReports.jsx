@@ -42,7 +42,7 @@ export default function AdminReports() {
         </div>
 
         <button
-          onClick={() => handleExport('VELOX_2026_Yonetici_Konsolide_Raporu')}
+          onClick={() => handleExport('liveMuhasebe_2026_Yonetici_Konsolide_Raporu')}
           className="btn btn-primary btn-sm shrink-0"
         >
           <Download className="w-3.5 h-3.5" />

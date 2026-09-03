@@ -114,7 +114,7 @@ export default function AboutSection() {
                 <img
                   src={st.avatar}
                   alt={st.name}
-                  className="w-16 h-16 rounded-xl object-cover mx-auto border border-line"
+                  className="avatar w-16 h-16 rounded-xl mx-auto border border-line"
                 />
                 <div>
                   <h4 className="font-bold text-sm text-ink-900">{st.name}</h4>

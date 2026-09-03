@@ -214,6 +214,11 @@
     @apply bg-pine-600 text-white font-semibold shadow-sm hover:bg-pine-700 hover:text-white;
   }
 
+  /* ---- Portrait (natural, paper-warm) ---- */
+  .avatar {
+    @apply object-cover object-top sepia-[.12] contrast-[.92] saturate-[.85];
+  }
+
   /* ---- Section head (public) ---- */
   .section-head {
     @apply max-w-3xl space-y-4;

@@ -89,7 +89,7 @@ export default function PortalCompanyProfile() {
               <img
                 src={client.assignedCPA.avatar}
                 alt={client.assignedCPA.name}
-                className="w-14 h-14 rounded-xl object-cover border border-line"
+                className="avatar w-14 h-14 rounded-xl border border-line"
               />
               <div className="min-w-0">
                 <h4 className="font-bold text-base text-ink-900">{client.assignedCPA.name}</h4>
@@ -129,7 +129,7 @@ export default function PortalCompanyProfile() {
               <img
                 src={client.authorizedPerson.avatar}
                 alt={client.authorizedPerson.name}
-                className="w-10 h-10 rounded-lg object-cover border border-line"
+                className="avatar w-10 h-10 rounded-lg border border-line"
               />
               <div className="text-[13px] min-w-0">
                 <p className="font-bold text-ink-900">{client.authorizedPerson.name}</p>

@@ -25,7 +25,8 @@ export default function AdminClientDetail() {
     setSelectedDocForPreview,
     setIsSmmModalOpen,
     sendMissingDocAlert,
-    addToast
+    addToast,
+    demoAdmin
   } = useApp();
 
   const [activeSubTab, setActiveSubTab] = useState('info');
@@ -33,7 +34,7 @@ export default function AdminClientDetail() {
   const [notesList, setNotesList] = useState([
     {
       id: 1,
-      author: 'SMMM Kemal Yıldız',
+      author: 'SMMM Yaşar Kırmızıyüz',
       date: '2026-08-22 14:30',
       text: '4691 Teknopark Ar-Ge gelir vergisi istisnası bordro icmaline uygulandı. YMM Tasdik raporu Q3 KDV iadesi için hazırlandı.'
     },
@@ -64,7 +65,7 @@ export default function AdminClientDetail() {
     setNotesList((prev) => [
       {
         id: Date.now(),
-        author: 'SMMM Kemal Yıldız',
+        author: demoAdmin.name,
         date: '2026-08-25 ' + new Date().toTimeString().slice(0, 5),
         text: newNote
       },
@@ -237,7 +238,7 @@ export default function AdminClientDetail() {
                 <img
                   src={selectedClient.assignedCPA.avatar}
                   alt={selectedClient.assignedCPA.name}
-                  className="w-11 h-11 rounded-lg object-cover border border-line"
+                  className="avatar w-11 h-11 rounded-lg border border-line"
                 />
                 <div className="min-w-0">
                   <p className="font-bold text-[13px] text-ink-900">{selectedClient.assignedCPA.name}</p>

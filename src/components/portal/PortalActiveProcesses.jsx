@@ -11,7 +11,7 @@ export default function PortalActiveProcesses() {
   const processes = [
     {
       title: 'Temmuz 2026 KDV beyannamesi',
-      responsible: 'SMMM Kemal Yıldız',
+      responsible: client.assignedCPA.name,
       status: 'Sizin onayınız ve gönderim bekleniyor',
       percent: 85,
       stages: [
@@ -36,7 +36,7 @@ export default function PortalActiveProcesses() {
     },
     {
       title: 'Mayıs 2026 e-Defter yüklemesi',
-      responsible: 'SMMM Kemal Yıldız',
+      responsible: client.assignedCPA.name,
       status: 'Hazırlık',
       percent: 50,
       stages: [
