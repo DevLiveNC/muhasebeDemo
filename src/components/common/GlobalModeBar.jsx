@@ -93,11 +93,11 @@ export default function GlobalModeBar() {
 
             <button
               onClick={() => setIsDemoGuideOpen(true)}
-              className="hidden xl:flex items-center gap-1 px-2 py-1 rounded-md text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
+              className="flex items-center gap-1 px-2 py-1 rounded-md text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
               title="Platform turu"
             >
               <Info className="w-3.5 h-3.5" />
-              <span className="text-[11px] font-medium">Platform turu</span>
+              <span className="hidden md:inline text-[11px] font-medium">Platform turu</span>
             </button>
           </div>
 
