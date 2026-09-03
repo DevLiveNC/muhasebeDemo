@@ -4,7 +4,7 @@ import { Plus, X, Calendar } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export default function AdminTasks() {
-  const { tasks, staff, updateTaskStatus, addToast } = useApp();
+  const { tasks, staff, updateTaskStatus, addToast, demoAdmin } = useApp();
   const [filterStaff, setFilterStaff] = useState('all');
   const [filterPriority, setFilterPriority] = useState('all');
   const [isNewModalOpen, setIsNewModalOpen] = useState(false);
@@ -12,7 +12,7 @@ export default function AdminTasks() {
   const [newTask, setNewTask] = useState({
     title: '',
     client: 'TechVision Yazılım & Yapay Zeka A.Ş.',
-    assignedTo: 'SMMM Kemal Yıldız',
+    assignedTo: demoAdmin.name,
     dueDate: '2026-08-28',
     priority: 'Acil',
     category: 'Vergi Beyannamesi',

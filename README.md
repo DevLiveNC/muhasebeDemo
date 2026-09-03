@@ -1,4 +1,4 @@
-# VELOX — Finans & Mali Müşavirlik Platformu
+# liveMuhasebe — Finans & Mali Müşavirlik Platformu
 
 Kurumsal mali müşavirlik, vergi denetimi ve finansal zeka odaklı modern bir demo web platformu. React + Vite + Tailwind CSS ile geliştirilmiştir.
 
@@ -7,7 +7,7 @@ Kurumsal mali müşavirlik, vergi denetimi ve finansal zeka odaklı modern bir d
 - **Kurumsal Tanıtım Sitesi (Public):** Hero, Hizmetler, Blog, Vergi Hesaplayıcı, İletişim ve daha fazlası.
 - **Müşteri Portalı (Client Portal):** Aktif Süreçler, Belgeler, Raporlar, Tahakkuk Takvimi, Görev & Destek Talepleri, Şirket Profili.
 - **Yönetim Paneli (Admin):** Dashboard, Müşteriler, Ödemeler, E-SMM Makbuzları, Belgeler, Personel, Görevler, Vergi Takvimi, Raporlar, Web CMS.
-- **VELOX AI Asistanı:** Finansal zeka için yerleşik asistan modalı.
+- **liveMuhasebe asistanı:** Finansal zeka için yerleşik asistan modalı.
 - **Komut Paleti:** Klavye tabanlı hızlı navigasyon.
 
 ## Tasarım Skill'i — HALLMARK v1.3

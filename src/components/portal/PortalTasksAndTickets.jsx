@@ -13,7 +13,7 @@ const CATEGORIES = [
 ];
 
 export default function PortalTasksAndTickets() {
-  const { addToast } = useApp();
+  const { addToast, demoAdmin } = useApp();
 
   const [tickets, setTickets] = useState([
     {
@@ -23,7 +23,7 @@ export default function PortalTasksAndTickets() {
       createdDate: '2026-08-20',
       status: 'Tamamlandı',
       priority: 'Normal',
-      lastReply: 'SMMM Kemal Yıldız: İmzalı bordro icmali "Belgelerim" klasörüne yüklendi.'
+      lastReply: `${demoAdmin.name}: İmzalı bordro icmali "Belgelerim" klasörüne yüklendi.`
     },
     {
       id: 'TCK-2026-92',
@@ -52,7 +52,7 @@ export default function PortalTasksAndTickets() {
       createdDate: 'Bugün',
       status: 'İşleniyor',
       priority: 'Normal',
-      lastReply: 'Talep SMMM Kemal Yıldız havuzuna iletildi.'
+      lastReply: `Talep ${demoAdmin.name} havuzuna iletildi.`
     };
 
     setTickets([newTicket, ...tickets]);

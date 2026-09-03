@@ -54,7 +54,7 @@ export default function BlogSection() {
                   <img
                     src={post.authorAvatar}
                     alt={post.author}
-                    className="w-7 h-7 rounded-full object-cover border border-line shrink-0"
+                    className="avatar w-7 h-7 rounded-full border border-line shrink-0"
                   />
                   <div className="min-w-0">
                     <span className="text-xs font-semibold text-ink-800 block truncate">{post.author}</span>

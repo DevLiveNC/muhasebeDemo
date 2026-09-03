@@ -9,6 +9,7 @@ import {
   Info
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import BrandMark from './BrandMark';
 
 export default function GlobalModeBar() {
   const {
@@ -16,7 +17,8 @@ export default function GlobalModeBar() {
     setCurrentMode,
     setIsCommandPaletteOpen,
     setIsAiAssistantOpen,
-    setIsDemoGuideOpen
+    setIsDemoGuideOpen,
+    firmInfo
   } = useApp();
 
   const modes = [
@@ -33,11 +35,9 @@ export default function GlobalModeBar() {
           {/* Brand */}
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2 pr-3 border-r border-line">
-              <div className="w-6 h-6 rounded-md bg-pine-700 text-white font-serif font-bold flex items-center justify-center text-[13px]">
-                V
-              </div>
-              <span className="hidden sm:inline text-[11px] font-semibold tracking-wide text-ink-900">
-                VELOX <span className="text-ink-400 font-medium">Mali</span>
+              <BrandMark size="sm" />
+              <span className="hidden sm:inline text-[11px] font-semibold text-ink-900">
+                {firmInfo.name} <span className="text-ink-400 font-medium">Mali</span>
               </span>
             </div>
 
@@ -88,16 +88,16 @@ export default function GlobalModeBar() {
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-pine-700 hover:bg-pine-700 text-white font-semibold text-xs transition-all shadow-sm"
             >
               <Sparkles className="w-3.5 h-3.5 text-gold-300" />
-              <span className="hidden sm:inline">VELOX AI</span>
+              <span className="hidden sm:inline">Asistan</span>
             </button>
 
             <button
               onClick={() => setIsDemoGuideOpen(true)}
               className="hidden xl:flex items-center gap-1 px-2 py-1 rounded-md text-ink-400 hover:text-ink-900 hover:bg-paper-100 transition-colors"
-              title="Sunum notları"
+              title="Platform turu"
             >
               <Info className="w-3.5 h-3.5" />
-              <span className="text-[11px] font-medium">Sunum notları</span>
+              <span className="text-[11px] font-medium">Platform turu</span>
             </button>
           </div>
 

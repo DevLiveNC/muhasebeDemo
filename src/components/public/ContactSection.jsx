@@ -103,7 +103,7 @@ export default function ContactSection() {
                     <label className="label">Ad soyad *</label>
                     <input
                       type="text"
-                      placeholder="Örn: Caner Yılmaz"
+                      placeholder="Örn: Yaşar Kırmızıyüz"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -128,7 +128,7 @@ export default function ContactSection() {
                     <label className="label">E-Posta *</label>
                     <input
                       type="email"
-                      placeholder="caner@sirketiniz.com"
+                      placeholder="yasar@sirketiniz.com"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -172,7 +172,7 @@ export default function ContactSection() {
                 </div>
                 <h4 className="font-bold text-ink-900 text-lg">Talebiniz alındı</h4>
                 <p className="text-sm text-ink-500 max-w-sm mx-auto leading-relaxed">
-                  Kemal Yıldız ve ekibi mesajınıza bakıyor. En geç 2 saat içinde aranacaksınız.
+                  Yaşar Kırmızıyüz ve ekibi mesajınıza bakıyor. En geç 2 saat içinde aranacaksınız.
                 </p>
                 <button
                   onClick={() => {

@@ -35,7 +35,7 @@ const GUIDE = [
   },
   {
     icon: Sparkles,
-    title: '4 · VELOX AI',
+    title: '4 · Asistan',
     lines: [
       'Eksik evrak, gecikme riski ve günün iş listesi saniyeler içinde özetlenir.',
       'Cevaplar aksiyon butonlarıyla gelir (ör. hatırlatma gönder).',
@@ -46,7 +46,7 @@ const GUIDE = [
 ];
 
 export default function DemoGuideModal() {
-  const { isDemoGuideOpen, setIsDemoGuideOpen, navigateToMode } = useApp();
+  const { isDemoGuideOpen, setIsDemoGuideOpen, navigateToMode, firmInfo } = useApp();
 
   if (!isDemoGuideOpen) return null;
 
@@ -68,8 +68,8 @@ export default function DemoGuideModal() {
               <Info className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-white">Sunum notları</h3>
-              <p className="text-[11px] text-pine-200">VELOX’un 4 katmanı, 90 saniyede</p>
+              <h3 className="font-bold text-sm text-white">Platform turu</h3>
+              <p className="text-[11px] text-pine-200">{firmInfo.name}’nin 4 katmanı, 90 saniyede</p>
             </div>
           </div>
           <button

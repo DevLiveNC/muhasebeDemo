@@ -20,6 +20,7 @@ export default function AdminDashboard() {
     clients,
     documents,
     staff,
+    demoAdmin,
     setAdminTab,
     openClientDetail,
     sendMissingDocAlert,
@@ -91,7 +92,7 @@ export default function AdminDashboard() {
             <span className="text-ink-400 text-xs">Ağustos 2026 beyan dönemi</span>
           </div>
           <h1 className="font-serif text-2xl sm:text-[26px] text-ink-900 leading-tight">
-            Hoş geldiniz, Kemal Yıldız
+            Hoş geldiniz, {demoAdmin.displayName}
           </h1>
           <p className="text-[13px] text-ink-500">
             48 şirketin 44'ünde dönem kapanışı tamam. Bu hafta 12 KDV beyannamesi onay bekliyor.
@@ -234,7 +235,7 @@ export default function AdminDashboard() {
               <div key={st.id} className="space-y-1.5">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <img src={st.avatar} alt={st.name} className="w-5 h-5 rounded-md object-cover" />
+                    <img src={st.avatar} alt={st.name} className="avatar w-5 h-5 rounded-md" />
                     <span className="font-bold text-[13px] text-ink-900">{st.name}</span>
                   </div>
                   <div className="font-mono text-[11px]">

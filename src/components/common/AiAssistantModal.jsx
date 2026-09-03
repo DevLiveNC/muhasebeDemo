@@ -22,7 +22,8 @@ export default function AiAssistantModal() {
     isAiAssistantOpen,
     setIsAiAssistantOpen,
     sendMissingDocAlert,
-    openClientDetail
+    openClientDetail,
+    firmInfo
   } = useApp();
 
   const [inputQuery, setInputQuery] = useState('');
@@ -31,7 +32,7 @@ export default function AiAssistantModal() {
     {
       id: 'msg-0',
       sender: 'ai',
-      text: 'VELOX asistanı hazır. 48 şirket, vergi takvimi ve belgeler güncel. Ne sormak istersiniz?',
+      text: `${firmInfo.name} asistanı hazır. 48 şirket, vergi takvimi ve belgeler güncel. Ne sormak istersiniz?`,
       timestamp: 'Şimdi',
       chips: [
         { label: 'Bu hafta kimden evrak bekliyoruz?', key: 'evrak' },
@@ -254,7 +255,7 @@ export default function AiAssistantModal() {
               <Sparkles className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-white">VELOX Finansal AI</h3>
+              <h3 className="font-bold text-sm text-white">{firmInfo.name} asistanı</h3>
               <p className="text-[11px] text-pine-200 font-mono">Finans & Mevzuat Analiz Motoru</p>
             </div>
           </div>

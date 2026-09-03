@@ -3,7 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { X, Clock, BookOpen } from 'lucide-react';
 
 export default function BlogReaderModal() {
-  const { selectedBlogForReader, setSelectedBlogForReader } = useApp();
+  const { selectedBlogForReader, setSelectedBlogForReader, firmInfo } = useApp();
 
   if (!selectedBlogForReader) return null;
 
@@ -74,7 +74,7 @@ export default function BlogReaderModal() {
             <img
               src={post.authorAvatar}
               alt={post.author}
-              className="w-10 h-10 rounded-full object-cover border border-line"
+              className="avatar w-10 h-10 rounded-full border border-line"
             />
             <div>
               <p className="font-bold text-[13px] text-ink-900">{post.author}</p>
@@ -94,7 +94,7 @@ export default function BlogReaderModal() {
           {/* Footer note */}
           <div className="p-4 rounded-xl bg-paper-50 border border-line text-xs text-ink-500 leading-relaxed pt-4">
             Bu makale genel bilgilendirme amaçlıdır; özel duruma ilişkin kesin vergi görüşü için
-            VELOX kıdemli SMMM masasıyla iletişime geçiniz.
+            {firmInfo.name} kıdemli SMMM masasıyla iletişime geçiniz.
           </div>
         </div>
       </div>

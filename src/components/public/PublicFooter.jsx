@@ -1,5 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
+import BrandMark from '../common/BrandMark';
 
 export default function PublicFooter() {
   const { navigateToMode, setIsConsultationOpen, firmInfo } = useApp();
@@ -13,11 +14,9 @@ export default function PublicFooter() {
           {/* Brand + contact */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-white text-pine-900 font-serif font-bold flex items-center justify-center text-sm">
-                V
-              </div>
-              <span className="font-bold text-base tracking-[0.14em] text-white">
-                VELOX <span className="text-pine-300 font-medium">DENETİM</span>
+              <BrandMark size="md" tone="inverse" />
+              <span className="font-bold text-base text-white">
+                {firmInfo.name}
               </span>
             </div>
 

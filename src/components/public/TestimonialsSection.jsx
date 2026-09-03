@@ -11,9 +11,9 @@ export default function TestimonialsSection() {
 
         {/* Header */}
         <div className="section-head text-center mx-auto">
-          <p className="mlabel text-pine-700">Müşteriler</p>
+          <p className="mlabel text-pine-700">Kurumsal referanslar</p>
           <h2>
-            Girişimciler ve finans yöneticileri <em>ne diyor?</em>
+            Müşteri <em>değerlendirmeleri</em>
           </h2>
         </div>
 
@@ -40,7 +40,7 @@ export default function TestimonialsSection() {
                 <img
                   src={test.image}
                   alt={test.name}
-                  className="w-10 h-10 rounded-full object-cover border border-line"
+                  className="avatar w-10 h-10 rounded-full border border-line"
                 />
                 <div className="text-xs min-w-0">
                   <h4 className="font-bold text-ink-900">{test.name}</h4>

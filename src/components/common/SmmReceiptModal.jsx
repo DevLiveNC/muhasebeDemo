@@ -11,7 +11,7 @@ import {
 import { cn } from '../../utils/cn';
 
 export default function SmmReceiptModal() {
-  const { isSmmModalOpen, setIsSmmModalOpen, addToast } = useApp();
+  const { isSmmModalOpen, setIsSmmModalOpen, addToast, firmInfo, demoAdmin } = useApp();
 
   if (!isSmmModalOpen) return null;
 
@@ -73,8 +73,8 @@ export default function SmmReceiptModal() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white p-4 rounded-lg border border-line">
               <div>
                 <span className="font-bold text-ink-400 uppercase text-[9px] font-mono tracking-[0.12em] block">Düzenleyen (SMMM)</span>
-                <p className="font-bold text-ink-900 mt-1 text-[13px]">VELOX MALİ MÜŞAVİRLİK A.Ş.</p>
-                <p className="text-ink-500 text-xs">SMMM Kemal Yıldız (Ruhsat: 349102)</p>
+                <p className="font-bold text-ink-900 mt-1 text-[13px]">{firmInfo.legalName}</p>
+                <p className="text-ink-500 text-xs">{demoAdmin.name} (Ruhsat: {demoAdmin.licenseNo})</p>
                 <p className="text-ink-400 text-xs font-mono">Maslak V.D. - 8290192831</p>
               </div>
               <div>

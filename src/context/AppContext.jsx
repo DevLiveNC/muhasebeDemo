@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import {
   FIRM_INFO,
+  DEMO_ADMIN,
   MOCK_CLIENTS,
   MOCK_DOCUMENTS,
   MOCK_TASKS,
@@ -95,7 +96,7 @@ export function AppProvider({ children }) {
   const approveDocument = (docId) => {
     setDocuments((prev) =>
       prev.map((doc) =>
-        doc.id === docId ? { ...doc, status: 'Onaylandı', notes: 'SMMM Kemal Yıldız tarafından onaylandı ve kayda alındı.' } : doc
+        doc.id === docId ? { ...doc, status: 'Onaylandı', notes: `${DEMO_ADMIN.name} tarafından onaylandı ve kayda alındı.` } : doc
       )
     );
     addToast('Belge onaylandı', 'Kayıt muhasebeye işlendi.', 'success');
@@ -180,6 +181,7 @@ export function AppProvider({ children }) {
 
         // Data & Live state
         firmInfo: FIRM_INFO,
+        demoAdmin: DEMO_ADMIN,
         clients,
         documents,
         tasks,

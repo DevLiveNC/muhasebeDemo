@@ -12,7 +12,7 @@ import {
 import { cn } from '../../utils/cn';
 
 export default function PortalShowcaseSection() {
-  const { navigateToMode } = useApp();
+  const { navigateToMode, demoAdmin } = useApp();
   const [activeTab, setActiveTab] = useState('ocr');
 
   const tabs = [
@@ -218,12 +218,12 @@ export default function PortalShowcaseSection() {
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-line">
                     <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
-                      alt="SMMM Kemal Yıldız"
-                      className="w-11 h-11 rounded-lg object-cover border border-line"
+                      src={demoAdmin.avatar}
+                      alt={demoAdmin.name}
+                      className="avatar w-11 h-11 rounded-lg border border-line"
                     />
                     <div>
-                      <p className="font-bold text-ink-900 text-sm">SMMM Kemal Yıldız</p>
+                      <p className="font-bold text-ink-900 text-sm">{demoAdmin.name}</p>
                       <p className="text-xs text-ink-400">Vergi ve Teknopark danışmanı</p>
                       <span className="text-[10px] font-mono text-success-deep flex items-center gap-1 mt-0.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
@@ -237,7 +237,7 @@ export default function PortalShowcaseSection() {
                       <Sparkles className="w-3 h-3 text-gold-500" />
                       Mali müşavir notu
                     </span>
-                    "Kerem Bey merhaba, Teknopark kurumlar vergisi muafiyeti ve Temmuz bordroları onaylandı.
+                    "Yaşar Bey merhaba, Teknopark kurumlar vergisi muafiyeti ve Temmuz bordroları onaylandı.
                     Evrak eksiğiniz yok."
                   </div>
                 </div>

@@ -12,7 +12,7 @@ export default class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    console.error('VELOX HALLMARK ErrorBoundary:', error, info);
+    console.error('liveMuhasebe HALLMARK ErrorBoundary:', error, info);
   }
 
   render() {
